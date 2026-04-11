@@ -1,0 +1,892 @@
+---
+theme: default
+title: "Cero Presupuesto, Producto Top"
+info: BC Day ES 2026 · Microsoft Madrid · 14 Abril 2026
+highlighter: shiki
+lineNumbers: false
+drawings:
+  persist: false
+transition: slide-left
+mdc: true
+fonts:
+  sans: 'Segoe UI'
+  mono: 'Fira Code'
+css: unocss
+layout: cover
+background: /template-assets/image1.jpeg
+class: text-white
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  1 · PORTADA                               -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+
+<div class="relative z-10 mt-20">
+  <div class="tag mb-5">Spanish BC Day 2026 · 14 Abril · Madrid</div>
+  <h1 class="text-5xl font-bold leading-tight text-white drop-shadow-lg">
+    Cero Presupuesto,<br>Producto Top
+  </h1>
+  <p class="text-2xl font-semibold text-[#f28b22] mt-3">El Manual del Desarrollador Tacaño</p>
+  <p class="text-lg mt-1 text-white/60">(con ayuda de la IA)</p>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+  <span>BC Day ES 2026 · Microsoft Madrid</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  2 · SPEAKER                               -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="two-col">
+  <div class="flex flex-col justify-center pr-8">
+    <div class="tag mb-5">Ponente</div>
+    <h2 class="mb-1">Juanje Cilla</h2>
+    <p class="text-[#f28b22] font-semibold text-lg mb-5">Desarrollador & Emprendedor</p>
+    <ul class="text-gray-600 space-y-2 text-base">
+      <li>· Desarrollo web y apps móviles</li>
+      <li>· Automatización con n8n e IA</li>
+      <li>· Obsesionado con los free tiers</li>
+    </ul>
+    <p class="text-gray-400 text-sm mt-6">@juanjecilla</p>
+  </div>
+  <div class="flex items-center justify-center">
+    <div class="w-56 h-56 rounded-full border-4 border-[#f28b22] overflow-hidden flex-shrink-0">
+      <img src="/juanje_cropped.jpg" class="w-full h-full object-cover" alt="Juanje Cilla" />
+    </div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+  <span class="slide-num">2</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  3 · DISCLAIMER                            -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="flex items-center justify-center h-full">
+  <img src="/disclaimer.webp" class="max-h-full max-w-full object-contain" alt="Disclaimer" />
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">3</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: cover
+background: '#0f172a'
+class: text-white
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  4 · SOY UN INTRUSO                        -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="flex flex-col items-center justify-center h-full text-center gap-6">
+  <div style="font-size: 7rem; line-height: 1;">🕵️</div>
+  <h1 class="text-4xl font-bold">Soy un intruso</h1>
+  <p class="text-xl text-white/70 max-w-lg">
+    No tengo experiencia en Business Central.<br><br>
+    Pero la IA me permite <span class="text-[#f28b22] font-semibold">diseñar flujos</span>,
+    <span class="text-[#00bfa5] font-semibold">entender APIs</span> y
+    <span class="text-[#006aff] font-semibold">conectar sistemas</span> sin serlo.
+  </p>
+  <p class="text-sm text-white/30 italic">La ignorancia ya no es excusa. Es un punto de partida.</p>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+  <span class="slide-num">3</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
+layout: cover
+background: /template-assets/image1.jpeg
+class: text-white
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  4 · LA MENTALIDAD                         -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+<div class="absolute inset-0 bg-[#14354e]/82" />
+
+<div class="relative z-10 text-center">
+  <div class="tag mb-6">La Filosofía</div>
+  <h1 class="text-5xl font-bold text-white mb-3">El Mito del Presupuesto</h1>
+  <p class="text-xl text-white/70 max-w-2xl mx-auto">
+    Quemar dinero en infraestructura antes de tener 10 usuarios<br>
+    no es valentía. Es un error de arquitectura.
+  </p>
+  <div class="mt-8 bg-white/10 backdrop-blur rounded-2xl p-6 max-w-xl mx-auto">
+    <p class="text-[#f28b22] font-bold text-lg mb-2">La regla de oro del tacaño</p>
+    <p class="text-white/80">
+      Si el producto no valida en el Free Tier,<br>
+      el problema no es el presupuesto —<br>
+      <strong class="text-white">es el modelo de negocio.</strong>
+    </p>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+  <span class="slide-num">4</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  5 · EL GAZPACHATOR                        -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="flex flex-col justify-center h-full gap-6">
+  <div>
+    <h2>El Gazpachator 🍅</h2>
+    <p class="text-gray-400 mt-1">El hilo conductor de esta charla</p>
+  </div>
+  <div class="bg-orange-50 border border-orange-200 rounded-2xl p-6 text-lg text-gray-700 max-w-2xl">
+    "Somos 7 a comer y tengo 3 tomates de sobra.<br>
+    ¿Cuánto gazpacho hago? ¿Cuánto pepino necesito?"
+  </div>
+  <div class="grid grid-cols-3 gap-4 max-w-2xl">
+    <div class="card text-center">
+      <p class="text-2xl">📐</p>
+      <p class="text-sm font-semibold text-[#14354e] mt-1">Calculadora<br>de receta</p>
+    </div>
+    <div class="card text-center">
+      <p class="text-2xl">📈</p>
+      <p class="text-sm font-semibold text-[#14354e] mt-1">Gestión de<br>recursos</p>
+    </div>
+    <div class="card text-center border-[#2377bc]">
+      <p class="text-2xl">🏢</p>
+      <p class="text-sm font-semibold text-[#2377bc] mt-1">Integración<br>ERP</p>
+    </div>
+  </div>
+  <p class="text-sm text-gray-400 italic">Un problema simple → una solución escalable. De la cocina a Business Central.</p>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">5</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  6 · FASE 1: PROTOTIPADO                   -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div>
+  <div class="tag mb-4">Fase 1 — Prototipado</div>
+  <h2 class="mb-6">De la idea a la UI en minutos</h2>
+
+  <div class="grid grid-cols-3 gap-5">
+    <div class="card flex flex-col gap-2">
+      <img src="/logos/v0.svg" class="app-logo" alt="v0.dev" />
+      <p class="font-bold text-[#14354e] text-xl">v0.dev</p>
+      <p class="text-xs text-[#0f7e3f] font-semibold">Vercel · Free tier</p>
+      <p class="text-sm text-gray-600 flex-1">Prompt → componentes React listos. UI compleja sin tocar código.</p>
+      <div class="ph h-28">📸 Captura v0.dev</div>
+    </div>
+    <div class="card flex flex-col gap-2">
+      <img src="/logos/bolt.png" class="app-logo" alt="Bolt.new" />
+      <p class="font-bold text-[#14354e] text-xl">Bolt.new</p>
+      <p class="text-xs text-[#0f7e3f] font-semibold">StackBlitz · Free tier</p>
+      <p class="text-sm text-gray-600 flex-1">App fullstack en el navegador. Sin instalar nada local.</p>
+      <div class="ph h-28">📸 Captura Bolt.new</div>
+    </div>
+    <div class="card flex flex-col gap-2">
+      <img src="/logos/replit.svg" class="app-logo" alt="Replit" />
+      <p class="font-bold text-[#14354e] text-xl">Replit</p>
+      <p class="text-xs text-[#0f7e3f] font-semibold">Replit · Free tier</p>
+      <p class="text-sm text-gray-600 flex-1">IDE en la nube con IA integrada. Sin setup.</p>
+      <div class="ph h-28">📸 Captura Replit</div>
+    </div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">6</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  7 · EL GAZPACHATOR EN BOLT                -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="two-col">
+  <div class="flex flex-col pr-8 gap-3">
+    <div class="flex items-center gap-3">
+      <img src="/logos/bolt.png" class="app-logo-sm" alt="Bolt.new" />
+      <div class="tag">El Gazpachator nace</div>
+    </div>
+    <h2>Del prompt a la app</h2>
+    <div class="bg-gray-900 rounded-xl p-3 font-mono text-xs text-green-400">
+      <p class="text-gray-500 mb-1">// Prompt enviado a Bolt.new</p>
+      <p>"Crea una web que calcule las</p>
+      <p>cantidades de una receta de</p>
+      <p>gazpacho. Ajustable por número</p>
+      <p>de personas o por ingrediente."</p>
+    </div>
+    <p class="text-sm text-gray-500">La IA escribe el 80% del código. Nosotros refinamos la lógica.</p>
+  </div>
+  <div class="flex items-center justify-center">
+    <div class="ph w-full h-52">📸 Gazpachator funcionando<br>en Bolt / v0.dev / Replit<br>(añadir screenshot)</div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">7</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: cover
+background: /template-assets/image1.jpeg
+class: text-white
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  8 · SECCIÓN: VS CODE                      -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+<div class="absolute inset-0 bg-[#14354e]/82" />
+
+<div class="relative z-10 text-center">
+  <p class="text-[#f28b22] text-base font-semibold tracking-widest uppercase mb-3">Fase 2</p>
+  <h1 class="text-5xl font-bold text-white">El Centro de Mando</h1>
+  <p class="text-xl text-white/70 mt-3">VS Code + IA local</p>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">8</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  9 · VS CODE + COPILOT                     -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="two-col">
+  <div class="flex flex-col justify-center pr-8 gap-5">
+    <div class="flex items-center gap-3">
+      <img src="/logos/vscode.png" class="app-logo-lg" alt="VS Code" />
+      <h2>VS Code + GitHub Copilot</h2>
+    </div>
+    <p class="text-gray-500">Descargamos el código de Bolt/v0 y lo profesionalizamos en local.</p>
+    <ul class="space-y-4">
+      <li class="flex gap-3 items-center">
+        <img src="/logos/github-copilot.svg" class="app-logo-sm flex-shrink-0" alt="Copilot" />
+        <div>
+          <p class="font-semibold text-[#14354e]">GitHub Copilot</p>
+          <p class="text-sm text-gray-500">Autocompletado inteligente. Gratis para cuentas personales de GitHub.</p>
+        </div>
+      </li>
+      <li class="flex gap-3 items-center">
+        <img src="/logos/openai.svg" class="app-logo-sm flex-shrink-0" alt="OpenAI" />
+        <div>
+          <p class="font-semibold text-[#14354e]">Codex (OpenAI)</p>
+          <p class="text-sm text-gray-500">Razonamiento avanzado de código. Disponible vía extensión gratuita.</p>
+        </div>
+      </li>
+      <li class="flex gap-3 items-center">
+        <img src="/logos/github.png" class="app-logo-sm flex-shrink-0" alt="GitHub" />
+        <div>
+          <p class="font-semibold text-[#14354e]">Integración nativa con GitHub</p>
+          <p class="text-sm text-gray-500">Todo el ciclo de vida desde el editor, sin cambiar de contexto.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="flex items-center justify-center">
+    <div class="ph w-full h-52">📸 VS Code con Copilot<br>refactorizando el Gazpachator</div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">9</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  10 · ALTERNATIVAS IA                      -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div>
+  <h2 class="mb-2">El arsenal de IA en local</h2>
+  <p class="text-gray-500 mb-6">Estrategia: acumular cuotas gratuitas de distintas herramientas.</p>
+
+  <div class="grid grid-cols-4 gap-4">
+    <div class="card text-center flex flex-col gap-2 items-center">
+      <img src="/logos/github-copilot.svg" class="app-logo" alt="GitHub Copilot" />
+      <p class="font-bold text-[#14354e] text-sm">GitHub Copilot</p>
+      <p class="text-xs text-[#0f7e3f] font-semibold">Microsoft · Free</p>
+      <p class="text-xs text-gray-500">Foco del evento. Nativo en VS Code.</p>
+    </div>
+    <div class="card text-center flex flex-col gap-2 items-center">
+      <img src="/logos/cursor.svg" class="app-logo" alt="Cursor" />
+      <p class="font-bold text-[#14354e] text-sm">Cursor</p>
+      <p class="text-xs text-[#0f7e3f] font-semibold">Free tier</p>
+      <p class="text-xs text-gray-500">VS Code con IA directa en el editor.</p>
+    </div>
+    <div class="card text-center flex flex-col gap-2 items-center">
+      <img src="/logos/windsurf.svg" class="app-logo" alt="Windsurf" style="filter: brightness(0);" />
+      <p class="font-bold text-[#14354e] text-sm">Windsurf</p>
+      <p class="text-xs text-[#0f7e3f] font-semibold">Free tier</p>
+      <p class="text-xs text-gray-500">IA agéntica sobre el proyecto.</p>
+    </div>
+    <div class="card text-center flex flex-col gap-2 items-center">
+      <img src="/logos/openai.svg" class="app-logo" alt="OpenAI Codex" />
+      <p class="font-bold text-[#14354e] text-sm">Codex CLI</p>
+      <p class="text-xs text-[#0f7e3f] font-semibold">OpenAI · Free</p>
+      <p class="text-xs text-gray-500">Agente de terminal. Ejecuta y refactoriza.</p>
+    </div>
+  </div>
+
+  <div class="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-900">
+    💡 <strong>La táctica tacaña:</strong> cada herramienta tiene su cupo mensual. Usándolas en rotación, el presupuesto efectivo de IA se multiplica.
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">10</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: cover
+background: /template-assets/image1.jpeg
+class: text-white
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  11 · SECCIÓN: GITHUB                      -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+<div class="absolute inset-0 bg-[#14354e]/82" />
+
+<div class="relative z-10 text-center">
+  <p class="text-[#f28b22] text-base font-semibold tracking-widest uppercase mb-3">Fase 3</p>
+  <h1 class="text-5xl font-bold text-white">El Almacén y la Fábrica</h1>
+  <p class="text-xl text-white/70 mt-3">GitHub + GitHub Actions + GitHub Pages</p>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">11</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  12 · GITHUB                               -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div>
+  <h2 class="mb-6">GitHub: repositorios + hosting</h2>
+
+  <div class="grid grid-cols-3 gap-5">
+    <div class="card flex flex-col gap-3">
+      <img src="/logos/github.png" class="app-logo" alt="GitHub" />
+      <p class="font-bold text-[#14354e]">Repositorios</p>
+      <p class="text-sm text-gray-600">Repos privados ilimitados en cuentas gratuitas. El código del Gazpachator, seguro.</p>
+      <p class="tag-green self-start text-xs">Free</p>
+    </div>
+    <div class="card flex flex-col gap-3">
+      <img src="/logos/github-actions.svg" class="app-logo" alt="GitHub Actions" />
+      <p class="font-bold text-[#14354e]">GitHub Actions</p>
+      <p class="text-sm text-gray-600">2.000 minutos/mes gratuitos para automatizar builds, tests y deploys.</p>
+      <p class="tag-green self-start text-xs">2.000 min/mes</p>
+    </div>
+    <div class="card flex flex-col gap-3">
+      <img src="/logos/github.png" class="app-logo" alt="GitHub Pages" />
+      <p class="font-bold text-[#14354e]">GitHub Pages</p>
+      <p class="text-sm text-gray-600">Hosting estático gratuito directo desde el repositorio. SSL incluido.</p>
+      <p class="tag-green self-start text-xs">Free · SSL</p>
+    </div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">12</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  13 · GITHUB ACTIONS CI/CD                 -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="two-col">
+  <div class="flex flex-col justify-center pr-8 gap-4">
+    <div class="flex items-center gap-3">
+      <img src="/logos/github-actions.svg" class="app-logo-sm" alt="GitHub Actions" />
+      <h2>CI/CD para tacaños</h2>
+    </div>
+    <p class="text-gray-500 text-sm">Cada push desencadena el pipeline completo.</p>
+    <div class="space-y-3">
+      <div class="flex gap-3 items-center">
+        <div class="w-8 h-8 rounded-full bg-[#f28b22] text-white text-sm font-bold flex items-center justify-center flex-shrink-0">1</div>
+        <p class="text-sm"><strong>Push</strong> — arreglamos el algoritmo del ajo</p>
+      </div>
+      <div class="flex gap-3 items-center">
+        <div class="w-8 h-8 rounded-full bg-[#2377bc] text-white text-sm font-bold flex items-center justify-center flex-shrink-0">2</div>
+        <p class="text-sm"><strong>Tests</strong> — los cálculos de ingredientes son correctos</p>
+      </div>
+      <div class="flex gap-3 items-center">
+        <div class="w-8 h-8 rounded-full bg-[#00bfa5] text-white text-sm font-bold flex items-center justify-center flex-shrink-0">3</div>
+        <p class="text-sm"><strong>Build</strong> — tree shaking, bundle reducido</p>
+      </div>
+      <div class="flex gap-3 items-center">
+        <div class="w-8 h-8 rounded-full bg-[#0f7e3f] text-white text-sm font-bold flex items-center justify-center flex-shrink-0">4</div>
+        <p class="text-sm"><strong>Deploy</strong> — publicado en GitHub Pages automáticamente</p>
+      </div>
+    </div>
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs text-amber-800">
+      💡 Un bundle más ligero = menos cuota de hosting consumida.
+    </div>
+  </div>
+  <div class="flex items-center justify-center">
+    <div class="ph w-full h-52">📸 GitHub Actions pipeline<br>del Gazpachator en verde</div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">13</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: cover
+background: /template-assets/image1.jpeg
+class: text-white
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  14 · SECCIÓN: INFRAESTRUCTURA             -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+<div class="absolute inset-0 bg-[#14354e]/82" />
+
+<div class="relative z-10 text-center">
+  <p class="text-[#f28b22] text-base font-semibold tracking-widest uppercase mb-3">Fase 4</p>
+  <h1 class="text-5xl font-bold text-white">La Infraestructura de $0</h1>
+  <p class="text-xl text-white/70 mt-3">Zeabur + n8n</p>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">14</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  15 · ZEABUR                               -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="two-col">
+  <div class="flex flex-col justify-center pr-8 gap-5">
+    <div class="flex items-center gap-3">
+      <img src="/logos/zeabur.svg" class="app-logo" alt="Zeabur" />
+      <h2>Zeabur</h2>
+    </div>
+    <p class="text-gray-500">Lo que otros no permiten gratis — Zeabur lo hace.</p>
+    <ul class="space-y-3">
+      <li class="flex gap-3 items-start">
+        <span class="text-[#0f7e3f] font-bold text-lg">✓</span>
+        <p class="text-sm text-gray-700">Despliega contenedores Docker en free tier</p>
+      </li>
+      <li class="flex gap-3 items-start">
+        <span class="text-[#0f7e3f] font-bold text-lg">✓</span>
+        <p class="text-sm text-gray-700">Bases de datos persistentes sin coste</p>
+      </li>
+      <li class="flex gap-3 items-start">
+        <span class="text-[#0f7e3f] font-bold text-lg">✓</span>
+        <p class="text-sm text-gray-700">Servicios custom (n8n, APIs propias...)</p>
+      </li>
+      <li class="flex gap-3 items-start">
+        <span class="text-[#0f7e3f] font-bold text-lg">✓</span>
+        <p class="text-sm text-gray-700">Deploy desde GitHub con un clic</p>
+      </li>
+    </ul>
+    <div class="card bg-green-50 border-green-200">
+      <p class="font-bold text-[#0f7e3f] text-sm mb-1">🤖 Zeabur AI Assistant</p>
+      <p class="text-xs text-gray-600">Diagnostica errores, crea servicios y optimiza configuraciones en lenguaje natural.</p>
+    </div>
+  </div>
+  <div class="flex items-center justify-center">
+    <div class="ph w-full h-52">📸 Dashboard de Zeabur<br>servicios activos · $0.00</div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">15</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  16 · N8N                                  -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="two-col">
+  <div class="flex flex-col justify-center pr-8 gap-5">
+    <div class="flex items-center gap-3">
+      <img src="/logos/n8n.svg" class="app-logo" alt="n8n" />
+      <h2>n8n: el backend sin backend</h2>
+    </div>
+    <p class="text-gray-500">Self-hosted en Zeabur. Webhooks, CRON, integraciones. Todo gratis.</p>
+    <div class="bg-gray-900 rounded-xl p-4 font-mono text-xs text-green-400 space-y-1">
+      <p class="text-gray-500">// Flujo del Gazpachator</p>
+      <p>Usuario ajusta receta</p>
+      <p class="ml-3 text-gray-400">→ Webhook n8n recibe datos</p>
+      <p class="ml-6 text-gray-400">→ Guarda en base de datos</p>
+      <p class="ml-6 text-gray-400">→ Envía resumen por email</p>
+    </div>
+    <div class="card bg-purple-50 border-purple-200">
+      <p class="font-bold text-purple-800 text-sm mb-1">🔌 n8n + MCP (Claude)</p>
+      <p class="text-xs text-gray-600">Describes el flujo en lenguaje natural y Claude lo crea en n8n. Sin tocar la interfaz.</p>
+    </div>
+  </div>
+  <div class="flex items-center justify-center">
+    <div class="ph w-full h-52">📸 Workflow de n8n<br>procesando el Gazpachator</div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">16</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: cover
+background: /template-assets/image1.jpeg
+class: text-white
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  17 · SECCIÓN: BUSINESS CENTRAL            -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+<div class="absolute inset-0 bg-[#2377bc]/85" />
+
+<div class="relative z-10 text-center">
+  <p class="text-[#f28b22] text-base font-semibold tracking-widest uppercase mb-3">Bonus</p>
+  <h1 class="text-5xl font-bold text-white">El Tacaño en la Empresa</h1>
+  <p class="text-xl text-white/70 mt-3">Conectando con Business Central</p>
+  <img src="/logos/business-central.png" class="h-16 mx-auto mt-6 drop-shadow-lg" alt="Business Central" />
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">17</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  18 · BC: LA SANDBOX                       -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div>
+  <div class="flex items-center gap-3 mb-6">
+    <img src="/logos/business-central.png" class="app-logo-lg" alt="Business Central" />
+    <h2>Business Central Sandbox gratuita</h2>
+  </div>
+
+  <div class="grid grid-cols-2 gap-6">
+    <div class="card flex flex-col gap-4">
+      <p class="font-bold text-[#14354e]">🆓 Microsoft 365 Developer Program</p>
+      <p class="text-sm text-gray-600">Suscripción E5 gratuita para desarrolladores. Incluye licencias de prueba de Business Central.</p>
+      <p class="text-sm text-gray-600">Un ERP real para romper y probar integraciones sin coste.</p>
+      <p class="tag-blue self-start">aka.ms/m365devprogram</p>
+    </div>
+    <div class="card flex flex-col gap-4">
+      <p class="font-bold text-[#14354e]">🔗 API OData / REST</p>
+      <p class="text-sm text-gray-600">BC habla JSON como cualquier API moderna. Con n8n hacemos una petición POST y estamos dentro.</p>
+      <div class="bg-gray-900 rounded-lg p-3 font-mono text-xs text-green-400">
+        POST /api/v2.0/salesOrders<br>
+        <span class="text-gray-400">Authorization: Bearer ...</span><br>
+        <span class="text-gray-400">Content-Type: application/json</span>
+      </div>
+      <p class="text-xs text-gray-400 italic">Sin conector premium. Sin Power Automate de pago.</p>
+    </div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">18</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  19 · BC: EL FLUJO COMPLETO                -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="two-col">
+  <div class="flex flex-col justify-center pr-8 gap-5">
+    <h2>Gazpachator → BC</h2>
+    <p class="text-gray-500 text-sm">Cuando la fábrica de gazpacho crece y necesita un ERP.</p>
+    <div class="space-y-2 text-sm">
+      <div class="flex gap-3 items-center bg-orange-50 rounded-lg p-3">
+        <span class="text-xl">🍅</span>
+        <p><strong>Gazpachator</strong> — el usuario ajusta ingredientes</p>
+      </div>
+      <div class="text-center text-gray-300 text-lg font-bold">↓</div>
+      <div class="flex gap-3 items-center bg-purple-50 rounded-lg p-3">
+        <img src="/logos/n8n.svg" class="h-6 w-6 flex-shrink-0" alt="n8n" />
+        <p><strong>n8n</strong> — recibe datos vía webhook</p>
+      </div>
+      <div class="text-center text-gray-300 text-lg font-bold">↓</div>
+      <div class="flex gap-3 items-center bg-blue-50 rounded-lg p-3">
+        <img src="/logos/business-central.png" class="h-6 w-6 flex-shrink-0" alt="Business Central" />
+        <p><strong>Business Central</strong> — orden de compra creada ✓</p>
+      </div>
+    </div>
+    <p class="text-xs text-gray-400 italic">n8n actúa de middleware: evita que cada integración necesite una licencia de usuario de BC completa.</p>
+  </div>
+  <div class="flex items-center justify-center">
+    <div class="ph w-full h-52">📸 Workflow n8n → BC API<br>(añadir screenshot)</div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">19</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  20 · EL MAPA DEL TACAÑO                   -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div>
+  <h2 class="mb-6">El mapa del tacaño 🗺️</h2>
+
+  <div class="flex items-center justify-between gap-2">
+    <div class="card text-center flex-1 flex flex-col items-center gap-2 py-4">
+      <div class="flex gap-1 justify-center items-center h-10">
+        <img src="/logos/v0.svg" class="h-7" alt="v0" />
+        <img src="/logos/bolt.png" class="h-7" alt="Bolt" />
+        <img src="/logos/replit.svg" class="h-7" alt="Replit" />
+      </div>
+      <p class="font-bold text-[#14354e] text-sm">Idea</p>
+      <p class="text-xs text-gray-400">v0 · Bolt · Replit</p>
+      <p class="text-[#0f7e3f] font-bold text-lg">$0</p>
+    </div>
+    <div class="text-gray-300 text-2xl font-bold flex-shrink-0">→</div>
+    <div class="card text-center flex-1 flex flex-col items-center gap-2 py-4">
+      <div class="flex gap-1 justify-center items-center h-10">
+        <img src="/logos/vscode.png" class="h-9" alt="VS Code" />
+        <img src="/logos/github-copilot.svg" class="h-7" alt="Copilot" />
+      </div>
+      <p class="font-bold text-[#14354e] text-sm">Dev local</p>
+      <p class="text-xs text-gray-400">VS Code · Copilot</p>
+      <p class="text-[#0f7e3f] font-bold text-lg">$0</p>
+    </div>
+    <div class="text-gray-300 text-2xl font-bold flex-shrink-0">→</div>
+    <div class="card text-center flex-1 flex flex-col items-center gap-2 py-4">
+      <div class="flex gap-1 justify-center items-center h-10">
+        <img src="/logos/github.png" class="h-8" alt="GitHub" />
+        <img src="/logos/github-actions.svg" class="h-7" alt="Actions" />
+      </div>
+      <p class="font-bold text-[#14354e] text-sm">CI/CD</p>
+      <p class="text-xs text-gray-400">GitHub Actions</p>
+      <p class="text-[#0f7e3f] font-bold text-lg">$0</p>
+    </div>
+    <div class="text-gray-300 text-2xl font-bold flex-shrink-0">→</div>
+    <div class="card text-center flex-1 flex flex-col items-center gap-2 py-4">
+      <div class="flex gap-1 justify-center items-center h-10">
+        <img src="/logos/n8n.svg" class="h-7" alt="n8n" />
+        <img src="/logos/zeabur.svg" class="h-7" alt="Zeabur" />
+      </div>
+      <p class="font-bold text-[#14354e] text-sm">Backend</p>
+      <p class="text-xs text-gray-400">n8n · Zeabur</p>
+      <p class="text-[#0f7e3f] font-bold text-lg">$0</p>
+    </div>
+    <div class="text-gray-300 text-2xl font-bold flex-shrink-0">→</div>
+    <div class="card text-center flex-1 flex flex-col items-center gap-2 py-4 border-[#2377bc]">
+      <div class="flex justify-center items-center h-10">
+        <img src="/logos/business-central.png" class="h-10" alt="Business Central" />
+      </div>
+      <p class="font-bold text-[#2377bc] text-sm">ERP</p>
+      <p class="text-xs text-gray-400">Business Central</p>
+      <p class="text-[#0f7e3f] font-bold text-lg">$0</p>
+    </div>
+  </div>
+
+  <div class="mt-6 bg-[#14354e] text-white rounded-xl p-4 text-center">
+    <p class="text-lg font-semibold">"El presupuesto es un límite mental, no técnico."</p>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <img src="/template-assets/image2.svg" class="logo-ms" />
+  <span class="slide-num">20</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: cover
+background: /template-assets/image1.jpeg
+class: text-white
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  21 · GRACIAS                              -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+<div class="absolute inset-0 bg-[#14354e]/85" />
+
+<div class="relative z-10 text-center mt-6">
+  <h1 class="text-6xl font-bold text-white mb-2">¡Gracias!</h1>
+  <p class="text-2xl text-[#f28b22] font-semibold mb-6">¿Preguntas?</p>
+  <p class="text-white/50 text-sm italic mb-8">"El presupuesto es un límite mental, no técnico."</p>
+  <div class="bg-white/10 backdrop-blur rounded-2xl p-5 max-w-lg mx-auto text-sm text-white/80">
+    <p class="font-semibold text-white mb-4">Pruébalo tú mismo:</p>
+    <div class="grid grid-cols-2 gap-3">
+      <div class="flex items-center gap-2">
+        <img src="/logos/v0.svg" class="h-5 flex-shrink-0" alt="v0" />
+        <span>v0.dev</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/logos/bolt.png" class="h-5 flex-shrink-0" alt="Bolt" />
+        <span>bolt.new</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/logos/vscode.png" class="h-5 flex-shrink-0" alt="VS Code" />
+        <span>VS Code + Copilot</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/logos/github.png" class="h-5 flex-shrink-0" alt="GitHub" />
+        <span>github.com</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/logos/zeabur.svg" class="h-5 flex-shrink-0" alt="Zeabur" />
+        <span>zeabur.com</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <img src="/logos/n8n.svg" class="h-5 flex-shrink-0" alt="n8n" />
+        <span>n8n.io</span>
+      </div>
+      <div class="flex items-center gap-2 col-span-2">
+        <img src="/logos/business-central.png" class="h-5 flex-shrink-0" alt="BC" />
+        <span>aka.ms/m365devprogram</span>
+      </div>
+    </div>
+  </div>
+  <p class="text-white/60 mt-6">Juanje Cilla · @juanjecilla</p>
+</div>
+
+<div class="absolute bottom-8 left-0 right-0 flex justify-center gap-8 items-center">
+  <img src="/template-assets/image2.svg" class="h-7" alt="Microsoft" />
+  <img src="/template-assets/image3.png" class="h-9" alt="Sponsors" />
+  <img src="/template-assets/image17.svg" class="h-7" alt="BC Day ES" />
+</div>

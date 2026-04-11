@@ -1,0 +1,60 @@
+.brand-header {
+  position: absolute; top: 0; left: 0; right: 0; height: 6px;
+  background: linear-gradient(90deg, #e0185e 0%, #006aff 33%, #00bfa5 66%, #f28b22 100%);
+  z-index: 10;
+}
+.brand-footer {
+  position: absolute; bottom: 14px; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 36px; font-size: 11px; color: #aaa; z-index: 10;
+}
+.logo-ms { height: 20px; }
+.logo-banner {
+  height: 32px;
+  background: white;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+.tag       { background:#f28b22; color:white; padding:2px 14px; border-radius:4px; font-size:13px; font-weight:600; display:inline-block; }
+.tag-blue  { background:#2377bc; color:white; padding:2px 14px; border-radius:4px; font-size:13px; font-weight:600; display:inline-block; }
+.tag-green { background:#0f7e3f; color:white; padding:2px 14px; border-radius:4px; font-size:13px; font-weight:600; display:inline-block; }
+.tag-dark  { background:#14354e; color:white; padding:2px 14px; border-radius:4px; font-size:13px; font-weight:600; display:inline-block; }
+.card {
+  background: white; border: 1px solid #e5e7eb; border-radius: 12px;
+  padding: 18px; box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+.ph {
+  background: linear-gradient(135deg,#f3f4f6,#e5e7eb);
+  border: 2px dashed #d1d5db; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #9ca3af; font-size: 12px; font-style: italic; text-align: center;
+  line-height: 1.6;
+}
+.slide-num { font-size: 11px; color: #bbb; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.app-logo { height: 40px; object-fit: contain; }
+.app-logo-sm { height: 28px; object-fit: contain; }
+.app-logo-lg { height: 52px; object-fit: contain; }
+
+/* Reserva espacio para el header (6px) y el footer (~48px) en todos los layouts */
+.slidev-layout.default {
+  padding-top: 18px !important;
+  padding-bottom: 52px !important;
+}
+
+/* Neutraliza el my-4 que Slidev aplica a todos los <p> por defecto */
+.slidev-layout.default p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Títulos de contenido: color naranja de marca, una sola línea */
+.slidev-layout.default h2 {
+  color: #f28b22 !important;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  line-height: 1.2 !important;
+}
