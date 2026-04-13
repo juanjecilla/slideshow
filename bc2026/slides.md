@@ -92,7 +92,7 @@ layout: default
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
   <span class="slide-num">1b</span>
-  <img src="/profile_banner.png" class="logo-banner" />
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
 ---
@@ -160,7 +160,7 @@ layout: default
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
   <span class="slide-num">3</span>
-  <img src="/profile_banner.png" class="logo-banner" />
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
 ---
@@ -192,7 +192,7 @@ class: text-white
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">3</span>
+  <span class="slide-num">4</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -203,7 +203,7 @@ class: text-white
 ---
 
 <!-- ══════════════════════════════════════════ -->
-<!--  4 · LA MENTALIDAD                         -->
+<!--  5 · LA MENTALIDAD                         -->
 <!-- ══════════════════════════════════════════ -->
 
 <div class="brand-header" />
@@ -231,7 +231,7 @@ class: text-white
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">4</span>
+  <span class="slide-num">5</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -239,7 +239,6 @@ class: text-white
 layout: default
 ---
 
-<!-- ══════════════════════════════════════════ -->
 <!--  5 · EL GAZPACHATOR                        -->
 <!-- ══════════════════════════════════════════ -->
 
@@ -276,8 +275,8 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">5</span>
-  <img src="/profile_banner.png" class="logo-banner" />
+  <span class="slide-num">6</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
 ---
@@ -324,8 +323,8 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">6</span>
-  <img src="/profile_banner.png" class="logo-banner" />
+  <span class="slide-num">7</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
 ---
@@ -364,8 +363,8 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">7</span>
-  <img src="/profile_banner.png" class="logo-banner" />
+  <span class="slide-num">8</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
 ---
@@ -375,7 +374,7 @@ class: text-white
 ---
 
 <!-- ══════════════════════════════════════════ -->
-<!--  8 · SECCIÓN: VS CODE                      -->
+<!--  9 · SECCIÓN: VS CODE                      -->
 <!-- ══════════════════════════════════════════ -->
 
 <div class="brand-header" />
@@ -392,8 +391,8 @@ class: text-white
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">8</span>
-  <img src="/profile_banner.png" class="logo-banner" />
+  <span class="slide-num">9</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
 ---
@@ -401,7 +400,7 @@ layout: default
 ---
 
 <!-- ══════════════════════════════════════════ -->
-<!--  9 · VS CODE + COPILOT                     -->
+<!--  10 · VS CODE + COPILOT                     -->
 <!-- ══════════════════════════════════════════ -->
 
 <div class="brand-header" />
@@ -453,8 +452,8 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">9</span>
-  <img src="/profile_banner.png" class="logo-banner" />
+  <span class="slide-num">10</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
 ---
@@ -462,7 +461,7 @@ layout: default
 ---
 
 <!-- ══════════════════════════════════════════ -->
-<!--  10 · ALTERNATIVAS IA                      -->
+<!--  11 · ALTERNATIVAS IA                      -->
 <!-- ══════════════════════════════════════════ -->
 
 <div class="brand-header" />
@@ -508,8 +507,8 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">10</span>
-  <img src="/profile_banner.png" class="logo-banner" />
+  <span class="slide-num">11</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
 ---
@@ -519,7 +518,7 @@ class: text-white
 ---
 
 <!-- ══════════════════════════════════════════ -->
-<!--  11 · SECCIÓN: GITHUB                      -->
+<!--  12 · SECCIÓN: GITHUB                      -->
 <!-- ══════════════════════════════════════════ -->
 
 <div class="brand-header" />
@@ -536,8 +535,8 @@ class: text-white
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">11</span>
-  <img src="/profile_banner.png" class="logo-banner" />
+  <span class="slide-num">12</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
 ---
@@ -1023,6 +1022,4 @@ class: text-white
     <span class="font-bold text-xl tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
   <img src="/template-assets/image3.png" class="h-9" alt="Sponsors" />
-</div>
-s" />
 </div>
