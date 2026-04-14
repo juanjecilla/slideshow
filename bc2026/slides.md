@@ -91,7 +91,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">1b</span>
+  <span class="slide-num">2</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -136,7 +136,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">2</span>
+  <span class="slide-num">3</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -159,7 +159,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">3</span>
+  <span class="slide-num">4</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -192,7 +192,7 @@ class: text-white
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">4</span>
+  <span class="slide-num">5</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -231,7 +231,7 @@ class: text-white
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">5</span>
+  <span class="slide-num">6</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -275,7 +275,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">6</span>
+  <span class="slide-num">7</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -323,7 +323,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">7</span>
+  <span class="slide-num">8</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -363,7 +363,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">8</span>
+  <span class="slide-num">9</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -394,7 +394,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">8.1</span>
+  <span class="slide-num">10</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -425,7 +425,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">8.2</span>
+  <span class="slide-num">11</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -454,7 +454,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">8.3</span>
+  <span class="slide-num">12</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -501,7 +501,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">8.4</span>
+  <span class="slide-num">13</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -529,7 +529,7 @@ class: text-white
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">9</span>
+  <span class="slide-num">14</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -590,7 +590,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">10</span>
+  <span class="slide-num">15</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -645,7 +645,71 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">11</span>
+  <span class="slide-num">16</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  11c · PENCIL.DEV                          -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="two-col">
+  <div class="flex flex-col justify-center gap-4">
+    <div class="flex items-center gap-3">
+      <img src="/logos/pencil.jpeg" class="app-logo-lg rounded-xl" alt="Pencil" />
+      <h2>Pencil.dev</h2>
+    </div>
+    <p class="text-gray-500 text-xs">Diseña en canvas, exporta a código. El Figma del desarrollador tacaño — gratis y en local.</p>
+    <ul class="space-y-2">
+      <li class="flex gap-3 items-start">
+        <div class="icon-container flex-shrink-0">
+          <span class="text-sm">🎨</span>
+        </div>
+        <div>
+          <p class="font-semibold text-gray-500 text-xs">Canvas visual al estilo Figma</p>
+          <p class="text-[10px] text-gray-500">Diseña componentes, layouts y prototipos con herramientas profesionales directamente en tu IDE.</p>
+        </div>
+      </li>
+      <li class="flex gap-3 items-start">
+        <div class="icon-container flex-shrink-0">
+          <span class="text-sm">🤖</span>
+        </div>
+        <div>
+          <p class="font-semibold text-gray-500 text-xs">IA integrada en el diseño</p>
+          <p class="text-[10px] text-gray-500">Genera y ajusta diseños con instrucciones en lenguaje natural. Sin abrir Figma, sin salir del editor.</p>
+        </div>
+      </li>
+      <li class="flex gap-3 items-start">
+        <div class="icon-container flex-shrink-0">
+          <span class="text-sm">⚡</span>
+        </div>
+        <div>
+          <p class="font-semibold text-gray-500 text-xs">Exporta a código limpio</p>
+          <p class="text-[10px] text-gray-500">Los diseños se convierten directamente en componentes React, Vue o HTML. Sin copiar y pegar.</p>
+        </div>
+      </li>
+    </ul>
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-2 text-[10px] text-amber-900">
+      💡 <strong>Extensión de VS Code.</strong> El diseño y el código viven en el mismo sitio.
+    </div>
+  </div>
+  <div class="flex items-center justify-center">
+    <img src="/pencil-demo.png" class="w-full rounded-2xl shadow-xl border border-gray-200 object-cover" alt="Pencil.dev en acción" />
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">17</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -736,7 +800,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">11b</span>
+  <span class="slide-num">18</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -764,7 +828,7 @@ class: text-white
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">12</span>
+  <span class="slide-num">19</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -808,7 +872,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">12</span>
+  <span class="slide-num">20</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
@@ -861,7 +925,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">13</span>
+  <span class="slide-num">21</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
@@ -904,7 +968,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">13.1</span>
+  <span class="slide-num">22</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
@@ -960,7 +1024,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">13.2</span>
+  <span class="slide-num">23</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
@@ -988,7 +1052,7 @@ class: text-white
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">14</span>
+  <span class="slide-num">24</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
@@ -1044,7 +1108,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">15</span>
+  <span class="slide-num">25</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
@@ -1087,7 +1151,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">16</span>
+  <span class="slide-num">26</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
@@ -1116,7 +1180,7 @@ class: text-white
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">17</span>
+  <span class="slide-num">27</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
@@ -1161,7 +1225,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">18</span>
+  <span class="slide-num">28</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
@@ -1207,7 +1271,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">19</span>
+  <span class="slide-num">29</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
@@ -1286,7 +1350,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">20</span>
+  <span class="slide-num">30</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
@@ -1341,7 +1405,7 @@ layout: default
     <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
-  <span class="slide-num">20b</span>
+  <span class="slide-num">31</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
