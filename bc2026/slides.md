@@ -368,6 +368,150 @@ layout: default
 </div>
 
 ---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  8.1 · v0.dev                              -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="flex flex-col gap-4 h-full">
+  <div class="flex items-center gap-3">
+    <div class="bg-white rounded-lg p-1.5 flex items-center justify-center">
+      <img src="/logos/v0.svg" class="app-logo-sm" alt="v0.dev" />
+    </div>
+    <h2 class="text-3xl font-bold text-[#14354e]">v0.dev</h2>
+  </div>
+  <div class="flex-1 flex items-center justify-center overflow-hidden rounded-2xl border border-gray-200 shadow-2xl bg-white">
+    <img src="/gazpachator-v0.png" class="w-full h-full object-contain" alt="v0.dev Screenshot" />
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">8.1</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  8.2 · Bolt.new                            -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="flex flex-col gap-4 h-full">
+  <div class="flex items-center gap-3">
+    <div class="bg-white rounded-lg p-1.5 flex items-center justify-center">
+      <img src="/logos/bolt.png" class="app-logo-sm" alt="Bolt.new" />
+    </div>
+    <h2 class="text-3xl font-bold text-[#14354e]">Bolt.new</h2>
+  </div>
+  <div class="flex-1 flex items-center justify-center overflow-hidden rounded-2xl border border-gray-200 shadow-2xl bg-white">
+    <img src="/gazpachator-bolt.png" class="w-full h-full object-contain" alt="Bolt.new Screenshot" />
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">8.2</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  8.3 · Replit                              -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="flex flex-col gap-4 h-full">
+  <div class="flex items-center gap-3">
+    <img src="/logos/replit.svg" class="app-logo-sm" alt="Replit" />
+    <h2 class="text-3xl font-bold text-[#14354e]">Replit</h2>
+  </div>
+  <div class="flex-1 flex items-center justify-center overflow-hidden rounded-2xl border border-gray-200 shadow-2xl bg-white">
+    <img src="/gazpachator-replit.png" class="w-full h-full object-contain" alt="Replit Screenshot" />
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">8.3</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  8.4 · Otros Ejemplos                      -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="flex flex-col gap-8 h-full justify-center">
+  <h2 class="text-center text-3xl font-bold text-[#14354e]">Otros ejemplos de prototipado rápido</h2>
+  
+  <div class="grid grid-cols-2 gap-8 max-w-3xl mx-auto">
+    <div class="card flex items-center gap-4 p-6">
+      <div class="w-12 h-12 flex items-center justify-center">
+        <div class="i-logos-firebase text-4xl" />
+      </div>
+      <div>
+        <p class="font-bold text-xl">Firebase Studio</p>
+        <p class="text-xs text-red-600 font-semibold">(Deprecated)</p>
+      </div>
+    </div>
+    <div class="card flex items-center gap-4 p-6">
+      <div class="w-12 h-12 flex items-center justify-center">
+        <img src="/logos/github.png" class="h-10" alt="GitHub Spark" />
+      </div>
+      <div>
+        <p class="font-bold text-xl">GitHub Spark</p>
+        <p class="text-xs text-gray-500 italic">Creación de Micro-apps</p>
+      </div>
+    </div>
+    <div class="card flex items-center gap-4 p-6 col-span-2 justify-center">
+      <div class="w-12 h-12 flex items-center justify-center">
+        <div class="i-carbon-apps text-4xl text-gray-400" />
+      </div>
+      <div>
+        <p class="font-bold text-xl">Y muchos otros...</p>
+        <p class="text-sm text-gray-500">Lovable, Marblism, GPT Engineer...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">8.4</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
 layout: cover
 background: /template-assets/image1.jpeg
 class: text-white
@@ -425,7 +569,7 @@ layout: default
       <li class="flex gap-4 items-center justify-between">
         <div>
           <p class="font-semibold text-[#14354e]">Codex (OpenAI)</p>
-          <p class="text-sm text-gray-800">Razonamiento avanzado de código. Disponible vía extensión gratuita.</p>
+          <p class="text-sm text-gray-500">Razonamiento avanzado de código. Disponible vía extensión gratuita.</p>
         </div>
         <div class="icon-container">
           <img src="/logos/openai.svg" class="app-logo-sm" alt="OpenAI" />
@@ -434,7 +578,7 @@ layout: default
       <li class="flex gap-4 items-center justify-between">
         <div>
           <p class="font-semibold text-[#14354e]">Integración nativa con GitHub</p>
-          <p class="text-sm text-gray-800">Todo el ciclo de vida desde el editor, sin cambiar de contexto.</p>
+          <p class="text-sm text-gray-500">Todo el ciclo de vida desde el editor, sin cambiar de contexto.</p>
         </div>
         <div class="icon-container">
           <img src="/logos/github.png" class="app-logo-sm" alt="GitHub" />
@@ -468,7 +612,7 @@ layout: default
 
 <div>
   <h2 class="mb-1">El arsenal de IA en local</h2>
-  <p class="text-gray-800 mb-3 text-sm">Estrategia: acumular cuotas gratuitas de distintas herramientas.</p>
+  <p class="text-gray-500 mb-3 text-sm">Estrategia: acumular cuotas gratuitas de distintas herramientas.</p>
 
   <div class="grid grid-cols-4 gap-3">
     <div class="card text-center flex flex-col gap-1 items-center py-3">
@@ -508,6 +652,83 @@ layout: default
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
   <span class="slide-num">11</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  11b · MÁS ALTERNATIVAS                    -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div>
+  <h2 class="mb-1">Más alternativas que explorar</h2>
+  <p class="text-gray-500 mb-3 text-sm">El ecosistema crece cada semana. Experimenta con todas.</p>
+
+  <div class="grid grid-cols-4 gap-3">
+    <div class="card text-center flex flex-col gap-1 items-center py-3">
+      <div class="w-10 h-10 rounded-lg bg-black flex items-center justify-center text-white font-bold text-sm">AG</div>
+      <p class="font-bold text-[#14354e] text-xs">Antigravity</p>
+      <p class="text-[10px] text-[#0f7e3f] font-semibold">Free tier</p>
+      <p class="text-[10px] text-gray-500">Agente de código en la nube.</p>
+    </div>
+    <div class="card text-center flex flex-col gap-1 items-center py-3">
+      <div class="w-10 h-10 rounded-lg bg-[#FF9900] flex items-center justify-center text-white font-bold text-sm">K</div>
+      <p class="font-bold text-[#14354e] text-xs">Kiro</p>
+      <p class="text-[10px] text-[#0f7e3f] font-semibold">AWS · Free tier</p>
+      <p class="text-[10px] text-gray-500">IDE IA de Amazon Web Services.</p>
+    </div>
+    <div class="card text-center flex flex-col gap-1 items-center py-3">
+      <div class="w-10 h-10 rounded-lg bg-[#6366f1] flex items-center justify-center text-white font-bold text-sm">C</div>
+      <p class="font-bold text-[#14354e] text-xs">Codeium</p>
+      <p class="text-[10px] text-[#0f7e3f] font-semibold">Free · Individual</p>
+      <p class="text-[10px] text-gray-500">Autocompletado para cualquier IDE.</p>
+    </div>
+    <div class="card text-center flex flex-col gap-1 items-center py-3">
+      <div class="w-10 h-10 rounded-lg bg-[#0ea5e9] flex items-center justify-center text-white font-bold text-sm">T</div>
+      <p class="font-bold text-[#14354e] text-xs">Trae.ai</p>
+      <p class="text-[10px] text-[#0f7e3f] font-semibold">ByteDance · Free</p>
+      <p class="text-[10px] text-gray-500">IDE IA de ByteDance.</p>
+    </div>
+    <div class="card text-center flex flex-col gap-1 items-center py-3">
+      <div class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-white font-bold text-sm">A</div>
+      <p class="font-bold text-[#14354e] text-xs">Aider</p>
+      <p class="text-[10px] text-[#0f7e3f] font-semibold">Open Source</p>
+      <p class="text-[10px] text-gray-500">Pair programming en terminal.</p>
+    </div>
+    <div class="card text-center flex flex-col gap-1 items-center py-3">
+      <div class="w-10 h-10 rounded-lg bg-[#10b981] flex items-center justify-center text-white font-bold text-sm">T</div>
+      <p class="font-bold text-[#14354e] text-xs">Tabnine</p>
+      <p class="text-[10px] text-[#0f7e3f] font-semibold">Free tier</p>
+      <p class="text-[10px] text-gray-500">IA privada y en tu equipo.</p>
+    </div>
+    <div class="card text-center flex flex-col gap-1 items-center py-3">
+      <div class="w-10 h-10 rounded-lg bg-[#8b5cf6] flex items-center justify-center text-white font-bold text-sm">Z</div>
+      <p class="font-bold text-[#14354e] text-xs">Zed</p>
+      <p class="text-[10px] text-[#0f7e3f] font-semibold">Free · OSS</p>
+      <p class="text-[10px] text-gray-500">Editor ultrarrápido con IA nativa.</p>
+    </div>
+    <div class="card text-center flex flex-col gap-1 items-center py-3">
+      <div class="w-10 h-10 rounded-lg bg-gray-600 flex items-center justify-center">
+        <div class="i-carbon-apps text-white text-xl" />
+      </div>
+      <p class="font-bold text-[#14354e] text-xs">Y más...</p>
+      <p class="text-[10px] text-gray-400 font-semibold">Continua lista</p>
+      <p class="text-[10px] text-gray-500">Lovable, Marblism, Gemini CLI...</p>
+    </div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">11b</span>
   <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
 </div>
 
@@ -557,19 +778,19 @@ layout: default
       <img src="/logos/github.png" class="app-logo" alt="GitHub" />
       <p class="font-bold text-[#14354e]">Repositorios</p>
       <p class="text-sm text-gray-600">Repos privados ilimitados en cuentas gratuitas. El código del Gazpachator, seguro.</p>
-      <p class="tag-green self-start text-xs">Free</p>
+      <p class="tag-green self-start text-xs mt-auto">Free</p>
     </div>
     <div class="card flex flex-col gap-3">
       <img src="/logos/github-actions.svg" class="app-logo" alt="GitHub Actions" />
       <p class="font-bold text-[#14354e]">GitHub Actions</p>
       <p class="text-sm text-gray-600">2.000 minutos/mes gratuitos para automatizar builds, tests y deploys.</p>
-      <p class="tag-green self-start text-xs">2.000 min/mes</p>
+      <p class="tag-green self-start text-xs mt-auto">2.000 min/mes</p>
     </div>
     <div class="card flex flex-col gap-3">
       <img src="/logos/github.png" class="app-logo" alt="GitHub Pages" />
       <p class="font-bold text-[#14354e]">GitHub Pages</p>
       <p class="text-sm text-gray-600">Hosting estático gratuito directo desde el repositorio. SSL incluido.</p>
-      <p class="tag-green self-start text-xs">Free · SSL</p>
+      <p class="tag-green self-start text-xs mt-auto">Free · SSL</p>
     </div>
   </div>
 </div>
@@ -599,7 +820,7 @@ layout: default
       <img src="/logos/github-actions.svg" class="app-logo-sm" alt="GitHub Actions" />
       <h2>CI/CD para tacaños</h2>
     </div>
-    <p class="text-gray-800 text-sm">Cada push desencadena el pipeline completo.</p>
+    <p class="text-gray-500 text-sm">Cada push desencadena el pipeline completo.</p>
     <div class="space-y-3">
       <div class="flex gap-3 items-center">
         <div class="w-8 h-8 rounded-full bg-[#f28b22] text-white text-sm font-bold flex items-center justify-center flex-shrink-0">1</div>
@@ -623,7 +844,7 @@ layout: default
     </div>
   </div>
   <div class="flex items-center justify-center">
-    <div class="ph w-full h-52">📸 GitHub Actions pipeline<br>del Gazpachator en verde</div>
+    <img src="/github-actions-pipeline.png" class="w-full h-52 object-cover rounded-2xl shadow-xl border border-gray-200" alt="GitHub Actions pipeline del Gazpachator" />
   </div>
 </div>
 
@@ -677,35 +898,37 @@ layout: default
 <div class="two-col">
   <div class="flex flex-col justify-center gap-5">
     <div class="flex items-center gap-3">
-      <img src="/logos/zeabur.svg" class="app-logo" alt="Zeabur" />
+      <div class="bg-white rounded-lg p-1.5 flex items-center justify-center">
+        <img src="/logos/zeabur.svg" class="app-logo" alt="Zeabur" />
+      </div>
       <h2>Zeabur</h2>
     </div>
-    <p class="text-gray-800">Lo que otros no permiten gratis — Zeabur lo hace.</p>
+    <p class="text-gray-400">Lo que otros no permiten gratis — Zeabur lo hace.</p>
     <ul class="space-y-3">
       <li class="flex gap-3 items-start">
         <span class="text-[#0f7e3f] font-bold text-lg">✓</span>
-        <p class="text-sm text-gray-700">Despliega contenedores Docker en free tier</p>
+        <p class="text-sm text-gray-400">Despliega contenedores Docker en free tier</p>
       </li>
       <li class="flex gap-3 items-start">
         <span class="text-[#0f7e3f] font-bold text-lg">✓</span>
-        <p class="text-sm text-gray-700">Bases de datos persistentes sin coste</p>
+        <p class="text-sm text-gray-400">Bases de datos persistentes sin coste</p>
       </li>
       <li class="flex gap-3 items-start">
         <span class="text-[#0f7e3f] font-bold text-lg">✓</span>
-        <p class="text-sm text-gray-700">Servicios custom (n8n, APIs propias...)</p>
+        <p class="text-sm text-gray-400">Servicios custom (n8n, APIs propias...)</p>
       </li>
       <li class="flex gap-3 items-start">
         <span class="text-[#0f7e3f] font-bold text-lg">✓</span>
-        <p class="text-sm text-gray-700">Deploy desde GitHub con un clic</p>
+        <p class="text-sm text-gray-400">Deploy desde GitHub con un clic</p>
       </li>
     </ul>
     <div class="card bg-green-50 border-green-200">
       <p class="font-bold text-[#0f7e3f] text-sm mb-1">🤖 Zeabur AI Assistant</p>
-      <p class="text-xs text-gray-600">Diagnostica errores, crea servicios y optimiza configuraciones en lenguaje natural.</p>
+      <p class="text-xs text-gray-400">Diagnostica errores, crea servicios y optimiza configuraciones en lenguaje natural.</p>
     </div>
   </div>
   <div class="flex items-center justify-center">
-    <div class="ph w-full h-52">📸 Dashboard de Zeabur<br>servicios activos · $0.00</div>
+    <img src="/zeabur-dashboard.png" class="w-full h-52 object-cover rounded-2xl shadow-xl border border-gray-200" alt="Dashboard Zeabur" />
   </div>
 </div>
 
