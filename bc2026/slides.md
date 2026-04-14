@@ -368,6 +368,146 @@ layout: default
 </div>
 
 ---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  8.1 · v0.dev                              -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="flex flex-col gap-4 h-full">
+  <div class="flex items-center gap-3">
+    <img src="/logos/v0.svg" class="app-logo-sm" alt="v0.dev" />
+    <h2 class="text-3xl font-bold text-[#14354e]">v0.dev</h2>
+  </div>
+  <div class="flex-1 flex items-center justify-center overflow-hidden rounded-2xl border border-gray-200 shadow-2xl bg-white">
+    <img src="/gazpachator-v0.png" class="w-full h-full object-contain" alt="v0.dev Screenshot" />
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">8.1</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  8.2 · Bolt.new                            -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="flex flex-col gap-4 h-full">
+  <div class="flex items-center gap-3">
+    <img src="/logos/bolt.png" class="app-logo-sm" alt="Bolt.new" />
+    <h2 class="text-3xl font-bold text-[#14354e]">Bolt.new</h2>
+  </div>
+  <div class="flex-1 flex items-center justify-center overflow-hidden rounded-2xl border border-gray-200 shadow-2xl bg-white">
+    <img src="/gazpachator-bolt.png" class="w-full h-full object-contain" alt="Bolt.new Screenshot" />
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">8.2</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  8.3 · Replit                              -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="flex flex-col gap-4 h-full">
+  <div class="flex items-center gap-3">
+    <img src="/logos/replit.svg" class="app-logo-sm" alt="Replit" />
+    <h2 class="text-3xl font-bold text-[#14354e]">Replit</h2>
+  </div>
+  <div class="flex-1 flex items-center justify-center overflow-hidden rounded-2xl border border-gray-200 shadow-2xl bg-white">
+    <img src="/gazpachator-replit.png" class="w-full h-full object-contain" alt="Replit Screenshot" />
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">8.3</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  8.4 · Otros Ejemplos                      -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="flex flex-col gap-8 h-full justify-center">
+  <h2 class="text-center text-3xl font-bold text-[#14354e]">Otros ejemplos de prototipado rápido</h2>
+  
+  <div class="grid grid-cols-2 gap-8 max-w-3xl mx-auto">
+    <div class="card flex items-center gap-4 p-6">
+      <div class="w-12 h-12 flex items-center justify-center">
+        <div class="i-logos-firebase text-4xl" />
+      </div>
+      <div>
+        <p class="font-bold text-xl">Firebase Studio</p>
+        <p class="text-xs text-red-600 font-semibold">(Deprecated)</p>
+      </div>
+    </div>
+    <div class="card flex items-center gap-4 p-6">
+      <div class="w-12 h-12 flex items-center justify-center">
+        <img src="/logos/github.png" class="h-10" alt="GitHub Spark" />
+      </div>
+      <div>
+        <p class="font-bold text-xl">GitHub Spark</p>
+        <p class="text-xs text-gray-500 italic">Creación de Micro-apps</p>
+      </div>
+    </div>
+    <div class="card flex items-center gap-4 p-6 col-span-2 justify-center">
+      <div class="w-12 h-12 flex items-center justify-center">
+        <div class="i-carbon-apps text-4xl text-gray-400" />
+      </div>
+      <div>
+        <p class="font-bold text-xl">Y muchos otros...</p>
+        <p class="text-sm text-gray-500">Lovable, Marblism, GPT Engineer...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">8.4</span>
+  <img src="/profile_banner.png" class="logo-banner" alt="Speaker" />
+</div>
+
+---
 layout: cover
 background: /template-assets/image1.jpeg
 class: text-white
@@ -633,6 +773,99 @@ layout: default
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
   <span class="slide-num">13</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  13.1 · HACIENDO EQUIPO                    -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="two-col">
+  <div class="flex flex-col justify-center gap-5">
+    <div class="tag mb-2 w-fit">Calidad</div>
+    <h2>Haciendo equipo 🤝</h2>
+    <p class="text-gray-800">Incluso el desarrollador tacaño sabe que el código no se mergea solo.</p>
+    <ul class="space-y-4">
+      <li class="flex gap-4 items-start">
+        <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center flex-shrink-0 font-bold">!</div>
+        <p class="text-sm"><strong>Detectar errores temprano</strong> es 10x más barato que arreglarlos en producción.</p>
+      </li>
+      <li class="flex gap-4 items-start">
+        <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center flex-shrink-0 font-bold">✓</div>
+        <p class="text-sm"><strong>Code Review</strong>: La IA puede ser tu primer revisor, pero la revisión humana (o IA avanzada) es clave antes del merge.</p>
+      </li>
+    </ul>
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-xs text-blue-900 mt-2">
+      💡 No rompas el build. No rompas la confianza del equipo.
+    </div>
+  </div>
+  <div class="flex items-center justify-center">
+    <div class="ph w-full h-52">📸 Captura de un Pull Request<br>con comentarios de revisión</div>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">13.1</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  13.2 · REVISIÓN AUTOMATIZADA              -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div>
+  <h2 class="mb-6">IA como Senior Reviewer</h2>
+
+  <div class="grid grid-cols-2 gap-6">
+    <div class="card flex flex-col gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm border border-gray-100 p-1">
+           <img src="/logos/coderabbit.png" class="h-full object-contain" alt="CodeRabbit" />
+        </div>
+        <p class="font-bold text-[#14354e] text-xl">CodeRabbit</p>
+      </div>
+      <p class="text-sm text-gray-600">Revisión de PRs en tiempo real. Entiende el contexto, sugiere refactorizaciones y detecta bugs lógicos complejos.</p>
+      <p class="tag-green self-start text-xs">Free tier para Open Source / Trial</p>
+    </div>
+    <div class="card flex flex-col gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm border border-gray-100 p-1">
+           <img src="/logos/sourcery.png" class="h-full object-contain" alt="Sourcery" />
+        </div>
+        <p class="font-bold text-[#14354e] text-xl">Sourcery</p>
+      </div>
+      <p class="text-sm text-gray-600">Refactorización instantánea. Limpia el código "sucio", elimina duplicados y aplica patrones de diseño automáticamente.</p>
+      <p class="tag-green self-start text-xs">Free tier disponible</p>
+    </div>
+  </div>
+  
+  <div class="mt-8 bg-gray-50 border border-gray-200 rounded-xl p-6">
+    <p class="text-[#14354e] font-bold mb-2 italic text-center">"Automatiza lo mundano, revisa lo crítico."</p>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">13.2</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
