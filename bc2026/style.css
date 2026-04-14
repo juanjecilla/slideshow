@@ -72,6 +72,16 @@
   margin-bottom: 0 !important;
 }
 
+/* Subtítulos en slides con fondo oscuro (cover) */
+.cover-subtitle {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+  letter-spacing: 0.025em;
+}
+
 /* Títulos de contenido: color naranja de marca, una sola línea */
 .slidev-layout.default h2 {
   color: #f28b22 !important;
