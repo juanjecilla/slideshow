@@ -110,7 +110,7 @@ layout: default
     <div class="tag mb-5 w-fit">Ponente</div>
     <h2 class="mb-1">Juanje Cilla</h2>
     <p class="text-[#f28b22] font-semibold text-lg mb-5">Senior Software Engineer</p>
-    <ul class="text-white space-y-2 text-base font-medium">
+    <ul class="text-gray-500 space-y-2 text-base font-medium">
       <li>> 10 años de experiencia</li>
       <li>Profesor y mentor de Android</li>
       <li>GDG Organizer</li>
@@ -118,7 +118,7 @@ layout: default
       <li>Escribo en Substack</li>
     </ul>
     <div class="flex gap-4 mt-6">
-      <div class="flex gap-1.5 items-center text-white text-xs">
+      <div class="flex gap-1.5 items-center text-gray-500 text-xs">
         <div class="i-carbon-logo-linkedin text-[#0077b5] text-lg bg-white rounded-sm" />
         <span class="font-semibold">juanje-cilla</span>
       </div>
@@ -184,7 +184,7 @@ class: text-white
     <span class="text-[#00bfa5] font-semibold">entender APIs</span> y
     <span class="text-[#006aff] font-semibold">conectar sistemas</span> sin serlo.
   </p>
-  <p class="text-sm text-white/30 italic">La ignorancia ya no es excusa. Es un punto de partida.</p>
+  <p class="text-sm text-white/65 italic">La ignorancia ya no es excusa. Es un punto de partida.</p>
 </div>
 
 <div class="brand-footer">
@@ -247,7 +247,7 @@ layout: default
 <div class="flex flex-col justify-center h-full gap-6">
   <div>
     <h2>El Gazpachator 🍅</h2>
-    <p class="text-gray-700 mt-1">El hilo conductor de esta charla</p>
+    <p class="text-gray-500 mt-1">El hilo conductor de esta charla</p>
   </div>
   <div class="bg-orange-50 border border-orange-200 rounded-2xl p-6 text-lg text-gray-900 max-w-2xl">
     "Somos 7 a comer y tengo 3 tomates de sobra.<br>
@@ -267,7 +267,7 @@ layout: default
       <p class="text-sm font-semibold text-[#2377bc] mt-1">Integración<br>ERP</p>
     </div>
   </div>
-  <p class="text-sm text-gray-700 italic">Un problema simple → una solución escalable. De la cocina a Business Central.</p>
+  <p class="text-sm text-gray-500 italic">Un problema simple → una solución escalable. De la cocina a Business Central.</p>
 </div>
 
 <div class="brand-footer">
@@ -345,13 +345,13 @@ layout: default
     </div>
     <h2>Del prompt a la app</h2>
     <div class="bg-gray-900 rounded-xl p-3 font-mono text-xs text-green-400">
-      <p class="text-gray-800 mb-1">// Prompt enviado a Bolt.new</p>
+      <p class="text-gray-400 mb-1">// Prompt enviado a Bolt.new</p>
       <p>"Crea una web que calcule las</p>
       <p>cantidades de una receta de</p>
       <p>gazpacho. Ajustable por número</p>
       <p>de personas o por ingrediente."</p>
     </div>
-    <p class="text-sm text-gray-800">La IA escribe el 80% del código. Nosotros refinamos la lógica.</p>
+    <p class="text-sm text-gray-500">La IA escribe el 80% del código. Nosotros refinamos la lógica.</p>
   </div>
   <div class="flex items-center justify-center">
     <img src="/gazpachator-bolt.png" class="w-full h-52 object-cover rounded-2xl shadow-xl border border-gray-200" alt="Gazpachator en Bolt.new" />
@@ -472,31 +472,25 @@ layout: default
   <h2 class="text-center text-3xl font-bold text-[#14354e]">Otros ejemplos de prototipado rápido</h2>
   
   <div class="grid grid-cols-2 gap-8 max-w-3xl mx-auto">
-    <div class="card flex items-center gap-4 p-6">
-      <div class="w-12 h-12 flex items-center justify-center">
-        <div class="i-logos-firebase text-4xl" />
-      </div>
-      <div>
-        <p class="font-bold text-xl">Firebase Studio</p>
+    <div class="card flex flex-col items-center justify-center gap-3 p-6">
+      <img src="/logos/firebase-studio.svg" class="h-16" alt="Firebase Studio" />
+      <div class="text-center">
+        <p class="font-bold text-lg text-gray-900">Firebase Studio</p>
         <p class="text-xs text-red-600 font-semibold">(Deprecated)</p>
       </div>
     </div>
-    <div class="card flex items-center gap-4 p-6">
-      <div class="w-12 h-12 flex items-center justify-center">
-        <img src="/logos/github.png" class="h-10" alt="GitHub Spark" />
+    <div class="card flex flex-col gap-3 p-4 overflow-hidden">
+      <div class="flex items-center gap-3">
+        <img src="/logos/github.png" class="h-7" alt="GitHub Spark" />
+        <p class="font-bold text-lg text-gray-900">GitHub Spark</p>
       </div>
-      <div>
-        <p class="font-bold text-xl">GitHub Spark</p>
-        <p class="text-xs text-gray-500 italic">Creación de Micro-apps</p>
-      </div>
+      <img src="/github-spark.png" class="w-full rounded-lg object-cover" alt="GitHub Spark screenshot" />
     </div>
     <div class="card flex items-center gap-4 p-6 col-span-2 justify-center">
-      <div class="w-12 h-12 flex items-center justify-center">
-        <div class="i-carbon-apps text-4xl text-gray-400" />
-      </div>
+      <img src="/logos/lovable.png" class="h-12 w-12 object-contain" alt="Lovable" />
       <div>
-        <p class="font-bold text-xl">Y muchos otros...</p>
-        <p class="text-sm text-gray-500">Lovable, Marblism, GPT Engineer...</p>
+        <p class="font-bold text-xl text-gray-900">Lovable</p>
+        <p class="text-sm text-gray-500">Y muchos más: Marblism, GPT Engineer...</p>
       </div>
     </div>
   </div>
@@ -612,7 +606,7 @@ layout: default
 
 <div>
   <h2 class="mb-1">El arsenal de IA en local</h2>
-  <p class="text-gray-500 mb-3 text-sm">Estrategia: acumular cuotas gratuitas de distintas herramientas.</p>
+  <p class="text-gray-500 mb-6 text-sm">Estrategia: acumular cuotas gratuitas de distintas herramientas.</p>
 
   <div class="grid grid-cols-4 gap-3">
     <div class="card text-center flex flex-col gap-1 items-center py-3">
@@ -667,7 +661,7 @@ layout: default
 
 <div>
   <h2 class="mb-1">Más alternativas que explorar</h2>
-  <p class="text-gray-500 mb-3 text-sm">El ecosistema crece cada semana. Experimenta con todas.</p>
+  <p class="text-gray-500 mb-6 text-sm">El ecosistema crece cada semana. Experimenta con todas.</p>
 
   <div class="grid grid-cols-4 gap-3">
     <div class="card text-center flex flex-col gap-1 items-center py-3">
@@ -676,7 +670,7 @@ layout: default
       </div>
       <p class="font-bold text-[#14354e] text-xs">Antigravity</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">Free tier</p>
-      <p class="text-[10px] text-gray-500">Agente de código en la nube.</p>
+      <p class="text-[10px] text-gray-600">Agente de código en la nube.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
       <div class="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
@@ -684,7 +678,7 @@ layout: default
       </div>
       <p class="font-bold text-[#14354e] text-xs">Kiro</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">AWS · Free tier</p>
-      <p class="text-[10px] text-gray-500">IDE IA de Amazon Web Services.</p>
+      <p class="text-[10px] text-gray-600">IDE IA de Amazon Web Services.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
       <div class="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
@@ -692,7 +686,7 @@ layout: default
       </div>
       <p class="font-bold text-[#14354e] text-xs">Cursor</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">Free · Pro plan</p>
-      <p class="text-[10px] text-gray-500">Editor IA con contexto de codebase.</p>
+      <p class="text-[10px] text-gray-600">Editor IA con contexto de codebase.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
       <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center border border-gray-100 p-1">
@@ -700,7 +694,7 @@ layout: default
       </div>
       <p class="font-bold text-[#14354e] text-xs">Trae.ai</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">ByteDance · Free</p>
-      <p class="text-[10px] text-gray-500">IDE IA de ByteDance.</p>
+      <p class="text-[10px] text-gray-600">IDE IA de ByteDance.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
       <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center border border-gray-100 p-1">
@@ -708,7 +702,7 @@ layout: default
       </div>
       <p class="font-bold text-[#14354e] text-xs">Aider</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">Open Source</p>
-      <p class="text-[10px] text-gray-500">Pair programming en terminal.</p>
+      <p class="text-[10px] text-gray-600">Pair programming en terminal.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
       <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center border border-gray-100 p-1">
@@ -716,7 +710,7 @@ layout: default
       </div>
       <p class="font-bold text-[#14354e] text-xs">Tabnine</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">Free tier</p>
-      <p class="text-[10px] text-gray-500">IA privada y en tu equipo.</p>
+      <p class="text-[10px] text-gray-600">IA privada y en tu equipo.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
       <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center border border-gray-100 p-1">
@@ -724,15 +718,15 @@ layout: default
       </div>
       <p class="font-bold text-[#14354e] text-xs">Zed</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">Free · OSS</p>
-      <p class="text-[10px] text-gray-500">Editor ultrarrápido con IA nativa.</p>
+      <p class="text-[10px] text-gray-600">Editor ultrarrápido con IA nativa.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
       <div class="w-10 h-10 rounded-lg bg-gray-600 flex items-center justify-center">
         <div class="i-carbon-apps text-white text-xl" />
       </div>
       <p class="font-bold text-[#14354e] text-xs">Y más...</p>
-      <p class="text-[10px] text-gray-400 font-semibold">Continua lista</p>
-      <p class="text-[10px] text-gray-500">Lovable, Marblism, Gemini CLI...</p>
+      <p class="text-[10px] text-gray-600 font-semibold">Continua lista</p>
+      <p class="text-[10px] text-gray-600">Lovable, Marblism, Gemini CLI...</p>
     </div>
   </div>
 </div>
@@ -837,7 +831,7 @@ layout: default
     <p class="text-gray-500 text-sm">Cada push desencadena el pipeline completo.</p>
     <div class="space-y-3">
       <div class="flex gap-3 items-center">
-        <div class="w-8 h-8 rounded-full bg-[#f28b22] text-white text-sm font-bold flex items-center justify-center flex-shrink-0">1</div>
+        <div class="w-8 h-8 rounded-full bg-[#f28b22] text-[#14354e] text-sm font-bold flex items-center justify-center flex-shrink-0">1</div>
         <p class="text-sm"><strong>Push</strong> — arreglamos el algoritmo del ajo</p>
       </div>
       <div class="flex gap-3 items-center">
@@ -845,7 +839,7 @@ layout: default
         <p class="text-sm"><strong>Tests</strong> — los cálculos de ingredientes son correctos</p>
       </div>
       <div class="flex gap-3 items-center">
-        <div class="w-8 h-8 rounded-full bg-[#00bfa5] text-white text-sm font-bold flex items-center justify-center flex-shrink-0">3</div>
+        <div class="w-8 h-8 rounded-full bg-[#00bfa5] text-[#14354e] text-sm font-bold flex items-center justify-center flex-shrink-0">3</div>
         <p class="text-sm"><strong>Build</strong> — tree shaking, bundle reducido</p>
       </div>
       <div class="flex gap-3 items-center">
@@ -885,7 +879,7 @@ layout: default
   <div class="flex flex-col justify-center gap-5">
     <div class="tag mb-2 w-fit">Calidad</div>
     <h2>Haciendo equipo 🤝</h2>
-    <p class="text-gray-800">Incluso el desarrollador tacaño sabe que el código no se mergea solo.</p>
+    <p class="text-gray-500">Incluso el desarrollador tacaño sabe que el código no se mergea solo.</p>
     <ul class="space-y-4">
       <li class="flex gap-4 items-start">
         <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center flex-shrink-0 font-bold">!</div>
@@ -1016,28 +1010,28 @@ layout: default
       </div>
       <h2>Zeabur</h2>
     </div>
-    <p class="text-gray-400">Lo que otros no permiten gratis — Zeabur lo hace.</p>
+    <p class="text-gray-500">Lo que otros no permiten gratis — Zeabur lo hace.</p>
     <ul class="space-y-3">
       <li class="flex gap-3 items-start">
         <span class="text-[#0f7e3f] font-bold text-lg">✓</span>
-        <p class="text-sm text-gray-400">Despliega contenedores Docker en free tier</p>
+        <p class="text-sm text-gray-500">Despliega contenedores Docker en free tier</p>
       </li>
       <li class="flex gap-3 items-start">
         <span class="text-[#0f7e3f] font-bold text-lg">✓</span>
-        <p class="text-sm text-gray-400">Bases de datos persistentes sin coste</p>
+        <p class="text-sm text-gray-500">Bases de datos persistentes sin coste</p>
       </li>
       <li class="flex gap-3 items-start">
         <span class="text-[#0f7e3f] font-bold text-lg">✓</span>
-        <p class="text-sm text-gray-400">Servicios custom (n8n, APIs propias...)</p>
+        <p class="text-sm text-gray-500">Servicios custom (n8n, APIs propias...)</p>
       </li>
       <li class="flex gap-3 items-start">
         <span class="text-[#0f7e3f] font-bold text-lg">✓</span>
-        <p class="text-sm text-gray-400">Deploy desde GitHub con un clic</p>
+        <p class="text-sm text-gray-500">Deploy desde GitHub con un clic</p>
       </li>
     </ul>
     <div class="card bg-green-50 border-green-200">
       <p class="font-bold text-[#0f7e3f] text-sm mb-1">🤖 Zeabur AI Assistant</p>
-      <p class="text-xs text-gray-400">Diagnostica errores, crea servicios y optimiza configuraciones en lenguaje natural.</p>
+      <p class="text-xs text-gray-600">Diagnostica errores, crea servicios y optimiza configuraciones en lenguaje natural.</p>
     </div>
   </div>
   <div class="flex items-center justify-center">
@@ -1070,13 +1064,13 @@ layout: default
       <img src="/logos/n8n.svg" class="app-logo" alt="n8n" />
       <h2>n8n: El backend con cajitas</h2>
     </div>
-    <p class="text-gray-800">Self-hosted en Zeabur. Webhooks, CRON, integraciones. Todo gratis.</p>
+    <p class="text-gray-500">Self-hosted en Zeabur. Webhooks, CRON, integraciones. Todo gratis.</p>
     <div class="bg-gray-900 rounded-xl p-4 font-mono text-xs text-green-400 space-y-1">
-      <p class="text-gray-800">// Flujo del Gazpachator</p>
+      <p class="text-gray-400">// Flujo del Gazpachator</p>
       <p>Usuario ajusta receta</p>
-      <p class="ml-3 text-gray-700">→ Webhook n8n recibe datos</p>
-      <p class="ml-6 text-gray-700">→ Guarda en base de datos</p>
-      <p class="ml-6 text-gray-700">→ Envía resumen por email</p>
+      <p class="ml-3 text-green-300">→ Webhook n8n recibe datos</p>
+      <p class="ml-6 text-green-300">→ Guarda en base de datos</p>
+      <p class="ml-6 text-green-300">→ Envía resumen por email</p>
     </div>
     <div class="card bg-purple-50 border-purple-200">
       <p class="font-bold text-purple-800 text-sm mb-1">🔌 n8n + MCP</p>
@@ -1111,7 +1105,7 @@ class: text-white
 <div class="absolute inset-0 bg-[#2377bc]/85" />
 
 <div class="relative z-10 text-center">
-  <p class="text-[#f28b22] text-base font-semibold tracking-widest uppercase mb-3">Bonus</p>
+  <div class="tag mb-3 mx-auto w-fit">Bonus</div>
   <h1 class="text-5xl font-bold text-white">El Tacaño en la Empresa</h1>
   <p class="cover-subtitle mt-3">Conectando con Business Central</p>
   <img src="/logos/business-central.png" class="h-16 mx-auto mt-6 drop-shadow-lg" alt="Business Central" />
@@ -1184,24 +1178,24 @@ layout: default
 <div class="two-col">
   <div class="flex flex-col justify-center gap-5">
     <h2>Gazpachator → BC</h2>
-    <p class="text-gray-800 text-sm">Cuando la fábrica de gazpacho crece y necesita un ERP.</p>
+    <p class="text-gray-500 text-sm">Cuando la fábrica de gazpacho crece y necesita un ERP.</p>
     <div class="space-y-2 text-sm">
       <div class="flex gap-3 items-center bg-orange-50 rounded-lg p-3">
         <span class="text-xl">🍅</span>
-        <p><strong>Gazpachator</strong> — el usuario ajusta ingredientes</p>
+        <p class="text-gray-800"><strong>Gazpachator</strong> — el usuario ajusta ingredientes</p>
       </div>
-      <div class="text-center text-gray-300 text-lg font-bold">↓</div>
+      <div class="text-center text-gray-500 text-lg font-bold">↓</div>
       <div class="flex gap-3 items-center bg-purple-50 rounded-lg p-3">
         <img src="/logos/n8n.svg" class="h-6 w-6 flex-shrink-0" alt="n8n" />
-        <p><strong>n8n</strong> — recibe datos vía webhook</p>
+        <p class="text-gray-800"><strong>n8n</strong> — recibe datos vía webhook</p>
       </div>
-      <div class="text-center text-gray-300 text-lg font-bold">↓</div>
+      <div class="text-center text-gray-500 text-lg font-bold">↓</div>
       <div class="flex gap-3 items-center bg-blue-50 rounded-lg p-3">
         <img src="/logos/business-central.png" class="h-6 w-6 flex-shrink-0" alt="Business Central" />
-        <p><strong>Business Central</strong> — orden de compra creada ✓</p>
+        <p class="text-gray-800"><strong>Business Central</strong> — orden de compra creada ✓</p>
       </div>
     </div>
-    <p class="text-xs text-gray-700 italic">n8n actúa de middleware: evita que cada integración necesite una licencia de usuario de BC completa.</p>
+    <p class="text-xs text-gray-500 italic">n8n actúa de middleware: evita que cada integración necesite una licencia de usuario de BC completa.</p>
   </div>
   <div class="flex items-center justify-center">
     <img src="/n8n-bc-workflow.png" class="w-full rounded-xl object-cover" alt="Workflow n8n → Business Central" />
@@ -1230,7 +1224,7 @@ layout: default
 <div>
   <h2 class="mb-6">El mapa del tacaño 🗺️</h2>
 
-  <div class="flex items-center justify-between gap-2">
+  <div class="flex items-stretch justify-between gap-2">
     <div class="card text-center flex-1 flex flex-col items-center gap-2 py-4">
       <div class="flex gap-1 justify-center items-center h-10">
         <img src="/logos/v0.svg" class="h-7" alt="v0" />
@@ -1315,7 +1309,7 @@ layout: default
     </div>
     <div>
       <h2 class="!whitespace-normal">Esta presentación no ha visto PowerPoint en su vida</h2>
-      <p class="text-gray-500 text-sm mt-1">Hecha 100% con código, Slidev y agentes de IA</p>
+      <p class="text-gray-600 text-sm mt-1">Hecha 100% con código, Slidev y agentes de IA</p>
     </div>
   </div>
 
@@ -1338,7 +1332,7 @@ layout: default
   </div>
 
   <div class="bg-[#f28b22]/10 border border-[#f28b22]/30 rounded-xl p-4 text-center">
-    <p class="text-[#14354e] font-semibold text-sm">Si la presentación de una charla sobre herramientas gratuitas de IA<br>no está hecha con herramientas gratuitas de IA... algo falla.</p>
+    <p class="text-white font-semibold text-sm">Si la presentación de una charla sobre herramientas gratuitas de IA<br>no está hecha con herramientas gratuitas de IA... algo falla.</p>
   </div>
 </div>
 
@@ -1367,44 +1361,14 @@ class: text-white
 <div class="relative z-10 text-center mt-6">
   <h1 class="text-6xl font-bold text-white mb-2">¡Gracias!</h1>
   <p class="text-2xl text-[#f28b22] font-semibold mb-6">¿Preguntas?</p>
-  <p class="text-white/50 text-sm italic mb-8">"El presupuesto es un límite mental, no técnico."</p>
-  <div class="grid grid-cols-2 gap-x-12 gap-y-4 max-w-xl mx-auto text-sm text-white">
-    <div class="flex items-center gap-3 w-full">
-      <img src="/logos/v0.svg" class="h-6 w-6 flex-shrink-0" alt="v0" />
-      <span class="flex-1 text-left">v0.dev</span>
-    </div>
-    <div class="flex items-center gap-3 w-full">
-      <img src="/logos/bolt.png" class="h-6 w-6 flex-shrink-0" alt="Bolt" />
-      <span class="flex-1 text-left">bolt.new</span>
-    </div>
-    <div class="flex items-center gap-3 w-full">
-      <img src="/logos/vscode.png" class="h-6 w-6 flex-shrink-0" alt="VS Code" />
-      <span class="flex-1 text-left">VS Code + Copilot</span>
-    </div>
-    <div class="flex items-center gap-3 w-full">
-      <img src="/logos/github.png" class="h-6 w-6 flex-shrink-0" alt="GitHub" />
-      <span class="flex-1 text-left">github.com</span>
-    </div>
-    <div class="flex items-center gap-3 w-full">
-      <img src="/logos/zeabur.svg" class="h-6 w-6 flex-shrink-0" alt="Zeabur" />
-      <span class="flex-1 text-left">zeabur.com</span>
-    </div>
-    <div class="flex items-center gap-3 w-full">
-      <img src="/logos/n8n.svg" class="h-6 w-6 flex-shrink-0" alt="n8n" />
-      <span class="flex-1 text-left">n8n.io</span>
-    </div>
-    <div class="flex items-center gap-3 w-full col-span-2 justify-center">
-      <img src="/logos/business-central.png" class="h-6 w-6 flex-shrink-0" alt="BC" />
-      <span class="text-left">aka.ms/m365devprogram</span>
-    </div>
-  </div>
-  
-  <div class="mt-8 flex flex-col items-center gap-3">
+
+  <div class="flex flex-col items-center gap-3 mb-6">
     <div class="bg-white rounded-2xl p-3 shadow-lg inline-block">
-      <img src="/linktree.png" class="h-28 object-contain rounded-lg" alt="Linktree" />
+      <img src="/linktree.png" class="h-36 object-contain rounded-lg" alt="Linktree" />
     </div>
-    <p class="text-white">Juanje Cilla · juanje-cilla</p>
+    <p class="text-white/80">Juanje Cilla · juanje-cilla</p>
   </div>
+
 </div>
 
 <div class="absolute bottom-8 left-0 right-0 flex justify-center gap-8 items-center">
