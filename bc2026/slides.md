@@ -212,7 +212,7 @@ class: text-white
 <div class="relative z-10 text-center">
   <div class="tag mb-6">La Filosofía</div>
   <h1 class="text-5xl font-bold text-white mb-3">El Mito del Presupuesto</h1>
-  <p class="text-xl text-white max-w-2xl mx-auto">
+  <p class="cover-subtitle max-w-2xl mx-auto">
     Quemar dinero en infraestructura antes de tener 10 usuarios<br>
     no es valentía. Es un error de arquitectura.
   </p>
@@ -527,7 +527,7 @@ class: text-white
 <div class="relative z-10 text-center">
   <p class="text-[#f28b22] text-base font-semibold tracking-widest uppercase mb-3">Fase 2</p>
   <h1 class="text-5xl font-bold text-white">El Centro de Mando</h1>
-  <p class="text-xl text-white mt-3">VS Code + IA local</p>
+  <p class="cover-subtitle mt-3">VS Code + IA local</p>
 </div>
 
 <div class="brand-footer">
@@ -628,7 +628,7 @@ layout: default
       <p class="text-[10px] text-gray-800">VS Code con IA directa en el editor.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
-      <img src="/logos/windsurf.svg" class="app-logo-sm" alt="Windsurf" style="filter: brightness(0);" />
+      <img src="/logos/windsurf.png" class="app-logo-sm" alt="Windsurf" />
       <p class="font-bold text-[#14354e] text-xs">Windsurf</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">Free tier</p>
       <p class="text-[10px] text-gray-800">IA agéntica sobre el proyecto.</p>
@@ -671,43 +671,57 @@ layout: default
 
   <div class="grid grid-cols-4 gap-3">
     <div class="card text-center flex flex-col gap-1 items-center py-3">
-      <div class="w-10 h-10 rounded-lg bg-black flex items-center justify-center text-white font-bold text-sm">AG</div>
+      <div class="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
+        <img src="/logos/antigravity.jpeg" class="h-full w-full object-cover" alt="Antigravity" />
+      </div>
       <p class="font-bold text-[#14354e] text-xs">Antigravity</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">Free tier</p>
       <p class="text-[10px] text-gray-500">Agente de código en la nube.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
-      <div class="w-10 h-10 rounded-lg bg-[#FF9900] flex items-center justify-center text-white font-bold text-sm">K</div>
+      <div class="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
+        <img src="/logos/kiro-logo.jpg" class="h-full w-full object-cover" alt="Kiro" />
+      </div>
       <p class="font-bold text-[#14354e] text-xs">Kiro</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">AWS · Free tier</p>
       <p class="text-[10px] text-gray-500">IDE IA de Amazon Web Services.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
-      <div class="w-10 h-10 rounded-lg bg-[#6366f1] flex items-center justify-center text-white font-bold text-sm">C</div>
-      <p class="font-bold text-[#14354e] text-xs">Codeium</p>
-      <p class="text-[10px] text-[#0f7e3f] font-semibold">Free · Individual</p>
-      <p class="text-[10px] text-gray-500">Autocompletado para cualquier IDE.</p>
+      <div class="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
+        <img src="/logos/cursor-logo.webp" class="h-full w-full object-cover" alt="Cursor" />
+      </div>
+      <p class="font-bold text-[#14354e] text-xs">Cursor</p>
+      <p class="text-[10px] text-[#0f7e3f] font-semibold">Free · Pro plan</p>
+      <p class="text-[10px] text-gray-500">Editor IA con contexto de codebase.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
-      <div class="w-10 h-10 rounded-lg bg-[#0ea5e9] flex items-center justify-center text-white font-bold text-sm">T</div>
+      <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center border border-gray-100 p-1">
+        <img src="/logos/trae.png" class="h-full w-full object-contain" alt="Trae" />
+      </div>
       <p class="font-bold text-[#14354e] text-xs">Trae.ai</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">ByteDance · Free</p>
       <p class="text-[10px] text-gray-500">IDE IA de ByteDance.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
-      <div class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-white font-bold text-sm">A</div>
+      <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center border border-gray-100 p-1">
+        <img src="/logos/aider.svg" class="h-full w-full object-contain" alt="Aider" />
+      </div>
       <p class="font-bold text-[#14354e] text-xs">Aider</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">Open Source</p>
       <p class="text-[10px] text-gray-500">Pair programming en terminal.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
-      <div class="w-10 h-10 rounded-lg bg-[#10b981] flex items-center justify-center text-white font-bold text-sm">T</div>
+      <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center border border-gray-100 p-1">
+        <img src="/logos/tabnine.svg" class="h-full w-full object-contain" alt="Tabnine" />
+      </div>
       <p class="font-bold text-[#14354e] text-xs">Tabnine</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">Free tier</p>
       <p class="text-[10px] text-gray-500">IA privada y en tu equipo.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
-      <div class="w-10 h-10 rounded-lg bg-[#8b5cf6] flex items-center justify-center text-white font-bold text-sm">Z</div>
+      <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center border border-gray-100 p-1">
+        <img src="/logos/zed.svg" class="h-full w-full object-contain" alt="Zed" />
+      </div>
       <p class="font-bold text-[#14354e] text-xs">Zed</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">Free · OSS</p>
       <p class="text-[10px] text-gray-500">Editor ultrarrápido con IA nativa.</p>
@@ -748,7 +762,7 @@ class: text-white
 <div class="relative z-10 text-center">
   <p class="text-[#f28b22] text-base font-semibold tracking-widest uppercase mb-3">Fase 3</p>
   <h1 class="text-5xl font-bold text-white">El Almacén y la Fábrica</h1>
-  <p class="text-xl text-white mt-3">GitHub + GitHub Actions + GitHub Pages</p>
+  <p class="cover-subtitle mt-3">GitHub + GitHub Actions + GitHub Pages</p>
 </div>
 
 <div class="brand-footer">
@@ -887,7 +901,7 @@ layout: default
     </div>
   </div>
   <div class="flex items-center justify-center">
-    <div class="ph w-full h-52">📸 Captura de un Pull Request<br>con comentarios de revisión</div>
+    <img src="/screenshots/sourcery-guide.png" class="w-full rounded-xl border border-gray-200 shadow-sm" alt="Sourcery Reviewer's Guide" />
   </div>
 </div>
 
@@ -914,30 +928,36 @@ layout: default
   <h2 class="mb-6">IA como Senior Reviewer</h2>
 
   <div class="grid grid-cols-2 gap-6">
-    <div class="card flex flex-col gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm border border-gray-100 p-1">
-           <img src="/logos/coderabbit.png" class="h-full object-contain" alt="CodeRabbit" />
+    <div class="flex flex-col gap-3">
+      <div class="card flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm border border-gray-100 p-1 flex-shrink-0">
+            <img src="/logos/coderabbit.png" class="h-full object-contain" alt="CodeRabbit" />
+          </div>
+          <div>
+            <p class="font-bold text-[#14354e] text-base">CodeRabbit</p>
+            <p class="tag-green text-[10px]">Free tier para Open Source / Trial</p>
+          </div>
         </div>
-        <p class="font-bold text-[#14354e] text-xl">CodeRabbit</p>
+        <p class="text-xs text-gray-600">Revisión de PRs en tiempo real. Entiende el contexto, sugiere refactorizaciones y detecta bugs lógicos complejos.</p>
       </div>
-      <p class="text-sm text-gray-600">Revisión de PRs en tiempo real. Entiende el contexto, sugiere refactorizaciones y detecta bugs lógicos complejos.</p>
-      <p class="tag-green self-start text-xs">Free tier para Open Source / Trial</p>
+      <img src="/screenshots/coderabbit-review.png" class="w-full rounded-xl border border-gray-200 shadow-sm max-h-44 object-cover object-top" alt="CodeRabbit en acción" />
     </div>
-    <div class="card flex flex-col gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm border border-gray-100 p-1">
-           <img src="/logos/sourcery.png" class="h-full object-contain" alt="Sourcery" />
+    <div class="flex flex-col gap-3">
+      <div class="card flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm border border-gray-100 p-1 flex-shrink-0">
+            <img src="/logos/sourcery.png" class="h-full object-contain" alt="Sourcery" />
+          </div>
+          <div>
+            <p class="font-bold text-[#14354e] text-base">Sourcery</p>
+            <p class="tag-green text-[10px]">Free tier disponible</p>
+          </div>
         </div>
-        <p class="font-bold text-[#14354e] text-xl">Sourcery</p>
+        <p class="text-xs text-gray-600">Refactorización instantánea. Limpia el código "sucio", elimina duplicados y aplica patrones de diseño automáticamente.</p>
       </div>
-      <p class="text-sm text-gray-600">Refactorización instantánea. Limpia el código "sucio", elimina duplicados y aplica patrones de diseño automáticamente.</p>
-      <p class="tag-green self-start text-xs">Free tier disponible</p>
+      <img src="/screenshots/sourcery-review.png" class="w-full rounded-xl border border-gray-200 shadow-sm max-h-44 object-cover object-top" alt="Sourcery en acción" />
     </div>
-  </div>
-  
-  <div class="mt-8 bg-gray-50 border border-gray-200 rounded-xl p-6">
-    <p class="text-[#14354e] font-bold mb-2 italic text-center">"Automatiza lo mundano, revisa lo crítico."</p>
   </div>
 </div>
 
@@ -966,7 +986,7 @@ class: text-white
 <div class="relative z-10 text-center">
   <p class="text-[#f28b22] text-base font-semibold tracking-widest uppercase mb-3">Fase 4</p>
   <h1 class="text-5xl font-bold text-white">La Infraestructura de $0</h1>
-  <p class="text-xl text-white mt-3">Zeabur + n8n</p>
+  <p class="cover-subtitle mt-3">Zeabur + n8n</p>
 </div>
 
 <div class="brand-footer">
@@ -1048,7 +1068,7 @@ layout: default
   <div class="flex flex-col justify-center gap-5">
     <div class="flex items-center gap-3">
       <img src="/logos/n8n.svg" class="app-logo" alt="n8n" />
-      <h2>n8n: el backend sin backend</h2>
+      <h2>n8n: El backend con cajitas</h2>
     </div>
     <p class="text-gray-800">Self-hosted en Zeabur. Webhooks, CRON, integraciones. Todo gratis.</p>
     <div class="bg-gray-900 rounded-xl p-4 font-mono text-xs text-green-400 space-y-1">
@@ -1059,12 +1079,12 @@ layout: default
       <p class="ml-6 text-gray-700">→ Envía resumen por email</p>
     </div>
     <div class="card bg-purple-50 border-purple-200">
-      <p class="font-bold text-purple-800 text-sm mb-1">🔌 n8n + MCP (Claude)</p>
-      <p class="text-xs text-gray-600">Describes el flujo en lenguaje natural y Claude lo crea en n8n. Sin tocar la interfaz.</p>
+      <p class="font-bold text-purple-800 text-sm mb-1">🔌 n8n + MCP</p>
+      <p class="text-xs text-gray-600">Describes el flujo en lenguaje natural y el Agente lo crea en n8n. Sin tocar la interfaz.</p>
     </div>
   </div>
   <div class="flex items-center justify-center">
-    <div class="ph w-full h-52">📸 Workflow de n8n<br>procesando el Gazpachator</div>
+    <img src="/n8n-workflow.png" class="w-full rounded-xl object-cover" alt="Workflow de n8n" />
   </div>
 </div>
 
@@ -1093,7 +1113,7 @@ class: text-white
 <div class="relative z-10 text-center">
   <p class="text-[#f28b22] text-base font-semibold tracking-widest uppercase mb-3">Bonus</p>
   <h1 class="text-5xl font-bold text-white">El Tacaño en la Empresa</h1>
-  <p class="text-xl text-white mt-3">Conectando con Business Central</p>
+  <p class="cover-subtitle mt-3">Conectando con Business Central</p>
   <img src="/logos/business-central.png" class="h-16 mx-auto mt-6 drop-shadow-lg" alt="Business Central" />
 </div>
 
@@ -1184,7 +1204,7 @@ layout: default
     <p class="text-xs text-gray-700 italic">n8n actúa de middleware: evita que cada integración necesite una licencia de usuario de BC completa.</p>
   </div>
   <div class="flex items-center justify-center">
-    <div class="ph w-full h-52">📸 Workflow n8n → BC API<br>(añadir screenshot)</div>
+    <img src="/n8n-bc-workflow.png" class="w-full rounded-xl object-cover" alt="Workflow n8n → Business Central" />
   </div>
 </div>
 
@@ -1273,6 +1293,61 @@ layout: default
     <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
   </div>
   <span class="slide-num">20</span>
+  <img src="/profile_banner.png" class="logo-banner" />
+</div>
+
+---
+layout: default
+---
+
+<!-- ══════════════════════════════════════════ -->
+<!--  20b · ESTA PRESENTACIÓN                   -->
+<!-- ══════════════════════════════════════════ -->
+
+<div class="brand-header" />
+
+<div class="flex flex-col justify-center h-full gap-6">
+  <div class="flex items-center gap-4">
+    <div class="bg-[#14354e] rounded-2xl p-3 flex-shrink-0">
+      <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+    <div>
+      <h2 class="!whitespace-normal">Esta presentación no ha visto PowerPoint en su vida</h2>
+      <p class="text-gray-500 text-sm mt-1">Hecha 100% con código, Slidev y agentes de IA</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4">
+    <div class="card flex flex-col gap-2">
+      <p class="font-bold text-[#14354e] text-sm">Slides como código</p>
+      <p class="text-xs text-gray-600">Markdown + Vue components en un fichero de texto. Control de versiones, diff, PR... como cualquier proyecto real.</p>
+      <p class="tag-dark self-start text-xs mt-auto">Slidev</p>
+    </div>
+    <div class="card flex flex-col gap-2">
+      <p class="font-bold text-[#14354e] text-sm">Diseño por agentes</p>
+      <p class="text-xs text-gray-600">Cada slide, layout, color y tipografía fue generado o ajustado mediante instrucciones en lenguaje natural. Sin abrir ningún editor visual.</p>
+      <p class="tag-blue self-start text-xs mt-auto">Claude Code</p>
+    </div>
+    <div class="card flex flex-col gap-2">
+      <p class="font-bold text-[#14354e] text-sm">Deploy automático</p>
+      <p class="text-xs text-gray-600">Cada cambio hace push a GitHub. GitHub Actions construye y publica en GitHub Pages en segundos.</p>
+      <p class="tag-green self-start text-xs mt-auto">GitHub Actions · Pages</p>
+    </div>
+  </div>
+
+  <div class="bg-[#f28b22]/10 border border-[#f28b22]/30 rounded-xl p-4 text-center">
+    <p class="text-[#14354e] font-semibold text-sm">Si la presentación de una charla sobre herramientas gratuitas de IA<br>no está hecha con herramientas gratuitas de IA... algo falla.</p>
+  </div>
+</div>
+
+<div class="brand-footer">
+  <div class="flex items-center gap-2">
+    <img src="/template-assets/image2.svg" class="logo-ms" alt="Microsoft" />
+    <span class="font-bold text-lg tracking-tighter bg-gradient-to-r from-[#006aff] to-[#2377bc] bg-clip-text text-transparent">BCDAY</span>
+  </div>
+  <span class="slide-num">20b</span>
   <img src="/profile_banner.png" class="logo-banner" />
 </div>
 
