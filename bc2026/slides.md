@@ -581,7 +581,7 @@ layout: default
     </ul>
   </div>
   <div class="flex items-center justify-center">
-    <div class="ph w-full h-52">📸 VS Code con Copilot<br>refactorizando el Gazpachator</div>
+    <img src="/vscode_copilot.png" class="w-full rounded-xl object-cover shadow-lg" alt="VS Code con Copilot" />
   </div>
 </div>
 
@@ -606,7 +606,7 @@ layout: default
 
 <div>
   <h2 class="mb-1">El arsenal de IA en local</h2>
-  <p class="text-gray-500 mb-6 text-sm">Estrategia: acumular cuotas gratuitas de distintas herramientas.</p>
+  <p class="text-gray-500 mb-10 text-sm">Estrategia: acumular cuotas gratuitas de distintas herramientas.</p>
 
   <div class="grid grid-cols-4 gap-3">
     <div class="card text-center flex flex-col gap-1 items-center py-3">
@@ -725,7 +725,7 @@ layout: default
 
 <div>
   <h2 class="mb-1">Más alternativas que explorar</h2>
-  <p class="text-gray-500 mb-6 text-sm">El ecosistema crece cada semana. Experimenta con todas.</p>
+  <p class="text-gray-500 mb-10 text-sm">El ecosistema crece cada semana. Experimenta con todas.</p>
 
   <div class="grid grid-cols-4 gap-3">
     <div class="card text-center flex flex-col gap-1 items-center py-3">
@@ -746,11 +746,11 @@ layout: default
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
       <div class="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
-        <img src="/logos/cursor-logo.webp" class="h-full w-full object-cover" alt="Cursor" />
+        <img src="/logos/warp.png" class="h-full w-full object-cover" alt="Warp" />
       </div>
-      <p class="font-bold text-[#14354e] text-xs">Cursor</p>
+      <p class="font-bold text-[#14354e] text-xs">Warp</p>
       <p class="text-[10px] text-[#0f7e3f] font-semibold">Free · Pro plan</p>
-      <p class="text-[10px] text-gray-600">Editor IA con contexto de codebase.</p>
+      <p class="text-[10px] text-gray-600">Terminal inteligente con IA integrada.</p>
     </div>
     <div class="card text-center flex flex-col gap-1 items-center py-3">
       <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center border border-gray-100 p-1">
