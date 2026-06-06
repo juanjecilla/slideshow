@@ -27,14 +27,16 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: bc2026/package-lock.json
+          cache-dependency-path: |
+            bc2026/package-lock.json
+            a11y/package-lock.json
 
       - name: Install bc2026 dependencies
         run: npm ci
         working-directory: bc2026
 
       - name: Build bc2026 slides
-        run: npm run build -- --base /slideshow/
+        run: npm run build -- --base /slideshow/bc2026/
         working-directory: bc2026
 
       - name: Install a11y dependencies
@@ -45,10 +47,13 @@ jobs:
         run: npm run build -- --base /slideshow/a11y/
         working-directory: a11y
 
-      - name: Merge a11y dist into bc2026 dist
+      - name: Assemble dist
         run: |
-          mkdir -p bc2026/dist/a11y
-          cp -r a11y/dist/. bc2026/dist/a11y/
+          mkdir -p dist/bc2026
+          mkdir -p dist/a11y
+          cp -r bc2026/dist/. dist/bc2026/
+          cp -r a11y/dist/. dist/a11y/
+          cp landing/index.html dist/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -56,7 +61,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: bc2026/dist
+          path: dist
 
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'

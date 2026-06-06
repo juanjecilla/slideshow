@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juanje Cilla · Charlas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Fraunces:opsz,wght,ital@9..144,300,1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg-soft: #111110;
+      --ink: #f5f1e8;
+      --ink-dim: #a8a29a;
+      --ink-faint: #4a4540;
+      --accent: #ff6d52;
+      --rule: #1e1c18;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Space Grotesk", sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 48px 120px;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 96px;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .name {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: clamp(48px, 7vw, 96px);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+    }
+
+    .name em {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent);
+    }
+
+    .tagline {
+      font-size: 18px;
+      color: var(--ink-dim);
+      line-height: 1.5;
+      max-width: 480px;
+      border-left: 2px solid var(--accent);
+      padding-left: 18px;
+      margin-top: 8px;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 32px;
+    }
+
+    /* ── Talks grid ── */
+    .talks {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+      gap: 2px;
+    }
+
+    /* ── Talk card ── */
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      background: var(--bg-soft);
+      border: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .card:hover {
+      border-color: #2e2a26;
+      background: #141310;
+    }
+
+    .card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .card-body {
+      padding: 40px 44px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+    }
+
+    .card-num {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 56px;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.6;
+    }
+
+    .card-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .card-title em {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent);
+    }
+
+    .card-desc {
+      font-size: 15px;
+      color: var(--ink-dim);
+      line-height: 1.6;
+    }
+
+    .card-footer {
+      padding: 18px 44px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-meta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .card-cta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s ease;
+    }
+
+    .card:hover .card-cta { gap: 10px; }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 96px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer .mono { font-size: 12px; }
+
+    footer a {
+      color: var(--ink-faint);
+      text-decoration: none;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .page { padding: 48px 24px 80px; }
+      header { margin-bottom: 64px; }
+      .talks { grid-template-columns: 1fr; }
+      .card-body { padding: 28px 28px 24px; }
+      .card-footer { padding: 14px 28px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="mono">juanjecilla.github.io/slideshow</p>
+      <h1 class="name">Juanje<br/><em>Cilla.</em></h1>
+      <p class="tagline">Slides de las charlas técnicas que he dado en conferencias. Construidas con Slidev.</p>
+    </header>
+
+    <p class="section-label">Charlas · 02</p>
+
+    <div class="talks" role="list">
+
+      <a class="card" href="./a11y/" role="listitem" aria-label="a11y — Accesibilidad para Mortales · Commit Conf 2026">
+        <div class="card-body">
+          <div class="card-num" aria-hidden="true">01</div>
+          <h2 class="card-title"><em>a11y</em> —<br/>Accesibilidad para Mortales</h2>
+          <p class="card-desc">Accesibilidad desde cero para equipos móviles: APIs de plataforma, WCAG, herramientas de auditoría e IA aplicada. Sin excusas, sin magia.</p>
+        </div>
+        <div class="card-footer">
+          <span class="card-meta">Commit Conf · Jun 2026</span>
+          <span class="card-cta">Ver slides →</span>
+        </div>
+      </a>
+
+      <a class="card" href="./bc2026/" role="listitem" aria-label="Cero Presupuesto, Producto Top · BC Day ES 2026">
+        <div class="card-body">
+          <div class="card-num" aria-hidden="true">02</div>
+          <h2 class="card-title">Cero Presupuesto,<br/><em>Producto Top</em></h2>
+          <p class="card-desc">Cómo construir producto de calidad sin presupuesto: herramientas gratuitas, procesos ligeros y mentalidad de producto.</p>
+        </div>
+        <div class="card-footer">
+          <span class="card-meta">BC Day ES · Abr 2026</span>
+          <span class="card-cta">Ver slides →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <footer>
+      <span class="mono">© 2026 Juanje Cilla</span>
+      <a href="https://linktr.ee/juanje.cilla" target="_blank" rel="noopener">linktr.ee/juanje.cilla</a>
+    </footer>
+  </main>
+</body>
+</html>
