@@ -3,9 +3,10 @@ theme: default
 canvasWidth: 1920
 highlighter: shiki
 mdc: false
-transition: slide-left
+transition: none
 layout: raw
 class: cover
+progress: true
 ---
 
 <div class="glyph" aria-hidden="true">a11y</div>
@@ -19,6 +20,13 @@ class: cover
     <div class="meta-line" style="color: var(--ink-faint);">iOS · Android · SwiftUI · Jetpack Compose</div>
   </div>
 </div>
+
+<!--
+[PORTADA · ~1 min]
+Bienvenidos a Commit Conf. Soy Juanje Cilla — 40 minutos juntos sobre accesibilidad móvil.
+El plan: por qué importa → principios universales → herramientas de asistencia → APIs de iOS y Android → tooling de auditoría → IA → llamada a la acción.
+Empezamos con la palabra que da título a la charla.
+-->
 
 ---
 
@@ -54,7 +62,15 @@ class: cover
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>01 / 46</span><span>commit conf 2026 · speaker</span></div>
+<div class="footer-rule"><span>01 / 48</span><span>commit conf 2026 · speaker</span></div>
+
+<!--
+[SPEAKER · ~1,5 min]
+Breve intro: Senior Mobile Engineer, organizo el GDG Aranjuez, tengo el podcast La Secta y la newsletter Coding Pit en Substack.
+Objetivo de hoy: que salgáis con hábitos concretos, no solo inspiración. Código real, APIs reales, herramientas reales.
+-->
+
+
 
 ---
 class: section-slide
@@ -71,7 +87,12 @@ class: section-slide
     De dónde viene la palabra, a quiénes afecta y qué exige hoy el marco legal en España y la UE.
   </div>
 </div>
-<div class="footer-rule"><span>02 / 46</span><span>contexto · cifras · ley</span></div>
+<div class="footer-rule"><span>02 / 48</span><span>contexto · cifras · ley</span></div>
+
+<!--
+[SECCIÓN I · ~30 s]
+Primera sección: origen y contexto. Antes de código, necesitamos entender el «porqué».
+-->
 
 ---
 
@@ -106,7 +127,14 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>03 / 46</span><span>es.wikipedia.org / Numerónimo</span></div>
+<div class="footer-rule"><span>03 / 48</span><span>es.wikipedia.org / Numerónimo</span></div>
+
+<!--
+[NUMERÓNIMO · ~2 min]
+Un numerónimo toma la primera letra, cuenta las del medio y pone la última. «accessibility» → a + 11 letras + y → a11y.
+Misma lógica: i18n (internationalization), l10n (localization), k8s (kubernetes). Nació en Unix/Usenet donde cada carácter costaba.
+La convención pasó del límite de caracteres a la cultura técnica global.
+-->
 
 ---
 
@@ -128,7 +156,14 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>04 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>04 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[a → 11 → y · ~1 min]
+Pausa. Dejar que el visual respire.
+«a», las once letras que omitimos, «y». Una abreviatura que esconde una palabra que describe un derecho.
+Pregunta al público: ¿cuántos habéis escrito código de accesibilidad esta semana?
+-->
 
 ---
 
@@ -151,8 +186,15 @@ class: section-slide
       <p style="color: var(--ink);"><span style="font-family: 'JetBrains Mono', monospace; color: var(--accent);">1</span> y <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent);">l</span> son visualmente idénticas en muchas tipografías.</p>
     </div>
   </div>
+  <img src="./troll.png" alt="" aria-hidden="true" class="troll-face" />
 </div>
-<div class="footer-rule"><span>05 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>05 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[DEL LÍMITE AL ACTIVISMO · ~2 min]
+Pronunciación: «a-once-y» o en inglés «ally» — aliado. La conexión semántica no es accidental.
+La ironía: en muchas tipografías el «1» y la «l» son idénticos. El término que representa accesibilidad puede ser inaccesible para alguien con baja visión.
+-->
 
 ---
 
@@ -161,18 +203,57 @@ class: section-slide
   <div class="right">a11y / dimensión</div>
 </div>
 <div class="slide-pad">
-  <div style="flex:1; display: flex; flex-direction: column; justify-content: center; gap: 60px;">
-    <div class="stat-tag">Población mundial con discapacidad significativa</div>
-    <div class="stat-num" style="display: flex; align-items: baseline; gap: 24px;">
-      <span>1<span style="color: var(--accent); font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;">,</span>3</span>
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 200px; color: var(--ink-dim); letter-spacing: 0; line-height: 1;">B</span>
+  <div style="flex:1; display: flex; flex-direction: row; align-items: center; gap: 60px;">
+    <div style="display: flex; flex-direction: column; justify-content: center; gap: 60px; flex: 1;">
+      <div class="stat-tag">Población mundial con discapacidad significativa</div>
+      <div class="stat-num" style="display: flex; align-items: baseline; gap: 24px;">
+        <span>1<span style="color: var(--accent); font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;">,</span>300</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 200px; color: var(--ink-dim); letter-spacing: 0; line-height: 1;">M</span>
+      </div>
+      <div class="stat-caption">
+        Aproximadamente <span style="color: var(--accent); font-family: 'Fraunces', serif; font-style: italic;">16%</span> de la humanidad — más que la población combinada de la UE, EE. UU. y Japón.
+      </div>
     </div>
-    <div class="stat-caption">
-      Aproximadamente <span style="color: var(--accent); font-family: 'Fraunces', serif; font-style: italic;">16%</span> de la humanidad — más que la población combinada de la UE, EE. UU. y Japón.
-    </div>
+    <div class="stat-globe" aria-hidden="true">🌍</div>
   </div>
 </div>
-<div class="footer-rule"><span>06 / 46</span><span>OMS · 2023</span></div>
+<div class="footer-rule"><span>06 / 48</span><span>OMS · 2023</span></div>
+
+<!--
+[1,300 MILLONES · ~1,5 min]
+1300 millones de personas con discapacidad significativa según la OMS 2023. El 16% de la humanidad.
+Para hacerse una idea: más que la población combinada de la UE, Estados Unidos y Japón.
+No hablamos de una minoría marginal — hablamos del mayor segmento de usuarios que la industria tech ignora sistemáticamente.
+-->
+
+---
+
+<div class="deck-chrome">
+  <div class="left"><span class="dot"></span><span>01 · Origen</span></div>
+  <div class="right">a11y / dimensión · España</div>
+</div>
+<div class="slide-pad">
+  <div style="flex:1; display: flex; flex-direction: row; align-items: center; gap: 80px;">
+    <div style="display: flex; flex-direction: column; justify-content: center; gap: 60px; flex: 1;">
+      <div class="stat-tag">Personas con discapacidad en España</div>
+      <div class="stat-num" style="display: flex; align-items: baseline; gap: 24px;">
+        <span>4<span style="color: var(--accent); font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;">,</span>3</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 200px; color: var(--ink-dim); letter-spacing: 0; line-height: 1;">M</span>
+      </div>
+      <div class="stat-caption">
+        Casi <span style="color: var(--accent); font-family: 'Fraunces', serif; font-style: italic;">9%</span> de la población española — más de 4 millones de personas a las que tu app puede excluir.
+      </div>
+    </div>
+    <img src="./spain.png" alt="Mapa de España" class="spain-map" />
+  </div>
+</div>
+<div class="footer-rule"><span>07 / 48</span><span>INE · Encuesta de Discapacidad 2020</span></div>
+
+<!--
+[4,3 MILLONES · ~1 min]
+España: 4,3 millones de personas con algún tipo de discapacidad según el INE 2020. El 9% de la población.
+No es un problema lejano ni abstracto — es el mercado doméstico, los usuarios de tu empresa, los empleados de tu cliente.
+-->
 
 ---
 
@@ -211,7 +292,15 @@ class: section-slide
     <div class="cell impact">Jerarquía clara, navegación predecible, lenguaje sencillo.</div>
   </div>
 </div>
-<div class="footer-rule"><span>07 / 46</span><span>Microsoft Inclusive Design</span></div>
+<div class="footer-rule"><span>08 / 48</span><span>Microsoft Inclusive Design</span></div>
+
+<!--
+[TIPOS DE DISCAPACIDAD · ~3 min]
+Modelo de Microsoft Inclusive Design: permanente, temporal, situacional.
+Un brazo fracturado NO es «solo para discapacitados» — afecta al 100% de personas en algún momento.
+Ejemplos concretos: usar el móvil con guantes de invierno (situacional-motora), ver la pantalla al sol (situacional-visual), estar en una biblioteca sin poder poner audio (situacional-auditiva).
+Dynamic Type al 310%: ¿habéis probado vuestra app así?
+-->
 
 ---
 
@@ -239,7 +328,15 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>08 / 46</span><span>EAA · BOE · Ley 11/2023</span></div>
+<div class="footer-rule"><span>09 / 48</span><span>EAA · BOE · Ley 11/2023</span></div>
+
+<!--
+[MARCO LEGAL · ~2,5 min]
+El EAA entró en vigor el 28 de junio de 2025 — hace menos de una semana. Esto es actual, no hipotético.
+Aplica a apps móviles en banca, e-commerce, transporte y telecomunicaciones. Sector público lleva más años obligado.
+En España: Ley 11/2023, exige declaración de accesibilidad y mecanismo de reclamación. Sanciones hasta 1M€ por infracción muy grave.
+No es opcional. Si alguien en vuestro equipo dice «no tenemos tiempo», la respuesta ahora es legal además de ética.
+-->
 
 ---
 
@@ -265,20 +362,23 @@ class: section-slide
       </div>
       <a href="https://www.youtube.com/watch?v=5rrkjXetLFE" target="_blank" rel="noopener" style="font-family: 'JetBrains Mono', monospace; font-size: 24px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); align-self: flex-start; padding-bottom: 4px;">↗ youtube.com / watch?v=5rrkjXetLFE</a>
     </div>
-    <a href="https://www.youtube.com/watch?v=5rrkjXetLFE" target="_blank" rel="noopener" style="position: relative; display: block; text-decoration: none; border: 1px solid var(--rule);">
-      <img src="https://img.youtube.com/vi/5rrkjXetLFE/maxresdefault.jpg" alt="Vista previa del vídeo de la charla de Carlos Espada en Commit Conf 2025 sobre el EAA" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; filter: contrast(1.02);" />
-      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.65) 100%); pointer-events: none;" aria-hidden="true"></div>
-      <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 96px; height: 96px; border-radius: 50%; background: rgba(0,0,0,0.78); display: flex; align-items: center; justify-content: center; pointer-events: none;" aria-hidden="true">
-        <div style="width: 0; height: 0; border-left: 26px solid #fff; border-top: 16px solid transparent; border-bottom: 16px solid transparent; margin-left: 6px;"></div>
-      </div>
-      <div style="position: absolute; left: 24px; right: 24px; bottom: 20px; font-family: 'JetBrains Mono', monospace; font-size: 18px; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; display: flex; justify-content: space-between; pointer-events: none;" aria-hidden="true">
-        <span>YouTube · Commit Conf 2025</span>
-        <span>↗ Ver charla</span>
-      </div>
-    </a>
+    <iframe
+      src="https://www.youtube.com/embed/5rrkjXetLFE"
+      title="Ley Europea de Accesibilidad 2025 (EAA): qué es y cómo te afecta — Carlos Espada en Commit Conf 2025"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      loading="lazy"
+      style="width: 100%; aspect-ratio: 16/9; border: 1px solid var(--rule); display: block;"
+    ></iframe>
   </div>
 </div>
-<div class="footer-rule"><span>09 / 46</span><span>Carlos Espada · Commit Conf 2025</span></div>
+<div class="footer-rule"><span>10 / 48</span><span>Carlos Espada · Commit Conf 2025</span></div>
+
+<!--
+[REFERENCIA LEGAL · ~1 min]
+Recomendación directa: si queréis el detalle legal completo, esta charla de Carlos Espada del año pasado es una hora muy bien invertida.
+Yo me centro hoy en el código — las APIs y las herramientas. La parte legal queda aquí referenciada.
+-->
 
 ---
 class: quote-slide
@@ -297,7 +397,14 @@ class: quote-slide
     <div class="quote-attrib">Convención ONU · Derechos de las Personas con Discapacidad</div>
   </div>
 </div>
-<div class="footer-rule"><span>10 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>11 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[CITA ONU · ~1 min]
+Pausa. Dejar que la cita respire.
+«La accesibilidad no es un extra. Es un derecho humano fundamental.»
+Este es el marco ético que sostiene todo lo técnico que viene a continuación.
+-->
 
 ---
 class: section-slide
@@ -314,7 +421,12 @@ class: section-slide
     POUR, contraste y objetivos táctiles — los criterios que cualquier UI debe cumplir, escriba el código quien lo escriba.
   </div>
 </div>
-<div class="footer-rule"><span>11 / 46</span><span>WCAG · POUR · contraste</span></div>
+<div class="footer-rule"><span>12 / 48</span><span>WCAG · POUR · contraste</span></div>
+
+<!--
+[SECCIÓN II · ~30 s]
+Segunda sección: principios universales. Antes de hablar de plataformas, los criterios que aplican a cualquier interfaz.
+-->
 
 ---
 
@@ -340,7 +452,7 @@ class: section-slide
     </div>
     <div class="pour-card">
       <div class="letter" aria-hidden="true">U</div>
-      <div class="label">03 / Understandable</div>
+      <div class="label" style="font-size: 19px; letter-spacing: 0.1em;">03 / Understandable</div>
       <h3>Comprensible</h3>
       <p>El contenido y la operación deben ser claros, predecibles y consistentes.</p>
     </div>
@@ -352,7 +464,15 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>12 / 46</span><span>WCAG 2.1 · Principios POUR</span></div>
+<div class="footer-rule"><span>13 / 48</span><span>WCAG 2.1 · Principios POUR</span></div>
+
+<!--
+[POUR · ~2 min]
+WCAG: Web Content Accessibility Guidelines. La referencia global — también para móvil.
+P-O-U-R: Perceptible, Operable, Understandable, Robust.
+Perceptible: si solo está en color o solo en audio, falla. Operable: si no funciona sin ratón/pantalla táctil, falla. Comprensible: si el lenguaje es opaco o la navegación impredecible, falla. Robusto: si solo funciona con el AT actual y no con el del futuro, falla.
+WCAG 2.1 es la referencia que exige la Ley 11/2023 española para nivel AA.
+-->
 
 ---
 
@@ -386,7 +506,14 @@ class: section-slide
     <div style="color: var(--ink-faint);">excepción · logos, decorativos</div>
   </div>
 </div>
-<div class="footer-rule"><span>13 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>14 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[CONTRASTE · ~2 min]
+Ratio 4,5:1 para texto normal, 3:1 para texto grande (+18pt o +14pt negrita). 7:1 para nivel AAA.
+El tercer swatch — ratio 2,9:1 sobre gris — es el error más frecuente en auditorías que hago. Gris claro sobre blanco es un desastre para usuarios con baja visión.
+Herramienta: Accessibility Inspector en Xcode, o contrast.ratio.fyi en web. El color NUNCA debe ser el único medio de transmitir información.
+-->
 
 ---
 
@@ -430,7 +557,15 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>14 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>15 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[TOUCH TARGETS · ~2 min]
+El pulgar adulto mide ~9mm. 44pt en iOS HIG, 48dp en Material Design. El mínimo absoluto de WCAG 2.2 es 24×24px.
+Usar el mínimo de la plataforma, NO el mínimo de WCAG — el mínimo de WCAG es el suelo, no el objetivo.
+Además: 8dp de separación entre controles adyacentes. Un botón pequeño perjudica al usuario de switch antes que a nadie.
+Test rápido: ¿vuestros iconos de navegación tienen 48×48dp?
+-->
 
 ---
 class: section-slide
@@ -447,7 +582,13 @@ class: section-slide
     Lectores de pantalla, conmutadores, control por voz. Las herramientas que usan a diario las personas para las que escribimos código.
   </div>
 </div>
-<div class="footer-rule"><span>15 / 46</span><span>VoiceOver · TalkBack · Switch · Voice</span></div>
+<div class="footer-rule"><span>16 / 48</span><span>VoiceOver · TalkBack · Switch · Voice</span></div>
+
+<!--
+[SECCIÓN III · ~30 s]
+Tercera sección: las herramientas de asistencia. Antes de programar, conocer a quiénes programamos.
+Esta sección es sobre empatía técnica — entender el arsenal que usan nuestros usuarios a diario.
+-->
 
 ---
 
@@ -489,7 +630,14 @@ class: section-slide
     <div class="cell">Sordera, hipoacusia, entornos ruidosos.</div>
   </div>
 </div>
-<div class="footer-rule"><span>16 / 46</span><span>Apple · Google · accessibility</span></div>
+<div class="footer-rule"><span>17 / 48</span><span>Apple · Google · accessibility</span></div>
+
+<!--
+[ECOSISTEMA · ~2 min]
+Cada plataforma tiene su vocabulario propio pero los conceptos son análogos.
+Lectores de pantalla (VoiceOver/TalkBack) son los más usados. Switch Control/Access es el menos conocido pero el más crítico — si el foco está roto, el usuario queda bloqueado.
+Live Captions: disponible desde iOS 16 y Android 10, transcribe audio del sistema en tiempo real — sin que la app haga nada.
+-->
 
 ---
 
@@ -525,7 +673,14 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>17 / 46</span><span>una prueba — diez minutos al mes con la pantalla apagada</span></div>
+<div class="footer-rule"><span>18 / 48</span><span>una prueba — diez minutos al mes con la pantalla apagada</span></div>
+
+<!--
+[VOICEOVER / TALKBACK · ~3 min]
+Gesto fundamental en ambas plataformas: swipe derecho → siguiente elemento, doble tap → activar.
+El Rotor de VoiceOver (giro de dos dedos) permite saltar directamente entre encabezados, enlaces o controles — fundamental para navegar por contenido largo.
+Reto para hoy: activar VoiceOver en vuestro móvil, cerrar los ojos 10 minutos, navegar por vuestra propia app. Lo que encontréis os cambiará cómo programáis.
+-->
 
 ---
 
@@ -577,7 +732,17 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>18 / 46</span><span>VoiceOver · ejemplo de lectura en vivo</span></div>
+<div class="footer-rule"><span>19 / 48</span><span>VoiceOver · ejemplo de lectura en vivo</span></div>
+
+<!--
+[LO QUE VOICEOVER LEE · ~2 min]
+Este anuncio — «Foto de perfil de María García. Imagen. Toca dos veces para activar.» — tiene tres componentes:
+1. Etiqueta (accessibilityLabel): «Foto de perfil de María García»
+2. Tipo/trait: «Imagen»
+3. Pista de acción: «Toca dos veces para activar»
+Sin label: VoiceOver dice «Imagen. Toca dos veces.» — el usuario no sabe de quién es.
+Con contentDescription = null en Android: TalkBack dice nada o «sin etiqueta» — el usuario queda desorientado.
+-->
 
 ---
 
@@ -619,7 +784,14 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>19 / 46</span><span>hit targets pequeños penalizan al usuario de switch antes que a nadie</span></div>
+<div class="footer-rule"><span>20 / 48</span><span>hit targets pequeños penalizan al usuario de switch antes que a nadie</span></div>
+
+<!--
+[SWITCH CONTROL · ~2,5 min]
+El switch puede ser un botón físico, un pedal de pie, un soplo captado por micrófono, o un parpadeo capturado por la cámara frontal del iPhone.
+Switch Control en iOS y Switch Access en Android escanean los elementos del árbol de accesibilidad en orden. Si el árbol es caótico, el escaneo es caótico.
+Punto clave: si el label de accesibilidad es correcto para VoiceOver, automáticamente es correcto para Switch Control — la semántica se comparte.
+-->
 
 ---
 
@@ -679,7 +851,14 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>20 / 46</span><span>switch · escaneo · accesibilidad motora</span></div>
+<div class="footer-rule"><span>21 / 48</span><span>switch · escaneo · accesibilidad motora</span></div>
+
+<!--
+[ESCANEO · ~1,5 min]
+Escaneo automático: el sistema avanza solo elemento a elemento. El usuario ESPERA a que el foco llegue al destino y pulsa.
+Si el orden de foco es incorrecto, el usuario puede tardar minutos en llegar a un botón que está a un toque visual.
+Con dos switches: uno avanza el foco, el otro selecciona — mucho más rápido. La cámara frontal permite prescindir de hardware físico.
+-->
 
 ---
 
@@ -732,7 +911,15 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>21 / 46</span><span>Voice Control · Voice Access</span></div>
+<div class="footer-rule"><span>22 / 48</span><span>Voice Control · Voice Access</span></div>
+
+<!--
+[VOICE CONTROL · ~2 min]
+«Toca Seguir» — Voice Control busca un control cuyo accessibilityLabel sea «Seguir» y lo activa.
+Si un botón tiene solo un icono sin label: Voice Control no puede activarlo por nombre. El usuario dice «toca el botón de más» y nada pasa.
+Voice Control y Voice Access usan exactamente el mismo label que VoiceOver y TalkBack — una sola fuente de verdad para múltiples tecnologías de asistencia.
+Para quién: manos ocupadas (cargar bebé), lesión de hombro, Parkinson, esclerosis lateral.
+-->
 
 ---
 
@@ -775,7 +962,15 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>22 / 46</span><span>Zoom · Magnification</span></div>
+<div class="footer-rule"><span>23 / 48</span><span>Zoom · Magnification</span></div>
+
+<!--
+[ZOOM · ~1,5 min]
+iOS soporta hasta 15x de zoom del sistema. Android hasta 8x.
+El error más frecuente con zoom: modales que no siguen el foco del zoom. Si una alerta aparece fuera de la región ampliada, el usuario con baja visión no la ve.
+Test: activar zoom al 250% y navegar una pantalla de onboarding de tu app. ¿El botón «Siguiente» está visible?
+Sticky headers y elementos fixed-position son otro problema habitual.
+-->
 
 ---
 
@@ -817,7 +1012,15 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>23 / 46</span><span>Dynamic Type · Font scale</span></div>
+<div class="footer-rule"><span>24 / 48</span><span>Dynamic Type · Font scale</span></div>
+
+<!--
+[DYNAMIC TYPE · ~2 min]
+Dynamic Type en iOS va hasta el 310% (Accessibility sizes). Font scale en Android hasta ~200%.
+La trampa más común: altura de botón fija. Si el botón tiene height: 44pt hardcoded, con Dynamic Type grande el texto se trunca o desborda.
+En SwiftUI: usar .font(.body) en vez de .font(.system(size: 16)) — el primero escala, el segundo no.
+En Android: usar sp en vez de dp o px para tamaños de texto. Un solo cambio en las unidades corrige el problema en toda la app.
+-->
 
 ---
 
@@ -865,7 +1068,15 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>24 / 46</span><span>Live Captions · subtítulos del sistema</span></div>
+<div class="footer-rule"><span>25 / 48</span><span>Live Captions · subtítulos del sistema</span></div>
+
+<!--
+[LIVE CAPTIONS · ~1,5 min]
+Live Captions transcribe el audio del SISTEMA en tiempo real — sin que la app haga nada especial.
+Pero depender del sistema no es suficiente: si tu app tiene audio propio (vídeos, podcasts, llamadas), provee tus propios subtítulos en formato WebVTT o SRT.
+Los subtítulos propios tienen ventajas: terminología correcta, sincronización perfecta, disponibles offline, y accesibles en más plataformas.
+Esto ya no es solo buena práctica: el EAA lo exige para contenido multimedia.
+-->
 
 ---
 class: section-slide
@@ -882,7 +1093,12 @@ class: section-slide
     UIKit y Storyboards exigían disciplina. SwiftUI integra la accesibilidad en la propia definición de la vista.
   </div>
 </div>
-<div class="footer-rule"><span>25 / 46</span><span>UIKit → SwiftUI</span></div>
+<div class="footer-rule"><span>26 / 48</span><span>UIKit → SwiftUI</span></div>
+
+<!--
+[SECCIÓN IV · ~30 s]
+Cuarta sección: iOS. De lo imperativo a lo declarativo. UIKit exigía disciplina; SwiftUI integra la accesibilidad en la definición de la vista.
+-->
 
 ---
 
@@ -894,21 +1110,27 @@ class: section-slide
   <div class="eyebrow">EL LEGADO · IMPERATIVO</div>
   <h2 class="slide-title">UIKit y Storyboards.</h2>
   <div class="lead">Configurar accesibilidad significaba mantener un segundo árbol — paralelo a la vista, propenso a desincronizarse.</div>
-  <div class="code-block"><pre><span class="com">// ViewController.swift · UIKit</span>
-<span class="kw">override func</span> <span class="fn">viewDidLoad</span><span class="pun">() {</span>
-  <span class="kw">super</span><span class="pun">.</span><span class="fn">viewDidLoad</span><span class="pun">()</span>
-  avatar<span class="pun">.</span>isAccessibilityElement <span class="pun">=</span> <span class="kw">true</span>
-  avatar<span class="pun">.</span>accessibilityLabel <span class="pun">=</span> <span class="str">"Foto de perfil"</span>
-  avatar<span class="pun">.</span>accessibilityTraits <span class="pun">=</span> <span class="pun">[.</span>image<span class="pun">]</span>
-  <span class="com">// …repetir para cada vista, sincronizar.</span>
-<span class="pun">}</span>
-  </pre></div>
+  <ShikiCode lang="swift" label="Ejemplo de código UIKit: configurar accesibilidad en viewDidLoad" :code="`// ViewController.swift · UIKit
+override func viewDidLoad() {
+  super.viewDidLoad()
+  avatar.isAccessibilityElement = true
+  avatar.accessibilityLabel = &quot;Foto de perfil&quot;
+  avatar.accessibilityTraits = [.image]
+  // …repetir para cada vista, sincronizar.
+}`" />
   <div class="code-tag legacy" style="margin-top: 32px;">
     <span class="pill">UIKit</span>
     <span>3 propiedades · 1 controlador · 0 garantías de sincronía</span>
   </div>
 </div>
-<div class="footer-rule"><span>26 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>27 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[UIKIT · ~2 min]
+UIKit: la accesibilidad vive en el ViewController, separada de la vista. Si cambias el diseño y olvidas actualizar el controller, la semántica se desincroniza silenciosamente.
+Tres propiedades manuales por elemento: isAccessibilityElement, accessibilityLabel, accessibilityTraits. En una pantalla compleja, docenas de propiedades que mantener en paralelo.
+Esto era el estado del arte hasta 2019. Aún hay proyectos que lo usan.
+-->
 
 ---
 
@@ -919,16 +1141,22 @@ class: section-slide
 <div class="slide-pad">
   <div class="eyebrow">EL PARADIGMA MODERNO · DECLARATIVO</div>
   <h2 class="slide-title">SwiftUI: accesibilidad<br/><em>por diseño.</em></h2>
-  <div class="code-block" style="flex: 0 0 auto;"><pre><span class="typ">Image</span><span class="pun">(</span><span class="str">"perfil"</span><span class="pun">)</span>
-    <span class="pun">.</span><span class="fn">accessibilityLabel</span><span class="pun">(</span><span class="str">"Foto de perfil de usuario"</span><span class="pun">)</span>
-    <span class="pun">.</span><span class="fn">accessibilityAddTraits</span><span class="pun">(.</span>isImage<span class="pun">)</span>
-  </pre></div>
+  <ShikiCode lang="swift" label="Ejemplo de código SwiftUI: modificadores de accesibilidad" style="flex: 0 0 auto;" :code="`Image(&quot;perfil&quot;)
+    .accessibilityLabel(&quot;Foto de perfil de usuario&quot;)
+    .accessibilityAddTraits(.isImage)`" />
   <div class="code-tag modern" style="margin-top: 32px;">
     <span class="pill">SwiftUI</span>
     <span>la vista y su semántica viven en una misma expresión</span>
   </div>
 </div>
-<div class="footer-rule"><span>27 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>28 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[SWIFTUI · ~2 min]
+SwiftUI: el modificador .accessibilityLabel() está CON la Image. La semántica no puede desincronizarse — vive con la vista.
+Si refactorizas la vista y cambias la imagen, el label está justo al lado recordándote actualizarlo.
+Tres líneas de código para una imagen completamente accesible. Esto es el paradigma moderno.
+-->
 
 ---
 
@@ -962,7 +1190,18 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>28 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>29 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[CINCO MODIFICADORES · ~3 min]
+Estos cinco cubren el 90% de los casos en SwiftUI:
+1. .accessibilityLabel() → el nombre (qué es el elemento)
+2. .accessibilityHint() → la consecuencia (qué pasa si lo tocas) — para flujos complejos
+3. .accessibilityValue() → el estado actual (porcentaje de un slider, «encendido» de un toggle)
+4. .accessibilityAddTraits() → el rol semántico (.isButton, .isHeader, .isLink, .isImage)
+5. .accessibilityElement(children: .combine) → agrupa hijos — un gesto en vez de cinco
+El quinto es el más potente y el más ignorado. Una tarjeta de producto con imagen+título+precio se puede leer de un golpe.
+-->
 
 ---
 class: section-slide
@@ -979,7 +1218,12 @@ class: section-slide
     El sistema de vistas separó estructura y comportamiento. Compose los reúne en una función — y trae consigo el árbol semántico.
   </div>
 </div>
-<div class="footer-rule"><span>29 / 46</span><span>XML → Jetpack Compose</span></div>
+<div class="footer-rule"><span>30 / 48</span><span>XML → Jetpack Compose</span></div>
+
+<!--
+[SECCIÓN V · ~30 s]
+Quinta sección: Android. El árbol semántico de Compose es la clave. De XML y la inflación de vistas a la composición reactiva.
+-->
 
 ---
 
@@ -991,20 +1235,26 @@ class: section-slide
   <div class="eyebrow">EL LEGADO · INFLACIÓN DE VISTAS</div>
   <h2 class="slide-title">El sistema<br/>de vistas XML.</h2>
   <div class="lead">La accesibilidad dependía de un atributo. Un buen comienzo — pero verboso, lento y desconectado del estado.</div>
-  <div class="code-block"><pre><span class="com">&lt;!-- layout/item_profile.xml --&gt;</span>
-<span class="pun">&lt;</span><span class="kw">ImageView</span>
-    <span class="typ">android:id</span><span class="pun">=</span><span class="str">"@+id/avatar"</span>
-    <span class="typ">android:src</span><span class="pun">=</span><span class="str">"@drawable/ic_profile"</span>
-    <span class="typ">android:contentDescription</span><span class="pun">=</span><span class="str">"@string/foto_perfil"</span>
-    <span class="typ">android:layout_width</span><span class="pun">=</span><span class="str">"48dp"</span>
-    <span class="typ">android:layout_height</span><span class="pun">=</span><span class="str">"48dp"</span> <span class="pun">/&gt;</span>
-  </pre></div>
+  <ShikiCode lang="xml" label="Ejemplo de código XML Android: ImageView con contentDescription" :code="`&lt;!-- layout/item_profile.xml --&gt;
+&lt;ImageView
+    android:id=&quot;@+id/avatar&quot;
+    android:src=&quot;@drawable/ic_profile&quot;
+    android:contentDescription=&quot;@string/foto_perfil&quot;
+    android:layout_width=&quot;48dp&quot;
+    android:layout_height=&quot;48dp&quot; /&gt;`" />
   <div class="code-tag legacy" style="margin-top: 32px;">
     <span class="pill">XML · Views</span>
     <span>inflar XML en runtime · estado y semántica viven aparte</span>
   </div>
 </div>
-<div class="footer-rule"><span>30 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>31 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[XML VIEWS · ~2 min]
+El sistema de vistas XML: contentDescription es el único atributo de accesibilidad disponible. Un buen comienzo — pero el atributo es estático.
+Si el estado de la vista cambia (cargando → error → éxito), el contentDescription en XML NO se actualiza automáticamente. Hay que hacerlo desde el código Java/Kotlin, otra vez en un lugar separado.
+El texto @string/foto_perfil en strings.xml es correcto — facilita la traducción. Pero la sincronización sigue siendo manual.
+-->
 
 ---
 
@@ -1015,18 +1265,24 @@ class: section-slide
 <div class="slide-pad">
   <div class="eyebrow">EL PARADIGMA MODERNO · ÁRBOL SEMÁNTICO</div>
   <h2 class="slide-title">Jetpack Compose:<br/>semántica como <em>verdad.</em></h2>
-  <div class="code-block" style="flex: 0 0 auto;"><pre><span class="typ">Modifier</span><span class="pun">.</span><span class="fn">semantics</span> <span class="pun">{</span>
-    contentDescription <span class="pun">=</span> <span class="str">"Confirmar compra"</span>
-    role <span class="pun">=</span> <span class="typ">Role</span><span class="pun">.</span>Button
-    stateDescription <span class="pun">=</span> <span class="str">"Cargando…"</span>
-<span class="pun">}</span>
-  </pre></div>
+  <ShikiCode lang="kotlin" label="Ejemplo de código Jetpack Compose: Modifier.semantics" style="flex: 0 0 auto;" :code="`Modifier.semantics {
+    contentDescription = &quot;Confirmar compra&quot;
+    role = Role.Button
+    stateDescription = &quot;Cargando…&quot;
+}`" />
   <div class="code-tag modern" style="margin-top: 32px;">
     <span class="pill">Jetpack Compose</span>
     <span>el árbol semántico se actualiza junto al estado · sin desincronía</span>
   </div>
 </div>
-<div class="footer-rule"><span>31 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>32 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[COMPOSE SEMANTICS · ~2 min]
+Modifier.semantics es el equivalente directo de accessibilityLabel+traits en SwiftUI. Pero con una ventaja clave: el árbol semántico se actualiza REACTIVAMENTE junto con el estado de la UI.
+Si stateDescription cambia de «Cargando…» a «Compra confirmada», TalkBack lo anuncia automáticamente — sin código adicional.
+El árbol semántico de Compose está diseñado para testing y para AT desde el primer día.
+-->
 
 ---
 
@@ -1050,7 +1306,14 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>32 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>33 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[MERGING + CUSTOM ACTIONS · ~2,5 min]
+mergeDescendants = true: una tarjeta con imagen, nombre, precio y valoración se lee como una unidad. «Zapatillas Nike Air Max. 89 euros. 4,5 estrellas.» — un gesto, no cuatro.
+customActions: las acciones de swipe (eliminar, archivar) se exponen como opciones en el menú local de TalkBack. El usuario no tiene que adivinar el gesto — le aparece en el menú.
+Estas dos técnicas juntas son la diferencia entre una app «que compila con accesibilidad» y una app «que realmente funciona con TalkBack».
+-->
 
 ---
 class: section-slide
@@ -1067,7 +1330,12 @@ class: section-slide
     Cada plataforma trae sus herramientas. El componente, la pieza atómica que lo propaga todo.
   </div>
 </div>
-<div class="footer-rule"><span>33 / 46</span><span>Tooling de validación</span></div>
+<div class="footer-rule"><span>34 / 48</span><span>Tooling de validación</span></div>
+
+<!--
+[SECCIÓN VI · ~30 s]
+Sexta sección: auditoría. Lo que no se mide no se mejora. Las herramientas de las plataformas son gratuitas y muy potentes.
+-->
 
 ---
 
@@ -1101,7 +1369,15 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>34 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>35 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[SUITE DE HERRAMIENTAS · ~2 min]
+Cuatro herramientas, todas gratuitas:
+Apple: Accessibility Inspector (en Xcode, también sin dispositivo físico), VoiceOver Simulator (en Mac, sin invadir el dispositivo personal).
+Google: Accessibility Scanner (descargar ahora mismo desde Play Store), Compose UI Check (integrado en Android Studio, detecta problemas en el panel de previews).
+La meta: integrar al menos una en el proceso diario antes del commit.
+-->
 
 ---
 
@@ -1145,7 +1421,16 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>35 / 46</span><span>Apple · Accessibility Inspector</span></div>
+<div class="footer-rule"><span>36 / 48</span><span>Apple · Accessibility Inspector</span></div>
+
+<!--
+[ACCESSIBILITY INSPECTOR · ~2 min]
+Demo live sugerida: Xcode → Open Developer Tool → Accessibility Inspector → conectar iPhone.
+El árbol muestra en tiempo real: etiquetas, traits, y las advertencias ⚠ en naranja.
+Dos advertencias en esta captura: label faltante (Image sin accessibilityLabel) y touch target (32×32pt < 44pt mínimo).
+El audit automático detecta: labels faltantes, contraste insuficiente, hit targets pequeños, traits incoherentes.
+En 30 segundos veis los problemas de vuestra app.
+-->
 
 ---
 
@@ -1154,9 +1439,9 @@ class: section-slide
   <div class="right">ejemplo · Accessibility Scanner</div>
 </div>
 <div class="slide-pad">
-  <div class="eyebrow">EJEMPLO · GOOGLE · ACCESSIBILITY SCANNER</div>
+  <div class="eyebrow" style="margin-bottom: 16px;">EJEMPLO · GOOGLE · ACCESSIBILITY SCANNER</div>
   <h2 class="slide-title">Sugerencias <em>concretas,</em><br/>en cualquier pantalla.</h2>
-  <div style="display: grid; grid-template-columns: 380px 1fr; gap: 64px; margin-top: 56px; flex: 1; align-items: center;">
+  <div style="display: grid; grid-template-columns: 380px 1fr; gap: 64px; margin-top: 0; flex: 1; align-items: center;">
     <div style="background: #1a1814; border: 1px solid var(--rule); border-radius: 36px; padding: 16px; aspect-ratio: 9/19; display: flex; flex-direction: column; gap: 10px;" aria-hidden="true">
       <div style="background: var(--bg); border-radius: 24px; flex: 1; padding: 22px 18px; display: flex; flex-direction: column; gap: 14px; position: relative; overflow: hidden;">
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--ink-faint); text-align: center; padding: 4px 0;">9:41 · Scanner Results</div>
@@ -1171,13 +1456,13 @@ class: section-slide
         <div style="margin-top: auto; height: 48px; background: var(--accent); border-radius: 24px; opacity: 0.4;"></div>
       </div>
     </div>
-    <div style="display: flex; flex-direction: column; gap: 22px;">
-      <div style="display: flex; flex-direction: column; gap: 14px; padding: 24px 28px; background: var(--bg-soft); border: 1px solid var(--rule); border-left: 3px solid var(--accent);">
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 12px; padding: 20px 28px; background: var(--bg-soft); border: 1px solid var(--rule); border-left: 3px solid var(--accent);">
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase;">⚠ Touch target size</div>
         <div style="font-size: 26px; color: var(--ink); line-height: 1.4;">El elemento mide 36 × 36 dp. Mínimo recomendado: 48 × 48 dp.</div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--ink-faint);">Activity → ProfileFragment → btn_follow</div>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 14px; padding: 24px 28px; background: var(--bg-soft); border: 1px solid var(--rule); border-left: 3px solid var(--accent);">
+      <div style="display: flex; flex-direction: column; gap: 12px; padding: 20px 28px; background: var(--bg-soft); border: 1px solid var(--rule); border-left: 3px solid var(--accent);">
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase;">⚠ Text contrast</div>
         <div style="font-size: 26px; color: var(--ink); line-height: 1.4;">Ratio 3.2:1 sobre texto normal. WCAG AA requiere 4.5:1.</div>
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--ink-faint);">color: #888 sobre #fff → usa #595959</div>
@@ -1185,7 +1470,14 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>36 / 46</span><span>Google · Accessibility Scanner</span></div>
+<div class="footer-rule"><span>37 / 48</span><span>Google · Accessibility Scanner</span></div>
+
+<!--
+[ACCESSIBILITY SCANNER · ~1,5 min]
+Accessibility Scanner: app gratuita de Google en Play Store. Funciona en cualquier pantalla de Android — no solo en tu app.
+Los iconos «!» en naranja señalan los elementos con problemas. Dos sugerencias concretas: tamaño del target (36dp < 48dp) y contraste de texto (3,2:1 no llega a 4,5:1 de WCAG AA).
+La ruta específica (ProfileFragment → btn_follow) hace que sea trivial saber exactamente dónde está el problema en el código.
+-->
 
 ---
 
@@ -1224,7 +1516,14 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>37 / 46</span><span>Apple · VoiceOver</span></div>
+<div class="footer-rule"><span>38 / 48</span><span>Apple · VoiceOver</span></div>
+
+<!--
+[VOICEOVER SIMULATOR · ~2 min]
+Esta tabla muestra la secuencia exacta de anuncios al navegar una pantalla de perfil con VoiceOver.
+El «Siguiendo. Botón seleccionado.» después del double-tap es el feedback de estado — confirma que la acción tuvo éxito. Sin ese feedback, el usuario no sabe si pulsó bien.
+Con Rotor → Headings: el usuario salta directamente a «Publicaciones. Encabezado, nivel 2.» sin pasar por todos los elementos anteriores. Esto requiere que los encabezados tengan el trait .isHeader correcto.
+-->
 
 ---
 
@@ -1233,56 +1532,63 @@ class: section-slide
   <div class="right">ejemplo · Compose UI Check</div>
 </div>
 <div class="slide-pad">
-  <div class="eyebrow">EJEMPLO · GOOGLE · COMPOSE UI CHECK</div>
+  <div class="eyebrow" style="margin-bottom: 16px;">EJEMPLO · GOOGLE · COMPOSE UI CHECK</div>
   <h2 class="slide-title">Auditoría <em>en la preview,</em><br/>antes del commit.</h2>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 56px; flex: 1;">
-    <div style="display: flex; flex-direction: column; gap: 16px;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 16px; flex: 1; min-height: 0;">
+    <div style="display: flex; flex-direction: column; gap: 12px; min-height: 0; overflow: hidden;">
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);">@Preview · UI Check ON</div>
-      <div class="code-block" style="margin-top: 0; flex: 1;"><pre><span class="kw">@Preview</span><span class="pun">(</span>showBackground <span class="pun">=</span> <span class="kw">true</span><span class="pun">)</span>
-<span class="kw">@Composable</span>
-<span class="kw">fun</span> <span class="fn">FollowButtonPreview</span><span class="pun">() {</span>
-  <span class="fn">Button</span><span class="pun">(</span>
-    onClick <span class="pun">= {},</span>
-    modifier <span class="pun">=</span> <span class="typ">Modifier</span>
-      <span class="pun">.</span><span class="fn">size</span><span class="pun">(</span><span class="num">36</span><span class="pun">.</span>dp<span class="pun">)</span>   <span class="com">// ⚠ &lt; 48dp</span>
-  <span class="pun">) {</span>
-    <span class="fn">Icon</span><span class="pun">(</span>
-      Icons<span class="pun">.</span>Filled<span class="pun">.</span>Add<span class="pun">,</span>
-      contentDescription <span class="pun">=</span> <span class="kw">null</span>  <span class="com">// ⚠ falta</span>
-    <span class="pun">)</span>
-  <span class="pun">}</span>
-<span class="pun">}</span>
-      </pre></div>
+      <ShikiCode lang="kotlin" label="Ejemplo de código Compose UI Check: preview con problemas de accesibilidad" style="margin-top: 0; flex: 1; min-height: 0; overflow: hidden;" :code="`@Preview(showBackground = true)
+@Composable
+fun FollowButtonPreview() {
+  Button(
+    onClick = {},
+    modifier = Modifier
+      .size(36.dp)   // ⚠ &lt; 48dp
+  ) {
+    Icon(
+      Icons.Filled.Add,
+      contentDescription = null  // ⚠ falta
+    )
+  }
+}`" />
     </div>
-    <div style="display: flex; flex-direction: column; gap: 18px;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);">Problems panel</div>
-      <div style="display: flex; flex-direction: column; gap: 14px;">
-        <div style="display: flex; gap: 18px; padding: 22px 26px; background: var(--bg-soft); border: 1px solid var(--rule); border-left: 3px solid var(--accent); align-items: flex-start;">
-          <div style="color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 24px; flex-shrink: 0;">⚠</div>
-          <div style="display: flex; flex-direction: column; gap: 6px;">
-            <div style="font-size: 24px; color: var(--ink); line-height: 1.35;">Touch target size 36×36 dp es inferior al mínimo de 48×48 dp.</div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--ink-faint);">FollowButton.kt · línea 8</div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; gap: 14px; padding: 16px 22px; background: var(--bg-soft); border: 1px solid var(--rule); border-left: 3px solid var(--accent); align-items: flex-start;">
+          <div style="color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 22px; flex-shrink: 0;">⚠</div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 22px; color: var(--ink); line-height: 1.35;">Touch target size 36×36 dp es inferior al mínimo de 48×48 dp.</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 18px; color: var(--ink-faint);">FollowButton.kt · línea 8</div>
           </div>
         </div>
-        <div style="display: flex; gap: 18px; padding: 22px 26px; background: var(--bg-soft); border: 1px solid var(--rule); border-left: 3px solid var(--accent); align-items: flex-start;">
-          <div style="color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 24px; flex-shrink: 0;">⚠</div>
-          <div style="display: flex; flex-direction: column; gap: 6px;">
-            <div style="font-size: 24px; color: var(--ink); line-height: 1.35;">Image sin contentDescription. Añade un texto descriptivo o márcalo decorativo.</div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--ink-faint);">FollowButton.kt · línea 12</div>
+        <div style="display: flex; gap: 14px; padding: 16px 22px; background: var(--bg-soft); border: 1px solid var(--rule); border-left: 3px solid var(--accent); align-items: flex-start;">
+          <div style="color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 22px; flex-shrink: 0;">⚠</div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 22px; color: var(--ink); line-height: 1.35;">Image sin contentDescription. Añade un texto descriptivo o márcalo decorativo.</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 18px; color: var(--ink-faint);">FollowButton.kt · línea 12</div>
           </div>
         </div>
-        <div style="display: flex; gap: 18px; padding: 22px 26px; background: var(--bg-soft); border: 1px solid var(--rule); border-left: 3px solid #4ade80; align-items: flex-start;">
-          <div style="color: #4ade80; font-family: 'JetBrains Mono', monospace; font-size: 24px; flex-shrink: 0;">✓</div>
-          <div style="display: flex; flex-direction: column; gap: 6px;">
-            <div style="font-size: 24px; color: var(--ink); line-height: 1.35;">Contraste &amp; foco visible — sin problemas detectados.</div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--ink-faint);">2 reglas pasadas</div>
+        <div style="display: flex; gap: 14px; padding: 16px 22px; background: var(--bg-soft); border: 1px solid var(--rule); border-left: 3px solid #4ade80; align-items: flex-start;">
+          <div style="color: #4ade80; font-family: 'JetBrains Mono', monospace; font-size: 22px; flex-shrink: 0;">✓</div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 22px; color: var(--ink); line-height: 1.35;">Contraste &amp; foco visible — sin problemas detectados.</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 18px; color: var(--ink-faint);">2 reglas pasadas</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>38 / 46</span><span>Android Studio · Compose UI Check</span></div>
+<div class="footer-rule"><span>39 / 48</span><span>Android Studio · Compose UI Check</span></div>
+
+<!--
+[COMPOSE UI CHECK · ~2 min]
+Compose UI Check detecta problemas de accesibilidad directamente en el panel de previews de Android Studio — antes del commit.
+Dos warnings en este código: .size(36.dp) está por debajo del mínimo de 48dp, y contentDescription = null en el Icon.
+Lo importante: estos errores aparecen en el panel «Problems» con el número de línea exacto. No hay excusa para no verlos antes de mergear.
+Integrar esto en el pipeline de CI: si la preview tiene warnings de accesibilidad, el build falla.
+-->
 
 ---
 
@@ -1309,7 +1615,15 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>39 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>40 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[DESIGN SYSTEM · ~2 min]
+El mensaje más importante de esta sección: construye el componente accesible UNA VEZ, todas las pantallas lo heredan gratis.
+Un Button del design system define su rol, su label pattern, su estado y su hit target. Cada equipo que consume el componente no necesita pensar en ello.
+Validar la accesibilidad al nivel del componente atómico con axe-core en tests. Tokens de color con ratios validados antes de exportar al equipo de diseño.
+La accesibilidad no se añade al final — se propaga desde el sistema de diseño.
+-->
 
 ---
 class: section-slide
@@ -1326,7 +1640,12 @@ class: section-slide
     IA en el dispositivo, personalización profunda y nuevas formas de adaptar la interfaz a cada persona.
   </div>
 </div>
-<div class="footer-rule"><span>40 / 46</span><span>IA · personalización</span></div>
+<div class="footer-rule"><span>41 / 48</span><span>IA · personalización</span></div>
+
+<!--
+[SECCIÓN VII · ~30 s]
+Séptima sección: futuro. IA en el dispositivo, personalización profunda, y cómo la accesibilidad viaja con el usuario entre dispositivos.
+-->
 
 ---
 
@@ -1355,7 +1674,15 @@ class: section-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>41 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>42 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[IA DESCRIPTIVA · ~2 min]
+Tres tendencias claras en el horizonte:
+1. IA descriptiva: modelos de visión como GPT-4o generan alt text donde no lo hay. Útil para cerrar la brecha histórica de contenido sin etiquetar — pero siempre con revisión humana. Los sesgos del entrenamiento son reales.
+2. Sesgos heredados: un modelo entrenado con internet puede tener ideas preconcebidas sobre discapacidad. La intervención humana es indispensable.
+3. Perfiles dinámicos: la interfaz que se adapta a la persona, no a una categoría. Apple Accessibility API ya empieza a ir en esta dirección.
+-->
 
 ---
 
@@ -1364,60 +1691,91 @@ class: section-slide
   <div class="right">IA · técnicas · práctica</div>
 </div>
 <div class="slide-pad">
-  <div class="eyebrow">QUÉ PODEMOS HACER YA · IA APLICADA AL DISEÑO ACCESIBLE</div>
+  <div class="eyebrow" style="margin-bottom: 16px;">QUÉ PODEMOS HACER YA · IA APLICADA AL DISEÑO ACCESIBLE</div>
   <h2 class="slide-title">La IA, como <em>copiloto</em><br/>de accesibilidad.</h2>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; flex: 1;">
-    <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 26px; border: 1px solid var(--rule); background: var(--bg-soft);">
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 12px; flex: 1;">
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 20px; border: 1px solid var(--rule); background: var(--bg-soft);">
       <div style="display: flex; align-items: baseline; gap: 14px;">
-        <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 52px; line-height: 1; color: var(--accent);" aria-hidden="true">01</div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 28px; margin: 0; color: var(--ink); letter-spacing: -0.01em;">Alt text por visión</h3>
+        <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 40px; line-height: 1; color: var(--accent);" aria-hidden="true">01</div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 24px; margin: 0; color: var(--ink); letter-spacing: -0.01em;">Alt text por visión</h3>
       </div>
-      <p style="font-size: 24px; line-height: 1.4; color: var(--ink-dim); margin: 0;">Modelos multimodales generan descripciones de imágenes y capturas. Revisa siempre el resultado.</p>
-      <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 24px; color: var(--accent); letter-spacing: 0.06em; padding-top: 12px; border-top: 1px solid var(--rule);">ImageCaptions · GPT-4o</div>
+      <p style="font-size: 20px; line-height: 1.35; color: var(--ink-dim); margin: 0;">Modelos multimodales generan descripciones de imágenes y capturas. Revisa siempre el resultado.</p>
+      <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--accent); letter-spacing: 0.06em; padding-top: 8px; border-top: 1px solid var(--rule);">ImageCaptions · GPT-4o</div>
     </div>
-    <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 26px; border: 1px solid var(--rule); background: var(--bg-soft);">
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 20px; border: 1px solid var(--rule); background: var(--bg-soft);">
       <div style="display: flex; align-items: baseline; gap: 14px;">
-        <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 52px; line-height: 1; color: var(--accent);" aria-hidden="true">02</div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 28px; margin: 0; color: var(--ink); letter-spacing: -0.01em;">Auditoría de mockups</h3>
+        <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 40px; line-height: 1; color: var(--accent);" aria-hidden="true">02</div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 24px; margin: 0; color: var(--ink); letter-spacing: -0.01em;">Auditoría de mockups</h3>
       </div>
-      <p style="font-size: 24px; line-height: 1.4; color: var(--ink-dim); margin: 0;">Subir un Figma o screenshot al LLM y pedir un informe: contraste, foco, hit targets — antes del commit.</p>
-      <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 24px; color: var(--accent); letter-spacing: 0.06em; padding-top: 12px; border-top: 1px solid var(--rule);">Claude · Gemini</div>
+      <p style="font-size: 20px; line-height: 1.35; color: var(--ink-dim); margin: 0;">Subir un Figma o screenshot al LLM y pedir un informe: contraste, foco, hit targets — antes del commit.</p>
+      <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--accent); letter-spacing: 0.06em; padding-top: 8px; border-top: 1px solid var(--rule);">Claude · Gemini</div>
     </div>
-    <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 26px; border: 1px solid var(--rule); background: var(--bg-soft);">
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 20px; border: 1px solid var(--rule); background: var(--bg-soft);">
       <div style="display: flex; align-items: baseline; gap: 14px;">
-        <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 52px; line-height: 1; color: var(--accent);" aria-hidden="true">03</div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 28px; margin: 0; color: var(--ink); letter-spacing: -0.01em;">Labels en código</h3>
+        <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 40px; line-height: 1; color: var(--accent);" aria-hidden="true">03</div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 24px; margin: 0; color: var(--ink); letter-spacing: -0.01em;">Labels en código</h3>
       </div>
-      <p style="font-size: 24px; line-height: 1.4; color: var(--ink-dim); margin: 0;">El copiloto del IDE detecta labels faltantes y sugiere el texto según el contexto del árbol UI.</p>
-      <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 24px; color: var(--accent); letter-spacing: 0.06em; padding-top: 12px; border-top: 1px solid var(--rule);">Copilot · Cursor</div>
+      <p style="font-size: 20px; line-height: 1.35; color: var(--ink-dim); margin: 0;">El copiloto del IDE detecta labels faltantes y sugiere el texto según el contexto del árbol UI.</p>
+      <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--accent); letter-spacing: 0.06em; padding-top: 8px; border-top: 1px solid var(--rule);">Copilot · Cursor</div>
     </div>
-    <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 26px; border: 1px solid var(--rule); background: var(--bg-soft);">
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 20px; border: 1px solid var(--rule); background: var(--bg-soft);">
       <div style="display: flex; align-items: baseline; gap: 14px;">
-        <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 52px; line-height: 1; color: var(--accent);" aria-hidden="true">04</div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 28px; margin: 0; color: var(--ink); letter-spacing: -0.01em;">Lenguaje claro</h3>
+        <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 40px; line-height: 1; color: var(--accent);" aria-hidden="true">04</div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 24px; margin: 0; color: var(--ink); letter-spacing: -0.01em;">Lenguaje claro</h3>
       </div>
-      <p style="font-size: 24px; line-height: 1.4; color: var(--ink-dim); margin: 0;">Reescribir copy en lectura fácil — frases cortas, sin jerga. Cognición, dislexia, lectores no nativos.</p>
-      <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 24px; color: var(--accent); letter-spacing: 0.06em; padding-top: 12px; border-top: 1px solid var(--rule);">UNE 153101</div>
+      <p style="font-size: 20px; line-height: 1.35; color: var(--ink-dim); margin: 0;">Reescribir copy en lectura fácil — frases cortas, sin jerga. Cognición, dislexia, lectores no nativos.</p>
+      <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--accent); letter-spacing: 0.06em; padding-top: 8px; border-top: 1px solid var(--rule);">UNE 153101</div>
     </div>
-    <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 26px; border: 1px solid var(--rule); background: var(--bg-soft);">
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 20px; border: 1px solid var(--rule); background: var(--bg-soft);">
       <div style="display: flex; align-items: baseline; gap: 14px;">
-        <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 52px; line-height: 1; color: var(--accent);" aria-hidden="true">05</div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 28px; margin: 0; color: var(--ink); letter-spacing: -0.01em;">Subtítulos y voz</h3>
+        <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 40px; line-height: 1; color: var(--accent);" aria-hidden="true">05</div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 24px; margin: 0; color: var(--ink); letter-spacing: -0.01em;">Subtítulos y voz</h3>
       </div>
-      <p style="font-size: 24px; line-height: 1.4; color: var(--ink-dim); margin: 0;">Transcripción automática para vídeos y podcasts. TTS de calidad humana para onboarding.</p>
-      <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 24px; color: var(--accent); letter-spacing: 0.06em; padding-top: 12px; border-top: 1px solid var(--rule);">Whisper · ElevenLabs</div>
+      <p style="font-size: 20px; line-height: 1.35; color: var(--ink-dim); margin: 0;">Transcripción automática para vídeos y podcasts. TTS de calidad humana para onboarding.</p>
+      <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--accent); letter-spacing: 0.06em; padding-top: 8px; border-top: 1px solid var(--rule);">Whisper · ElevenLabs</div>
     </div>
-    <div style="display: flex; flex-direction: column; gap: 12px; padding: 22px 26px; border: 1px solid var(--rule); background: var(--bg-soft);">
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 20px; border: 1px solid var(--rule); background: var(--bg-soft);">
       <div style="display: flex; align-items: baseline; gap: 14px;">
-        <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 52px; line-height: 1; color: var(--accent);" aria-hidden="true">06</div>
-        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 28px; margin: 0; color: var(--ink); letter-spacing: -0.01em;">Tests automatizados</h3>
+        <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 40px; line-height: 1; color: var(--accent);" aria-hidden="true">06</div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 24px; margin: 0; color: var(--ink); letter-spacing: -0.01em;">Tests automatizados</h3>
       </div>
-      <p style="font-size: 24px; line-height: 1.4; color: var(--ink-dim); margin: 0;">Agentes que navegan la app simulando VoiceOver o TalkBack y reportan los caminos rotos del foco.</p>
-      <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 24px; color: var(--accent); letter-spacing: 0.06em; padding-top: 12px; border-top: 1px solid var(--rule);">axe + IA · agentes E2E</div>
+      <p style="font-size: 20px; line-height: 1.35; color: var(--ink-dim); margin: 0;">Agentes que navegan la app simulando VoiceOver o TalkBack y reportan los caminos rotos del foco.</p>
+      <div style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--accent); letter-spacing: 0.06em; padding-top: 8px; border-top: 1px solid var(--rule);">axe + IA · agentes E2E</div>
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>42 / 46</span><span>IA aplicada · técnicas y herramientas</span></div>
+<div class="footer-rule"><span>43 / 48</span><span>IA aplicada · técnicas y herramientas</span></div>
+
+<!--
+[IA COPILOTO · ~3 min]
+Seis técnicas concretas que podéis usar HOY:
+1. Alt text por visión: GPT-4o o Claude describen imágenes. Revisar siempre.
+2. Auditoría de mockups: subir un Figma o screenshot a Claude/Gemini y pedir un informe de contraste, foco y hit targets — antes del commit.
+3. Labels en código: Copilot y Cursor detectan contentDescription = null y sugieren el texto basándose en el contexto del árbol UI.
+4. Lenguaje claro (UNE 153101): el LLM reescribe textos complejos en lectura fácil — para dislexia, cognición, lectores no nativos.
+5. Subtítulos y voz: Whisper para transcripción, ElevenLabs para TTS de calidad humana en onboarding.
+6. Tests automatizados: agentes que navegan la app simulando VoiceOver/TalkBack y reportan caminos rotos del foco.
+-->
+---
+
+<div class="deck-chrome">
+  <div class="left"><span class="dot"></span><span>07 · Futuro</span></div>
+  <div class="right">IA · acceso · datos</div>
+</div>
+<div class="slide-pad" style="justify-content: center; gap: 48px;">
+  <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; letter-spacing: 0.18em; color: var(--ink-faint); text-transform: uppercase;">Conversación con César Alberca · 2025</div>
+  <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 110px; line-height: 0.96; letter-spacing: -0.03em; margin: 0; color: var(--ink); max-width: 1600px;">
+    Si la IA es la que va a<br/>acceder a los datos…<br/>
+    <em style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; color: var(--accent);">¿tiene sentido pensar<br/>en a11y?</em>
+  </h2>
+</div>
+<div class="footer-rule"><span>44 / 48</span><span>IA · acceso · datos</span></div>
+
+<!--
+[PREGUNTA PROVOCADORA · ~2 min]
+César Alberca planteó esta pregunta: si la IA va a ser el agente que acceda a las interfaces, ¿para quién diseñamos la accesibilidad?
+La respuesta: el árbol de accesibilidad ES la interfaz semántica que consumen los agentes. Buena a11y = buena API para la IA.
+-->
 
 ---
 class: section-slide
@@ -1434,7 +1792,12 @@ class: section-slide
     Una llamada a la acción, los recursos para seguir y el espacio para tus dudas.
   </div>
 </div>
-<div class="footer-rule"><span>43 / 46</span><span>CTA · recursos · Q&amp;A</span></div>
+<div class="footer-rule"><span>45 / 48</span><span>CTA · recursos · Q&amp;A</span></div>
+
+<!--
+[SECCIÓN VIII · ~30 s]
+Última sección: cierre. Una llamada a la acción, los recursos para seguir y tiempo para vuestras preguntas.
+-->
 
 ---
 class: quote-slide
@@ -1453,7 +1816,14 @@ class: quote-slide
     <div class="quote-attrib">— manifiesto del oficio</div>
   </div>
 </div>
-<div class="footer-rule"><span>44 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>46 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[CITA CIERRE · ~1 min]
+Pausa. Esta es la responsabilidad.
+Construir para todos no es una buena práctica — es nuestra responsabilidad como ingenieros.
+1300 millones de personas. El EAA. Las herramientas existen. El conocimiento existe. ¿Qué más necesitamos?
+-->
 
 ---
 
@@ -1497,7 +1867,18 @@ class: quote-slide
     </div>
   </div>
 </div>
-<div class="footer-rule"><span>45 / 46</span><span>a11y · el numerónimo ético</span></div>
+<div class="footer-rule"><span>47 / 48</span><span>a11y · el numerónimo ético</span></div>
+
+<!--
+[RECURSOS · ~1,5 min]
+Seis recursos clave — todos gratuitos:
+WCAG 2.2 en w3.org/TR/WCAG22 — la referencia técnica.
+Apple HIG Accessibility — cómo Apple quiere que implementes accesibilidad.
+Compose Accessibility en developer.android.com — guía oficial para Jetpack Compose.
+axe-core en GitHub — motor de auditoría open source, se integra en tests automáticos.
+Convención ONU — el marco de derechos que sustenta todo.
+a11yproject.com — comunidad, patrones y checklists prácticos.
+-->
 
 ---
 
@@ -1523,7 +1904,7 @@ class: quote-slide
     </div>
     <div style="display: flex; flex-direction: column; align-items: center; gap: 18px;">
       <div style="background: #f5f1e8; padding: 22px; border-radius: 8px;">
-        <img src="./linktree-qr.png" alt="Código QR para linktr.ee/juanje.cilla — todos los enlaces del speaker" style="width: 320px; height: 320px; display: block;" />
+        <QRCode url="https://linktr.ee/juanje.cilla" :size="320" label="Código QR para linktr.ee/juanje.cilla — todos los enlaces del speaker" />
       </div>
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); text-align: center;">escanea · todo en uno</div>
     </div>
@@ -1533,4 +1914,11 @@ class: quote-slide
     <div style="font-family: 'JetBrains Mono', monospace; font-size: 26px; color: var(--ink-dim); text-align: right; white-space: nowrap;">COMMIT CONF 2026<br>5 DE JUNIO · MADRID</div>
   </div>
 </div>
-<div class="footer-rule"><span>46 / 46</span><span>FIN · linktr.ee/juanje.cilla</span></div>
+<div class="footer-rule"><span>48 / 48</span><span>FIN · linktr.ee/juanje.cilla</span></div>
+
+<!--
+[FIN · ~5 min Q&A]
+Gracias por la atención. Los recursos están en el QR — un único enlace de Linktree con todo.
+Tiempo para preguntas. Si no hay preguntas en sala, arrancar con: «¿alguien ha probado VoiceOver en producción esta semana?»
+Para cualquier duda después: linktr.ee/juanje.cilla o escribidme directamente.
+-->

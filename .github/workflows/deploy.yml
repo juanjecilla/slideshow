@@ -29,13 +29,36 @@ jobs:
           cache: npm
           cache-dependency-path: bc2026/package-lock.json
 
-      - name: Install dependencies
+      - name: Install bc2026 dependencies
         run: npm ci
         working-directory: bc2026
 
-      - name: Build slides
+      - name: Build bc2026 slides
         run: npm run build -- --base /slideshow/
         working-directory: bc2026
+
+      - name: Install a11y dependencies
+        run: npm ci
+        working-directory: a11y
+
+      - name: Build a11y slides
+        run: npm run build -- --base /slideshow/a11y/
+        working-directory: a11y
+
+      - name: Install dev_wars dependencies
+        run: npm ci
+        working-directory: dev_wars/codemotion2025
+
+      - name: Build dev_wars slides
+        run: npm run build -- --base /slideshow/dev_wars/
+        working-directory: dev_wars/codemotion2025
+
+      - name: Merge talk dists into bc2026 dist
+        run: |
+          mkdir -p bc2026/dist/a11y
+          cp -r a11y/dist/. bc2026/dist/a11y/
+          mkdir -p bc2026/dist/dev_wars
+          cp -r dev_wars/codemotion2025/dist/. bc2026/dist/dev_wars/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
