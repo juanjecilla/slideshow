@@ -1223,34 +1223,36 @@ image-slot::part(empty) {
       id: "a11y",
       slug: "a11y",
       url: "./a11y/",
+      thumbnail: "./assets/thumb-a11y.png",
       label: "a11y",
       year: 2026,
-      tags: ["a11y", "mobile", "ia"],
+      tags: ["a11y", "mobile"],
       conf: { es: "Commit Conf · Jun 2026", en: "Commit Conf · Jun 2026" },
       title: {
-        es: ["Accesibilidad para ", "Mortales"],
-        en: ["Accessibility for ", "Mortals"],
+        es: ["a11y, el numerónimo ", "ético."],
+        en: ["a11y, the ethical ", "numeronym."],
       },
       desc: {
-        es: "Accesibilidad desde cero para equipos móviles: APIs de plataforma, WCAG, herramientas de auditoría e IA aplicada. Sin excusas, sin magia.",
-        en: "Accessibility from scratch for mobile teams: platform APIs, WCAG, audit tooling and applied AI. No excuses, no magic.",
+        es: "Más que un hashtag: un compromiso con la inclusión. Accesibilidad práctica para iOS y Android con SwiftUI, Jetpack Compose, WCAG y tooling real.",
+        en: "More than a hashtag: a commitment to inclusion. Practical accessibility for iOS and Android with SwiftUI, Jetpack Compose, WCAG and real tooling.",
       },
     },
     {
       id: "bc2026",
       slug: "bc2026",
       url: "./bc2026/",
+      thumbnail: "./assets/thumb-bc2026.jpg",
       label: "product",
       year: 2026,
-      tags: ["producto", "proceso"],
+      tags: ["producto", "proceso", "ia"],
       conf: { es: "BC Day ES · Abr 2026", en: "BC Day ES · Apr 2026" },
       title: {
         es: ["Cero Presupuesto, ", "Producto Top"],
         en: ["Zero Budget, ", "Top Product"],
       },
       desc: {
-        es: "Cómo construir producto de calidad sin presupuesto: herramientas gratuitas, procesos ligeros y mentalidad de producto.",
-        en: "How to build quality product with zero budget: free tooling, lightweight processes and a product mindset.",
+        es: "El manual del desarrollador tacaño: construir producto de calidad sin presupuesto con herramientas gratuitas, IA y procesos ligeros.",
+        en: "The frugal developer's handbook: build quality product with zero budget using free tools, AI and lightweight processes.",
       },
     },
   ];
@@ -1602,6 +1604,7 @@ function TalkCard({ talk, lang, t, index }) {
           id={`talk-${talk.id}`}
           shape="rect"
           fit="cover"
+          src={talk.thumbnail}
           placeholder={lang === "es" ? "Captura de las slides" : "Slides screenshot"}
         ></image-slot>
       </div>
@@ -1677,6 +1680,7 @@ function About({ t, lang }) {
               id="about-avatar"
               shape="rounded"
               radius="18"
+              src="./assets/avatar.png"
               placeholder={lang === "es" ? "Foto" : "Photo"}
             ></image-slot>
           </div>

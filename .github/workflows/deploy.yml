@@ -51,9 +51,11 @@ jobs:
         run: |
           mkdir -p dist/bc2026
           mkdir -p dist/a11y
+          mkdir -p dist/assets
           cp -r bc2026/dist/. dist/bc2026/
           cp -r a11y/dist/. dist/a11y/
           cp landing/index.html dist/index.html
+          cp -r landing/assets/. dist/assets/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
