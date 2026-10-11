@@ -30,6 +30,7 @@ jobs:
           cache-dependency-path: |
             bc2026/package-lock.json
             a11y/package-lock.json
+            app_functions/package-lock.json
 
       - name: Install bc2026 dependencies
         run: npm ci
@@ -47,13 +48,35 @@ jobs:
         run: npm run build -- --base /slideshow/a11y/
         working-directory: a11y
 
+      - name: Install app_functions dependencies
+        run: npm ci
+        working-directory: app_functions
+
+      - name: Build app_functions slides (EN, base deck)
+        run: npm run build -- --base /slideshow/app_functions/
+        working-directory: app_functions
+
+      # Spanish copy (app_functions/ourense26): only built once it exists. See app_functions/docs/HANDOFF-ES.md.
+      - name: Build app_functions slides (ES, /ourense26/)
+        if: ${{ hashFiles('app_functions/ourense26/package.json') != '' }}
+        run: |
+          npm ci
+          npm run build -- --base /slideshow/app_functions/ourense26/
+        working-directory: app_functions/ourense26
+
       - name: Assemble dist
         run: |
           mkdir -p dist/bc2026
           mkdir -p dist/a11y
+          mkdir -p dist/app_functions
           mkdir -p dist/assets
           cp -r bc2026/dist/. dist/bc2026/
           cp -r a11y/dist/. dist/a11y/
+          cp -r app_functions/dist/. dist/app_functions/
+          if [ -d app_functions/ourense26/dist ]; then
+            mkdir -p dist/app_functions/ourense26
+            cp -r app_functions/ourense26/dist/. dist/app_functions/ourense26/
+          fi
           cp landing/index.html dist/index.html
           cp -r landing/assets/. dist/assets/
 
