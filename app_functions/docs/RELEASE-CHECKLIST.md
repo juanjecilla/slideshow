@@ -12,7 +12,9 @@ including the web integration, so merging the PR is the only step that publishes
       curl -s https://dl.google.com/dl/android/maven2/androidx/appfunctions/appfunctions/maven-metadata.xml | grep -o "<version>[^<]*" | tail -3
       gh api "repos/android/skills/commits?path=device-ai/appfunctions&per_page=3" --jq '.[]|.commit.committer.date[:10]+" "+.commit.message'
       ```
-- [ ] Verify "MCP: Nov 2024" on the timeline (4.3) against the primary source.
+- [x] "MCP: Nov 2024" verified (anthropic.com/news/model-context-protocol, dated Nov 25, 2024).
+- [ ] Re-capture demo outputs if the agenda/functions change: `SERIAL=<serial> scripts/capture-demo.sh` in the demo repo, then `python3 -I scripts/gen-code.py` here.
+- [ ] Run the Testing Agent once (`DevfestOurense26/docs/TESTING-AGENT.md`); decide if the LLM part is in the live demo (needs your Gemini key).
 - [ ] Re-run the demo on the device: `DevfestOurense26/docs/DEMO.md`. Free space on the phone (it was 100 % full).
 - [ ] Time a full rehearsal with the presenter view; trim from scene 11 / scene 7 if over 47 min.
 - [ ] EAP: if access arrives, add the Gemini beat to scene 12.
@@ -23,7 +25,7 @@ including the web integration, so merging the PR is the only step that publishes
 - [ ] Landing card → ES URL (`TODO(es-copy)` in `landing/index.html`); add `app_functions/ourense26/package-lock.json`
       to `cache-dependency-path` in `deploy.yml`.
 - [ ] Landing: check the card in both languages (ES/EN toggle) and the thumbnail.
-- [ ] Capture backup screenshots/recording of each demo step → `DevfestOurense26/docs/captures/`.
+- [ ] Record a short screen capture of the app UI changing after `add` (the adb outputs are already captured in `docs/captures/` and in scene 14).
 - [ ] Demo repo: decide whether to make it public after the event (it is private now).
 - [ ] Open the PR (`talk/app-functions-devfest26` → `main`). The build job runs on the PR; the deploy job only on push to `main`.
 

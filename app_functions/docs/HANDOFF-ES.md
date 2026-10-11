@@ -7,7 +7,7 @@
 `juanjecilla/slideshow#3` ↔ `juanjecilla/beatdeck#1`.
 
 ## State at hand-off (2026-10-11)
-- English deck: 13 scenes, 74 beats, `npm run build` and `npm run verify` pass. Branch `talk/app-functions-devfest26` (local).
+- English deck: 13 scenes + backup scene 14 (real adb output, nothing to translate except the eyebrow/notes), 83 beats, `npm run build` and `npm run verify` pass. Branch `talk/app-functions-devfest26` (local).
 - Everything the audience reads is English. Code, API names, adb commands and URLs stay English in both decks.
 - Open items that can still change English text before the freeze: real talk list in the demo (only affects a few
   ids/examples), library version re-check, `LocalTime` gotcha wording.
@@ -104,7 +104,7 @@ npm run build
 npm run shot -- 1.2 3 6.8 7 10 13.3     # look at every frame, not only the audit
 npm run verify                           # ~5 min; QR must decode to the /ourense26/ URL
 ```
-Checklist: no text outside the stage, no overlaps, all 74 beats identical forwards/back/URL, presenter notes in Spanish.
+Checklist: no text outside the stage, no overlaps, all 83 beats identical forwards/back/URL, presenter notes in Spanish.
 
 ## 7 · After the copy
 1. Landing card: switch `url` to `./app_functions/ourense26/` (marked `TODO(es-copy)` in `landing/index.html`).

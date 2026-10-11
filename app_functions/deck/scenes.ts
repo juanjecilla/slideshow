@@ -146,4 +146,18 @@ export const SCENES: SceneDef[] = [
       { name: 'questions', note: 'Questions. Links and QR.' },
     ],
   },
+  {
+    id: '14', title: 'BACKUP',
+    beats: [
+      { name: 'list', note: 'BACKUP, not part of the talk. Reach it from the overview (O). Real adb outputs captured on the Pixel 9 Pro. If the live demo fails, walk these in order. Stop after Questions; an extra click enters this scene.' },
+      { name: 'search' },
+      { name: 'add' },
+      { name: 'add again' },
+      { name: 'favourites' },
+      { name: 'unknown id' },
+      { name: 'clear without confirmed' },
+      { name: 'closed app' },
+      { name: 'disabled' },
+    ],
+  },
 ];

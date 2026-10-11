@@ -15,6 +15,7 @@ import { Safe } from './scenes/10-Safe';
 import { Beyond } from './scenes/11-Beyond';
 import { Demo } from './scenes/12-Demo';
 import { Close } from './scenes/13-Close';
+import { Backup } from './scenes/14-Backup';
 
 /** Every layer of the stage, back to front. All stay mounted; each shows itself for its own scene. */
 function Stage() {
@@ -33,6 +34,7 @@ function Stage() {
       <Beyond />
       <Demo />
       <Close />
+      <Backup />
     </>
   );
 }

@@ -30,7 +30,7 @@ npm run shot -- 9.2  # quick frames while editing → artifacts/shot/
 | `docs/RELEASE-CHECKLIST.md` | What to do before and on 7 Nov: re-checks, PR, deploy, landing |
 | `research.md` | Fact-check against primary sources, API findings, demo-project findings |
 | `reference/` | CFP text and the original source list (low-trust sources flagged) |
-| `scripts/gen-code.py` | Re-sync snippets with the demo repo |
+| `scripts/gen-code.py` | Re-sync snippets **and demo captures** with the demo repo (`deck/code.ts`, `deck/captures.ts`, `reference/demo-captures/`) |
 
 ## Demo project
 
@@ -40,8 +40,8 @@ the live part. The agenda in it is **sample data** until the real talk list is p
 
 ## Status (2026-10-11)
 
-- English deck complete: 13 scenes, 74 beats; `build` and `verify` pass.
+- English deck complete: 13 scenes + a backup scene (14, real adb outputs), 83 beats; `build` and `verify` pass.
 - Library pinned to `androidx.appfunctions 1.0.0-alpha10` (matches official docs and skill); newer alphas exist.
-- Demo verified on a Pixel 9 Pro (Android 17). Testing Agent and Gemini not verified.
+- Demo verified on a Pixel 9 Pro (Android 17); real outputs captured for the backup scene. Testing Agent (needs your own Gemini key for LLM mode) and Gemini not run yet.
 - Spanish copy: not started (`docs/HANDOFF-ES.md`).
 - Web integration (landing card, deploy job, README row, thumbnail) prepared on the branch, not live.

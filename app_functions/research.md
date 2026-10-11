@@ -80,12 +80,13 @@ Sources (S#):
 | T4 | ChatApp sample + Testing Agent in `android/appfunctions` | ✅ | S6: dirs `ChatApp/` (app, wear, shared) and `agent/` — "Privileged AppFunction execution, manual debugging, test automation, LLM agent evaluations"; run via `./run_privileged.sh`. Apache-2.0. |
 | T5 | `android skills add appfunctions` | ✅ | S2 migration note. Skill content S5. |
 | T6 | "JetPacker" sample | ⏳ | Not in S6 — **drop**. |
-| T7 | Testing agent works w/o Gemini access | ⏳ | Verify in demo session on a real device/emulator API 36+. |
+| T7 | Testing agent works w/o Gemini access | 🔧 | Manual debugging works without a key (`standard` flavor); the LLM agent is the `retail` flavor and needs a Gemini API key. Privilege = `ShellIdentityInstrumentation` (no root). **Not run yet.** See demo repo `docs/TESTING-AGENT.md`. |
 
 ## History / comparison
 
 | # | Claim | Verdict | Evidence / correction |
 |---|---|---|---|
+| H0 | MCP announced **Nov 25, 2024** | ✅ | anthropic.com/news/model-context-protocol |
 | H1 | Slices "deprecated de facto in 2021" | ⏳ | Not found in primary docs (guide page shows no deprecation banner, updated 2026-02-26). **Drop the date/deprecation claim**; say "Slices (2018): remote UI templates in Search/Assistant". |
 | H2 | App Actions BIIs limited; no managed-profile support | ⏳ | Unverified. Say only "BIIs: predefined intents, open the app UI". |
 | H3 | FGS "6h limit in Android 15" for dataSync | ❌/🔧 | S7: the 6h-per-24h figure is for **mediaProcessing**; dataSync page shows no limit text; `shortService` ≈ 3 min. Types + permissions required since Android 14 (✅). **Do not quote numbers**; the table row says only "needs type + permission + notification". |
