@@ -1,0 +1,50 @@
+/*
+ * Adaptive Layouts · western theme. Import after neutral.css (type roles, motion):
+ *   import '../themes/neutral.css'; import '../themes/western.css';
+ * Sand paper, dark ink, burnt-ochre accent; the intertitles ("El Malo", "El Feo", "El Bueno") are inverted:
+ * dark night with sand type, like a film title card. Built for a stream: every text token is checked against
+ * bg and surface at ≥ 4.5:1 (WCAG AA): node tools/contrast.mjs
+ * Rye (SIL OFL) is bundled from npm, used only for display type. Body stays Inter so it survives video compression.
+ */
+@import '@fontsource/rye/latin-400.css';
+
+:root {
+  --bg: #e8d3a9;
+  --surface: #f4e6c6;
+  --ink: #2b1d14;
+  --ink-2: rgba(43, 29, 20, 0.82);
+  --ink-3: rgba(43, 29, 20, 0.7);
+  --hair: rgba(43, 29, 20, 0.22);
+  --hair-strong: rgba(43, 29, 20, 0.4);
+
+  --accent: #8a3b0c;
+  --accent-strong: #6e2e09;
+  --ochre: #b5651d; /* decoration only (rules, frames, bars): never text */
+  --ok: #2f5d2a;
+  --warning: #7a4f00;
+  --fault: #8e1b13;
+
+  /* intertitles and the closing: inverted */
+  --night: #1e130c;
+  --night-ink: #f1e2bd;
+  --night-accent: #e0a45a;
+
+  --font-display: 'Rye', 'Georgia', serif;
+
+  /* the operator UI (overview, presenter, debug) stays dark */
+  --op-accent: #e0a45a;
+  --op-accent-strong: #b5651d;
+}
+
+/* Display voice: poster type for titles and intertitles. */
+.t-western { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.01em; line-height: 1; white-space: nowrap; }
+/* Statements are Inter, heavier than neutral so they hold up on a stream. */
+.t-statement { font-weight: 700; }
+.t-eyebrow { color: var(--accent); }
+
+/* Double rule, the "Wanted" poster frame. */
+.poster-rule { border-top: 6px double var(--ochre); }
+
+/* Full-stage inverted card for the intertitles. */
+.night { background: var(--night); color: var(--night-ink); }
+.night .t-eyebrow { color: var(--night-accent); }
