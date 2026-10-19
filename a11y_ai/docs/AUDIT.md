@@ -18,7 +18,7 @@ Status: ✅ confirmed (reproduced on device) · 🔍 confirmed in code, not yet 
 | | before (pre-#233) | after (main) |
 |---|---|---|
 | Tree audit, errors | **4**: search field, 2 settings switches, watched checkbox — all *unlabeled* | **1**: the watched checkbox |
-| Static scan, errors | 4 | 4 — but **3 of the 4 are false positives** (decorative icon next to text inside a labelled row); only the 24 dp clear button is real |
+| Static scan, errors | 4 | 4 — **all 4 are false positives**: 3 decorative icons beside text inside a labelled row, and a 24 dp button whose *touch* area Compose already makes 48 dp (proved with a test that passes on the original code) |
 | Font scale 2.0 | nav labels break mid-word | same |
 | Real findings the tools missed | — | poster announced twice, hidden cards exposed, no ATF, backdrop undescribed |
 
@@ -52,9 +52,9 @@ The tools find the *cheap* problems. The expensive ones (does it read well? does
 ### Motor
 | # | Finding | Where | Status |
 |---|---|---|---|
-| M1 | Clear-search button is **24 dp** (`IconButton(Modifier.size(24.dp))`) — the size on the button shrinks the target | `SearchScreen.kt:172` | 🔍 (only shows with text typed) |
-| M2 | Triage: "Watching" is *swipe down* only; the buttons are Skip / Later / Watched / Snooze | `TriageScreen.kt` | ❓ confirm the missing button |
-| M3 | Swipe gestures expose no `customActions` for TalkBack / Switch Access | `SwipeDeck.kt` | ✅ (no `customActions` in `feature/triage`) |
+| M1 | ~~Clear-search button is a 24 dp target~~ **Retracted.** `IconButton(Modifier.size(24.dp))` is laid out at 24 dp but Compose enlarges its touch bounds to 48 dp. A test asserting `touchBounds == 48 dp` passes on the *original* code. I had this in the report as an error and in the skill docs as "the size on the button shrinks the target": both wrong | `SearchScreen.kt:172` | ✗ not a finding |
+| M2 | ~~"Watching" is swipe-down only~~ **Retracted.** The screen renders a labelled button per verdict (`TriageScreen` KDoc: "the card is never the only way to decide"); "Watching" only exists for TV. I read the buttons on a movie card and missed that | `TriageScreen.kt` | ✗ not a finding |
+| M3 | ~~Swipe has no `customActions`~~ **Downgraded.** There is no `customActions`, but the buttons make it unnecessary; TalkBack users are not blocked | `SwipeDeck.kt` | ℹ️ info |
 
 ### Shift left
 | # | Finding | Status |
@@ -64,6 +64,9 @@ The tools find the *cheap* problems. The expensive ones (does it read well? does
 
 ## What we could NOT check
 Real TalkBack speech and focus order (B6), Switch Access, Voice Access, colour contrast over live posters, a person actually using the app. **A clean tool report is not a pass.**
+
+## Fixes applied on `talk/a11y-ai-jerez26` (commit `fix(a11y): announce each poster once…`)
+B2 poster announced once (+ no-artwork fallback hidden) · B3 one watched checkbox · B4 deck back-cards hidden · L1 nav labels capped at 1.3× · tests in `core/designsystem` and `feature/search/ui`. JVM tests green. **On device:** pending re-run of the audit on the new build (see end of this file).
 
 ## Talk scenarios (candidates for scenes 06–10)
 
@@ -78,12 +81,13 @@ Cut rule: keep what has a *visible before/after* and a *distinct AI step*. ★ =
 | 07 Low vision | ★ L1 — nav labels at 200 % | `device-toggles font-scale 2.0` + a screenshot read by the model; adaptive nav | before/after screenshot |
 | 07 Low vision | L2 — badge contrast | `contrast-check` + scrim | short |
 | 08 Cognitive | ★ C1 — "Short & simple" synopsis | ML Kit **Rewriting** (ES/EN) or Summarization (EN only) | on-device demo |
-| 09 Motor | ★ M1 + M3 — 24 dp clear button, `customActions` for the deck | `scan_compose.py` → fix | before/after |
-| 09 Motor | M2 — "Watching" without a button | — | cut if no time |
+| 09 Motor | ★ **M1 as a lesson, not a fix**: the scan says "24 dp target"; the agent writes a test; the test says 48 dp. Same for the 2 findings the agent itself got wrong | write the test *before* the fix | the green test on the "broken" code |
+| 09 Motor | M2/M3 retracted: the agent misread the screen. Good material for the limits scene | — | one slide |
 | 10 Shift left | ★ S1 — add `enableAccessibilityChecks()` and the rules to `AGENTS.md`; `a11y-pr-review` (if built) | CI | the regression test failing, then passing |
 
 ## Honest findings for the "limits" scene (11)
-- The static scan: **3 of 4 errors were false positives.**
+- The static scan: **all 4 errors were false positives** (see M1).
 - The tree audit missed L1, B2, B4 — the three most visible problems.
 - UiAutomator is not TalkBack: order and roles differ (B6).
+- **The agent was wrong too:** it reported "Watching has no button" and "no `customActions`" as motor findings (M2, M3) after reading one movie card. The code says every verdict has a button. Caught by reading the KDoc; kept here on purpose.
 - On-device descriptions: English only (R1.3), beta (R1.2).
