@@ -30,7 +30,7 @@ SNIPPETS = {
     'screenInsets': (INS, [(37, 45)], {}),
     'insetsWhy': (INS, [(23, 26)], {}),
     'insetsConsumed': (INS, [(28, 30)], {}),
-    'insetsTest': (INS, [(32, 34)], {}),
+    'insetsTest': (INS, [(32, 35)], {}),
     'detailBp': (DET, [(172, 173)], {}),
     'detailIf': (DET, [(210, 210), (219, 223)], {}),
     'detailCap': (DET, [(331, 333)], {}),

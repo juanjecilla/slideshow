@@ -5,10 +5,10 @@
 export const config = {
   title: 'Adaptive Layouts',
   /** One line under the title. Empty = none. */
-  subtitle: '',
+  subtitle: 'Adaptarse o Morir',
   author: 'Juanje Cilla',
-  /** Destination of the QR on the closing screen. "TODO" = no QR (the presenter view warns). Never guess it. */
-  qrUrl: 'TODO',
+  /** Destination of the QR on the closing screen. Where the talk is deployed (D9); confirm after the first deploy. */
+  qrUrl: 'https://juanjecilla.github.io/slideshow/adaptive_layouts/',
   /** Shown under the QR, e.g. "example.com/talk". */
-  qrLabel: '',
+  qrLabel: 'juanjecilla.github.io/slideshow/adaptive_layouts',
 } as const;

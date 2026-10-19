@@ -49,7 +49,8 @@ export const CODE = {
   "insetsTest": [
     "* [insets] is a parameter rather than a hard-coded read because Skiko — the",
     "* renderer behind `runComposeUiTest` — reports zero insets, so this would be",
-    "* untestable off-device otherwise. Tests pass a synthetic value; production"
+    "* untestable off-device otherwise. Tests pass a synthetic value; production",
+    "* uses the default."
   ],
   "detailBp": [
     "/** Width at which Detail switches to the two-pane expanded layout. */",
@@ -173,7 +174,7 @@ export const SRC = {
   "screenInsets": "ScreenInsets.kt:37-45",
   "insetsWhy": "ScreenInsets.kt:23-26",
   "insetsConsumed": "ScreenInsets.kt:28-30",
-  "insetsTest": "ScreenInsets.kt:32-34",
+  "insetsTest": "ScreenInsets.kt:32-35",
   "detailBp": "DetailScreen.kt:172-173",
   "detailIf": "DetailScreen.kt:210, 219-223",
   "detailCap": "DetailScreen.kt:331-333",

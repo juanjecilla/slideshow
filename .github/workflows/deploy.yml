@@ -38,6 +38,7 @@ jobs:
             app_functions/ourense26/package-lock.json
             dev_wars/codemotion26/package-lock.json
             a11y_ai/package-lock.json
+            adaptive_layouts/package-lock.json
 
       - name: Install bc2026 dependencies
         run: npm ci
@@ -88,12 +89,21 @@ jobs:
         run: npm run build -- --base /slideshow/a11y_ai/
         working-directory: a11y_ai
 
+      - name: Install adaptive_layouts dependencies
+        run: npm ci
+        working-directory: adaptive_layouts
+
+      - name: Build adaptive_layouts slides
+        run: npm run build -- --base /slideshow/adaptive_layouts/
+        working-directory: adaptive_layouts
+
       - name: Assemble dist
         run: |
           mkdir -p dist/bc2026
           mkdir -p dist/a11y
           mkdir -p dist/app_functions
           mkdir -p dist/a11y_ai
+          mkdir -p dist/adaptive_layouts
           mkdir -p dist/assets
           cp -r bc2026/dist/. dist/bc2026/
           cp -r a11y/dist/. dist/a11y/
@@ -105,6 +115,7 @@ jobs:
           mkdir -p dist/dev_wars/codemotion26
           cp -r dev_wars/codemotion26/dist/. dist/dev_wars/codemotion26/
           cp -r a11y_ai/dist/. dist/a11y_ai/
+          cp -r adaptive_layouts/dist/. dist/adaptive_layouts/
           cp landing/index.html dist/index.html
           cp -r landing/assets/. dist/assets/
 
