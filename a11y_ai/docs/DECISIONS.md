@@ -82,6 +82,7 @@ Hoy es 19 oct y quedan 33 días. app_functions se publica el 7 nov, así que el 
 | R-7 | hephaestus `small-target` is a warning; test API in the skill docs corrected | `assertTouchHeightIsAtLeast` does not exist (only `…IsEqualTo`); found by compiling the snippet |
 | R-8 | On-device features are **unverified on a real device** | The emulator has no Gemini Nano: the buttons correctly stay hidden there. Only the UI (with a fake model), the compile and the no-crash path are verified |
 
+| R-10 | Visual direction: **Inspector** (`themes/inspector.css`) | The talk looks like the tool that audits the app: a real device with boxes and labels drawn from the UiAutomator bounds (`tools/gen-overlays.py`), tool panels for code and output, a dot-grid workspace, dark workspace on `T`. Same beat map, captures, notes and screen-reader summaries as before |
 | R-9 | The stage is now `aria-hidden` and there are two real buttons (Previous/Next step) | **Found in review, not by me**: every scene layer stays mounted (opacity only), so a screen reader read the whole deck at once (`ariaSnapshot` at beat 1.2 contained "Questions?", "Hephaestus"…). The live region alone was not enough. The slide now says "tries to be accessible" |
 
 ## beatdeck accessibility: what the engine does and does not give (measured with `tools/check-a11y.mjs`)
