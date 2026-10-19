@@ -1,0 +1,14 @@
+  1  How triage works
+  2  Swipe the card, tap a button, or use the arrow keys. Z undoes, S snoozes. Tap a card to see its details.
+  3  Skip · Swipe left
+  4  Not for you. Nothing is saved, and it won't come up again.
+  5  Later · Swipe right
+  6  Saved to your library, not started.
+  7  Watching · Swipe down
+  8  Saved and marked as started, so it shows up in Progress.
+  9  Caught up / Watched · Swipe up
+ 10  Saved with every aired episode ticked — or, for a film, marked watched.
+ 11  Snooze · Button on the card, long press, or S
+ 12  Not a decision at all — nothing is saved and we ask again later.
+ 13  Watching only applies to TV — a film is never partway through.
+ 14  Got it, button, double tap to activate
