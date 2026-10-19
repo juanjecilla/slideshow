@@ -21,7 +21,7 @@ function LowVision_() {
       {/* 07.2 the tools see nothing */}
       <Eyebrow on={at(1)} out={gone(1)} text="device-toggles · font-scale 2.0 + a screenshot" color={C} />
       <Say on={at(1)} out={gone(1)} text="The audit sees nothing. Your eyes do." size={72} />
-      <Shot on={at(1)} out={gone(1)} src={navBefore} alt="Muviss home at 200% text: the bottom bar labels break mid-word, Searc-h, Librar-y, Progr-ess" x={150} y={270} h={760} />
+      <Shot on={at(1)} out={gone(1)} src={navBefore} alt="Muviss home at 200% text: the bottom bar labels break mid-word, Searc-h, Librar-y, Progr-ess" x={150} y={320} h={700} />
       <Reveal on={at(1)} out={gone(1)} x={720} y={420}>
         <div className="t-editorial" style={{ fontSize: 60, lineHeight: 1.15 }}>Searc/h<br />Librar/y<br />Progr/ess<br />Profil/e<br />Settin/gs</div>
       </Reveal>
