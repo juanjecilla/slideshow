@@ -52,3 +52,15 @@
   --op-accent-strong: #5b8cff;
 }
 
+
+/* Screen-reader navigation (deck/a11y.tsx SrNav): invisible until it has keyboard focus. */
+.sr-nav { position: absolute; left: 0; bottom: 0; z-index: 50; display: flex; gap: 12px; padding: 12px; pointer-events: none; }
+.sr-nav button {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.sr-nav button:focus-visible {
+  position: static; width: auto; height: auto; margin: 0; padding: 14px 26px; overflow: visible; clip: auto;
+  pointer-events: auto;
+  font: 600 28px var(--font-sans); color: var(--bg); background: var(--ink); border-radius: 10px; outline: 4px solid var(--accent); outline-offset: 3px;
+}

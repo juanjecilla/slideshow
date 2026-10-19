@@ -21,7 +21,7 @@ function Cognitive_() {
       <PersonIntro on={at(0)} out={gone(0)} name="Cognitive" color={C} line="Dyslexia. Attention. A wall of text is a wall." />
 
       <Eyebrow on={at(1)} out={gone(1)} text="a movie's detail screen" color={C} />
-      <Say on={at(1)} out={gone(1)} text="One block, seventy words." size={80} />
+      <Say on={at(1)} out={gone(1)} text="One block. 68 words." size={80} />
       <Shot on={at(1)} out={gone(1)} src={synopsis} alt="A movie detail screen: the synopsis is one long paragraph" x={150} y={290} h={700} />
 
       <Eyebrow on={at(2)} out={gone(2)} text="on-device · Rewriting · SHORTEN" color={C} />

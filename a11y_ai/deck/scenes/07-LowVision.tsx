@@ -25,7 +25,7 @@ function LowVision_() {
       <Reveal on={at(1)} out={gone(1)} x={720} y={420}>
         <div className="t-editorial" style={{ fontSize: 60, lineHeight: 1.15 }}>Searc/h<br />Librar/y<br />Progr/ess<br />Profil/e<br />Settin/gs</div>
       </Reveal>
-      <Reveal on={at(1)} out={gone(1)} x={720} y={840}><div className="t-meta" style={{ fontSize: 24 }}>tree_audit.py: 0 findings</div></Reveal>
+      <Reveal on={at(1)} out={gone(1)} x={720} y={840}><div className="t-meta" style={{ fontSize: 24 }}>tree_audit.py: 0 errors</div></Reveal>
 
       {/* 07.3 the fix */}
       <Eyebrow on={at(2)} out={gone(2)} text="the fix" color={C} />

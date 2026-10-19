@@ -78,7 +78,7 @@ export const SCENES: SceneDef[] = [
     id: '08', title: 'COGNITIVE',
     beats: [
       { name: 'intro', ref: 'D6' },
-      { name: 'wall', ref: 'C1', note: 'One 60–70-word paragraph.' },
+      { name: 'wall', ref: 'C1', note: 'One 68-word paragraph (counted from the capture).' },
       { name: 'shorten', ref: 'D11', note: 'Rewriting SHORTEN, on the phone. TODO: replace the dashed box with the real capture. The button is "Short & simple": ML Kit has no easy-read style (R1.5), say so if asked.' },
       { name: 'languages', ref: 'R1.4', note: 'Image description: English. Summarization: en/ja/ko. Rewriting: 7 languages incl. Spanish. All beta.' },
     ],
@@ -119,7 +119,7 @@ export const SCENES: SceneDef[] = [
       { name: 'god', ref: 'R5.1', note: 'Homer calls him lame. Built things for everyone else.' },
       { name: 'maidens', ref: 'R5.2', note: 'Iliad 18.417–421. Do not mention self-propelled legs (R5.4) or tripods until R5.3 is checked.' },
       { name: 'toolkit', ref: 'D20', note: 'QR. The repo goes public today (docs/RELEASE-CHECKLIST.md).' },
-      { name: 'meta', ref: 'D16', note: 'Only claim what we verified (docs/AUDIT.md, deck audit). TODO: audit this deck with the same skills.' },
+      { name: 'meta', ref: 'D16', note: 'Verified by tools/check-a11y.mjs: live region, hidden stage, buttons, keyboard, theme, reduced motion. NOT verified: a real screen reader (VoiceOver/NVDA). That is why the slide says tries.' },
     ],
   },
   { id: '13', title: 'Q&A', beats: [{ name: 'questions' }] },

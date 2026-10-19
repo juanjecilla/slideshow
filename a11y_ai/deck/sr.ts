@@ -36,7 +36,7 @@ export const SR: Record<string, string> = {
   '07.grid': 'Bigger text, fewer columns. Screenshots at 100 and 200 percent.',
   '07.contrast': 'Amber text over a poster. The background is the image, so no script can judge it.',
   '08.intro': 'Cognitive and dyslexia. A wall of text is a wall.',
-  '08.wall': 'A movie synopsis in one block of seventy words.',
+  '08.wall': 'A movie synopsis in one block of 68 words.',
   '08.shorten': 'A button that shortens the text with a model on the phone. Nothing leaves the device.',
   '08.languages': 'Which languages each on-device API supports: image description English only, rewriting seven languages.',
   '09.intro': 'Motor. A target you cannot hit is a button that is not there.',
@@ -59,6 +59,6 @@ export const SR: Record<string, string> = {
   '12.god': 'Hephaestus, the Greek god of the forge, was lame.',
   '12.maidens': 'He built golden maidens who helped him walk. He built his own assistive technology.',
   '12.toolkit': 'Take the toolkit: github.com/juanjecilla/hephestus.',
-  '12.meta': 'This deck is accessible. Try it with your screen reader.',
+  '12.meta': 'This deck tries to be accessible: contrast in both themes, announcements instead of the pictures, real Previous and Next buttons. Open it with your screen reader and tell me what breaks.',
   '13.questions': 'Questions?',
 };

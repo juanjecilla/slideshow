@@ -82,11 +82,13 @@ Hoy es 19 oct y quedan 33 días. app_functions se publica el 7 nov, así que el 
 | R-7 | hephestus `small-target` is a warning; test API in the skill docs corrected | `assertTouchHeightIsAtLeast` does not exist (only `…IsEqualTo`); found by compiling the snippet |
 | R-8 | On-device features are **unverified on a real device** | The emulator has no Gemini Nano: the buttons correctly stay hidden there. Only the UI (with a fake model), the compile and the no-crash path are verified |
 
+| R-9 | The stage is now `aria-hidden` and there are two real buttons (Previous/Next step) | **Found in review, not by me**: every scene layer stays mounted (opacity only), so a screen reader read the whole deck at once (`ariaSnapshot` at beat 1.2 contained "Questions?", "Hephaestus"…). The live region alone was not enough. The slide now says "tries to be accessible" |
+
 ## beatdeck accessibility: what the engine does and does not give (measured with `tools/check-a11y.mjs`)
 
 Measured on the production build, 2026-10-19. Candidate fork issues for `juanjecilla/beatdeck`:
 
-- **No semantic structure in the stage**: 0 landmarks, 1 heading (ours), 0 focusable elements. A screen reader user gets the live region (ours) and nothing else. Real fix: landmarks, a heading per scene, an accessible beat list.
+- **No accessible structure out of the box**: every scene layer stays mounted and hidden only by opacity, so the whole deck is in the accessibility tree at once; 0 landmarks; 0 focusable elements. We hide the stage and add a live region plus Previous/Next buttons in `deck/`. Real fix, upstream: hide non-current layers from assistive tech and ship the navigation buttons.
 - **The stage is a fixed 1920×1080 canvas scaled to fit**: browser zoom and text-size settings do not reflow it (WCAG 1.4.4 / 1.4.10). Inherent to the model; document it for people who open the deck on a phone.
 - **The overview, presenter and debug UI stay dark** whatever the theme: the theme switch only affects the stage.
 - **No skip link, no visible focus targets**: everything is keyboard shortcuts. They work (checked: arrows, T, O, P, F, B), but they are undiscoverable without the RUNBOOK.

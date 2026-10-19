@@ -3,8 +3,8 @@ import { config } from '../deck.config';
 
 const ACCESSIBLE = [
   'Contrast AA in both themes',
-  'A screen-reader announcement at every step',
-  'Keyboard only: arrows, space, T',
+  'The stage is hidden from screen readers; each step is announced instead',
+  'Previous and Next are real buttons; arrows and T work too',
   'Reduced motion respected',
 ];
 
@@ -41,7 +41,7 @@ function Close_() {
       )}
 
       <Reveal on={here && b === 3} x={150} y={180}>
-        <div className="t-statement" style={{ fontSize: 150 }}>This deck is<br />accessible.</div>
+        <div className="t-statement" style={{ fontSize: 150 }}>This deck tries<br />to be accessible.</div>
       </Reveal>
       {ACCESSIBLE.map((line, i) => (
         <Reveal key={line} on={here && b === 3} x={158} y={560 + i * 80} delay={400 + i * 200}>
@@ -49,7 +49,7 @@ function Close_() {
         </Reveal>
       ))}
       <Reveal on={here && b === 3} x={158} y={930} delay={1400}>
-        <div className="t-meta" style={{ fontSize: 28, color: 'var(--accent)' }}>Open it on your phone. Try it with your screen reader.</div>
+        <div className="t-meta" style={{ fontSize: 28, color: 'var(--accent)' }}>Open it with your screen reader. Tell me what breaks.</div>
       </Reveal>
     </>
   );

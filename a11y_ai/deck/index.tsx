@@ -1,7 +1,7 @@
 import { defineDeck } from 'beatdeck';
 import '../themes/neutral.css';
 import '../themes/a11y.css';
-import { LiveRegion, ThemeToggle } from './a11y';
+import { LiveRegion, SrNav, StagePicture, ThemeToggle } from './a11y';
 import { config } from './deck.config';
 import { SCENES } from './scenes';
 import { Open } from './scenes/01-Open';
@@ -25,6 +25,8 @@ function Stage() {
     <>
       <ThemeToggle />
       <LiveRegion />
+      <SrNav />
+      <StagePicture>
       <Open />
       <Me />
       <Hook />
@@ -39,6 +41,7 @@ function Stage() {
       <Close />
       <QA />
       <Backup />
+      </StagePicture>
     </>
   );
 }

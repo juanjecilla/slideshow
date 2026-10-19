@@ -27,12 +27,29 @@ for (let s = 0; s < beats.length; s++) {
     await page.goto(`${base}?capture=1#${s + 1}.${b + 1}`);
     await page.waitForTimeout(120);
     const t = await live();
-    if (!t || / \S+$/.test(t) && /^[A-Z ]+, [a-z-]+$/.test(t)) missing.push(`${s + 1}.${b + 1}`);   // fallback "<TITLE>, <beat name>"
+    if (!t || (await page.evaluate(() => document.querySelector('[role="status"]')?.getAttribute('data-source'))) !== 'sr') missing.push(`${s + 1}.${b + 1}`);
     if (/Pause\.|Ask the room|TODO:|Homer calls/.test(t)) leaks.push(`${s + 1}.${b + 1}`);       // speaker notes must never reach the live region
   }
 }
 check('every beat has its own announcement (not the fallback)', missing.length === 0, missing.slice(0, 8).join(' '));
 check('speaker notes never reach the live region', leaks.length === 0, leaks.join(' '));
+
+// 2b · what a screen reader reaches: only the current beat's announcement and the two buttons
+await page.goto(`${base}?capture=1#1.2`); await page.waitForTimeout(600);
+const tree = await page.locator('body').ariaSnapshot();
+const foreign = ['Questions', 'Hephaestus', 'Four controls', 'Close your eyes', 'Dark or light'].filter((t) => tree.includes(t));
+check('the accessibility tree holds no other scene', foreign.length === 0, foreign.join(', '));
+check('the tree has Previous and Next', tree.includes('button "Previous step"') && tree.includes('button "Next step"'));
+await page.getByRole('button', { name: 'Next step' }).focus(); await page.keyboard.press('Enter'); await page.waitForTimeout(300);
+check('Enter on Next is exactly one step', (await page.evaluate(() => location.hash)) === '#1.3', await page.evaluate(() => location.hash));
+await page.getByRole('button', { name: 'Previous step' }).focus(); await page.keyboard.press('Enter'); await page.waitForTimeout(300);
+check('Previous goes back one step', (await page.evaluate(() => location.hash)) === '#1.2');
+await page.goto(`${base}?capture=1#1.2`); await page.waitForTimeout(400);
+await page.keyboard.press('Tab');
+check('Tab reaches a control', await page.evaluate(() => !!document.activeElement && document.activeElement.tagName === 'BUTTON'));
+await page.screenshot({ path: 'artifacts/a11y/focus-nav.png' });
+await page.mouse.click(960, 540); await page.waitForTimeout(300);
+check('a click on the stage still advances exactly one beat', (await page.evaluate(() => location.hash)) === '#1.3', await page.evaluate(() => location.hash));
 
 // 3 · keyboard only: arrows move, T switches theme
 await page.goto(`${base}?capture=1#1.2`); await page.waitForTimeout(500);
