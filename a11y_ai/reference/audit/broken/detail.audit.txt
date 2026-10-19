@@ -1,0 +1,7 @@
+error   small-target    motor     110x16dp  View [42,2110][331,2151]
+error   small-target    motor     110x16dp  View [363,2110][652,2151]
+error   small-target    motor     110x16dp  View [684,2110][973,2151]
+error   small-target    motor     29x16dp  View [1005,2110][1080,2151]
+error   unlabeled       blind     48x48dp  CheckBox [43,1342][169,1468]
+
+5 finding(s), 5 error(s). A clean report is not a pass: see 'Limits' in --help.
