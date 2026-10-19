@@ -106,8 +106,8 @@ export const SCENES: SceneDef[] = [
   {
     id: '11', title: 'LIMITS',
     beats: [
-      { name: 'hallucinate', note: 'Show a real wrong description from the audit if we have one (AUDIT.md).' },
-      { name: 'lint', ref: 'R3.1', note: 'ATF checks cover labels, contrast, target size, traversal order. They complement TalkBack, they do not replace it.' },
+      { name: 'hallucinate', note: 'Real examples from our own audit (docs/AUDIT.md): the static scan raised 4 errors and none was a bug; the agent reported "Watching has no button" and was wrong; my first poster fix left cut-off cards unlabeled. If the Pixel gives a wrong image description, show it here.' },
+      { name: 'lint', ref: 'R3.1', note: 'Also: the first "after" audit run reported 0 errors on a screen that was an ANR dialog. Check what you audited. ATF checks cover labels, contrast, target size, traversal order: they complement TalkBack, they do not replace it.' },
       { name: 'beta', ref: 'R1.2', note: 'Image Description is English only (R1.3). Summarization: EN/JA/KO (R1.4).' },
       { name: 'humans' },
       { name: 'verdict' },
