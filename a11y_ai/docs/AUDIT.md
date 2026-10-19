@@ -1,4 +1,4 @@
-# AUDIT — Muviss, audited with AI and the `hephestus` skills
+# AUDIT — Muviss, audited with AI and the `hephaestus` skills
 
 Date: 2026-10-19 · App: `juanjecilla/muviss-kmp` · Device: Android emulator (API 36, 1080×2424, 420 dpi)
 Builds: **before** = `demo/a11y-broken` (commit `4cc7994d`, the parent of #233) · **after** = `talk/a11y-ai-jerez26` (`origin/main` + `.a11ytalk` suffix). Both install next to the real app as `com.codingpit.muviss.a11ytalk`.

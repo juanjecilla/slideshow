@@ -16,7 +16,7 @@ export const config = {
     youtube: 'youtube.com/@Welcometolasecta',
   },
   /** Destination of the QR on the closing screen: the toolkit repo. Private until 2026-11-21 (see docs/RELEASE-CHECKLIST). */
-  qrUrl: 'https://github.com/juanjecilla/hephestus',
+  qrUrl: 'https://github.com/juanjecilla/hephaestus',
   /** Shown under the QR. */
-  qrLabel: 'github.com/juanjecilla/hephestus',
+  qrLabel: 'github.com/juanjecilla/hephaestus',
 } as const;

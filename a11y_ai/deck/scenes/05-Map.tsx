@@ -43,7 +43,7 @@ function Map_() {
         <div className="t-eyebrow">// everything you will see ships as</div>
       </Reveal>
       <Reveal on={here && b === 4} x={150} y={380} delay={200}>
-        <div className="t-statement" style={{ fontSize: 250 }}>hephestus</div>
+        <div className="t-statement" style={{ fontSize: 250 }}>Hephaestus</div>
       </Reveal>
       <Reveal on={here && b === 4} x={158} y={720} delay={500}>
         <div className="t-meta" style={{ fontSize: 32 }}>an open toolkit of skills for AI agents</div>

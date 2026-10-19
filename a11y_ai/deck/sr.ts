@@ -21,7 +21,7 @@ export const SR: Record<string, string> = {
   '05.device': 'AI on the device: describe images, shorten text.',
   '05.ui': 'AI-informed UI: adapt to the person using it.',
   '05.people': 'Four people guide the talk: blind, low vision, cognitive, motor.',
-  '05.toolkit': 'Everything you will see ships as an open toolkit: hephestus.',
+  '05.toolkit': 'Everything you will see ships as an open toolkit: hephaestus.',
   '06.intro': 'Blind. TalkBack reads the semantics tree, only the tree.',
   '06.audit': 'The audit finds four controls with no name.',
   '06.listen': 'What TalkBack says for a settings switch: unlabeled before, one clear label after.',
@@ -58,7 +58,7 @@ export const SR: Record<string, string> = {
   '11.verdict': 'AI speeds you up. It does not sign off.',
   '12.god': 'Hephaestus, the Greek god of the forge, was lame.',
   '12.maidens': 'He built golden maidens who helped him walk. He built his own assistive technology.',
-  '12.toolkit': 'Take the toolkit: github.com/juanjecilla/hephestus.',
+  '12.toolkit': 'Take the toolkit: github.com/juanjecilla/hephaestus.',
   '12.meta': 'This deck tries to be accessible: contrast in both themes, announcements instead of the pictures, real Previous and Next buttons. Open it with your screen reader and tell me what breaks.',
   '13.questions': 'Questions?',
 };

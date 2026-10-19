@@ -99,7 +99,7 @@ export const SCENES: SceneDef[] = [
       { name: 'intro', ref: 'D6' },
       { name: 'lint', ref: 'S1', note: 'Muviss runs Lint with a11y as errors in CI: good. No ATF anywhere.' },
       { name: 'atf', ref: 'R3.1', note: 'ui-test-junit4-accessibility, Compose 1.8+, Android only. Complements TalkBack, never replaces it.' },
-      { name: 'rules', ref: 'D20', note: 'snippets/AGENTS-a11y.md in hephestus: the rules the next agent reads.' },
+      { name: 'rules', ref: 'D20', note: 'snippets/AGENTS-a11y.md in hephaestus: the rules the next agent reads.' },
       { name: 'review', ref: 'D20', note: 'a11y-pr-review: added lines only. Stretch skill: say "scan_diff.sh works, the review checklist is the model\'s job".' },
     ],
   },

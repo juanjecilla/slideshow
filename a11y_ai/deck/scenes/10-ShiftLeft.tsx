@@ -37,7 +37,7 @@ function ShiftLeft_() {
         </div>
       </Reveal>
 
-      <Eyebrow on={at(4)} out={gone(4)} text="hephestus · a11y-pr-review" color={C} />
+      <Eyebrow on={at(4)} out={gone(4)} text="hephaestus · a11y-pr-review" color={C} />
       <Say on={at(4)} out={gone(4)} text="Review only what the diff adds." size={76} />
       <Mono on={at(4)} out={gone(4)} x={150} y={400} size={30} lines={['$ skills/a11y-pr-review/scripts/scan_diff.sh origin/main']} />
       <Reveal on={at(4)} out={gone(4)} x={150} y={520}>

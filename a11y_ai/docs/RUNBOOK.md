@@ -21,13 +21,13 @@ The demo runs on a **real Pixel with Gemini Nano** (AICore). The emulator cannot
 | TMDB token in `local.properties` (`TMDB_API_KEY` or `TMDB_READ_TOKEN`) | without it the app has no data |
 | Gemini Nano present | open the movie detail: the **Short & simple** and **Describe image** buttons only appear when ML Kit reports the feature as not UNAVAILABLE. No buttons = no AICore on this device. First use downloads the model (needs network, takes minutes): **do it the day before**, with the same Google account |
 | Screen mirroring | `scrcpy` is **not installed** on the author's Mac: `brew install scrcpy`, or use Android Studio's Running Devices |
-| Reset between runs | `skills/device-toggles/scripts/a11y-device.sh reset` (hephestus) |
+| Reset between runs | `skills/device-toggles/scripts/a11y-device.sh reset` (hephaestus) |
 
 Check AICore/ML Kit on the Pixel **before anything else**: `adb shell pm list packages | grep aicore`, then open the detail screen of any movie.
 
 ## Live demo script (what to do, what to expect, what to fall back to)
 
-Two builds sit side by side on the Pixel: `com.codingpit.muviss.a11ybroken` (branch `demo/a11y-broken`, before the fixes) and `com.codingpit.muviss.a11ytalk` (branch `talk/a11y-ai-jerez26`). Build both the day before (`./gradlew :app:androidApp:assembleDebug` in each worktree, then `adb install -r`). In a terminal, from the hephestus clone: `export H=~/Projects/hephestus/skills`.
+Two builds sit side by side on the Pixel: `com.codingpit.muviss.a11ybroken` (branch `demo/a11y-broken`, before the fixes) and `com.codingpit.muviss.a11ytalk` (branch `talk/a11y-ai-jerez26`). Build both the day before (`./gradlew :app:androidApp:assembleDebug` in each worktree, then `adb install -r`). In a terminal, from the hephaestus clone: `export H=~/Projects/hephaestus/skills`.
 
 | Beat | You do | You should see | If it fails |
 |---|---|---|---|
@@ -77,4 +77,4 @@ If short of time, cut in this order: 10 Shift left → 07.5 contrast → 06.6 st
 
 ## Config to check on the day
 
-`deck/deck.config.ts`: title, speaker, event, `qrUrl` (currently `https://github.com/juanjecilla/hephestus`, **private until 21 Nov**: see RELEASE-CHECKLIST). Rebuild after editing.
+`deck/deck.config.ts`: title, speaker, event, `qrUrl` (currently `https://github.com/juanjecilla/hephaestus`, **private until 21 Nov**: see RELEASE-CHECKLIST). Rebuild after editing.

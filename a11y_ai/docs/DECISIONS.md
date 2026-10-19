@@ -1,7 +1,7 @@
 # DECISIONS — a11y on Android? AI makes it easy (DevFest Jerez 2026)
 
 ## Context
-Nueva charla para **DevFest Jerez de la Frontera 2026** (21 nov 2026, Coworking CYCE, 45 min). Usa el mismo flujo que `app_functions/`: beatdeck, docs de decisiones, código generado desde un repo real, captures y backup. El formato cambia: es práctica y va por personas, con una app real (Muviss) que se audita y se arregla con IA. Se publica en `juanjecilla.github.io/slideshow/a11y_ai/`. Además se entrega un toolkit público de skills de a11y en `hephestus`.
+Nueva charla para **DevFest Jerez de la Frontera 2026** (21 nov 2026, Coworking CYCE, 45 min). Usa el mismo flujo que `app_functions/`: beatdeck, docs de decisiones, código generado desde un repo real, captures y backup. El formato cambia: es práctica y va por personas, con una app real (Muviss) que se audita y se arregla con IA. Se publica en `juanjecilla.github.io/slideshow/a11y_ai/`. Además se entrega un toolkit público de skills de a11y en `hephaestus`.
 
 ## Decisiones (grilling cerrado)
 | # | Decisión |
@@ -25,7 +25,7 @@ Nueva charla para **DevFest Jerez de la Frontera 2026** (21 nov 2026, Coworking 
 | D16 | Deck accesible: AA en ambos temas, `lang`, reduced-motion, teclado/foco, alt, subtítulos, `aria-live` por beat, meta-beat final. Limitaciones de a11y del motor → sección en DECISIONS.md + issues en el fork |
 | D18 | Capturas webp/PNG reales + 2–4 MP4 de menos de 20 s con audio de TalkBack y WebVTT. Todo offline |
 | D19 | Mismo pipeline: `scripts/gen-code.py` adaptado → `deck/code.ts` (marcadores + diffs) y `deck/captures.ts`. Ramas muviss: `talk/a11y-ai-jerez26`, `demo/a11y-broken` |
-| D20–24 | Toolkit en `juanjecilla/hephestus` (hoy vacío y privado; público el 21 nov). Plugin multi-agente: `skills/<name>/SKILL.md` + `.claude-plugin/` + compat `.agents/skills` + `tools/`. Apache-2.0. Primer módulo de un repo más grande de herramientas IA. Skills: `a11y-audit`, `a11y-fix` (+ tests semantics/ATF), `device-toggles`, `content-description-gen`, `talkback-speak`, `contrast-check`, `a11y-pr-review`, snippet de reglas a11y para AGENTS.md + prompt pack para Gemini. Cierre: Hefesto, el dios con discapacidad que construyó su propia tecnología de asistencia |
+| D20–24 | Toolkit en `juanjecilla/hephaestus` (hoy vacío y privado; público el 21 nov). Plugin multi-agente: `skills/<name>/SKILL.md` + `.claude-plugin/` + compat `.agents/skills` + `tools/`. Apache-2.0. Primer módulo de un repo más grande de herramientas IA. Skills: `a11y-audit`, `a11y-fix` (+ tests semantics/ATF), `device-toggles`, `content-description-gen`, `talkback-speak`, `contrast-check`, `a11y-pr-review`, snippet de reglas a11y para AGENTS.md + prompt pack para Gemini. Cierre: Hefesto, el dios con discapacidad que construyó su propia tecnología de asistencia |
 | D25 | Rama `talk/a11y-ai-jerez26` desde main. Merge/deploy el 21 nov. Rebase después del merge de app_functions (7 nov): habrá conflictos en landing/deploy/README |
 | D26 | `a11y_ai/docs/`: DECISIONS, research (fact-check con ids `ref`), AUDIT (con escenarios por persona), RUNBOOK, RELEASE-CHECKLIST |
 | D27 | Landing: entrada en `TALKS` (`landing/index.html` ~l.1221) con tags a11y/android/ia + thumbnail `thumb-a11y-ai.png` + fila en README + paso en `deploy.yml` |
@@ -45,7 +45,7 @@ Los ficheros de `src/beatdeck/` se identifican por hash en `.beatdeck.json`, y `
 - **Si da tiempo**: `content-description-gen`, `a11y-pr-review`, prompt pack para Gemini, Switch Access en vivo, mejoras de a11y del fork enviadas upstream como PR, copia ES.
 
 ## Escenas (base, se recorta tras AUDIT)
-01 Open + voto dark/light 1.5' · 02 Me 1' · 03 Hook TalkBack en Muviss rota 2' · 04 Why now (permanente/temporal/situacional, EAA, cifras) 3' · 05 Mapa IA + preview de hephestus 2' · 06 Ceguera: audit → fix+tests → Gemini Studio → Image Description del backdrop 9' · 07 Baja visión: fontScale 2.0, contraste de RatingBadge, grid→lista 6' · 08 Cognitiva: Easy read 5' · 09 Motora: 24dp, Triage customActions, Switch Access 4' · 10 Shift-left: CI, a11y-pr-review, AGENTS.md 3' · 11 Límites 2' · 12 Cierre: Hefesto + QR + "este deck es accesible" 2' · 13 Q&A 4' · 14 Backup (oculto).
+01 Open + voto dark/light 1.5' · 02 Me 1' · 03 Hook TalkBack en Muviss rota 2' · 04 Why now (permanente/temporal/situacional, EAA, cifras) 3' · 05 Mapa IA + preview de hephaestus 2' · 06 Ceguera: audit → fix+tests → Gemini Studio → Image Description del backdrop 9' · 07 Baja visión: fontScale 2.0, contraste de RatingBadge, grid→lista 6' · 08 Cognitiva: Easy read 5' · 09 Motora: 24dp, Triage customActions, Switch Access 4' · 10 Shift-left: CI, a11y-pr-review, AGENTS.md 3' · 11 Límites 2' · 12 Cierre: Hefesto + QR + "este deck es accesible" 2' · 13 Q&A 4' · 14 Backup (oculto).
 
 Objetivos conocidos en Muviss: `SearchScreen.kt:173` (24dp), `PosterCard.kt:83` (clickable sin role ni selected), `RatingBadge.kt:34-50` (contraste, 11sp), `DetailScreen.kt:461` (backdrop con `null`), `DetailScreen.kt:425` (sinopsis), `PosterImage.kt:49`, clickables sin role (Settings:574, Progress:323, Lists:182, Upcoming:171, Snoozed:80), `TriageScreen.kt` swipe.
 
@@ -53,12 +53,12 @@ Objetivos conocidos en Muviss: `SearchScreen.kt:173` (24dp), `PosterCard.kt:83` 
 Hoy es 19 oct y quedan 33 días. app_functions se publica el 7 nov, así que el trabajo en paralelo es limitado.
 1. **Research** (20–24 oct) → `a11y_ai/docs/research.md`: EAA, cifras, ML Kit GenAI (APIs, estado alpha/beta), Gemini en Studio (agent mode, Journeys), ATF en Compose, mito de Hefesto. Cada dato con su fuente. **Dos comprobaciones explícitas:** (a) si Image Description y Rewriting generan texto en idiomas distintos del inglés, porque de eso depende que la copia ES pueda mostrar salida real; (b) si el Pixel concreto de la demo está en la lista de dispositivos compatibles con Nano/AICore.
 2. **Esqueleto del deck en paralelo** (desde el 22 oct): rama en Charlas → degit → `deck.config.ts`, temas dark/light, escenas 01–05 y 11–13 (no dependen de la auditoría).
-3. **hephestus v0** (22–29 oct): skills `a11y-audit`, `device-toggles`, `talkback-speak` y `contrast-check`, que son las que necesita la auditoría.
-4. **Auditoría** (29 oct–2 nov). **Primer paso: comprobar que el commit anterior a #233 compila** con el toolchain actual y tiene las pantallas que necesitan las escenas, Triage incluida. Si no, se aplica el fallback de D5 o se inyectan fallos. Después, auditar main y pre-#233 con hephestus + Gemini Studio → `AUDIT.md` (persona × herramienta, escenarios de las 4 personas), capturas y clips. **Checkpoint con el usuario (~3 nov): recorte de escenarios y tiempos.**
+3. **hephaestus v0** (22–29 oct): skills `a11y-audit`, `device-toggles`, `talkback-speak` y `contrast-check`, que son las que necesita la auditoría.
+4. **Auditoría** (29 oct–2 nov). **Primer paso: comprobar que el commit anterior a #233 compila** con el toolchain actual y tiene las pantallas que necesitan las escenas, Triage incluida. Si no, se aplica el fallback de D5 o se inyectan fallos. Después, auditar main y pre-#233 con hephaestus + Gemini Studio → `AUDIT.md` (persona × herramienta, escenarios de las 4 personas), capturas y clips. **Checkpoint con el usuario (~3 nov): recorte de escenarios y tiempos.**
 5. **Muviss** (3–10 nov): rama `demo/a11y-broken`; en `talk/a11y-ai-jerez26` implementar ML Kit (expect/actual), UI adaptativa, Easy read y los fixes restantes con tests. Capturas reales.
 6. **Fork beatdeck** (en paralelo con 5): campo `sr`, `aria-live`, tecla `T` → `npm run upgrade` en `a11y_ai/`.
 7. **Deck completo** (5–14 nov): escenas 06–10 y 14, `scenes.ts` con notas, `sr` y `ref`, `gen-code.py` → `code.ts`/`captures.ts`, media optimizada. Usar la skill `building-a-beatdeck` que viene en el scaffold.
-8. **hephestus completo** (hasta el 17 nov): `a11y-fix`, README, plugin manifest y lo que entre de la lista "si da tiempo".
+8. **hephaestus completo** (hasta el 17 nov): `a11y-fix`, README, plugin manifest y lo que entre de la lista "si da tiempo".
 9. **Web y docs** (14–18 nov): entrada en la landing, thumbnail, `deploy.yml` y README, con rebase después del 7 nov. DECISIONS (incluye las limitaciones de a11y de beatdeck), RUNBOOK (Pixel/scrcpy/TMDB/AICore), RELEASE-CHECKLIST.
 10. **Ensayos** (18–20 nov): ≤45', backup probado. Merge el 21 nov.
 
@@ -66,7 +66,7 @@ Hoy es 19 oct y quedan 33 días. app_functions se publica el 7 nov, así que el 
 - `npm run build -- --base /slideshow/a11y_ai/` OK; `scripts/check-offline.mjs` OK; `scripts/verify.mjs` y `shot.mjs` → `artifacts/` (contact sheet, presenter).
 - Contraste AA validado en ambos temas (script). Navegar el deck con VoiceOver/NVDA: `aria-live` anuncia cada beat. Probar reduced-motion.
 - Muviss: `./gradlew :app:androidApp:assembleDebug lintDebug` + tests en verde en ambas ramas. Demo completa en Pixel con TalkBack. ML Kit verificado en el dispositivo.
-- hephestus: instalar como plugin en Claude Code y ejecutar `a11y-audit` sobre Muviss en limpio.
+- hephaestus: instalar como plugin en Claude Code y ejecutar `a11y-audit` sobre Muviss en limpio.
 - CI de Charlas en verde en el PR; ensayo con cronómetro ≤45'.
 
 ## Revisions made while building (2026-10-19)
@@ -79,7 +79,7 @@ Hoy es 19 oct y quedan 33 días. app_functions se publica el 7 nov, así que el 
 | R-4 | A first poster fix moved the label to the caption and **left cut-off cards unlabeled** on device | Found by re-running the audit on the fixed build. Final fix: the poster stays the label, the caption is visual only |
 | R-5 | A `selected` semantic on the poster made TalkBack read it as a checkbox | Found on device; removed |
 | R-6 | `T` (theme) and `aria-live` live in `deck/a11y.tsx`, not in the beatdeck fork | They are `Stage` components; the engine is untouched, so `npm run upgrade` cannot undo them |
-| R-7 | hephestus `small-target` is a warning; test API in the skill docs corrected | `assertTouchHeightIsAtLeast` does not exist (only `…IsEqualTo`); found by compiling the snippet |
+| R-7 | hephaestus `small-target` is a warning; test API in the skill docs corrected | `assertTouchHeightIsAtLeast` does not exist (only `…IsEqualTo`); found by compiling the snippet |
 | R-8 | On-device features are **unverified on a real device** | The emulator has no Gemini Nano: the buttons correctly stay hidden there. Only the UI (with a fake model), the compile and the no-crash path are verified |
 
 | R-9 | The stage is now `aria-hidden` and there are two real buttons (Previous/Next step) | **Found in review, not by me**: every scene layer stays mounted (opacity only), so a screen reader read the whole deck at once (`ariaSnapshot` at beat 1.2 contained "Questions?", "Hephaestus"…). The live region alone was not enough. The slide now says "tries to be accessible" |
