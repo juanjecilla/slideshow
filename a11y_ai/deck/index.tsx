@@ -1,7 +1,8 @@
 import { defineDeck } from 'beatdeck';
 import '../themes/neutral.css';
-import '../themes/a11y.css';
+import '../themes/inspector.css';
 import { LiveRegion, SrNav, StagePicture, ThemeToggle } from './a11y';
+import { InspectorChrome } from './Chrome';
 import { config } from './deck.config';
 import { SCENES } from './scenes';
 import { Open } from './scenes/01-Open';
@@ -54,4 +55,5 @@ export default defineDeck({
   Stage,
   fonts: ['400 100px "Inter Variable"', '600 100px "Inter Variable"', '400 32px "JetBrains Mono Variable"'],
   qrUrl: config.qrUrl,
+  Chrome: InspectorChrome,
 });

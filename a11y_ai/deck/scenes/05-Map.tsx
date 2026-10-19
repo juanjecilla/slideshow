@@ -1,52 +1,47 @@
 import { Reveal, Scene, useScene } from 'beatdeck';
 import { PEOPLE } from '../people';
+import { Panel } from '../ui';
 
 const LAYERS: [string, string, string][] = [
-  ['01', 'In your editor', 'audit · fix · test'],
-  ['02', 'On the device', 'describe · shorten'],
-  ['03', 'In the UI', 'adapt to the person'],
+  ['In your editor', 'audit · fix · test', 'Claude Code, Gemini in Android Studio'],
+  ['On the device', 'describe · shorten', 'Gemini Nano via ML Kit GenAI'],
+  ['In the UI', 'adapt to the person', 'font scale, grids, labels'],
 ];
 
 function Map_() {
   const { here, b } = useScene();
   return (
     <>
-      <Reveal on={here && b < 3} out={here && b >= 3} x={158} y={130}>
-        <div className="t-eyebrow">// where AI helps</div>
-      </Reveal>
-      {LAYERS.map(([n, name, what], i) => (
-        <Reveal key={n} on={here && b >= i && b < 3} out={here && b >= 3} x={150} y={250 + i * 220} delay={i === b ? 150 : 0}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 48 }}>
-            <span className="mono" style={{ fontSize: 40, color: 'var(--accent)' }}>{n}</span>
-            <span className="t-statement" style={{ fontSize: 130 }}>{name}</span>
-            <span className="t-meta" style={{ fontSize: 32 }}>{what}</span>
-          </div>
+      <Reveal on={here && b < 3} out={here && b >= 3} x={120} y={130}><div className="t-eyebrow">Where AI helps</div></Reveal>
+      {LAYERS.map(([name, what, how], i) => (
+        <Reveal key={name} on={here && b >= i && b < 3} out={here && b >= 3} x={120 + i * 590} y={260} delay={i === b ? 150 : 0}>
+          <Panel title={`0${i + 1}`} style={{ width: 550, height: 400 }}>
+            <div className="t-statement" style={{ fontSize: 56, whiteSpace: 'normal' }}>{name}</div>
+            <div className="chip info" style={{ marginTop: 28 }}>{what}</div>
+            <div className="t-editorial" style={{ fontSize: 34, marginTop: 30, color: 'var(--ink-2)' }}>{how}</div>
+          </Panel>
         </Reveal>
       ))}
 
-      {/* 05.4 four people, one colour each */}
-      <Reveal on={here && b === 3} out={here && b > 3} x={158} y={130}>
-        <div className="t-eyebrow">// four people, one colour each</div>
-      </Reveal>
+      <Reveal on={here && b === 3} out={here && b > 3} x={120} y={130}><div className="t-eyebrow">Four people, one colour each</div></Reveal>
       {PEOPLE.map((p, i) => (
-        <Reveal key={p.key} on={here && b === 3} out={here && b > 3} x={150} y={260 + i * 190} delay={i * 200}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 44 }}>
-            <span style={{ width: 28, height: 110, background: p.color, display: 'block' }} />
-            <span className="t-statement" style={{ fontSize: 110, color: p.color }}>{p.name}</span>
-            <span className="t-meta" style={{ fontSize: 30 }}>{p.tool}</span>
-          </div>
+        <Reveal key={p.key} on={here && b === 3} out={here && b > 3} x={120} y={250 + i * 190} delay={i * 200}>
+          <Panel style={{ width: 1500 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 40 }}>
+              <span style={{ width: 24, height: 90, borderRadius: 12, background: p.color }} />
+              <span className="t-statement" style={{ fontSize: 80, color: p.color }}>{p.name}</span>
+              <span className="chip">{p.tool}</span>
+            </div>
+          </Panel>
         </Reveal>
       ))}
 
-      {/* 05.5 toolkit preview */}
-      <Reveal on={here && b === 4} x={158} y={300}>
-        <div className="t-eyebrow">// everything you will see ships as</div>
+      <Reveal on={here && b === 4} x={120} y={260}><div className="t-eyebrow">Everything you will see ships as</div></Reveal>
+      <Reveal on={here && b === 4} x={120} y={330} delay={200}>
+        <div className="t-statement" style={{ fontSize: 190 }}>Hephaestus</div>
       </Reveal>
-      <Reveal on={here && b === 4} x={150} y={380} delay={200}>
-        <div className="t-statement" style={{ fontSize: 250 }}>Hephaestus</div>
-      </Reveal>
-      <Reveal on={here && b === 4} x={158} y={720} delay={500}>
-        <div className="t-meta" style={{ fontSize: 32 }}>an open toolkit of skills for AI agents</div>
+      <Reveal on={here && b === 4} x={124} y={600} delay={500}>
+        <span className="chip info">an open toolkit of skills for AI agents</span>
       </Reveal>
     </>
   );

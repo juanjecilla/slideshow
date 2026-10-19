@@ -12,14 +12,15 @@ function Limits_() {
   const { here, b } = useScene();
   return (
     <>
-      <Reveal on={here} x={158} y={130}>
-        <div className="t-eyebrow">// what AI does not fix</div>
-      </Reveal>
+      <Reveal on={here} x={120} y={112}><div className="t-eyebrow" style={{ color: 'var(--fault)' }}>What AI does not fix</div></Reveal>
       {LINES.map(([head, sub], i) => (
-        <Reveal key={head} on={here && b >= i} x={150} y={240 + i * 165} delay={i === b ? 150 : 0}>
-          <div style={{ color: i === b ? 'var(--ink)' : 'var(--ink-2)', transition: 'color 500ms' }}>
-            <div className="t-statement" style={{ fontSize: 76 }}>{head}</div>
-            <div className="t-meta" style={{ fontSize: 28, marginTop: 14, textTransform: 'none', letterSpacing: '0.02em', height: 34 }}>{i === b ? sub : ''}</div>
+        <Reveal key={head} on={here && b >= i} x={120} y={190 + i * 168} delay={i === b ? 150 : 0}>
+          <div className="panel" style={{ width: 1680, opacity: i === b ? 1 : 0.9, borderColor: i === b ? 'var(--fault)' : undefined }}>
+            <div className="panel-body" style={{ display: 'flex', alignItems: 'baseline', gap: 36, padding: '20px 30px' }}>
+              <span aria-hidden="true" style={{ color: 'var(--fault)', fontSize: 44, fontWeight: 800 }}>!</span>
+              <span className="t-statement" style={{ fontSize: 58 }}>{head}</span>
+              <span className="t-editorial" style={{ fontSize: 30, color: 'var(--ink-2)' }}>{i === b ? sub : ''}</span>
+            </div>
           </div>
         </Reveal>
       ))}
@@ -27,5 +28,5 @@ function Limits_() {
   );
 }
 
-/** 11 LIMITS — what AI does not fix. Earlier lines dim to --ink-2, which stays ≥ 4.5:1 (tools/contrast.mjs). */
+/** 11 LIMITS — what AI does not fix. */
 export const Limits = () => <Scene index={10}><Limits_ /></Scene>;

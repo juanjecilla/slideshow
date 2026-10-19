@@ -1,5 +1,6 @@
 import { Reveal, Scene, useScene } from 'beatdeck';
 import { config } from '../deck.config';
+import { Panel } from '../ui';
 
 const LINKS: [string, string][] = [
   ['GitHub', config.links.github],
@@ -12,20 +13,22 @@ function Me_() {
   const { here, b } = useScene();
   return (
     <>
-      <Reveal on={here} x={150} y={250}>
-        <div className="t-statement" style={{ fontSize: 220 }}>{config.author}</div>
+      <Reveal on={here} x={120} y={230}>
+        <div className="t-statement" style={{ fontSize: 150 }}>{config.author}</div>
       </Reveal>
-      <Reveal on={here} x={158} y={520} delay={150}>
-        <div className="t-meta" style={{ fontSize: 34 }}>{config.role}</div>
+      <Reveal on={here} x={124} y={420} delay={150}>
+        <div className="chip">{config.role}</div>
       </Reveal>
-      {LINKS.map(([name, url], i) => (
-        <Reveal key={name} on={here && b >= 1} x={158} y={640 + i * 76} delay={i * 120}>
-          <div style={{ display: 'flex', gap: 40, alignItems: 'baseline' }}>
-            <span className="t-meta" style={{ fontSize: 22, width: 170 }}>{name}</span>
-            <span className="mono" style={{ fontSize: 40 }}>{url}</span>
-          </div>
-        </Reveal>
-      ))}
+      <Reveal on={here && b >= 1} x={120} y={560}>
+        <Panel title="links" style={{ width: 1000 }}>
+          {LINKS.map(([name, url]) => (
+            <div key={name} style={{ display: 'flex', gap: 40, alignItems: 'baseline', padding: '10px 0' }}>
+              <span className="t-meta" style={{ fontSize: 22, width: 170 }}>{name}</span>
+              <span className="mono" style={{ fontSize: 38 }}>{url}</span>
+            </div>
+          ))}
+        </Panel>
+      </Reveal>
     </>
   );
 }
