@@ -70,7 +70,7 @@ export const SCENES: SceneDef[] = [
       { name: 'wsc-posture', ref: 'S21', source: 'HingeInfo / Posture', note: 'Plegables: postura y bisagra. Muviss todavía no lo usa (ver "deuda").' },
       { name: 'muviss-head', ref: 'D6', note: 'Caso Muviss 1: ¿barra inferior o rail?' },
       { name: 'muviss-wsc-code', ref: 'R20', note: 'currentWindowAdaptiveInfo().windowSizeClass.' },
-      { name: 'muviss-wsc-when', ref: 'R20 R3', note: 'El when: onboarding sin navegación, medium o más con rail, el resto con barra.' },
+      { name: 'muviss-wsc-when', ref: 'R20 R3', note: 'El if: medium o más con rail, el resto con barra inferior.' },
       { name: 'muviss-wsc-shots', ref: 'R20', note: 'Compact: barra. Expanded: rail. Capturas reales de Muviss.' },
       { name: 'muviss-wsc-why', ref: 'R20', note: 'Por qué rail y no drawer: un rail deja los pósters a todo el ancho y cinco destinos no justifican un drawer (comentario del código).' },
     ],

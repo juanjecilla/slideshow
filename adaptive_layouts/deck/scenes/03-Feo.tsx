@@ -60,8 +60,8 @@ function Feo_() {
       {/* 3.13 opt-out */}
       <Eyebrow on={at(12)} out={gone(12)} text="Android 16 · opt-out" />
       <Say on={at(12)} out={gone(12)} text="Hay un opt-out. Temporal." y={230} size={120} />
-      <Mono on={at(12)} out={gone(12)} y={520} size={26} lines={DOCS.optOut} />
-      <Src on={at(12)} out={gone(12)} y={720} text="developer.android.com · Behavior changes: Android 16" />
+      <Mono on={at(12)} out={gone(12)} y={480} size={30} lines={DOCS.optOut} />
+      <Src on={at(12)} out={gone(12)} y={720} text="developer.android.com · Behavior changes: Android 16 · atributos en varias líneas" />
 
       {/* 3.14 Android 17 */}
       <Eyebrow on={at(13)} out={gone(13)} text="Android 17 · API 37" />

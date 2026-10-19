@@ -57,11 +57,12 @@ function BuenoWsc_() {
 
       {/* 4.9–4.10 code */}
       <Eyebrow on={at(8)} out={gone(8)} text="Muviss · MuvissApp.kt" />
-      <Mono on={at(8)} out={gone(8)} y={300} size={30} lines={CODE.wscCode} />
-      <Src on={at(8)} out={gone(8)} y={520} text={SRC.wscCode} />
+      <Mono on={at(8)} out={gone(8)} y={330} size={40} lines={CODE.wscCode} />
+      <Src on={at(8)} out={gone(8)} y={430} text={SRC.wscCode} />
+      <Line on={at(8)} out={gone(8)} text="De ahí sale el ancho de la ventana." y={620} size={64} dim />
       <Eyebrow on={at(9)} out={gone(9)} text="Muviss · MuvissApp.kt" />
-      <Mono on={at(9)} out={gone(9)} x={60} y={250} size={24} lines={CODE.wscWhen} />
-      <Src on={at(9)} out={gone(9)} x={60} y={700} text={SRC.wscWhen} />
+      <Mono on={at(9)} out={gone(9)} y={260} size={28} lines={CODE.wscWhen} />
+      <Src on={at(9)} out={gone(9)} y={640} text={SRC.wscWhen} />
 
       {/* 4.11 captures */}
       <Capture on={at(10)} out={gone(10)} x={150} y={170} w={700} h={740} src={CAP.railCompact} label="Compact: barra inferior" todo="Muviss en ancho compact (< 600 dp), con la barra de navegación abajo." />
@@ -72,6 +73,7 @@ function BuenoWsc_() {
       <Say on={at(11)} out={gone(11)} text="Un rail deja los pósters" y={290} size={120} />
       <Say on={at(11)} out={gone(11)} text="a todo el ancho." y={450} size={120} />
       <Line on={at(11)} out={gone(11)} text="Cinco destinos no justifican un drawer." y={700} size={64} dim />
+      <Src on={at(11)} out={gone(11)} y={820} text={`${SRC.wscWhy} · el comentario del código, traducido`} />
     </>
   );
 }

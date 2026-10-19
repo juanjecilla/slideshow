@@ -7,7 +7,7 @@ Merge to `main` on **20 Nov 2026**; talk on 21 Nov. Tick as you go.
 - [ ] **TODO(capture)**: the 9 Muviss captures/clips in `deck/assets.ts` (list in `docs/RUNBOOK.md`). Until then the stage shows dashed boxes.
 - [ ] **TODO(speaker)** 3.6 "a11y": what is said here (D15).
 - [ ] **TODO(speaker)** 2.3 / 2.4: the 3.000M figure is from 2021; keep it with its date, drop it, or keep only 580M (R7, R8).
-- [ ] Re-check the facts in `docs/research.md` (R1–R11) the week of the talk: the docs pages are updated often. Muviss is at `d7aa1e56`; if it moved, run `python3 tools/gen-code.py` and re-check `file:line` refs.
+- [ ] Re-check the facts in `docs/research.md` (R1–R11) the week of the talk: the docs pages are updated often. Muviss main is at `2d2c7e40`; if it moved, run `python3 tools/gen-code.py` and re-check `file:line` refs.
 - [ ] Notes (`note` in `deck/scenes.ts`) rewritten in your own words where you want them.
 
 ## Build

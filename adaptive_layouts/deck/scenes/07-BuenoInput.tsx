@@ -17,14 +17,14 @@ function BuenoInput_() {
 
       {/* 7.3 Muviss case 4 */}
       <Eyebrow on={at(2)} out={gone(2)} text="Caso 4 · Muviss desktop · Main.kt" />
-      <Mono on={at(2)} out={gone(2)} y={190} size={30} lines={CODE.menubar} />
-      <Src on={at(2)} out={gone(2)} y={900} text={SRC.menubar} />
+      <Mono on={at(2)} out={gone(2)} y={180} size={30} lines={CODE.menubar} />
+      <Src on={at(2)} out={gone(2)} y={950} text={SRC.menubar} />
 
       {/* 7.4 */}
       <Eyebrow on={at(3)} out={gone(3)} text="Muviss · un atajo por plataforma" />
-      <Mono on={at(3)} out={gone(3)} y={250} size={24} lines={CODE.accelerator} />
-      <Mono on={at(3)} out={gone(3)} y={460} size={36} lines={CODE.viewShortcuts} />
-      <Src on={at(3)} out={gone(3)} y={680} text={`${SRC.accelerator} · ${SRC.viewShortcuts}`} />
+      <Mono on={at(3)} out={gone(3)} y={230} size={30} lines={CODE.accelerator} />
+      <Mono on={at(3)} out={gone(3)} y={520} size={32} lines={CODE.viewShortcuts} />
+      <Src on={at(3)} out={gone(3)} y={780} text={`${SRC.accelerator} · ${SRC.viewShortcuts}`} />
 
       {/* 7.5 the ⌘Q trap */}
       <Eyebrow on={at(4)} out={gone(4)} text="Muviss · la trampa de macOS" />
@@ -34,13 +34,13 @@ function BuenoInput_() {
 
       {/* 7.6 */}
       <Eyebrow on={at(5)} out={gone(5)} text="Muviss · DesktopWindowState.kt" />
-      <Mono on={at(5)} out={gone(5)} y={280} size={28} lines={CODE.windowState} />
+      <Mono on={at(5)} out={gone(5)} y={280} size={30} lines={CODE.windowState} />
       <Src on={at(5)} out={gone(5)} y={640} text={SRC.windowState} />
       <Line on={at(5)} out={gone(5)} text="La ventana recuerda su tamaño y su posición." y={780} size={64} dim />
 
       {/* 7.7 */}
       <Eyebrow on={at(6)} out={gone(6)} text="Muviss · Triage con teclado" />
-      <Mono on={at(6)} out={gone(6)} y={160} size={26} lines={CODE.triageKeys} />
+      <Mono on={at(6)} out={gone(6)} y={170} size={30} lines={CODE.triageKeys} />
       <Src on={at(6)} out={gone(6)} y={950} text={SRC.triageKeys} />
 
       {/* 7.8 */}

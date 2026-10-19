@@ -22,7 +22,9 @@ export const DOCS = {
   /** R5 · developer.android.com/about/versions/16/behavior-changes-16 */
   optOut: [
     '<application ...>',
-    '  <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" android:value="true" />',
+    '  <property',
+    '      android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY"',
+    '      android:value="true" />',
     '</application>',
   ],
   /** R10 · developer.android.com/develop/ui/compose/layouts/adaptive/list-detail (updated 2026-10-16). */

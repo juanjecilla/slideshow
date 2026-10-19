@@ -83,7 +83,7 @@ export function Mono({ on, out, x = 150, y, lines, size = 30, width }: {
 export function Src({ on, out, x = 150, y, text }: { on: boolean; out?: boolean; x?: number; y: number; text: string }) {
   return (
     <Reveal on={on} out={out} x={x} y={y}>
-      <div className="t-meta" style={{ fontSize: 22, textTransform: 'none', letterSpacing: '0.02em' }}>{text}</div>
+      <div className="t-meta" style={{ fontSize: 24, textTransform: 'none', letterSpacing: '0.02em' }}>{text}</div>
     </Reveal>
   );
 }

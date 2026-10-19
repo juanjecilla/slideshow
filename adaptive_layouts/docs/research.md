@@ -55,7 +55,7 @@ mundo": on stage it is labelled with its date, or replaced by R7. **TODO(speaker
 Stable **1.3.0** (2026-08-12); latest alpha 1.4.0-alpha03 (2026-10-07).
 Artifacts: `adaptive`, `adaptive-layout`, `adaptive-navigation`, `adaptive-navigation3`.
 `NavigationSuiteScaffold` is in `material3-adaptive-navigation-suite` (package `androidx.compose.material3.adaptive.navigationsuite`); the release page does not say which artifact holds it.
-Muviss pins `material3Adaptive = "1.2.0"` and does **not** include `adaptive-layout` or `adaptive-navigation`.
+Muviss (main) pins `material3Adaptive = "1.2.0"` and does **not** include `adaptive-layout` or `adaptive-navigation`.
 
 **R10 — List-detail sample.** Source: [List-detail layout](https://developer.android.com/develop/ui/compose/layouts/adaptive/list-detail) (updated 2026-10-16).
 `NavigableListDetailPaneScaffold(navigator, listPane = { AnimatedPane { … } }, detailPane = { AnimatedPane { … } })`;
@@ -67,22 +67,22 @@ on by default when the app targets API 36 or higher.
 
 ## Muviss (real code; paths relative to `~/Projects/CodingPit/Muviss`)
 
-Line numbers are pinned to Muviss commit `d7aa1e56` (branch `feat/bug-report-form` when checked). `deck/code.ts` is generated from it by `tools/gen-code.py`; re-run it, and re-check these refs, if Muviss moves.
+Line numbers are pinned to Muviss `main` at commit `2d2c7e40` (checked 2026-10-20; it holds the `cb9bb006` legend fix). An earlier pass read the branch `feat/bug-report-form`, which has code main lacks (an onboarding branch in the nav `when`), so everything here was re-checked against main. `deck/code.ts` is generated from main by `tools/gen-code.py` (anchor-based, so it survives line shifts); re-run it against a fresh `main` checkout, and re-check these refs, if Muviss moves.
 
 | Id | What | Where |
 | --- | --- | --- |
-| R20 | Bar → rail at Medium, `None` in onboarding | `app/shared/src/commonMain/kotlin/com/codingpit/muviss/MuvissApp.kt:339-348` |
-| R21 | `ScreenInsets` (safeDrawing minus bottom, `windowInsetsPadding`) | `core/designsystem/src/commonMain/kotlin/com/codingpit/muviss/core/designsystem/layout/ScreenInsets.kt:38-45` |
-| R22 | Detail: `BoxWithConstraints`, 840 dp | `feature/search/ui/src/commonMain/kotlin/com/codingpit/muviss/feature/search/ui/DetailScreen.kt:173,210-220` |
-| R23 | `GridCells.Adaptive(minSize = 110.dp)` | `SearchScreen.kt:190,417`, `CollectionScreen.kt:308`, `ListContentsScreen.kt:98` |
-| R24 | Width caps: Detail 640 dp, Triage 420 dp | `DetailScreen.kt:333,353`, `TriageScreen.kt:888` |
+| R20 | Bar → rail at Medium (`if (… isWidthAtLeastBreakpoint(WIDTH_DP_MEDIUM_LOWER_BOUND))`). No onboarding branch on main | `app/shared/src/commonMain/kotlin/com/codingpit/muviss/MuvissApp.kt:263-272` |
+| R21 | `ScreenInsets` (safeDrawing minus bottom, `windowInsetsPadding`); `enableEdgeToEdge()` | `core/designsystem/.../layout/ScreenInsets.kt:23-45`, `MainActivity.kt:56-58` |
+| R22 | Detail: `BoxWithConstraints`, 840 dp | `feature/search/ui/.../DetailScreen.kt:155-156,191,199-203` |
+| R23 | `GridCells.Adaptive(minSize = 110.dp)` | `SearchScreen.kt:189` (also `CollectionScreen`, `ListContentsScreen`) |
+| R24 | Width caps: Detail 640 dp, Triage 420 dp | `DetailScreen.kt:301-303,323`, `TriageScreen.kt:871` |
 | R25 | Profile legend: wide Row / narrow Column; fix for the tablet legend (`cb9bb006`, #64) | `feature/profile/ui/.../ProfileCharts.kt:196-320` |
 | R26 | Desktop `MenuBar`, `accelerator()`, no ⌘Q shortcut on macOS | `app/desktopApp/src/main/kotlin/com/codingpit/muviss/Main.kt:230-289` |
 | R27 | Window size/position persisted, 1100×720 default, 480×360 minimum | `DesktopWindowState.kt:33,36`, `Main.kt:190` |
-| R28 | Triage keyboard: arrows, Z undo, S snooze | `feature/triage/ui/.../TriageScreen.kt:207-212,357-385` |
+| R28 | Triage keyboard: arrows, Z undo, S snooze | `feature/triage/ui/.../TriageScreen.kt:212,364-382` |
 | R29 | Manifest sets neither `resizeableActivity` nor `screenOrientation` | `app/androidApp/src/main/AndroidManifest.xml` |
 | R31 | Predictive back is opted in: `android:enableOnBackInvokedCallback="true"` on `<application>` | `AndroidManifest.xml:25` |
-| R30 | Targets: Android, iOS (iPhone + iPad), desktop (JVM), wasmJs | `build-logic/.../muviss.kmp.library.gradle.kts:30-40` |
+| R30 | Targets: Android, iOS (iPhone + iPad), desktop (JVM), web (`js` and `wasmJs`) | `build-logic/.../muviss.kmp.library.gradle.kts:30-40` |
 
 Gaps in Muviss (for the "deuda" scene): no `ListDetailPaneScaffold` / `SupportingPaneScaffold`, predictive back is opted in (R31) but there is no `NavigableListDetailPaneScaffold`/back-by-pane, no
 foldable/posture code, no hover/stylus, breakpoints split between 600 dp (size class) and 840 dp (container width),

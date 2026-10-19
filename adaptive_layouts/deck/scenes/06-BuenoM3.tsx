@@ -59,9 +59,9 @@ function BuenoM3_() {
 
       {/* 6.12 caps */}
       <Eyebrow on={at(11)} out={gone(11)} text="Muviss · topes de ancho" />
-      <Mono on={at(11)} out={gone(11)} x={60} y={250} size={28} lines={CODE.detailCap} />
-      <Mono on={at(11)} out={gone(11)} x={60} y={420} size={28} lines={CODE.cardCap} />
-      <Src on={at(11)} out={gone(11)} x={60} y={520} text={`${SRC.detailCap} · ${SRC.cardCap}`} />
+      <Mono on={at(11)} out={gone(11)} y={250} size={32} lines={CODE.detailCap} />
+      <Mono on={at(11)} out={gone(11)} y={470} size={32} lines={CODE.cardCap} />
+      <Src on={at(11)} out={gone(11)} y={560} text={`${SRC.detailCap} · ${SRC.cardCap}`} />
       <Say on={at(11)} out={gone(11)} text="Para que se pueda leer." y={730} size={100} color="var(--accent)" />
 
       {/* 6.13 the bug */}
@@ -71,9 +71,9 @@ function BuenoM3_() {
 
       {/* 6.14 the fix */}
       <Eyebrow on={at(13)} out={gone(13)} text="Muviss · ProfileCharts.kt" />
-      <Mono on={at(13)} out={gone(13)} x={60} y={190} size={22} lines={CODE.legendBp} />
-      <Mono on={at(13)} out={gone(13)} y={340} size={28} lines={CODE.legendWide} />
-      <Src on={at(13)} out={gone(13)} y={880} text={`${SRC.legendBp} · ${SRC.legendWide} · abreviado con …`} />
+      <Mono on={at(13)} out={gone(13)} y={190} size={28} lines={CODE.legendBp} />
+      <Mono on={at(13)} out={gone(13)} y={420} size={28} lines={CODE.legendWide} />
+      <Src on={at(13)} out={gone(13)} y={880} text={`${SRC.legendBp} · ${SRC.legendWide}`} />
     </>
   );
 }

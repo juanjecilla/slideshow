@@ -41,7 +41,7 @@ function Backup_() {
 
       {/* 10.4 */}
       <Eyebrow on={at(3)} out={gone(3)} text="Fuentes · consultadas el 19 oct 2026" />
-      <Mono on={at(3)} out={gone(3)} y={230} size={26} lines={SOURCES} />
+      <Mono on={at(3)} out={gone(3)} y={230} size={28} lines={SOURCES} />
     </>
   );
 }
