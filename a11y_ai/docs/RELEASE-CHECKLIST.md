@@ -55,6 +55,6 @@ Nothing below has been done on the author's behalf: everything outward-facing (p
 - The emulator `emulator-5554`: `com.codingpit.muviss.a11ytalk` installed next to the real app (and its data cleared with `pm clear` **for that package only**); Chrome was force-stopped to stop an ANR dialog (a Tally "Report a problem" form was open, empty); `device-toggles reset` was run several times (**it cleared `enabled_accessibility_services`, font scale, density and animation scales** to defaults). An `A11y_Talk` AVD was created for a second emulator, which segfaulted; it has been deleted.
 - Nothing was pushed, merged, published, or posted anywhere.
 
-## Issues Muviss' own rules would ask for (not filed: filing is the author's call)
+## Issues opened in `juanjecilla/muviss-kmp` (2026-10-19)
 
-`AGENTS.md` says anything found and not fixed in a session gets a GitHub issue. Candidates: L2 (rating badge contrast over posters, `RatingBadge.kt`), B6 (is Back announced last on Detail? needs TalkBack), ML Kit GenAI on a real device (this branch), no ATF in the instrumented tests, and the fixes on `talk/a11y-ai-jerez26` as upstream PRs into `develop`.
+#458 rating badge contrast over posters · #459 real TalkBack / Switch Access pass · #460 ATF checks in instrumented tests · #461 upstream the audit fixes (branch is local, unpushed) · #462 on-device ML Kit experiment, unverified on a device. All under EPIC 31b (#164) except #462.
