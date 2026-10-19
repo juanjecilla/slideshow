@@ -1,3 +1,33 @@
-  1  Muviss isn't responding
-  2  Close app, button, double tap to activate
-  3  Wait, button, double tap to activate
+  1  Spider-Man: Brand New Day, image
+  2  Spider-Man: Brand New Day
+  3  2026 · Movie · Science Fiction, Action · TMDB 8.4
+  4  Add to Library, button, double tap to activate
+  5  Add to favorites, button, double tap to activate
+  6  Add to list, button, double tap to activate
+  7  Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control. But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves - a powerful villain no one can even see.
+  8  Mark as watched, checkbox, double tap to activate
+  9  Where to watch
+ 10  Rent
+ 11  Amazon Video, image
+ 12  Apple TV Store, image
+ 13  Google Play Movies, image
+ 14  YouTube, image
+ 15  Fandango At Home, image
+ 16  Buy
+ 17  Amazon Video, image
+ 18  Apple TV Store, image
+ 19  Google Play Movies, image
+ 20  YouTube, image
+ 21  Fandango At Home, image
+ 22  Streaming data provided by JustWatch.
+ 23  More like this
+ 24  Spider-Man: No Way Home, button, double tap to activate
+ 25  The Amazing Spider-Man 2, button, double tap to activate
+ 26  Ant-Man and the Wasp: Quantumania, button, double tap to activate
+ 27  Captain America: Civil War, button, double tap to activate
+ 28  Back, button, double tap to activate
+ 29  Search, button, double tap to activate
+ 30  Library, button, double tap to activate
+ 31  Progress, button, double tap to activate
+ 32  Profile, button, double tap to activate
+ 33  Settings, button, double tap to activate

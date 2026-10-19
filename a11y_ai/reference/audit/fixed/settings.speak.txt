@@ -1,3 +1,24 @@
-  1  Muviss isn't responding
-  2  Close app, button, double tap to activate
-  3  Wait, button, double tap to activate
+  1  Settings
+  2  APPEARANCE
+  3  Theme
+  4  Light, checkbox, double tap to activate
+  5  Dark, checkbox, double tap to activate
+  6  System, checkbox, checked, double tap to activate
+  7  Notifications, Reminders for new episodes, checkbox, checked, double tap to activate
+  8  Notifications are turned off for Muviss in your device settings, so none will arrive.
+  9  Open settings, button, double tap to activate
+ 10  Animations, Motion and transitions across the app, checkbox, checked, double tap to activate
+ 11  CONTENT
+ 12  TMDB language, System default, button, double tap to activate
+ 13  Watch-provider region, United States, button, double tap to activate
+ 14  TRIAGE
+ 15  Fill your library, Sort titles quickly, button, double tap to activate
+ 16  Swipe controls, Four directions, button, double tap to activate
+ 17  Ask me again after, 1 week, button, double tap to activate
+ 18  Snoozed titles come back, Mixed in, button, double tap to activate
+ 19  Swipe animations, checkbox, checked, double tap to activate
+ 20  Search, button, double tap to activate
+ 21  Library, button, double tap to activate
+ 22  Progress, button, double tap to activate
+ 23  Profile, button, double tap to activate
+ 24  Settings

@@ -1,0 +1,3 @@
+core/designsystem/src/commonMain/kotlin/com/codingpit/muviss/core/designsystem/component/RatingBadge.kt:44: tint = Color(0xFFFFCB6B),
+core/designsystem/src/commonMain/kotlin/com/codingpit/muviss/core/designsystem/component/RatingBadge.kt:50: color = Color(0xFFFFCB6B),
+2 literal(s) outside theme files

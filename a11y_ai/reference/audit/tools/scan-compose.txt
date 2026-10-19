@@ -1,0 +1,12 @@
+error   null-desc-clickable blind     DetailScreen.kt:653  contentDescription = null,
+error   null-desc-clickable blind     SettingsScreen.kt:456  Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant, 
+error   null-desc-clickable blind     TriageScreen.kt:675  Icon(style.icon, contentDescription = null, tint = style.color)
+warning gesture-only        motor     RatingRow.kt:127  detectTapGestures { offset -> currentOnTapHalf(offset.x < size.width / 2f) }
+warning gesture-only        motor     ProfileCharts.kt:337  detectTapGestures { offset ->
+warning gesture-only        motor     SwipeDeck.kt:308  detectDragGestures(
+warning gesture-only        motor     SwipeDeck.kt:310  if (state.busy) return@detectDragGestures
+warning gesture-only        motor     SwipeDeck.kt:317  if (state.busy) return@detectDragGestures
+warning gesture-only        motor     SwipeDeck.kt:342  detectTapGestures(
+warning small-target        motor     SearchScreen.kt:164  IconButton(onClick = { onQueryChange("") }, modifier = Modifier.size(24.dp)) {
+
+427 file(s): 3 error, 7 warning, 0 info. A clean scan is not a pass.

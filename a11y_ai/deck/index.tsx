@@ -9,10 +9,15 @@ import { Me } from './scenes/02-Me';
 import { Hook } from './scenes/03-Hook';
 import { WhyNow } from './scenes/04-WhyNow';
 import { MapScene } from './scenes/05-Map';
-import { Backup, Blind, Cognitive, LowVision, Motor, ShiftLeft } from './scenes/06-Placeholders';
+import { Blind } from './scenes/06-Blind';
+import { LowVision } from './scenes/07-LowVision';
+import { Cognitive } from './scenes/08-Cognitive';
+import { Motor } from './scenes/09-Motor';
+import { ShiftLeft } from './scenes/10-ShiftLeft';
 import { Limits } from './scenes/11-Limits';
 import { Close } from './scenes/12-Close';
 import { QA } from './scenes/13-QA';
+import { Backup } from './scenes/14-Backup';
 
 /** Every layer of the stage, back to front. All stay mounted; each shows itself for its own scene. */
 function Stage() {

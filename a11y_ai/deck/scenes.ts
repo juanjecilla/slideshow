@@ -51,11 +51,58 @@ export const SCENES: SceneDef[] = [
       { name: 'toolkit', ref: 'D20', note: 'Preview only. QR at the end.' },
     ],
   },
-  { id: '06', title: 'BLIND', beats: [{ name: 'todo', ref: 'D6' }] },
-  { id: '07', title: 'LOW VISION', beats: [{ name: 'todo', ref: 'D6' }] },
-  { id: '08', title: 'COGNITIVE', beats: [{ name: 'todo', ref: 'D6' }] },
-  { id: '09', title: 'MOTOR', beats: [{ name: 'todo', ref: 'D6' }] },
-  { id: '10', title: 'SHIFT LEFT', beats: [{ name: 'todo', ref: 'D6' }] },
+  {
+    id: '06', title: 'BLIND',
+    beats: [
+      { name: 'intro', ref: 'D6', note: 'TalkBack reads the semantics tree, only that. Everything in this block comes from the audit on Muviss (docs/AUDIT.md).' },
+      { name: 'audit', ref: 'B1', note: 'tree_audit.py on the pre-#233 build: 4 unlabeled controls (search field, 2 settings switches, the watched checkbox). The cheap ones.' },
+      { name: 'listen', ref: 'B1', note: 'speak.py: what TalkBack says. «unlabeled» before, one merged label after (#238/#245). It is an approximation of TalkBack, say so.' },
+      { name: 'twice', ref: 'B2', note: 'No tool flagged this. Reading speak.py output as a user did. Fix: caption is visual only, the poster is the label (first attempt moved the label to the caption and left cut-off cards unlabeled: found on device).' },
+      { name: 'checkbox', ref: 'B3', note: 'A checkbox beside a clickable row: two controls for one thing, one with no label. Still on main when we audited.' },
+      { name: 'stack', ref: 'B4', note: 'The deck keeps the cards behind the top one in the tree. clearAndSetSemantics {} on the backing cards.' },
+      { name: 'describe', ref: 'R1.3', note: 'ML Kit GenAI Image Description, on the phone, beta. TODO: replace the dashed box with the real output captured on the Pixel (docs/RUNBOOK.md).' },
+      { name: 'limits', ref: 'R1.2', note: 'English only (R1.3), beta (R1.2). A model can describe what is not there: a person reads it before it ships.' },
+    ],
+  },
+  {
+    id: '07', title: 'LOW VISION',
+    beats: [
+      { name: 'intro', ref: 'D6' },
+      { name: 'screenshot', ref: 'L1', note: 'device-toggles font-scale 2.0, a screenshot. tree_audit.py reports 0 findings: the labels break mid-word and no script sees it. A person or a vision model does.' },
+      { name: 'fix', ref: 'L1', note: 'Cap the nav labels at 1.3×. Trade-off: those five labels stop following the user fully; the rest of the app does. Say it.' },
+      { name: 'grid', ref: 'L1', note: 'Same signal, grids: minimum column width scales with font scale (posterGridCells). 100% vs 200%.' },
+      { name: 'contrast', ref: 'L2', note: 'contrast-check literals: amber text on a translucent black over a poster. The background is the image: a script cannot judge it. Do not invent a ratio.' },
+    ],
+  },
+  {
+    id: '08', title: 'COGNITIVE',
+    beats: [
+      { name: 'intro', ref: 'D6' },
+      { name: 'wall', ref: 'C1', note: 'One 60–70-word paragraph.' },
+      { name: 'shorten', ref: 'D11', note: 'Rewriting SHORTEN, on the phone. TODO: replace the dashed box with the real capture. The button is "Short & simple": ML Kit has no easy-read style (R1.5), say so if asked.' },
+      { name: 'languages', ref: 'R1.4', note: 'Image description: English. Summarization: en/ja/ko. Rewriting: 7 languages incl. Spanish. All beta.' },
+    ],
+  },
+  {
+    id: '09', title: 'MOTOR',
+    beats: [
+      { name: 'intro', ref: 'D6' },
+      { name: 'scan', ref: 'M1', note: 'scan_compose.py flags IconButton(Modifier.size(24.dp)).' },
+      { name: 'test', ref: 'M1', note: 'assertTouchHeightIsEqualTo(48.dp): the agent writes the test before touching the code.' },
+      { name: 'passes', ref: 'M1', note: 'It passes on the ORIGINAL code: Compose enlarges touch bounds to 48 dp. The scan was wrong. We nearly shipped a non-fix.' },
+      { name: 'wrong', ref: 'M2', note: 'The agent also reported "Watching has no button" and "no custom actions": the code says every verdict has a button. Caught by reading the KDoc. Lesson: verify, then fix.' },
+    ],
+  },
+  {
+    id: '10', title: 'SHIFT LEFT',
+    beats: [
+      { name: 'intro', ref: 'D6' },
+      { name: 'lint', ref: 'S1', note: 'Muviss runs Lint with a11y as errors in CI: good. No ATF anywhere.' },
+      { name: 'atf', ref: 'R3.1', note: 'ui-test-junit4-accessibility, Compose 1.8+, Android only. Complements TalkBack, never replaces it.' },
+      { name: 'rules', ref: 'D20', note: 'snippets/AGENTS-a11y.md in hephestus: the rules the next agent reads.' },
+      { name: 'review', ref: 'D20', note: 'a11y-pr-review: added lines only. Stretch skill: say "scan_diff.sh works, the review checklist is the model\'s job".' },
+    ],
+  },
   {
     id: '11', title: 'LIMITS',
     beats: [
@@ -76,5 +123,11 @@ export const SCENES: SceneDef[] = [
     ],
   },
   { id: '13', title: 'Q&A', beats: [{ name: 'questions' }] },
-  { id: '14', title: 'BACKUP', beats: [{ name: 'todo', ref: 'D13', note: 'Hidden: reach it from the overview (O). Real captures and clips only.' }] },
+  {
+    id: '14', title: 'BACKUP',
+    beats: [
+      { name: 'captures', ref: 'D13', note: 'Hidden: reach it from the overview (O). Real device captures: 200% nav before/after, grid.' },
+      { name: 'tools', ref: 'D13', note: 'The tool outputs as they ran on the audit day.' },
+    ],
+  },
 ];

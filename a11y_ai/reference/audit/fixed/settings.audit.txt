@@ -1,2 +1,4 @@
+warning tiny-text       lowvision 138x4dp "Swipe animations"  TextView [42,2141][405,2151]
+info    clipped         motor     379x8dp  View [42,2130][1038,2151]
 
-0 finding(s), 0 error(s). A clean report is not a pass: see 'Limits' in --help.
+2 finding(s), 0 error(s). A clean report is not a pass: see 'Limits' in --help.
