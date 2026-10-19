@@ -25,6 +25,20 @@ The demo runs on a **real Pixel with Gemini Nano** (AICore). The emulator cannot
 
 Check AICore/ML Kit on the Pixel **before anything else**: `adb shell pm list packages | grep aicore`, then open the detail screen of any movie.
 
+## Live demo script (what to do, what to expect, what to fall back to)
+
+Two builds sit side by side on the Pixel: `com.codingpit.muviss.a11ybroken` (branch `demo/a11y-broken`, before the fixes) and `com.codingpit.muviss.a11ytalk` (branch `talk/a11y-ai-jerez26`). Build both the day before (`./gradlew :app:androidApp:assembleDebug` in each worktree, then `adb install -r`). In a terminal, from the hephestus clone: `export H=~/Projects/hephestus/skills`.
+
+| Beat | You do | You should see | If it fails |
+|---|---|---|---|
+| **06.2 audit** | open `.a11ybroken` on the Pixel; **dismiss any system dialog**; in the terminal: `$H/a11y-audit/scripts/dump_tree.sh out settings` then `python3 $H/a11y-audit/scripts/tree_audit.py out/settings.xml --density $(cat out/settings.density)`. With Claude Code: *"Use the a11y-audit skill on the running app. Dump the search, settings and a movie-detail screen and report findings by person."* | settings: 2 × `unlabeled 52x48dp`; search: `EditText unlabeled`; detail: `CheckBox unlabeled` | the slide already shows the outputs (06.2); overview → 14 |
+| **06.3 listen** | `python3 $H/talkback-speak/scripts/speak.py out/settings.xml` | `«unlabeled», checkbox, checked, double tap to activate` | slide 06.3 |
+| **07.2 200 %** | `.a11ytalk` open on Search; `$H/device-toggles/scripts/a11y-device.sh font-scale 2.0`, wait 8 s, `… shot out/200.png` | bottom bar whole words on `.a11ytalk`; open `.a11ybroken` (or the main build) to show `Searc/h`. **Then `reset`** | slides 07.2–07.3 (real captures) |
+| **06.7 / 08.3 on-device** | `.a11ytalk` → a movie → **Describe image** / **Short & simple** | the answer under the buttons, labelled "on your device" | the dashed boxes: replace them with captures before the day. Buttons missing = no AICore: say so, move on |
+| **09.2–09.4 motor** | no device: the scan, then the green test on the slides | — | — |
+
+Pre-flight (10 min before): both apps installed, `device-toggles reset`, TalkBack off, animations on, Do Not Disturb on (a notification dialog during a `uiautomator dump` breaks the audit: it showed up as `Muviss isn't responding` once), the terminal font at 24 pt+.
+
 ## What to capture on the Pixel (the two dashed boxes in the deck)
 
 1. **06.7 "A picture nobody described"** → `Describe image` on a detail backdrop. Screenshot + the text it returns (English).
