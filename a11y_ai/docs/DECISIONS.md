@@ -68,3 +68,30 @@ Hoy es 19 oct y quedan 33 días. app_functions se publica el 7 nov, así que el 
 - Muviss: `./gradlew :app:androidApp:assembleDebug lintDebug` + tests en verde en ambas ramas. Demo completa en Pixel con TalkBack. ML Kit verificado en el dispositivo.
 - hephestus: instalar como plugin en Claude Code y ejecutar `a11y-audit` sobre Muviss en limpio.
 - CI de Charlas en verde en el PR; ensayo con cronómetro ≤45'.
+
+## Revisions made while building (2026-10-19)
+
+| # | What changed | Why |
+|---|---|---|
+| R-1 | The Muviss talk branches install as `com.codingpit.muviss.a11ytalk` (`applicationIdSuffix`) | `adb install -r` of the pre-#233 build **failed silently** (`INSTALL_FAILED_VERSION_DOWNGRADE`) against the author's own build: the first audit run was on the wrong app. A second emulator would not boot (segfault, exit 139). Side-by-side install fixed both |
+| R-2 | Motor scene (09) became "verify before you fix" | The scan's only motor finding (24 dp button) is a false positive: Compose already makes the touch area 48 dp, proved with a test that passes on the original code. The agent's "Watching has no button" and "no custom actions" were also wrong |
+| R-3 | "Easy read" → **Short & simple** (Rewriting SHORTEN) | ML Kit has no easy-read style (R1.5) and Summarization has no Spanish (R1.4) |
+| R-4 | A first poster fix moved the label to the caption and **left cut-off cards unlabeled** on device | Found by re-running the audit on the fixed build. Final fix: the poster stays the label, the caption is visual only |
+| R-5 | A `selected` semantic on the poster made TalkBack read it as a checkbox | Found on device; removed |
+| R-6 | `T` (theme) and `aria-live` live in `deck/a11y.tsx`, not in the beatdeck fork | They are `Stage` components; the engine is untouched, so `npm run upgrade` cannot undo them |
+| R-7 | hephestus `small-target` is a warning; test API in the skill docs corrected | `assertTouchHeightIsAtLeast` does not exist (only `…IsEqualTo`); found by compiling the snippet |
+| R-8 | On-device features are **unverified on a real device** | The emulator has no Gemini Nano: the buttons correctly stay hidden there. Only the UI (with a fake model), the compile and the no-crash path are verified |
+
+## beatdeck accessibility: what the engine does and does not give (measured with `tools/check-a11y.mjs`)
+
+Measured on the production build, 2026-10-19. Candidate fork issues for `juanjecilla/beatdeck`:
+
+- **No semantic structure in the stage**: 0 landmarks, 1 heading (ours), 0 focusable elements. A screen reader user gets the live region (ours) and nothing else. Real fix: landmarks, a heading per scene, an accessible beat list.
+- **The stage is a fixed 1920×1080 canvas scaled to fit**: browser zoom and text-size settings do not reflow it (WCAG 1.4.4 / 1.4.10). Inherent to the model; document it for people who open the deck on a phone.
+- **The overview, presenter and debug UI stay dark** whatever the theme: the theme switch only affects the stage.
+- **No skip link, no visible focus targets**: everything is keyboard shortcuts. They work (checked: arrows, T, O, P, F, B), but they are undiscoverable without the RUNBOOK.
+- **Reduced motion is honoured** by the engine (`.reduced-motion`): checked.
+- **Images need `alt`**: the engine's `QR` has `role="img"` and an `aria-label`; our screenshots carry `alt` (checked: 0 images without it).
+
+What the deck adds (verified): `lang="en"`, an announcement per beat from `deck/sr.ts` (never the speaker notes), `T` to switch theme, AA contrast in both themes for every text token (`tools/contrast.mjs`).
+What it does **not** claim: it has not been tried with a real screen reader (VoiceOver/NVDA): the live region's content is checked, not how it is spoken.

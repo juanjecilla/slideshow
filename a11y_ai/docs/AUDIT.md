@@ -91,3 +91,21 @@ Cut rule: keep what has a *visible before/after* and a *distinct AI step*. ★ =
 - UiAutomator is not TalkBack: order and roles differ (B6).
 - **The agent was wrong too:** it reported "Watching has no button" and "no `customActions`" as motor findings (M2, M3) after reading one movie card. The code says every verdict has a button. Caught by reading the KDoc; kept here on purpose.
 - On-device descriptions: English only (R1.3), beta (R1.2).
+
+## Re-audit on the fixed build (device, 2026-10-19)
+
+`talk/a11y-ai-jerez26` at the "poster keeps its description" commit plus the on-device and grid commits, same driver, all screens (search, library, progress, profile, settings, posters, detail, triage, 200 % text): **tree audit: 0 errors on every screen.** Evidence: `reference/audit/fixed/`.
+
+| # | Result on device |
+|---|---|
+| B1 | ✅ settings switch: one merged label |
+| B2 | ✅ `Spider-Man: Brand New Day, button` once (was twice) |
+| B3 | ✅ `Mark as watched, checkbox` once (was a button + an unlabeled checkbox) |
+| B4 | ✅ the stack's back cards are gone from `speak.py` |
+| L1 | ✅ `Search / Library / Progress / Profile / Settings` whole at 200 % (screenshot) |
+| L-grid | ✅ one wide card at 200 % (screenshot `results-2x.png`) |
+| B5, C1 (on-device) | ⚠️ **not verified on a real device**: the emulator has no Gemini Nano, the buttons are correctly hidden. Needs the Pixel (RUNBOOK) |
+| B6 | ❓ still needs a real TalkBack pass |
+| L2 | 🔍 not changed: needs the poster under the badge |
+
+**Two of my own fixes were wrong the first time** and only the device showed it (docs/DECISIONS.md R-4, R-5): the label moved to a caption that scrolls out of view, and a `selected` state that read as a checkbox. The first "after" run was also junk: an ANR dialog (`Muviss isn't responding`) had replaced the app in every dump, and the tool reported 0 errors. Check what you audited before you trust the count.

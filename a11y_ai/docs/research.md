@@ -54,6 +54,20 @@ Estado: ✅ verificado en fuente primaria · ⚠️ fuente secundaria · ❓ pen
 | R5.3 | Ilíada 18.371–379: trípodes con ruedas que se mueven por sí solos hasta la asamblea de los dioses. Wikipedia ofrece una versión con ruedas de bronce y otra de oro; verificar el texto de Homero antes de citar el material. | ⚠️ | idem |
 | R5.4 | "Se hizo piernas mecánicas autopropulsadas": **no usar**, parece un añadido moderno. | ✗ | — |
 
+## R6 · Verified while building (2026-10-19)
+
+| id | Hecho | Estado |
+|---|---|---|
+| R6.1 | ML Kit GenAI 1.0.0-beta1 API (from the AAR, `javap`): `ImageDescription.getClient(ImageDescriberOptions.builder(ctx).build())`, `ImageDescriptionRequest.builder(bitmap)`, `runInference(req).await().description`; `Rewriting.getClient(RewriterOptions.builder(ctx).setOutputType(SHORTEN).setLanguage(…))`, `RewritingRequest.builder(text)`, `.results.first().text`; `FeatureStatus.{UNAVAILABLE,DOWNLOADABLE,DOWNLOADING,AVAILABLE}`; `DownloadCallback` has 4 methods; futures are Guava `ListenableFuture`. The docs pages show no imports | ✅ |
+| R6.2 | Both artifacts declare **minSdk 26**; an app with minSdk 24 needs `tools:overrideLibrary="com.google.mlkit.genai.imagedescription,com.google.mlkit.genai.rewriting,com.google.mlkit.genai.common"` and a runtime `SDK_INT` guard | ✅ built and run |
+| R6.3 | On an API 36 Google Play emulator, ML Kit reports the features unavailable (no AICore/Nano): the buttons stay hidden, no crash | ✅ |
+| R6.4 | **Compose enlarges touch bounds of clickable elements to 48 dp** even when the layout is smaller (`IconButton(Modifier.size(24.dp))`): a test asserting `assertTouchHeightIsEqualTo(48.dp)` passes on the original code | ✅ test |
+| R6.5 | Compose UI Test 1.12 has `assertTouchHeightIsEqualTo`, `assertTouchWidthIsEqualTo`, `assertHeightIsAtLeast`; it has **no** `assertTouchHeightIsAtLeast` | ✅ `javap` |
+| R6.6 | Material3 `NavigationSuiteScaffold` labels break mid-word at 200 % font scale on a 1080×2424 / 420 dpi phone; capping the label scale at 1.3× keeps whole words | ✅ device |
+| R6.7 | A semantic `selected` on a Role.Button card is exposed as checkable (read as a checkbox by TalkBack-like output) | ✅ device |
+| R6.8 | A caption cut off by the viewport drops out of a clickable's merged label (the card reads as unlabeled) | ✅ device |
+| R6.9 | `uiautomator dump` returns `null root node` while a window animates and shows system dialogs (ANR) as the whole tree: an audit must dismiss them and retry | ✅ |
+
 ## Pendientes
 - Leer la lista oficial de dispositivos de AICore y probar `checkFeatureStatus()` en el Pixel.
 - Texto consolidado de la Ley 11/2023 (BOE) y EUR-Lex para la Directiva.
