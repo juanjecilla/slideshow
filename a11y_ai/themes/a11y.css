@@ -1,0 +1,54 @@
+/*
+ * a11y talk · dark and light themes. Import after neutral.css (fonts, type roles, motion).
+ * The theme is chosen by <html data-theme="dark|light">, set by deck/a11y.tsx (key T, prefers-color-scheme).
+ * Every text token is checked against bg and surface at ≥ 4.5:1 (WCAG AA): node tools/contrast.mjs
+ * One colour per person, used consistently through the talk: blind, lowvision, cognitive, motor.
+ */
+:root,
+:root[data-theme='dark'] {
+  --bg: #0b0b0c;
+  --surface: #17171a;
+  --ink: #f2f2f2;
+  --ink-2: rgba(242, 242, 242, 0.72);
+  --ink-3: rgba(242, 242, 242, 0.6);
+  --hair: rgba(255, 255, 255, 0.16);
+  --hair-strong: rgba(255, 255, 255, 0.26);
+
+  --accent: #8ab4ff;
+  --accent-strong: #5b8cff;
+  --blind: #c8aeff;
+  --lowvision: #ffd166;
+  --cognitive: #5fd8c0;
+  --motor: #ff9f80;
+  --ok: #4fdba0;
+  --warning: #ffc94d;
+  --fault: #ff7b72;
+
+  --op-accent: #8ab4ff;
+  --op-accent-strong: #5b8cff;
+}
+
+:root[data-theme='light'] {
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --ink: #101012;
+  --ink-2: rgba(16, 16, 18, 0.74);
+  --ink-3: rgba(16, 16, 18, 0.64);
+  --hair: rgba(0, 0, 0, 0.16);
+  --hair-strong: rgba(0, 0, 0, 0.28);
+
+  --accent: #1d4fc4;
+  --accent-strong: #163f9e;
+  --blind: #5a32b4;
+  --lowvision: #7a4f00;
+  --cognitive: #0a6656;
+  --motor: #ad3a12;
+  --ok: #0b6e44;
+  --warning: #7a5200;
+  --fault: #b3261e;
+
+  /* the operator UI (overview, presenter, debug) stays dark */
+  --op-accent: #8ab4ff;
+  --op-accent-strong: #5b8cff;
+}
+

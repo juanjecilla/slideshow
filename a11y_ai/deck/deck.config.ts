@@ -7,8 +7,16 @@ export const config = {
   /** One line under the title. Empty = none. */
   subtitle: 'From AI-driven audits to on-device inference',
   author: 'Juanje Cilla',
-  /** Destination of the QR on the closing screen. "TODO" = no QR (the presenter view warns). Never guess it. */
-  qrUrl: 'TODO',
-  /** Shown under the QR, e.g. "example.com/talk". */
-  qrLabel: '',
+  role: 'Software Engineer · Revolut',
+  event: 'DevFest Jerez de la Frontera 2026 · 21 Nov 2026',
+  links: {
+    github: 'github.com/juanjecilla',
+    linkedin: 'linkedin.com/in/juanje-cilla',
+    substack: 'codingpit.substack.com',
+    youtube: 'youtube.com/@Welcometolasecta',
+  },
+  /** Destination of the QR on the closing screen: the toolkit repo. Private until 2026-11-21 (see docs/RELEASE-CHECKLIST). */
+  qrUrl: 'https://github.com/juanjecilla/hephestus',
+  /** Shown under the QR. */
+  qrLabel: 'github.com/juanjecilla/hephestus',
 } as const;

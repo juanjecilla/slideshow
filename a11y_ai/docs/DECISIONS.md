@@ -16,7 +16,8 @@ Nueva charla para **DevFest Jerez de la Frontera 2026** (21 nov 2026, Coworking 
 | D8 | Auditoría con varias herramientas, toda guiada por IA (código, `uiautomator dump`, lint/Scanner/UI Check, pase TalkBack), sobre main y sobre pre-#233 |
 | D9 | Claude Code como orquestador (skills + adb + MCP). Gemini en Android Studio (agent mode, UI Check, Journeys/Testing Agent) como vía oficial. Mensaje: no depende de un vendor |
 | D10 | ML Kit GenAI (Gemini Nano): Image Description, Summarization y Rewriting, en `androidMain` con expect/actual y fallback no-op. Gemma/MediaPipe solo documentado. Solo para la charla |
-| D11 | UI adaptativa: (a) señales del sistema (TalkBack/Switch, fontScale → pasar de grid a lista, Triage swipe → botones/customActions, reduce motion, alto contraste); (b) toggle "Easy read" en la sinopsis |
+| D11 | UI adaptativa: (a) señales del sistema (TalkBack/Switch, fontScale → pasar de grid a lista, Triage swipe → botones/customActions, reduce motion, alto contraste); (b) toggle "Easy read" en la sinopsis. **Ajuste tras research (R1.4, R1.5):** Summarization no soporta ES y Rewriting no tiene estilo de lectura fácil → se llama "Short & simple" y usa Rewriting SHORTEN/REPHRASE (ES/EN) o Summarization (solo EN) |
+| D10b | Image Description solo en inglés (R1.3): la demo en vivo es en EN; idea a validar, encadenar con ML Kit Translation. Todo es Beta (R1.2) |
 | D12 | Incluir "por qué ahora" (EAA, vigente desde 28 jun 2025, + cifras) y "límites de la IA" (alucina, pasar lint ≠ accesible, validar con TalkBack/usuarios reales) |
 | D13 | Demos en vivo (Pixel + scrcpy) + escena Backup con capturas/vídeos reales |
 | D14 | Charla nueva. Se reutilizan 2–4 beats de contexto de `a11y/slides.md`. `a11y/` no se toca |
@@ -36,6 +37,8 @@ Los ficheros de `src/beatdeck/` se identifican por hash en `.beatdeck.json`, y `
 - **Campo nuevo por beat** `sr` (en el fork, tipos de `scenes.ts`): un resumen corto de lo que se ve en pantalla. **El `aria-live` lee `sr` y nunca `note`**, porque `note` son las notas privadas del ponente.
 - **Región `aria-live`** + `lang` + gestión del foco → fork.
 - **Tecla de tema `T`** → fork. Está libre: hoy el motor usa flechas, PageUp/Down, espacio, Home/End, F, O, P, B/., Esc (`navigation.ts:66-92`). Los temas dark/light se definen en `deck/themes/`.
+
+**Revisión (implementación del esqueleto, 19 oct):** la tecla `T` (`ThemeToggle`) y la región `aria-live` (`LiveRegion`) viven en `deck/a11y.tsx`, no en el motor: son componentes del `Stage` y no tocan `src/beatdeck/`. Los resúmenes para lectores de pantalla están en `deck/sr.ts` (clave `<id escena>.<nombre beat>`), separados de `note`, así que las notas privadas nunca se anuncian. El fork `juanjecilla/beatdeck` queda solo para las mejoras de a11y del propio motor (documentadas aquí cuando las auditemos). Temas en `themes/a11y.css`; `node tools/contrast.mjs` comprueba AA (4.5:1) de todos los tokens de texto en ambos temas.
 
 ## Alcance para el 21 nov
 - **Imprescindible**: deck completo EN; skills `a11y-audit`, `device-toggles`, `talkback-speak`, `contrast-check` y `a11y-fix`; ML Kit Image Description y Easy read (Summarization o Rewriting); UI adaptativa a fontScale; Backup; landing.
