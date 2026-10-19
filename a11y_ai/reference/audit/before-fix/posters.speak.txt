@@ -1,14 +1,33 @@
-  1  How triage works
-  2  Swipe the card, tap a button, or use the arrow keys. Z undoes, S snoozes. Tap a card to see its details.
-  3  Skip · Swipe left
-  4  Not for you. Nothing is saved, and it won't come up again.
-  5  Later · Swipe right
-  6  Saved to your library, not started.
-  7  Watching · Swipe down
-  8  Saved and marked as started, so it shows up in Progress.
-  9  Caught up / Watched · Swipe up
- 10  Saved with every aired episode ticked — or, for a film, marked watched.
- 11  Snooze · Button on the card, long press, or S
- 12  Not a decision at all — nothing is saved and we ask again later.
- 13  Watching only applies to TV — a film is never partway through.
- 14  Got it, button, double tap to activate
+  1  Search movies & TV, edit box, double tap to activate
+  2  Action, button, double tap to activate
+  3  Adventure, button, double tap to activate
+  4  Animation, button, double tap to activate
+  5  Comedy, button, double tap to activate
+  6  TV genres
+  7  Action & Adventure, button, double tap to activate
+  8  Animation, button, double tap to activate
+  9  Comedy, button, double tap to activate
+ 10  «unlabeled», button, double tap to activate
+ 11  Popular movies
+ 12  Spider-Man: Brand New Day, button, double tap to activate
+ 13  Spider-Man: Brand New Day
+ 14  Hope, button, double tap to activate
+ 15  Hope
+ 16  Matchbox the Movie, button, double tap to activate
+ 17  Matchbox the Movie
+ 18  Insidious: Out of the Further, button, double tap to activate
+ 19  Insidious: Out of the Further
+ 20  Popular TV
+ 21  Come Home Love: Lo and Behold, button, double tap to activate
+ 22  Come Home Love: Lo and Behold
+ 23  Law & Order: Special Victims Unit, button, double tap to activate
+ 24  Law & Order: Special Victims Unit
+ 25  Law & Order, button, double tap to activate
+ 26  Law & Order
+ 27  The Simpsons, button, double tap to activate
+ 28  The Simpsons
+ 29  Search
+ 30  Library, button, double tap to activate
+ 31  Progress, button, double tap to activate
+ 32  Profile, button, double tap to activate
+ 33  Settings, button, double tap to activate
