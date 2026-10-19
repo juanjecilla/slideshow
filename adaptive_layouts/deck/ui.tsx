@@ -1,4 +1,4 @@
-import { Reveal, Terminal, useScene, type TermLine } from 'beatdeck';
+import { flags, reducedMotion, Reveal, Terminal, useScene, type TermLine } from 'beatdeck';
 
 /** The scene's beat predicates, so each scene reads as a list of beats. */
 export function useBeat() {
@@ -95,12 +95,14 @@ export function Src({ on, out, x = 150, y, text }: { on: boolean; out?: boolean;
 export function Capture({ on, out, x, y, w, h, src, video, label, todo }: {
   on: boolean; out?: boolean; x: number; y: number; w: number; h: number; src?: string; video?: boolean; label: string; todo: string;
 }) {
+  // Verify/screenshots (`?capture=1`) and reduced motion get the first frame, not a playing clip.
+  const still = flags.capture || reducedMotion.get();
   return (
     <Reveal on={on} out={out} x={x} y={y}>
       <figure style={{ margin: 0 }}>
         {src ? (
           video ? (
-            <video src={src} width={w} height={h} muted loop playsInline autoPlay preload="auto" aria-label={label}
+            <video src={src} width={w} height={h} muted loop playsInline autoPlay={!still} preload="auto" aria-label={label}
               style={{ display: 'block', border: '3px solid var(--ink)', background: 'var(--surface)' }} />
           ) : (
             <img src={src} width={w} height={h} alt={label}

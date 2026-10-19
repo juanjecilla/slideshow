@@ -1,5 +1,5 @@
 import { Scene } from 'beatdeck';
-import { CAP } from '../assets';
+import { BOX, CAP } from '../assets';
 import { CODE, SRC } from '../code';
 import { DOCS } from '../docs-code';
 import { Bullets, Capture, Eyebrow, Intertitle, Line, Mono, Say, Src, useBeat, Western } from '../ui';
@@ -65,8 +65,8 @@ function BuenoWsc_() {
       <Src on={at(9)} out={gone(9)} y={640} text={SRC.wscWhen} />
 
       {/* 4.11 captures */}
-      <Capture on={at(10)} out={gone(10)} x={150} y={170} w={700} h={740} src={CAP.railCompact} label="Compact: barra inferior" todo="Muviss en ancho compact (< 600 dp), con la barra de navegación abajo." />
-      <Capture on={at(10)} out={gone(10)} x={900} y={170} w={870} h={740} src={CAP.railExpanded} label="Expanded: rail" todo="Muviss en ancho expanded, con el rail a la izquierda." />
+      <Capture on={at(10)} out={gone(10)} x={150} y={170} w={BOX.compact.w} h={BOX.compact.h} src={CAP.railCompact} label="Compact: barra inferior" todo="Muviss en ancho compact (< 600 dp), con la barra de navegación abajo." />
+      <Capture on={at(10)} out={gone(10)} x={654} y={170} w={BOX.expanded.w} h={BOX.expanded.h} src={CAP.railExpanded} label="Expanded: rail" todo="Muviss en ancho expanded, con el rail a la izquierda." />
 
       {/* 4.12 why */}
       <Eyebrow on={at(11)} out={gone(11)} text="Muviss · por qué" />

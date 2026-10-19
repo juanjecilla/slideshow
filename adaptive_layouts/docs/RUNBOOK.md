@@ -37,31 +37,33 @@ No automatic beats: everything waits for the click.
 
 The deck holds clips of Muviss desktop, so the demo works with no live app (D8). If you do it live:
 
-1. In `~/Projects/CodingPit/Muviss`: `./gradlew :app:desktopApp:run` once beforehand, so the build is cached.
+1. Run the app from a checkout of Muviss `main`: `./gradlew :app:desktopApp:run` once beforehand, so the build is cached.
+   **On stream it would show your real library** (it lives in `~/Library/Application Support/Muviss`). For a live demo use the
+   isolated data directory of the recipe below (`-Duser.home=…`), or accept showing it.
 2. The desktop window opens at 1100×720 dp and remembers its size. Resize by dragging the edge: below 600 dp the
    rail becomes a bottom bar; Detail goes to two columns from 840 dp (R22).
 3. Share the app window, switch back to the stage and press → to continue. If the live run hesitates, press
    **→** and play the clip: they show the same four things (bar ↔ rail, Detail, grid, shortcuts).
 4. Backup full clip: 10.1.
 
-## Capturing the missing material (TODO before the talk)
+## How the Muviss captures and clips were made
 
-The captures and clips are not in the deck yet: the stage shows a dashed TODO box where they go (`deck/assets.ts`).
+Done on 2026-10-20 from Muviss `main` (`2d2c7e40`), in `deck/assets/muviss-*.png|mp4`, wired in `deck/assets.ts`.
+Redo them if Muviss's UI changes:
 
-| Slot (`CAP.…`) | Beat | What to capture |
-| --- | --- | --- |
-| `railCompact` | 4.11 | Muviss, width < 600 dp, bottom bar |
-| `railExpanded` | 4.11 | Muviss, width ≥ 600 dp, rail |
-| `detailCompact` / `detailExpanded` | 6.10 | Detail of a title, < 840 dp and ≥ 840 dp |
-| `videoRail` | 8.2 | window from wide to narrow |
-| `videoDetail` | 8.3 | Detail crossing 840 dp |
-| `videoGrid` | 8.4 | a `GridCells.Adaptive` screen while resizing |
-| `videoKeys` | 8.5 | View menu and shortcuts |
-| `videoFull` | 10.1 | the whole demo, in one take |
+1. A throwaway worktree of Muviss `main` (`git worktree add --detach ../muviss-wt-talk origin/main`) with a `local.properties`
+   holding only `sdk.dir`, `TMDB_API_KEY` and `SYNC_ENABLED=false`: no sync keys, so no personal data.
+2. In that worktree, `jvmArgs += listOf("-Duser.home=/tmp/muviss-demo-home")` inside `compose.desktop.application` of
+   `app/desktopApp/build.gradle.kts`, so the app writes to an empty data directory, never the real library.
+3. `./gradlew :app:desktopApp:run`, then drive it with `tools/muviss_cap.py` (macOS; needs Accessibility and Screen
+   Recording for the terminal). It sets the window size, captures one PNG per width and composes the clip on a neutral
+   canvas with ffmpeg, so the desktop behind the window never appears. Clicks use real mouse events
+   (`tools/muviss_clk.js`): System Events' own `click` stopped working after several resizes.
+4. Window sizes: 1100×720 pt expanded, 480×800 pt compact (480 is the app's minimum width). Widths 1100 → 480 for the rail
+   and grid clips, 1100 → 700 for the detail clip (it crosses 840 dp of content width).
+5. `npm run build && npm run verify`.
 
-Run Muviss desktop (`:app:desktopApp:run`), record the window (macOS: ⇧⌘5), export MP4 H.264, no audio, ≤ 10 s
-each. Put the files in `deck/assets/`, import them in `deck/assets.ts` and replace the `undefined`. Captures are
-PNG at 2×. Then `npm run build && npm run verify`.
+Posters and data are TMDB's (credit on beat 1.7).
 
 ## If something goes wrong
 

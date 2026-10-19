@@ -1,5 +1,5 @@
 import { Scene } from 'beatdeck';
-import { CAP } from '../assets';
+import { BOX, CAP } from '../assets';
 import { Capture, Eyebrow, Line, Mono, useBeat } from '../ui';
 
 const CLASSES = [
@@ -24,7 +24,7 @@ function Backup_() {
   return (
     <>
       {/* 10.1 */}
-      <Capture on={at(0)} out={gone(0)} x={150} y={150} w={1500} h={800} src={CAP.videoFull} video label="Respaldo de la demo completa" todo="Vídeo completo de la demo, por si el directo falla." />
+      <Capture on={at(0)} out={gone(0)} x={349} y={140} w={BOX.clip.w} h={BOX.clip.h} src={CAP.videoFull} video label="Respaldo de la demo completa" todo="Vídeo completo de la demo, por si el directo falla." />
 
       {/* 10.2 */}
       <Eyebrow on={at(1)} out={gone(1)} text="Window size classes · ancho" />

@@ -1,5 +1,5 @@
 import { Scene } from 'beatdeck';
-import { CAP } from '../assets';
+import { BOX, CAP } from '../assets';
 import { CODE, SRC } from '../code';
 import { DOCS } from '../docs-code';
 import { Bullets, Capture, Eyebrow, Line, Mono, Say, Src, useBeat, Western } from '../ui';
@@ -48,8 +48,8 @@ function BuenoM3_() {
       <Src on={at(8)} out={gone(8)} y={840} text={`${SRC.detailBp} · ${SRC.detailIf}`} />
 
       {/* 6.10 */}
-      <Capture on={at(9)} out={gone(9)} x={150} y={170} w={560} h={740} src={CAP.detailCompact} label="Compact: una columna" todo="El detalle de una serie en ancho compact." />
-      <Capture on={at(9)} out={gone(9)} x={760} y={170} w={1010} h={740} src={CAP.detailExpanded} label="Expanded: póster y texto, en dos columnas" todo="El detalle en ancho expanded (≥ 840 dp)." />
+      <Capture on={at(9)} out={gone(9)} x={150} y={170} w={BOX.compact.w} h={BOX.compact.h} src={CAP.detailCompact} label="Compact: una columna" todo="El detalle de una serie en ancho compact." />
+      <Capture on={at(9)} out={gone(9)} x={654} y={170} w={BOX.expanded.w} h={BOX.expanded.h} src={CAP.detailExpanded} label="Expanded: póster y texto, en dos columnas" todo="El detalle en ancho expanded (≥ 840 dp)." />
 
       {/* 6.11 grid */}
       <Eyebrow on={at(10)} out={gone(10)} text="Muviss · SearchScreen.kt" />

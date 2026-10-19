@@ -1,5 +1,5 @@
 import { Scene } from 'beatdeck';
-import { Bullets, Eyebrow, Line, Say, useBeat, Western } from '../ui';
+import { Bullets, Eyebrow, Line, Say, Src, useBeat, Western } from '../ui';
 
 function Open_() {
   const { here, b, at, gone, span } = useBeat();
@@ -34,6 +34,7 @@ function Open_() {
       <Western on={at(6)} out={gone(6)} text="Muviss" y={260} size={230} />
       <Line on={at(6)} out={gone(6)} text="Android · iOS (iPhone e iPad) · escritorio · web" y={620} size={58} />
       <Line on={at(6)} out={gone(6)} text="Todo el código que veréis es suyo." y={730} size={58} dim />
+      <Src on={at(6)} out={gone(6)} y={900} text="Datos y pósters de TMDB. Esta app usa la API de TMDB, pero TMDB no la respalda ni la certifica." />
 
       {/* 1.8 agenda */}
       <Eyebrow on={at(7)} text="Agenda" />

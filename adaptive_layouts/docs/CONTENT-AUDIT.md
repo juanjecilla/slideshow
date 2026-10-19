@@ -64,8 +64,8 @@ Nothing from the 29 slides is cut. Slide 2 is merged into 1.2 (duplicate). The o
 | Artefact | File | Used in | Rights / credit |
 | --- | --- | --- | --- |
 | Muviss code snippets | `deck/code.ts` (copied from Muviss, file:line in each) | scenes 4–7 | own code |
-| Muviss captures (compact / expanded) | `deck/assets/…` | 4.11, 6.10, … | own app — **TODO(capture)** |
-| Demo MP4s | `deck/assets/…` | scene 8 | own app — **TODO(capture)** |
+| Muviss captures (compact / expanded) | `deck/assets/muviss-*.png` | 4.11, 6.10 | own app; posters and data © TMDB, credit on 1.7 ("uses the TMDB API but is not endorsed or certified by TMDB") |
+| Demo clips (rail, detail, grid, keys, full) | `deck/assets/muviss-*.mp4` | scene 8, 10.1 | own app, taken from `main` `2d2c7e40` with an isolated data dir; frames composed on a neutral canvas (`tools/muviss_cap.py`) |
 | Source images (poster art, memes, Pixel promo, NiA screenshot) | `reference/source/media/` (git-ignored) | **none** | third party; not published (D14) |
 
 ## Open questions
