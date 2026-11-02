@@ -137,6 +137,7 @@ const BASE_SCENES: SceneDef[] = [
       { name: 'app cerrada', note: 'Detén la app a la fuerza y repite. Funciona igual. Luego: añade un ID desconocido para enseñar el error tipado y llama a clear sin confirmed.' },
       { name: 'pregunta un hueco', note: 'Que el público elija una hora, p. ej. las 18:15: la respuesta es el hueco por confirmar (un hueco real de la agenda, leída el 2026-11-02). Prueba también un ponente: busca con query "gema".' },
       { name: 'testing agent', ref: 'T4', note: 'Testing Agent (oficial, modo manual verificado en el Pixel el 2026-11-02): pestaña Debug, busca DevFest, abre searchTalks, rellena track=ai y after=15:00, Run: tarjetas con el resultado tipado. Se arranca con scripts/start-testing-agent.sh (hace falta duplicar la pantalla del móvil en el escenario). El modo LLM necesita una clave de Gemini: solo si la tienes.' },
+      { name: 'el agente en el móvil', note: 'Pantallas reales del Testing Agent oficial en el Pixel (sin barra de estado): el registro lista nuestras cuatro funciones; searchTalks tiene un formulario con un campo por parámetro; Run muestra tarjetas con el resultado tipado. La misma función y el mismo resultado que con adb. Si lo haces en directo, hay que duplicar la pantalla del móvil.' },
       { name: 'resumen', note: 'Lo que hemos visto: sin UI, sin red, tipado, con la app cerrada.' },
     ],
   },

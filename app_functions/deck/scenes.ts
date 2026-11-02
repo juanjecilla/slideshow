@@ -137,6 +137,7 @@ const BASE_SCENES: SceneDef[] = [
       { name: 'closed app', note: 'Force-stop the app and run again. Works the same. Then: add an unknown id to show the typed error, and clear without confirmed.' },
       { name: 'ask a slot', note: 'Let the audience pick a time, e.g. 18:15: the answer is the unconfirmed slot (a real gap in the agenda, read 2026-11-02). Also try a speaker: search with query "gema".' },
       { name: 'testing agent', ref: 'T4', note: 'Testing Agent (official, manual mode verified on the Pixel 2026-11-02): Debug tab, search DevFest, open searchTalks, fill track=ai and after=15:00, Run: typed result cards. Start it with scripts/start-testing-agent.sh (needs the phone mirrored on stage). The LLM mode needs a Gemini key: only if you have one.' },
+      { name: 'agent on the phone', note: 'Real screens of the official Testing Agent on the Pixel (status bar cropped out): the registry lists our four functions; searchTalks gets a form with one field per parameter; Run shows typed result cards. Same function, same result as adb. Needs the phone mirrored if you do it live.' },
       { name: 'recap', note: 'What we saw: no UI, no network, typed, closed app.' },
     ],
   },

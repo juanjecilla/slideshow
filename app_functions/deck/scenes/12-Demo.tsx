@@ -1,9 +1,12 @@
 import { Reveal, Scene, Terminal, useScene } from 'beatdeck';
 import { ADB_ADD, ADB_LIST, ADB_SEARCH, ADB_STOP } from '../code';
 import { A, Eyebrow, G, Meta, Statement } from '../ui';
+import agentFunctions from '../assets/agent-functions.png';
+import agentResult from '../assets/agent-result.png';
 
 const FNS = ['searchTalks', 'getFavourites', 'addToFavorites', 'clearFavorites'];
 const CHECKS = ['no UI', 'no network', 'typed', 'app closed'];
+const STEPS = ['find the app in the registry', 'open searchTalks', 'track = ai · after = 15:00', 'Run: a typed result'];
 
 function Demo_() {
   const { here, b } = useScene();
@@ -46,10 +49,29 @@ function Demo_() {
       ))}
       <Meta {...only(6)} y={880} size={26} delay={700}>github.com/android/appfunctions → agent/</Meta>
 
-      {/* 7 · recap */}
-      <Statement {...only(7)} y={190} size={104}>What we saw.</Statement>
+
+      {/* 7 · the agent on the phone: real screens, status bar cropped out */}
+      <Reveal {...only(7)} x={150} y={180} delay={150}>
+        <img src={agentFunctions} alt="" style={{ height: 800, border: '1px solid var(--hair-strong)', display: 'block' }} />
+      </Reveal>
+      <Reveal {...only(7)} x={620} y={180} delay={350}>
+        <img src={agentResult} alt="" style={{ height: 800, border: '1px solid var(--hair-strong)', display: 'block' }} />
+      </Reveal>
+      <Meta {...only(7)} x={1130} y={150} size={26} delay={200}>official · manual mode · on the phone</Meta>
+      {STEPS.map((t, i) => (
+        <Reveal key={t} {...only(7)} x={1130} y={260 + i * 130} delay={400 + i * 200}>
+          <div style={{ display: 'flex', gap: 24, alignItems: 'baseline', width: 700 }}>
+            <span className="t-meta" style={{ fontSize: 30, color: 'var(--accent)' }}>{i + 1}</span>
+            <span style={{ fontSize: 40, fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1.15 }}>{t}</span>
+          </div>
+        </Reveal>
+      ))}
+      <Statement {...only(7)} x={1130} y={820} size={64} delay={900}>Same function.<br />Same <G>typed</G> result.</Statement>
+
+      {/* 8 · recap */}
+      <Statement {...only(8)} y={190} size={104}>What we saw.</Statement>
       {CHECKS.map((c, i) => (
-        <Reveal key={c} {...only(7)} x={158} y={430 + i * 120} delay={250 + i * 180}>
+        <Reveal key={c} {...only(8)} x={158} y={430 + i * 120} delay={250 + i * 180}>
           <div style={{ display: 'flex', gap: 36, alignItems: 'baseline' }}>
             <span style={{ fontSize: 64, color: 'var(--accent)' }}>✓</span>
             <span className="t-statement" style={{ fontSize: 80 }}>{c}</span>
