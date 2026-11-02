@@ -1,14 +1,15 @@
-import { Reveal, Scene, Terminal, useScene } from 'beatdeck';
+import { Reveal, Scene, useScene } from 'beatdeck';
 import { CONFIRM, IDEMPOTENT, INPUT_GUARD, KDOC_BAD, KDOC_GOOD, STATE_RESULT, TYPES_BAD, TYPES_GOOD } from '../code';
 import { A, Eyebrow, G, Meta, Statement } from '../ui';
+import { CodeBlock, type CodeLine } from '../code-block';
 
 const TAGS = ['', 'secure', 'secure', 'deterministic', 'deterministic', 'unobtrusive', 'unobtrusive', 'schema design', 'schema design'];
 
 function Safe_() {
   const { here, b } = useScene();
   const only = (k: number) => ({ on: here && b === k, out: here && b > k });
-  const term = (k: number, lines: Parameters<typeof Terminal>[0]['lines'], x: number, y: number, size = 32) => (
-    <Reveal {...only(k)} x={x} y={y} delay={200}><Terminal prompt="" size={size} lines={lines} /></Reveal>
+  const term = (k: number, lines: (string | CodeLine)[], x: number, y: number, size = 30, file = 'BaseAgendaAppFunctionService.kt', right = 1790) => (
+    <Reveal {...only(k)} x={x} y={y} delay={200}><CodeBlock lang="kotlin" file={file} size={size} fit={{ x, y, right }} lines={lines} /></Reveal>
   );
   return (
     <>
@@ -30,13 +31,13 @@ function Safe_() {
 
       {/* 3 · types */}
       <Statement {...only(3)} y={190} size={104}>Ids, not <G>guesses.</G></Statement>
-      {term(3, TYPES_BAD, 150, 520, 30)}
-      {term(3, TYPES_GOOD, 1010, 520, 30)}
+      {term(3, TYPES_BAD, 150, 500, 28, 'before', 940)}
+      {term(3, TYPES_GOOD, 1000, 500, 28, 'after')}
 
       {/* 4 · idempotent */}
       <Statement {...only(4)} y={190} size={104}>Agents <G>retry.</G></Statement>
       <Meta {...only(4)} y={420} size={34} delay={200}>Same call twice, same state.</Meta>
-      {term(4, IDEMPOTENT, 150, 600, 40)}
+      {term(4, IDEMPOTENT, 150, 560, 36, 'agent')}
 
       {/* 5 · confirm */}
       <Statement {...only(5)} y={150} size={90}>Destructive? <G>Confirm first.</G></Statement>
@@ -44,17 +45,17 @@ function Safe_() {
 
       {/* 6 · state */}
       <Statement {...only(6)} y={190} size={104}>Return enough<br />to <G>tell the user.</G></Statement>
-      {term(6, STATE_RESULT, 150, 520, 30)}
+      {term(6, STATE_RESULT, 150, 480, 28, 'AgendaModels.kt')}
 
       {/* 7–8 · KDoc */}
       <Statement on={here && b >= 7} y={140} size={84}>The KDoc <G>is</G> the interface.</Statement>
       <Reveal {...only(7)} x={150} y={330}>
         <div className="t-meta" style={{ fontSize: 22, color: 'var(--fault)', marginBottom: 20 }}>vague</div>
-        <Terminal prompt="" size={30} lines={KDOC_BAD} />
+        <CodeBlock lang="kotlin" file="before" size={28} fit={{ x: 150, y: 385 }} lines={KDOC_BAD} />
       </Reveal>
       <Reveal on={here && b >= 8} x={150} y={290} delay={200}>
         <div className="t-meta" style={{ fontSize: 22, color: 'var(--accent)', marginBottom: 16 }}>written for a model</div>
-        <Terminal prompt="" size={25} lines={KDOC_GOOD} />
+        <CodeBlock lang="kotlin" file="after" size={24} fit={{ x: 150, y: 345 }} lines={KDOC_GOOD} />
       </Reveal>
     </>
   );

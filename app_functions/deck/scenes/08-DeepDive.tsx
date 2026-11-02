@@ -9,7 +9,7 @@ const PHASES = [
   { id: 'EXECUTE', who: 'your code', lines: ['main thread by default', 'suspend + Dispatchers.IO', 'result or AppFunctionException'] },
 ];
 
-const node = (i: number): Rect => ({ x: 150 + i * 350, y: 250, w: 300, h: 130 });
+const node = (i: number): Rect => ({ x: 150 + i * 330, y: 250, w: 280, h: 130 });
 
 function DeepDive_() {
   const { here, b } = useScene();

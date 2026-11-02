@@ -1,5 +1,6 @@
 import { defineDeck } from 'beatdeck';
 import '../themes/android.css';
+import './code.css';
 import { config } from './deck.config';
 import { SCENES } from './scenes';
 import { Open } from './scenes/01-Open';

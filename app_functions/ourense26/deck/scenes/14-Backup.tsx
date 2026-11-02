@@ -1,8 +1,9 @@
-import { Reveal, Scene, Terminal, useScene } from 'beatdeck';
+import { Reveal, Scene, useScene } from 'beatdeck';
 import { BACKUP_STEPS } from '../backup-steps';
 import { CAPTURES } from '../captures';
 import { config } from '../deck.config';
 import { Eyebrow, Meta } from '../ui';
+import { CodeBlock } from '../code-block';
 
 function Backup_() {
   const { here, b } = useScene();
@@ -12,7 +13,7 @@ function Backup_() {
       {BACKUP_STEPS.map((st, i) => (
         <div key={st.cap}>
           <Reveal on={here && b === i} out={here && b > i} x={150} y={200} delay={150}>
-            <Terminal size={26} lines={[...st.cmd, '', ...CAPTURES[st.cap]]} />
+            <CodeBlock lang="term" file="terminal" size={24} fit={{ x: 150, y: 190 }} lines={[...st.cmd, '', ...CAPTURES[st.cap]]} />
           </Reveal>
           {(st.note || st.wrapped) && (
             <Meta on={here && b === i} out={here && b > i} y={960} size={22} delay={400}>

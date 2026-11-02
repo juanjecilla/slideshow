@@ -1,6 +1,7 @@
-import { Reveal, Scene, Terminal, useScene } from 'beatdeck';
+import { Reveal, Scene, useScene } from 'beatdeck';
 import { ADB_ADD, ADB_LIST, ADB_SEARCH, ADB_STOP } from '../code';
 import { A, Eyebrow, G, Meta, Statement } from '../ui';
+import { CodeBlock } from '../code-block';
 import agentFunctions from '../assets/agent-functions.png';
 import agentResult from '../assets/agent-result.png';
 
@@ -26,12 +27,12 @@ function Demo_() {
 
       {/* 1–4 · adb */}
       <Reveal {...only(1)} x={150} y={400} delay={200}>
-        <Terminal size={36} lines={[{ t: ADB_LIST[0], marks: [{ text: 'list-app-functions', label: 'lo que indexó el sistema' }], labels: 1 }, ADB_LIST[1]]} />
+        <CodeBlock lang="term" file="terminal" size={32} fit={{ x: 150, y: 400 }} lines={[{ t: ADB_LIST[0], marks: [{ text: 'list-app-functions', label: 'lo que indexó el sistema' }], labels: 1 }, ADB_LIST[1]]} />
       </Reveal>
-      <Reveal {...only(2)} x={150} y={360} delay={200}><Terminal size={32} lines={ADB_SEARCH} /></Reveal>
-      <Reveal {...only(3)} x={150} y={360} delay={200}><Terminal size={32} lines={ADB_ADD} /></Reveal>
+      <Reveal {...only(2)} x={150} y={360} delay={200}><CodeBlock lang="term" file="terminal" size={28} fit={{ x: 150, y: 360 }} lines={ADB_SEARCH} /></Reveal>
+      <Reveal {...only(3)} x={150} y={360} delay={200}><CodeBlock lang="term" file="terminal" size={28} fit={{ x: 150, y: 360 }} lines={ADB_ADD} /></Reveal>
       <Reveal {...only(4)} x={150} y={300} delay={200}>
-        <Terminal size={32} lines={[...ADB_STOP, '', ...ADB_SEARCH]} />
+        <CodeBlock lang="term" file="terminal" size={28} fit={{ x: 150, y: 300 }} lines={[...ADB_STOP, '', ...ADB_SEARCH]} />
       </Reveal>
       <Meta {...only(4)} y={800} size={34} delay={500}>App detenida a la fuerza. Misma llamada. <G>Mismo resultado.</G></Meta>
 
@@ -39,7 +40,7 @@ function Demo_() {
       <Statement {...only(5)} y={190} size={104}>Pregunta por <G>cualquier hueco.</G></Statement>
       <Meta {...only(5)} y={470} size={34} delay={250}>¿Qué hay a las 18:15?</Meta>
       <Reveal {...only(5)} x={150} y={620} delay={400}>
-        <Terminal size={36} lines={['$ scripts/appfunctions-adb.sh search demo 18:00']} />
+        <CodeBlock lang="term" file="terminal" size={32} fit={{ x: 150, y: 620 }} lines={['$ scripts/appfunctions-adb.sh search demo 18:00']} />
       </Reveal>
 
       {/* 6 · testing agent */}

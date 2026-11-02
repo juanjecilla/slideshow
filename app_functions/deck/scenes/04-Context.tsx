@@ -1,8 +1,8 @@
 import { NodeBox, Reveal, Scene, useScene, type Rect } from 'beatdeck';
 import { Eyebrow, G, Statement } from '../ui';
 
-const W = 380;
-const node = (i: number): Rect => ({ x: 150 + i * 440, y: 330, w: W, h: 140 });
+const W = 360;
+const node = (i: number): Rect => ({ x: 150 + i * 420, y: 330, w: W, h: 140 });
 
 const ITEMS = [
   { kind: '2018', name: 'Slices', what: 'Remote UI templates rendered inside Search and Assistant.', fail: 'The caller was a surface.' },

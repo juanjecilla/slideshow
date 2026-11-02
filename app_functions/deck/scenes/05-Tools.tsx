@@ -1,5 +1,6 @@
-import { Arrow, NodeBox, Reveal, Scene, Terminal, useScene, type Rect } from 'beatdeck';
+import { Arrow, NodeBox, Reveal, Scene, useScene, type Rect } from 'beatdeck';
 import { A, Eyebrow, G, Meta, Statement } from '../ui';
+import { CodeBlock } from '../code-block';
 
 const TOOL_JSON = [
   '{',
@@ -33,7 +34,7 @@ function Tools_() {
 
       {/* 1 · a real tool definition */}
       <Reveal on={here && b === 1} out={here && b > 1} x={150} y={170}>
-        <Terminal prompt="" size={32} lines={TOOL_JSON.map((t, i) => (i === 2
+        <CodeBlock lang="json" file="tool.json" size={30} fit={{ x: 150, y: 170 }} lines={TOOL_JSON.map((t, i) => (i === 2
           ? { t, marks: [{ text: 'Finds talks by track and start time.', label: 'the model reads this' }], labels: 1 }
           : t))} />
       </Reveal>
