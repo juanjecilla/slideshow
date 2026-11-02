@@ -41,17 +41,21 @@ for (const [s, b] of all) {
     };
     const box = (rect) => ({ l: (rect.left - sr.left) / k, r: (rect.right - sr.left) / k, t: (rect.top - sr.top) / k, b: (rect.bottom - sr.top) / k });
     const out = [];
-    const add = (el, rect, what) => { if (rect.width < 2 || rect.height < 2) return; out.push({ what, ...box(rect) }); };
+    const add = (el, rect, what, kind = 'x') => { if (rect.width < 2 || rect.height < 2) return; out.push({ what, kind, ...box(rect) }); };
     const walker = document.createTreeWalker(stage, NodeFilter.SHOW_TEXT);
     for (let n = walker.nextNode(); n; n = walker.nextNode()) {
       if (!n.textContent.trim()) continue;
       const el = n.parentElement; if (!el || !visible(el) || el.closest('.cb')) continue;
       const range = document.createRange(); range.selectNodeContents(n);
-      add(el, range.getBoundingClientRect(), JSON.stringify(n.textContent.trim().slice(0, 36)));
+      add(el, range.getBoundingClientRect(), JSON.stringify(n.textContent.trim().slice(0, 36)), 'text');
     }
-    for (const el of stage.querySelectorAll('.cb, .bd-node, img')) if (visible(el)) add(el, el.getBoundingClientRect(), el.className?.toString().split(' ')[0] || el.tagName);
+    for (const el of stage.querySelectorAll('.cb, .bd-node, img')) if (visible(el)) add(el, el.getBoundingClientRect(), el.className?.toString().split(' ')[0] || el.tagName, el.classList.contains('cb') ? 'frame' : 'x');
     return out;
   }, { BOTTOM, SIDE });
+  // text that sits over a code frame (the frame's own text is excluded above)
+  for (const f of r.filter((e) => e.kind === 'frame'))
+    for (const t of r.filter((e) => e.kind === 'text'))
+      if (t.l < f.r && t.r > f.l && t.t < f.b && t.b > f.t) fails.push(`${name(s, b)}  text over a code frame  ${t.what}`);
   for (const e of r) {
     if (e.b > BOTTOM) fails.push(`${name(s, b)}  bottom ${Math.round(e.b)} > ${BOTTOM}  ${e.what}`);
     else if (e.r > 1920 - SIDE || (e.l < SIDE && e.l >= 0 && e.t > 130)) warns.push(`${name(s, b)}  ${e.l < SIDE ? 'left ' + Math.round(e.l) : 'right edge ' + Math.round(1920 - e.r)}px from the edge  ${e.what}`);
@@ -60,5 +64,5 @@ for (const [s, b] of all) {
 await browser.close(); stop();
 const uniq = (a) => [...new Set(a)];
 if (warns.length) console.log(`warnings (${uniq(warns).length}, closer than ${SIDE}px to a side):\n  ` + uniq(warns).slice(0, 40).join('\n  '));
-if (fails.length) { console.error(`✕ footer zone: ${uniq(fails).length} problem(s)\n  ` + uniq(fails).join('\n  ')); process.exit(1); }
+if (fails.length) { console.error(`✕ safe area: ${uniq(fails).length} problem(s)\n  ` + uniq(fails).join('\n  ')); process.exit(1); }
 console.log(`✓ safe area: ${all.length} beats, nothing below y=${BOTTOM}`);

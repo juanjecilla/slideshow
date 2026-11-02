@@ -25,13 +25,13 @@ function Beyond_() {
 
       {/* 2 · dynamic */}
       <Statement {...only(2)} y={190} size={104}>Regístralas en <G>ejecución.</G></Statement>
-      <Reveal {...only(2)} x={150} y={420} delay={200}><CodeBlock lang="kotlin" file="AppFunctionManager" size={32} fit={{ x: 150, y: 420 }} lines={DYNAMIC} /></Reveal>
-      <Meta {...only(2)} y={800} size={30} delay={500}>Ligadas a una Activity: expuestas solo mientras tiene sentido.</Meta>
+      <Reveal {...only(2)} x={150} y={380} delay={200}><CodeBlock lang="kotlin" file="AppFunctionManager" size={32} fit={{ x: 150, y: 380, bottom: 810 }} lines={DYNAMIC} /></Reveal>
+      <Meta {...only(2)} y={850} size={30} delay={500}>Ligadas a una Activity: expuestas solo mientras tiene sentido.</Meta>
 
       {/* 3 · android skills */}
       <Statement {...only(3)} y={190} size={90}>Deja que un agente las escriba<br /><A>contigo.</A></Statement>
       <Reveal {...only(3)} x={150} y={560} delay={200}><CodeBlock lang="term" file="terminal" size={40} fit={{ x: 150, y: 560 }} lines={SKILLS_CMD} /></Reveal>
-      <Meta {...only(3)} y={720} size={28} delay={500}>Skill oficial: busca candidatas, escribe código, pule KDoc, prueba con ADB.</Meta>
+      <Meta {...only(3)} y={820} size={28} delay={500}>Skill oficial: busca candidatas, escribe código, pule KDoc, prueba con ADB.</Meta>
     </>
   );
 }
