@@ -2,7 +2,7 @@ import { Arrow, NodeBox, Reveal, Scene, useScene, type NodeTone, type Rect } fro
 import { Eyebrow, Statement } from '../ui';
 
 const PHASES = [
-  { id: 'BUILD', who: 'compiler', lines: ['KSP reads your @AppFunction methods', 'generates the concrete service', 'writes XML metadata into assets/'] },
+  { id: 'BUILD', who: 'compiler', lines: ['KSP reads your @AppFunctionDeclaration methods', 'generates the concrete service', 'writes XML metadata into assets/'] },
   { id: 'INSTALL', who: 'system', lines: ['reads the XML from the APK', 'indexes the function metadata', 'not at app start: may lag after first launch'] },
   { id: 'DISCOVER', who: 'agent', lines: ['needs EXECUTE_APP_FUNCTIONS', 'searchAppFunctions() → metadata', 'isAppFunctionEnabled() → can I run it?'] },
   { id: 'INVOKE', who: 'agent → system', lines: ['executeAppFunction(request)', 'the system binds your AppFunctionService', 'the app can be closed'] },

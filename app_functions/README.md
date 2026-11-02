@@ -44,5 +44,5 @@ the live part. The agenda in it is **sample data** until the real talk list is p
 - Library `androidx.appfunctions 1.0.0-beta01` (checked 2026-11-02: the official skill and samples use it; the developer docs still show alpha10).
 - Agenda: the real one, read 2026-11-02 from https://gdgourense.es/events/df26. Slot: Sat 7 Nov 13:00, Red Velvet.
 - Demo built and unit-tested on beta01 + the real agenda; **device run pending** (Pixel 9 Pro verified on alpha10 + sample agenda, 2026-10-11). Testing Agent (needs your own Gemini key for LLM mode) and Gemini not run yet.
-- Spanish copy (`ourense26/`): see `docs/HANDOFF-ES.md`.
+- Spanish copy (`ourense26/`): done 2026-11-02, `build` and `verify` pass; mirror every English change there (`docs/HANDOFF-ES.md`).
 - Web integration (landing card, deploy job, README row, thumbnail) prepared on the branch, not live.

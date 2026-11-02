@@ -3,7 +3,7 @@ import { config } from '../deck.config';
 import { ENTRY_POINT, ERRORS, FUNCTION, GRADLE, MANIFEST, SERIALIZABLE } from '../code';
 import { Eyebrow, G, Meta } from '../ui';
 
-const CAPTIONS = ['build.gradle.kts', 'AgendaAppFunctionService.kt', 'Talk.kt', 'AgendaAppFunctionService.kt', 'AndroidManifest.xml', 'AgendaAppFunctionService.kt', 'architecture'];
+const CAPTIONS = ['build.gradle.kts', 'BaseAgendaAppFunctionService.kt', 'AgendaModels.kt', 'BaseAgendaAppFunctionService.kt', 'AndroidManifest.xml', 'BaseAgendaAppFunctionService.kt', 'architecture'];
 
 const UI: Rect = { x: 150, y: 330, w: 500, h: 130 };
 const AF: Rect = { x: 150, y: 560, w: 500, h: 130 };
@@ -22,7 +22,7 @@ function Code_() {
       <Eyebrow on={here}>{b >= 0 && b < CAPTIONS.length ? CAPTIONS[b] : ''} · {config.libVersion}</Eyebrow>
 
       {block(0, GRADLE.map((t) => (t.includes('compileSdk') ? { t, marks: [{ text: '37', label: 'docs: 36+ · skill: 37' }], labels: 1 as const } : t)), 34)}
-      {block(1, FUNCTION.map((t) => (t.startsWith('@AppFunction(')
+      {block(1, FUNCTION.map((t) => (t.startsWith('@AppFunctionDeclaration(')
         ? { t, marks: [{ text: 'isDescribedByKDoc = true', label: 'the KDoc ships to the agent' }], labels: 1 as const }
         : t.includes('Dispatchers.IO') ? { t, marks: [{ text: 'Dispatchers.IO', label: 'not the main thread' }], labels: 1 as const } : t)), 30, 160)}
       {block(2, SERIALIZABLE, 28, 180)}

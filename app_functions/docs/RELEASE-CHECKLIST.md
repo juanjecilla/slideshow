@@ -21,9 +21,8 @@ including the web integration, so merging the PR is the only step that publishes
 - [x] English frozen on 2026-11-02 after the agenda/beta01 update → Spanish copy started (`docs/HANDOFF-ES.md`).
 
 ## T-7 → T-1
-- [ ] Spanish copy done: `npm run build && npm run verify` in `ourense26/`.
-- [ ] Landing card → ES URL (`TODO(es-copy)` in `landing/index.html`); add `app_functions/ourense26/package-lock.json`
-      to `cache-dependency-path` in `deploy.yml`.
+- [x] Spanish copy done 2026-11-02: `npm run build && npm run verify` in `ourense26/` (75 beats, QR decodes to the `/ourense26/` URL). **Any later change to the English text must be mirrored there.**
+- [x] Landing card → ES URL and `app_functions/ourense26/package-lock.json` in `cache-dependency-path` (done 2026-11-02).
 - [ ] Landing: check the card in both languages (ES/EN toggle) and the thumbnail.
 - [ ] Record a short screen capture of the app UI changing after `add` (the adb outputs are already captured in `docs/captures/` and in scene 14).
 - [ ] Demo repo: decide whether to make it public after the event (it is private now).

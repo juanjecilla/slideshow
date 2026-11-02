@@ -31,6 +31,7 @@ jobs:
             bc2026/package-lock.json
             a11y/package-lock.json
             app_functions/package-lock.json
+            app_functions/ourense26/package-lock.json
 
       - name: Install bc2026 dependencies
         run: npm ci

@@ -6,6 +6,11 @@
 **Why a copy and not i18n:** decision of the grilling session. Single-project i18n is documented for later in
 `juanjecilla/slideshow#3` ↔ `juanjecilla/beatdeck#1`.
 
+## Status 2026-11-02: DONE
+The Spanish copy exists at `ourense26/` (translated scenes, notes, config; own README and runbook; `build` + `verify` pass; QR → `/ourense26/`);
+the landing card and `deploy.yml` already point to it. This file stays as the procedure and glossary for future updates.
+Note: while translating, two stale bits of the English deck were found and fixed (`@AppFunction` on the BUILD phase of scene 8; the `isDescribedByKDoc` highlight on 9.2 looked for the old annotation name).
+
 ## State at hand-off (2026-10-11)
 - English deck: 13 scenes + backup scene 14 (real adb output, nothing to translate except the eyebrow/notes), 83 beats, `npm run build` and `npm run verify` pass. Branch `talk/app-functions-devfest26` (local).
 - Everything the audience reads is English. Code, API names, adb commands and URLs stay English in both decks.

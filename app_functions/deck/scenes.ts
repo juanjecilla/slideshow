@@ -96,7 +96,7 @@ const BASE_SCENES: SceneDef[] = [
     id: '09', title: 'CODE',
     beats: [
       { name: 'gradle', ref: 'B1-B3', note: 'compileSdk: docs say 36+, the skill says 37. KSP, two dependencies, pinned to 1.0.0-beta01 (the skill and samples use it; the docs page still shows alpha10).' },
-      { name: 'function', ref: 'B8', note: 'The function: @AppFunction(isDescribedByKDoc = true) and a KDoc written for a model.' },
+      { name: 'function', ref: 'B8', note: 'The function: @AppFunctionDeclaration(isDescribedByKDoc = true) (renamed from @AppFunction in alpha13) and a KDoc written for a model.' },
       { name: 'serializable', ref: 'B9', note: 'Return types: @AppFunctionSerializable, KDoc inline on each property.' },
       { name: 'entry point', ref: 'B4-B5', note: 'The service entry point: abstract class + annotation, KSP generates the concrete service. Hilt optional.' },
       { name: 'manifest', ref: 'B7', note: 'Manifest: BIND_APP_FUNCTION_SERVICE protects it; app_metadata property.' },
@@ -130,7 +130,7 @@ const BASE_SCENES: SceneDef[] = [
   {
     id: '12', title: 'DEMO',
     beats: [
-      { name: 'scenario', note: 'DevFest agenda app (sample data). Four functions. Runbook: demo project docs/DEMO.md; helper scripts/appfunctions-adb.sh. Branches 01/02/03 are checkpoints.' },
+      { name: 'scenario', note: 'DevFest agenda app with the real agenda (23 sessions, read 2026-11-02). Four functions. Runbook: demo project docs/DEMO.md; helper scripts/appfunctions-adb.sh. Branches 01-04 are checkpoints.' },
       { name: 'list', ref: 'T1', note: 'adb shell cmd app_function list-app-functions' },
       { name: 'execute read', ref: 'T2', note: 'Execute searchTalks from the terminal. Read the structured response.' },
       { name: 'execute write', note: 'Execute addToFavorites. Then show the app UI updated.' },
