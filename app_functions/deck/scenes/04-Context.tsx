@@ -8,7 +8,7 @@ const ITEMS = [
   { kind: '2018', name: 'Slices', what: 'Remote UI templates rendered inside Search and Assistant.', fail: 'The caller was a surface.' },
   { kind: 'BII', name: 'App Actions', what: 'Predefined intents that open your app.', fail: 'Foreground, UI-bound.' },
   { kind: 'Nov 2024', name: 'MCP', what: 'Models call tools described by a schema.', fail: 'Built for servers, not phones.' },
-  { kind: 'May 2025', name: 'AppFunctions', what: 'First alpha: functions exposed by the app, no UI.', fail: '' },
+  { kind: '2025 · 2026', name: 'AppFunctions', what: 'First alpha May 2025, first beta Oct 2026: functions exposed by the app, no UI.', fail: '' },
 ];
 
 function Context_() {

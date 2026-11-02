@@ -54,10 +54,11 @@ function AppFunctions_() {
       {/* 6 · status */}
       <Eyebrow on={here && b === 6}>status</Eyebrow>
       <Statement on={here && b === 6} y={190} size={100}>Experimental.</Statement>
-      <Meta on={here && b === 6} y={400} size={38} delay={150}>Jetpack <A>1.0.0-alpha10</A> here. Newer alphas exist.</Meta>
-      <Meta on={here && b === 6} y={480} size={38} delay={250}>Gemini integration: <A>private preview</A>.</Meta>
-      <Meta on={here && b === 6} y={560} size={38} delay={350}>Callers need <A>EXECUTE_APP_FUNCTIONS</A>.</Meta>
-      <Meta on={here && b === 6} y={700} size={28} delay={450}>The contract you design now outlives the API surface.</Meta>
+      <Meta on={here && b === 6} y={400} size={38} delay={150}>Jetpack <A>1.0.0-beta01</A> · first beta, Oct 2026.</Meta>
+      <Meta on={here && b === 6} y={470} size={38} delay={250}>The developer docs still show <A>alpha10</A>.</Meta>
+      <Meta on={here && b === 6} y={540} size={38} delay={350}>Gemini integration: <A>private preview</A>.</Meta>
+      <Meta on={here && b === 6} y={610} size={38} delay={450}>Callers need <A>EXECUTE_APP_FUNCTIONS</A>.</Meta>
+      <Meta on={here && b === 6} y={760} size={28} delay={550}>The contract you design now outlives the API surface.</Meta>
 
       {/* 7 · pillars */}
       {PILLARS.map(([h, t], i) => (

@@ -20,8 +20,8 @@ function Beyond_() {
 
       {/* 1 · app_metadata */}
       <Statement {...only(1)} y={190} size={84}>One more place for <G>instructions.</G></Statement>
-      <Reveal {...only(1)} x={150} y={400} delay={200}><Terminal prompt="" size={26} lines={APP_METADATA} /></Reveal>
-      <Meta {...only(1)} y={820} size={26} delay={500}>app_metadata.xml · free text in the description: patterns and constraints</Meta>
+      <Reveal {...only(1)} x={150} y={330} delay={200}><Terminal prompt="" size={26} lines={APP_METADATA} /></Reveal>
+      <Meta {...only(1)} y={820} size={26} delay={500}>app_metadata.xml · free text in `instructions`: patterns and constraints</Meta>
 
       {/* 2 · dynamic */}
       <Statement {...only(2)} y={190} size={104}>Register at <G>runtime.</G></Statement>

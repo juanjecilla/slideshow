@@ -52,9 +52,9 @@ function Safe_() {
         <div className="t-meta" style={{ fontSize: 22, color: 'var(--fault)', marginBottom: 20 }}>vague</div>
         <Terminal prompt="" size={30} lines={KDOC_BAD} />
       </Reveal>
-      <Reveal on={here && b >= 8} x={150} y={300} delay={200}>
-        <div className="t-meta" style={{ fontSize: 22, color: 'var(--accent)', marginBottom: 20 }}>written for a model</div>
-        <Terminal prompt="" size={28} lines={KDOC_GOOD} />
+      <Reveal on={here && b >= 8} x={150} y={290} delay={200}>
+        <div className="t-meta" style={{ fontSize: 22, color: 'var(--accent)', marginBottom: 16 }}>written for a model</div>
+        <Terminal prompt="" size={25} lines={KDOC_GOOD} />
       </Reveal>
     </>
   );

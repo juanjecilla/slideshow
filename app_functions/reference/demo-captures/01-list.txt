@@ -1,4 +1,0 @@
-com.example.devfest.appfunctions.BaseAgendaAppFunctionService#searchTalks
-com.example.devfest.appfunctions.BaseAgendaAppFunctionService#addToFavorites
-com.example.devfest.appfunctions.BaseAgendaAppFunctionService#clearFavorites
-com.example.devfest.appfunctions.BaseAgendaAppFunctionService#getFavourites

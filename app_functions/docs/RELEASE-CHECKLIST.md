@@ -4,21 +4,21 @@ Nothing is pushed or deployed before **2026-11-07**. The branch `talk/app-functi
 including the web integration, so merging the PR is the only step that publishes.
 
 ## T-14 → T-7 (≈ 2026-10-24 → 31): content freeze
-- [ ] **Real talk list** published → update the demo (`DevfestOurense26/docs/REAL-TALKS.md` lists every place).
-- [ ] **Re-check versions** (research.md B6): AndroidX release notes, official docs "Last updated", skill folder
-      commits, `android/appfunctions` samples. If `@AppFunction` moved or the docs changed → update the demo, run
+- [x] **Real agenda** read 2026-11-02 from https://gdgourense.es/events/df26 → demo and deck updated (`DevfestOurense26/docs/AGENDA-SYNC.md`). **Re-read the page on 2026-11-06**: the organisers can still change it (the 18:15 slot is "Pendiente de confirmar").
+- [x] **Re-check versions** done 2026-11-02 (research.md R1-R10): the library moved to **1.0.0-beta01**, the demo and deck moved with it. **Repeat on 2026-11-06**: AndroidX release notes, official docs "Last updated", skill folder
+      commits, `android/appfunctions` samples. If something moved → update the demo, run
       `python3 -I scripts/gen-code.py`, re-shoot code beats.
       ```bash
       curl -s https://dl.google.com/dl/android/maven2/androidx/appfunctions/appfunctions/maven-metadata.xml | grep -o "<version>[^<]*" | tail -3
       gh api "repos/android/skills/commits?path=device-ai/appfunctions&per_page=3" --jq '.[]|.commit.committer.date[:10]+" "+.commit.message'
       ```
 - [x] "MCP: Nov 2024" verified (anthropic.com/news/model-context-protocol, dated Nov 25, 2024).
-- [ ] Re-capture demo outputs if the agenda/functions change: `SERIAL=<serial> scripts/capture-demo.sh` in the demo repo, then `python3 -I scripts/gen-code.py` here.
+- [ ] **Re-capture demo outputs on a device (needed now: none exist for beta01 + the real agenda, so scene 14 is absent until then)**: `SERIAL=<serial> scripts/capture-demo.sh` in the demo repo, then `python3 -I scripts/gen-code.py` here.
 - [ ] Run the Testing Agent once (`DevfestOurense26/docs/TESTING-AGENT.md`); decide if the LLM part is in the live demo (needs your Gemini key).
-- [ ] Re-run the demo on the device: `DevfestOurense26/docs/DEMO.md`. Free space on the phone (it was 100 % full).
+- [ ] **Re-run the demo on the Pixel with beta01 and the real agenda** (not connected on 2026-11-02): `DevfestOurense26/docs/DEMO.md`, including a `LocalTime` input test (research.md R8). Free space on the phone (it was 100 % full).
 - [ ] Time a full rehearsal with the presenter view; trim from scene 11 / scene 7 if over 47 min.
 - [ ] EAP: if access arrives, add the Gemini beat to scene 12.
-- [ ] Freeze English → start the Spanish copy (`docs/HANDOFF-ES.md`).
+- [x] English frozen on 2026-11-02 after the agenda/beta01 update → Spanish copy started (`docs/HANDOFF-ES.md`).
 
 ## T-7 → T-1
 - [ ] Spanish copy done: `npm run build && npm run verify` in `ourense26/`.
@@ -28,6 +28,7 @@ including the web integration, so merging the PR is the only step that publishes
 - [ ] Record a short screen capture of the app UI changing after `add` (the adb outputs are already captured in `docs/captures/` and in scene 14).
 - [ ] Demo repo: decide whether to make it public after the event (it is private now).
 - [ ] Open the PR (`talk/app-functions-devfest26` → `main`). The build job runs on the PR; the deploy job only on push to `main`.
+- [ ] **Shared files conflict.** The other talk branches (`talk/a11y-ai-jerez26`, `talk/adaptive-layouts-jaen26`, `talk/amar-tiempos-revueltos-barcelona26`, checked 2026-11-02) also add a build step, a landing card and a README row at the same places in `.github/workflows/deploy.yml`, `landing/index.html` and `README.md`. Whichever merges second must rebase and keep both. The order is the speaker's call. `git -C ~/Projects/Charlas worktree list` shows who works where; this talk lives in the worktree `~/Projects/Charlas-appfunctions`.
 
 ## Event day (2026-11-07)
 - [ ] Merge the PR **after** the talk starts or the morning of (the QR on the last slide points to the live URL).

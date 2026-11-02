@@ -1,4 +1,5 @@
 import type { SceneDef } from 'beatdeck';
+import { BACKUP_STEPS } from './backup-steps';
 
 /**
  * The talk's beat map: scenes → beats. One click = one beat.
@@ -6,7 +7,7 @@ import type { SceneDef } from 'beatdeck';
  * Time budget (50 min): open+me 3 · scenario 4 · context 3 · tools+MCP 4 · concept 5 · alternatives 2 ·
  * deep dive 6 · code 7 · safe 5 · beyond 3 · demo 10 · close 2 ≈ 54 → trim live from "beyond"/"alternatives".
  */
-export const SCENES: SceneDef[] = [
+const BASE_SCENES: SceneDef[] = [
   {
     id: '01', title: 'OPEN',
     beats: [
@@ -28,7 +29,7 @@ export const SCENES: SceneDef[] = [
       { name: 'plan', note: 'The agent does not open anything. It plans: three capabilities, three apps.' },
       { name: 'search', note: 'Call 1: the DevFest app answers searchTalks. Structured data, not pixels.' },
       { name: 'favourite', note: 'Call 2: addToFavorites. A write.' },
-      { name: 'calendar', note: 'Call 3: Calendar finds a conflict with lunch. The agent did not guess.' },
+      { name: 'calendar', note: 'Call 3: Calendar finds a conflict with the user\'s dinner (the 18:30 talk). The agent did not guess.' },
       { name: 'confirm', note: 'Human in the loop: the agent asks the user. Plant the seed for the "safe functions" block.' },
       { name: 'notify', note: 'Message to the team sent after the user decides.' },
       { name: 'nothing opened', note: 'No screen was opened. The question for the room: how does YOUR app expose that?' },
@@ -40,7 +41,7 @@ export const SCENES: SceneDef[] = [
       { name: 'slices', ref: 'draft 4', note: 'Slices: remote UI templates inside Search/Assistant. The app sent pixels-ish; the caller was a surface.' },
       { name: 'app actions', ref: 'draft 5', note: 'App Actions / BIIs: predefined intents that open your app. Foreground, UI-bound.' },
       { name: 'tool calling', note: 'Tool calling and MCP (Nov 2024): the caller is now a model that reads a schema.' },
-      { name: 'appfunctions', ref: 'S4 alpha01 2025-05-07', note: 'AppFunctions: first alpha May 2025. The app exposes functions, no UI.' },
+      { name: 'appfunctions', ref: 'S4 alpha01 2025-05-07', note: 'AppFunctions: first alpha May 2025, first beta October 2026 (1.0.0-beta01). The app exposes functions, no UI.' },
       { name: 'headless', ref: 'draft 2-3', note: 'The shift: from screens and taps to headless capabilities. The app becomes a provider.' },
     ],
   },
@@ -64,7 +65,7 @@ export const SCENES: SceneDef[] = [
       { name: 'analogy: registry', note: 'Registry: tools/list vs system index queried with search.' },
       { name: 'analogy: schema', note: 'Schema: JSON Schema vs generated XML metadata from your code.' },
       { name: 'analogy: callers', note: 'Callers: any client vs agents holding EXECUTE_APP_FUNCTIONS.' },
-      { name: 'status', ref: 'F2, F3', note: 'Be honest: experimental, Jetpack alpha, Gemini in private preview. Why we still care.' },
+      { name: 'status', ref: 'F2, F3', note: 'Be honest: experimental, Jetpack 1.0.0-beta01 (first beta, 2026-10-21), the developer docs still show alpha10 snippets while the skill and samples use beta01, Gemini in private preview (docs, May 2026). Why we still care.' },
       { name: 'pillars', ref: 'draft 16-18', note: 'Three ideas: local execution, indexed ahead of time, the KDoc is the contract.' },
     ],
   },
@@ -94,7 +95,7 @@ export const SCENES: SceneDef[] = [
   {
     id: '09', title: 'CODE',
     beats: [
-      { name: 'gradle', ref: 'B1-B3', note: 'compileSdk 36+ (37 for dynamic APIs), KSP, two dependencies. Pinned alpha10; newer exist.' },
+      { name: 'gradle', ref: 'B1-B3', note: 'compileSdk: docs say 36+, the skill says 37. KSP, two dependencies, pinned to 1.0.0-beta01 (the skill and samples use it; the docs page still shows alpha10).' },
       { name: 'function', ref: 'B8', note: 'The function: @AppFunction(isDescribedByKDoc = true) and a KDoc written for a model.' },
       { name: 'serializable', ref: 'B9', note: 'Return types: @AppFunctionSerializable, KDoc inline on each property.' },
       { name: 'entry point', ref: 'B4-B5', note: 'The service entry point: abstract class + annotation, KSP generates the concrete service. Hilt optional.' },
@@ -109,7 +110,7 @@ export const SCENES: SceneDef[] = [
       { name: 'intro', note: 'CFP promise: safe, deterministic, without breaking the UX. Four rules.' },
       { name: 'security: who', ref: 'D4, D6, D7', note: 'Who can call: permission, enable/disable per function, user control property.' },
       { name: 'security: input', note: 'Arguments come from a model: treat them as untrusted input.' },
-      { name: 'determinism: types', ref: 'B10', note: 'The model is probabilistic, your function is not. Narrow types, ids not names. Gotcha found on a real device: alpha10 cannot take LocalTime as input (fixed later), so the demo uses HH:mm strings.' },
+      { name: 'determinism: types', ref: 'B10', note: 'The model is probabilistic, your function is not. Narrow types, ids not names. Gotcha found on a real device with alpha10: LocalTime inputs failed to deserialize (release notes: fixed in alpha13 and beta01). The demo keeps HH:mm strings: narrow types.' },
       { name: 'determinism: idempotent', note: 'Agents retry. Make writes idempotent and errors typed.' },
       { name: 'ux: confirm', note: 'Destructive means confirm. Callback to the scenario. The function itself refuses unless confirmed = true: safety in code, not only in the KDoc.' },
       { name: 'ux: state', note: 'Return enough state for the agent to tell the user what happened.' },
@@ -121,7 +122,7 @@ export const SCENES: SceneDef[] = [
     id: '11', title: 'BEYOND',
     beats: [
       { name: 'orchestration', ref: 'draft 29', note: 'Real value is chaining functions across apps. Callback to the opening.' },
-      { name: 'app metadata', ref: 'X4', note: 'app_metadata.xml: free-text description with operational patterns and constraints.' },
+      { name: 'app metadata', ref: 'X4', note: 'app_metadata.xml: free-text `instructions` (renamed from description in beta01) with operational patterns and constraints.' },
       { name: 'dynamic', ref: 'X1-X3', note: 'API 37: register functions at runtime, tied to an Activity. Experimental in Jetpack.' },
       { name: 'android skills', ref: 'T5', note: 'Bonus: the official Android skill writes AppFunctions with you. Not the same "skill".' },
     ],
@@ -134,6 +135,7 @@ export const SCENES: SceneDef[] = [
       { name: 'execute read', ref: 'T2', note: 'Execute searchTalks from the terminal. Read the structured response.' },
       { name: 'execute write', note: 'Execute addToFavorites. Then show the app UI updated.' },
       { name: 'closed app', note: 'Force-stop the app and run again. Works the same. Then: add an unknown id to show the typed error, and clear without confirmed.' },
+      { name: 'ask a slot', note: 'Let the audience pick a time, e.g. 18:15: the answer is the unconfirmed slot (a real gap in the agenda, read 2026-11-02). Also try a speaker: search with query "gema".' },
       { name: 'testing agent', ref: 'T4', note: 'Testing Agent with an LLM: natural language over the same functions.' },
       { name: 'recap', note: 'What we saw: no UI, no network, typed, closed app.' },
     ],
@@ -146,18 +148,14 @@ export const SCENES: SceneDef[] = [
       { name: 'questions', note: 'Questions. Links and QR.' },
     ],
   },
-  {
-    id: '14', title: 'BACKUP',
-    beats: [
-      { name: 'list', note: 'BACKUP, not part of the talk. Reach it from the overview (O). Real adb outputs captured on the Pixel 9 Pro. If the live demo fails, walk these in order. Stop after Questions; an extra click enters this scene.' },
-      { name: 'search' },
-      { name: 'add' },
-      { name: 'add again' },
-      { name: 'favourites' },
-      { name: 'unknown id' },
-      { name: 'clear without confirmed' },
-      { name: 'closed app' },
-      { name: 'disabled' },
-    ],
-  },
 ];
+
+/** Scene 14 (backup) exists only when real demo captures exist: see backup-steps.ts. */
+export const SCENES: SceneDef[] = BACKUP_STEPS.length
+  ? [...BASE_SCENES, {
+    id: '14', title: 'BACKUP',
+    beats: BACKUP_STEPS.map((st, i) => (i === 0
+      ? { name: st.name, note: 'BACKUP, not part of the talk. Reach it from the overview (O). Real adb outputs captured on a device. If the live demo fails, walk these in order. Stop after Questions; an extra click enters this scene.' }
+      : { name: st.name })),
+  }]
+  : BASE_SCENES;

@@ -18,10 +18,14 @@ The draft script (48 slides) was stress-tested before building. These are the ou
 | 12 | English base deck; Spanish copy in `ourense26/` after the content freeze; single-project i18n documented as issues (`slideshow#3`, `beatdeck#1`) | Reuse elsewhere; beatdeck copies the engine per talk |
 | 13 | Dark theme, Android green `#3DDC84`, "agent" blue `#8AB4FF`, mono for code | Matches the landing's terminal look |
 | 14 | Embargo: local only until 2026-11-07 | Slides are public on the web |
-| 15 | Pin `androidx.appfunctions 1.0.0-alpha10` (docs, skill and samples agree) and say newer alphas exist; re-check one week before | alpha13 renames `@AppFunction`; demo with the official skill must produce compiling code |
+| 15 | ~~Pin alpha10~~ → **superseded 2026-11-02: pin `1.0.0-beta01`**, say the developer docs still show alpha10 | At the re-check the official skill (updated 2026-10-26/29) and the samples moved to beta01 while the docs page lagged; the speaker had pre-approved updating snippets. Migration followed the skill's own upgrade guide (R9 in research.md) |
 | 16 | Destructive function takes `confirmed: Boolean` and refuses without it | Safety enforced in code, not only in prose (determinism) |
 | 17 | 4th function is `getFavourites`, not `getTalk` | Skill: avoid purely informational tools |
 | 18 | Times as `"HH:mm"` strings | alpha10 cannot deserialize `LocalTime` inputs (verified on device) |
+| 19 | Real agenda (read 2026-11-02): speaker names **in**, the 3 startup demos **and** the unconfirmed slot **in** (so it can be asked about live), `track` is our own classification | Speaker's call; the names are published by the organisers; the TBC slot makes a good live question |
+| 20 | Slides say **Revolut** although the event page says Hiberus | Speaker's call; ask the organisers to correct the page if needed |
+| 21 | Opening scenario now uses the real agenda: "AI talks after lunch" → `searchTalks("ai","15:00")` → 2 talks (16:00, 18:30) | The only afternoon Android talk is the 16:15 Honeycomb one; two AI talks make a coherent chain |
+| 22 | Backup scene (14) exists only when real captures exist | The 2026-10-11 captures were alpha10 + sample agenda and were never committed to the demo repo (gitignore bug, fixed 2026-11-02) |
 
 ## Block 6 — 40-minute variant (not applied)
 If the talk is ever given in **40 min**, dissolve scene 11 and redistribute:

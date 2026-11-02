@@ -22,7 +22,7 @@ function Scenario_() {
         <div className="t-eyebrow" style={{ fontSize: 20 }}>// you say</div>
         <div style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1.2, marginTop: 14, width: 1620 }}>
           <Typewriter run={here && b === 0} entry={entry} charMs={32} lines={[
-            'Add the afternoon Android talks to my favourites,',
+            'Add the AI talks after lunch to my favourites,',
             'block them in my calendar and tell my team where I\'ll be.',
           ]} />
         </div>
@@ -37,14 +37,14 @@ function Scenario_() {
       <Arrow from={AGENT} to={CALENDAR} on={planned} tone={here && b === 4 ? 'hot' : 'dim'} />
       <Arrow from={AGENT} to={MESSAGES} on={planned} tone={here && b === 6 ? 'hot' : 'dim'} />
 
-      {call(here && b >= 2, 392, 'searchTalks("android", "14:00")', '→ 3 talks')}
-      {call(here && b >= 3, 476, 'addToFavorites(3 talks)', '→ done')}
-      {call(here && b >= 4, 590, 'createEvents(3 talks)', '→ conflict: overlaps lunch', true)}
+      {call(here && b >= 2, 392, 'searchTalks("ai", "15:00")', '→ 2 talks')}
+      {call(here && b >= 3, 476, 'addToFavorites(2 talks)', '→ done')}
+      {call(here && b >= 4, 590, 'createEvents(2 talks)', '→ conflict: overlaps dinner', true)}
       {call(here && b >= 6, 770, 'send(team, "I\'ll be at…")', '→ sent')}
 
       <Reveal on={here && b === 5} out={here && b > 5} x={150} y={800}>
         <div className="t-eyebrow" style={{ fontSize: 20 }}>// the agent asks you</div>
-        <div style={{ fontSize: 40, fontWeight: 500, marginTop: 12, width: 480 }}>Talk 1 overlaps your lunch. Keep it?</div>
+        <div style={{ fontSize: 40, fontWeight: 500, marginTop: 12, width: 480 }}>The 18:30 talk overlaps your dinner. Keep it?</div>
       </Reveal>
 
       <Reveal on={here && b >= 7} x={150} y={150}>

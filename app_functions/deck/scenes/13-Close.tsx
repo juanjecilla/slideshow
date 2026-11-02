@@ -1,6 +1,6 @@
 import { QR, Reveal, Scene, qrConfigured, useScene } from 'beatdeck';
 import { config } from '../deck.config';
-import { A, Eyebrow, G, Statement } from '../ui';
+import { A, Eyebrow, G, Meta, Statement } from '../ui';
 
 const CHECKLIST = [
   'KDoc written for a model',
@@ -44,6 +44,8 @@ function Close_() {
           </div>
         </Reveal>
       ))}
+
+      <Meta {...only(1)} y={900} size={22} delay={900}>links checked 2026-11-02 · docs may lag the Jetpack release notes</Meta>
 
       <Reveal on={here && b === 2} x={160} y={170}>
         <div className="t-statement" style={{ fontSize: 220 }}>Questions<span style={{ color: 'var(--accent)' }}>?</span></div>

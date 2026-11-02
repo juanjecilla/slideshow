@@ -9,8 +9,10 @@ export const config = {
   author: 'Juanje Cilla',
   role: 'Software Engineer · Revolut',
   event: 'DevFest Ourense 2026 · GDG Ourense',
+  /** Where and when (agenda read 2026-11-02, https://gdgourense.es/events/df26). */
+  slot: 'Sat 7 Nov · 13:00 · Red Velvet',
   /** Library version every snippet is written against. Re-check 1 week before the talk (see research.md B6). */
-  libVersion: '1.0.0-alpha10',
+  libVersion: '1.0.0-beta01',
   links: {
     github: 'github.com/juanjecilla',
     linkedin: 'linkedin.com/in/juanje-cilla',

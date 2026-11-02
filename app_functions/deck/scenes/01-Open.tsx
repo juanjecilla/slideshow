@@ -19,6 +19,7 @@ function Open_() {
       </Reveal>
       <Reveal on={title} x={158} y={850} delay={400}>
         <div className="t-meta" style={{ fontSize: 24 }}>{config.author} · {config.event}</div>
+        <div className="t-meta" style={{ fontSize: 24, marginTop: 14, color: 'var(--accent)' }}>{config.slot}</div>
       </Reveal>
     </>
   );
