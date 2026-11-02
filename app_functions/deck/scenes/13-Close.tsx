@@ -15,6 +15,8 @@ const LINKS: [string, string][] = [
   ['releases', 'developer.android.com/jetpack/androidx/releases/appfunctions'],
   ['samples', 'github.com/android/appfunctions'],
   ['skill', 'github.com/android/skills · device-ai/appfunctions'],
+  ['demo', 'github.com/juanjecilla/DevfestOurense26'],
+  ['slides', config.qrLabel],
 ];
 
 function Close_() {
@@ -37,15 +39,15 @@ function Close_() {
 
       <Statement {...only(1)} y={180} size={96}>Go <A>read</A> the source.</Statement>
       {LINKS.map(([k, u], i) => (
-        <Reveal key={k} {...only(1)} x={158} y={430 + i * 110} delay={200 + i * 160}>
+        <Reveal key={k} {...only(1)} x={158} y={370 + i * 82} delay={200 + i * 130}>
           <div style={{ display: 'flex', gap: 40, alignItems: 'baseline' }}>
-            <span className="t-meta" style={{ fontSize: 22, width: 170 }}>{k}</span>
+            <span className="t-meta" style={{ fontSize: 22, width: 230 }}>{k}</span>
             <span className="mono" style={{ fontSize: 36 }}>{u}</span>
           </div>
         </Reveal>
       ))}
 
-      <Meta {...only(1)} y={900} size={22} delay={900}>links checked 2026-11-02 · docs may lag the Jetpack release notes</Meta>
+      <Meta {...only(1)} y={930} size={22} delay={900}>links checked 2026-11-02 · docs may lag the Jetpack release notes</Meta>
 
       <Reveal on={here && b === 2} x={160} y={170}>
         <div className="t-statement" style={{ fontSize: 220 }}>Questions<span style={{ color: 'var(--accent)' }}>?</span></div>

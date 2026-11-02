@@ -15,6 +15,8 @@ const LINKS: [string, string][] = [
   ['versiones', 'developer.android.com/jetpack/androidx/releases/appfunctions'],
   ['ejemplos', 'github.com/android/appfunctions'],
   ['skill', 'github.com/android/skills · device-ai/appfunctions'],
+  ['demo', 'github.com/juanjecilla/DevfestOurense26'],
+  ['diapositivas', config.qrLabel],
 ];
 
 function Close_() {
@@ -37,15 +39,15 @@ function Close_() {
 
       <Statement {...only(1)} y={180} size={96}>Ve a <A>leer</A> las fuentes.</Statement>
       {LINKS.map(([k, u], i) => (
-        <Reveal key={k} {...only(1)} x={158} y={430 + i * 110} delay={200 + i * 160}>
+        <Reveal key={k} {...only(1)} x={158} y={370 + i * 82} delay={200 + i * 130}>
           <div style={{ display: 'flex', gap: 40, alignItems: 'baseline' }}>
-            <span className="t-meta" style={{ fontSize: 22, width: 170 }}>{k}</span>
+            <span className="t-meta" style={{ fontSize: 22, width: 230 }}>{k}</span>
             <span className="mono" style={{ fontSize: 36 }}>{u}</span>
           </div>
         </Reveal>
       ))}
 
-      <Meta {...only(1)} y={900} size={22} delay={900}>enlaces comprobados el 2026-11-02 · la documentación puede ir por detrás de las notas de versión de Jetpack</Meta>
+      <Meta {...only(1)} y={930} size={22} delay={900}>enlaces comprobados el 2026-11-02 · la documentación puede ir por detrás de las notas de versión de Jetpack</Meta>
 
       <Reveal on={here && b === 2} x={160} y={170}>
         <div className="t-statement" style={{ fontSize: 190 }}><span style={{ color: 'var(--accent)' }}>¿</span>Preguntas<span style={{ color: 'var(--accent)' }}>?</span></div>

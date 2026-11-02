@@ -25,7 +25,7 @@ including the web integration, so merging the PR is the only step that publishes
 - [x] Landing card → ES URL and `app_functions/ourense26/package-lock.json` in `cache-dependency-path` (done 2026-11-02).
 - [ ] Landing: check the card in both languages (ES/EN toggle) and the thumbnail.
 - [ ] Record a short screen capture of the app UI changing after `add` (the adb outputs are already captured in `docs/captures/` and in scene 14).
-- [ ] Demo repo: decide whether to make it public after the event (it is private now).
+- [ ] Demo repo `juanjecilla/DevfestOurense26`: make it PUBLIC before 2026-11-07 (it is private now; the resources slide 13.2 links it, user decision 2026-11-03). Check no secrets or personal data are in its history first.
 - [ ] Open the PR (`talk/app-functions-devfest26` → `main`). The build job runs on the PR; the deploy job only on push to `main`.
 - [ ] **Shared files conflict.** The other talk branches (`talk/a11y-ai-jerez26`, `talk/adaptive-layouts-jaen26`, `talk/amar-tiempos-revueltos-barcelona26`, checked 2026-11-02) also add a build step, a landing card and a README row at the same places in `.github/workflows/deploy.yml`, `landing/index.html` and `README.md`. Whichever merges second must rebase and keep both. The order is the speaker's call. `git -C ~/Projects/Charlas worktree list` shows who works where; this talk lives in the worktree `~/Projects/Charlas-appfunctions`.
 
