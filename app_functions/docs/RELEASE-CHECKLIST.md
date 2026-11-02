@@ -14,7 +14,7 @@ including the web integration, so merging the PR is the only step that publishes
       ```
 - [x] "MCP: Nov 2024" verified (anthropic.com/news/model-context-protocol, dated Nov 25, 2024).
 - [x] Demo outputs re-captured on the Pixel 9 Pro 2026-11-02 (scene 14 now exists). **Re-capture if the agenda or functions change**: `SERIAL=<serial> scripts/capture-demo.sh` in the demo repo, then `python3 -I scripts/gen-code.py` here.
-- [ ] Run the Testing Agent once (`DevfestOurense26/docs/TESTING-AGENT.md`); decide if the LLM part is in the live demo (needs your Gemini key).
+- [x] Testing Agent run in manual mode 2026-11-02 (`DevfestOurense26/docs/TESTING-AGENT.md`, `scripts/start-testing-agent.sh`). **Open:** decide whether the LLM part (retail flavor, needs your own Gemini key) is in the live demo; and show the phone on stage (screen mirroring, e.g. scrcpy) if the agent is. Remove the allowlist grant after the event.
 - [x] Demo re-run on the Pixel with beta01 and the real agenda 2026-11-02 (research.md R8, R10). **Free space on the phone before the event: `/data` was 100 % full (808 MB free).** Repeat the run on 2026-11-06.
 - [ ] Time a full rehearsal with the presenter view; trim from scene 11 / scene 7 if over 47 min.
 - [ ] EAP: if access arrives, add the Gemini beat to scene 12.

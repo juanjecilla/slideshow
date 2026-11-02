@@ -136,7 +136,7 @@ const BASE_SCENES: SceneDef[] = [
       { name: 'execute write', note: 'Execute addToFavorites. Then show the app UI updated.' },
       { name: 'closed app', note: 'Force-stop the app and run again. Works the same. Then: add an unknown id to show the typed error, and clear without confirmed.' },
       { name: 'ask a slot', note: 'Let the audience pick a time, e.g. 18:15: the answer is the unconfirmed slot (a real gap in the agenda, read 2026-11-02). Also try a speaker: search with query "gema".' },
-      { name: 'testing agent', ref: 'T4', note: 'Testing Agent with an LLM: natural language over the same functions.' },
+      { name: 'testing agent', ref: 'T4', note: 'Testing Agent (official, manual mode verified on the Pixel 2026-11-02): Debug tab, search DevFest, open searchTalks, fill track=ai and after=15:00, Run: typed result cards. Start it with scripts/start-testing-agent.sh (needs the phone mirrored on stage). The LLM mode needs a Gemini key: only if you have one.' },
       { name: 'recap', note: 'What we saw: no UI, no network, typed, closed app.' },
     ],
   },

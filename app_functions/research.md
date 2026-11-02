@@ -80,7 +80,7 @@ Sources (S#):
 | T4 | ChatApp sample + Testing Agent in `android/appfunctions` | ✅ | S6: dirs `ChatApp/` (app, wear, shared) and `agent/` — "Privileged AppFunction execution, manual debugging, test automation, LLM agent evaluations"; run via `./run_privileged.sh`. Apache-2.0. |
 | T5 | `android skills add appfunctions` | ✅ | S2 migration note. Skill content S5. |
 | T6 | "JetPacker" sample | ⏳ | Not in S6 — **drop**. |
-| T7 | Testing agent works w/o Gemini access | 🔧 | Manual debugging works without a key (`standard` flavor); the LLM agent is the `retail` flavor and needs a Gemini API key. Privilege = `ShellIdentityInstrumentation` (no root). **Not run yet.** See demo repo `docs/TESTING-AGENT.md`. |
+| T7 | Testing agent works w/o Gemini access | ✅ manual mode (2026-11-02) | Ran on the Pixel 9 Pro (Android 17 / API 37.1, user build): lists our 4 functions and runs `searchTalks` from a form. The LLM agent is the `retail` flavor and needs a Gemini API key: not run. Privilege = `ShellIdentityInstrumentation` (no root) **plus** a grant in the system shell allowlist (`cmd allowlist add-package-multimap 2 <pkg>:<cert sha-256>`). The official `run_privileged.sh` failed on this build (7-char signature hash used as a digest); demo repo `scripts/start-testing-agent.sh` works. |
 
 ## History / comparison
 
@@ -135,3 +135,4 @@ Sources (S#):
 | R8 | `LocalTime` gotcha | alpha10 failed on device (2026-10-11). Changelog: alpha13 "Support all built-in proxy types (LocalDate, LocalTime, Instant, ZoneId) in AppFunctionData"; beta01 fixes desugaring. **Tested on the Pixel 9 Pro with beta01 (2026-11-02, scratch function)**: works **only as an object `{hour, minute, second, nanoOfSecond}`** (all four); `"14:30"` and a partial object are rejected (code 1001). The demo keeps `"HH:mm"` strings by design | release notes (R1) + device test |
 | R9 | Migration alpha10 → beta01 in the demo | 3 mechanical edits, built and unit tests passed first try (annotation rename, `appfn:instructions`, version). Own commit `cp-05a-beta01` | demo repo (private) |
 | R10 | Demo on a device with beta01 + real agenda | ✅ **verified 2026-11-02, Pixel 9 Pro (Android 17, API 37.1, patch 2026-10-05, user build)**: list, search/add/idempotency, errors 1500/1501/1001/1002, `confirmed` refusal, closed-app wake, enable/disable, nullable `speaker`, slot question. Captures in the demo repo `docs/captures/` | demo repo `docs/DEMO.md` |
+| R11 | Testing Agent (official, `android/appfunctions` `agent/`, commit `0bb367a2` of 2026-10-30) | ran in manual mode on the Pixel 9 Pro 2026-11-02; needs the shell-allowlist step above; allowlist grant stays until removed (`cmd allowlist clear-shell-allowlist 2`) | https://github.com/android/appfunctions · demo repo `docs/TESTING-AGENT.md` |
