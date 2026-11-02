@@ -13,9 +13,9 @@ including the web integration, so merging the PR is the only step that publishes
       gh api "repos/android/skills/commits?path=device-ai/appfunctions&per_page=3" --jq '.[]|.commit.committer.date[:10]+" "+.commit.message'
       ```
 - [x] "MCP: Nov 2024" verified (anthropic.com/news/model-context-protocol, dated Nov 25, 2024).
-- [ ] **Re-capture demo outputs on a device (needed now: none exist for beta01 + the real agenda, so scene 14 is absent until then)**: `SERIAL=<serial> scripts/capture-demo.sh` in the demo repo, then `python3 -I scripts/gen-code.py` here.
+- [x] Demo outputs re-captured on the Pixel 9 Pro 2026-11-02 (scene 14 now exists). **Re-capture if the agenda or functions change**: `SERIAL=<serial> scripts/capture-demo.sh` in the demo repo, then `python3 -I scripts/gen-code.py` here.
 - [ ] Run the Testing Agent once (`DevfestOurense26/docs/TESTING-AGENT.md`); decide if the LLM part is in the live demo (needs your Gemini key).
-- [ ] **Re-run the demo on the Pixel with beta01 and the real agenda** (not connected on 2026-11-02): `DevfestOurense26/docs/DEMO.md`, including a `LocalTime` input test (research.md R8). Free space on the phone (it was 100 % full).
+- [x] Demo re-run on the Pixel with beta01 and the real agenda 2026-11-02 (research.md R8, R10). **Free space on the phone before the event: `/data` was 100 % full (808 MB free).** Repeat the run on 2026-11-06.
 - [ ] Time a full rehearsal with the presenter view; trim from scene 11 / scene 7 if over 47 min.
 - [ ] EAP: if access arrives, add the Gemini beat to scene 12.
 - [x] English frozen on 2026-11-02 after the agenda/beta01 update → Spanish copy started (`docs/HANDOFF-ES.md`).

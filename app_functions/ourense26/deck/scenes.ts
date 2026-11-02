@@ -110,7 +110,7 @@ const BASE_SCENES: SceneDef[] = [
       { name: 'intro', note: 'La promesa del CFP: segura, determinista, sin romper la experiencia de usuario. Cuatro reglas.' },
       { name: 'seguridad: quién', ref: 'D4, D6, D7', note: 'Quién puede llamar: permiso, habilitar/deshabilitar por función, propiedad de control del usuario.' },
       { name: 'seguridad: entrada', note: 'Los argumentos vienen de un modelo: trátalos como entrada no confiable.' },
-      { name: 'determinismo: tipos', ref: 'B10', note: 'El modelo es probabilístico, tu función no. Tipos estrechos, IDs y no nombres. Trampa encontrada en un dispositivo real con alpha10: los LocalTime de entrada no se deserializaban (las notas de versión dicen que se arregló en alpha13 y beta01). La demo mantiene cadenas HH:mm: tipos estrechos.' },
+      { name: 'determinismo: tipos', ref: 'B10', note: 'El modelo es probabilístico, tu función no. Tipos estrechos, IDs y no nombres. Trampa encontrada en un dispositivo real: con alpha10 un LocalTime de entrada no se podía recibir; beta01 solo lo acepta como objeto {hour, minute, second, nanoOfSecond} (comprobado el 2026-11-02; "14:30" se rechaza). La demo mantiene cadenas HH:mm: un único campo que el agente sabe rellenar.' },
       { name: 'determinismo: idempotencia', note: 'Los agentes reintentan. Haz las escrituras idempotentes y los errores tipados.' },
       { name: 'ux: confirmar', note: 'Destructivo significa confirmar. Vuelta al escenario. La propia función se niega si no recibe confirmed = true: la seguridad está en el código, no solo en el KDoc.' },
       { name: 'ux: estado', note: 'Devuelve el estado suficiente para que el agente cuente al usuario lo que pasó.' },

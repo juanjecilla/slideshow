@@ -14,9 +14,9 @@ function Backup_() {
           <Reveal on={here && b === i} out={here && b > i} x={150} y={200} delay={150}>
             <Terminal size={26} lines={[...st.cmd, '', ...CAPTURES[st.cap]]} />
           </Reveal>
-          {st.note && (
+          {(st.note || st.wrapped) && (
             <Meta on={here && b === i} out={here && b > i} y={960} size={22} delay={400}>
-              {st.note}{st.wrapped ? ' · long lines wrapped' : ''}
+              {st.note}{st.wrapped ? (st.note ? ' · ' : '') + 'long lines wrapped' : ''}
             </Meta>
           )}
         </div>

@@ -5,10 +5,10 @@ const H = '$ scripts/appfunctions-adb.sh';
 /** Todos los pasos de respaldo posibles. Un paso solo está activo si existe su captura real (docs/captures en el repo de la demo). */
 const ALL: { name: string; cmd: string[]; cap: string; note?: string; wrapped?: boolean }[] = [
   { name: 'lista', cmd: [`${H} list`], cap: '01-list', note: 'solo las líneas functionId' },
-  { name: 'búsqueda', cmd: [`${H} search ai 15:00`], cap: '02-search', note: 'las charlas de IA después de comer' },
+  { name: 'búsqueda', cmd: [`${H} search ai 15:00`], cap: '02-search', note: 'las charlas de IA después de comer', wrapped: true },
   { name: 'añadir', cmd: [`${H} add t15 t21`], cap: '03-add' },
   { name: 'añadir otra vez', cmd: [`${H} add t15`], cap: '04-add-again', note: 'la misma llamada: no se añade nada' },
-  { name: 'favoritos', cmd: [`${H} favourites`], cap: '05-favourites' },
+  { name: 'favoritos', cmd: [`${H} favourites`], cap: '05-favourites', wrapped: true },
   { name: 'ID desconocido', cmd: [`${H} add nope`], cap: '06-add-unknown', note: 'ID desconocido: error tipado', wrapped: true },
   {
     name: 'clear sin confirmed',

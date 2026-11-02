@@ -5,10 +5,10 @@ const H = '$ scripts/appfunctions-adb.sh';
 /** Every backup step the talk can show. A step is active only if its real capture exists (docs/captures in the demo repo). */
 const ALL: { name: string; cmd: string[]; cap: string; note?: string; wrapped?: boolean }[] = [
   { name: 'list', cmd: [`${H} list`], cap: '01-list', note: 'functionId lines only' },
-  { name: 'search', cmd: [`${H} search ai 15:00`], cap: '02-search', note: 'the AI talks after lunch' },
+  { name: 'search', cmd: [`${H} search ai 15:00`], cap: '02-search', note: 'the AI talks after lunch', wrapped: true },
   { name: 'add', cmd: [`${H} add t15 t21`], cap: '03-add' },
   { name: 'add again', cmd: [`${H} add t15`], cap: '04-add-again', note: 'same call again: nothing added' },
-  { name: 'favourites', cmd: [`${H} favourites`], cap: '05-favourites' },
+  { name: 'favourites', cmd: [`${H} favourites`], cap: '05-favourites', wrapped: true },
   { name: 'unknown id', cmd: [`${H} add nope`], cap: '06-add-unknown', note: 'unknown id: typed error', wrapped: true },
   {
     name: 'clear without confirmed',

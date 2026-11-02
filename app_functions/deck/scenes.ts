@@ -110,7 +110,7 @@ const BASE_SCENES: SceneDef[] = [
       { name: 'intro', note: 'CFP promise: safe, deterministic, without breaking the UX. Four rules.' },
       { name: 'security: who', ref: 'D4, D6, D7', note: 'Who can call: permission, enable/disable per function, user control property.' },
       { name: 'security: input', note: 'Arguments come from a model: treat them as untrusted input.' },
-      { name: 'determinism: types', ref: 'B10', note: 'The model is probabilistic, your function is not. Narrow types, ids not names. Gotcha found on a real device with alpha10: LocalTime inputs failed to deserialize (release notes: fixed in alpha13 and beta01). The demo keeps HH:mm strings: narrow types.' },
+      { name: 'determinism: types', ref: 'B10', note: 'The model is probabilistic, your function is not. Narrow types, ids not names. Gotcha found on a real device: alpha10 could not take a LocalTime input at all; beta01 takes it only as an object {hour, minute, second, nanoOfSecond} (checked 2026-11-02; "14:30" is rejected). The demo keeps HH:mm strings: one field an agent can fill.' },
       { name: 'determinism: idempotent', note: 'Agents retry. Make writes idempotent and errors typed.' },
       { name: 'ux: confirm', note: 'Destructive means confirm. Callback to the scenario. The function itself refuses unless confirmed = true: safety in code, not only in the KDoc.' },
       { name: 'ux: state', note: 'Return enough state for the agent to tell the user what happened.' },
