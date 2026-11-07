@@ -1,0 +1,31 @@
+/* Code and terminal blocks (code-block.tsx): a window frame and a JetBrains "New UI Dark" palette. */
+.cb {
+  --c-kw: #cf8e6d; --c-str: #6aab73; --c-num: #2aacb8; --c-com: #868a91; --c-doc: #8a9a8e; --c-dtag: #6fb28a;
+  --c-ann: #b3ae60; --c-fn: #56a8f5; --c-type: #5fbcb0; --c-prop: #c77dbb; --c-tag: #d5b778; --c-attr: #bcbec4;
+  --c-flag: #2aacb8; --c-var: #c77dbb; --c-err: #ff6b63; --c-plain: #d7d9dd;
+  background: #101113; border: 1px solid var(--hair-strong); border-radius: 10px; overflow: visible;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+.cb-bar { display: flex; align-items: center; gap: 22px; height: 54px; padding: 0 24px; border-bottom: 1px solid var(--hair); }
+.cb-dots { display: flex; gap: 9px; }
+.cb-dots i { width: 13px; height: 13px; border-radius: 50%; background: var(--hair-strong); display: block; }
+.cb-file { font-family: var(--font-mono); font-size: 20px; letter-spacing: 0.04em; color: var(--ink-3); white-space: nowrap; }
+.cb-body { padding: 26px 40px 30px; color: var(--c-plain); font-weight: 450; }
+.cb .tk-plain { color: var(--c-plain); }
+.cb .tk-kw { color: var(--c-kw); }
+.cb .tk-str { color: var(--c-str); }
+.cb .tk-num { color: var(--c-num); }
+.cb .tk-com { color: var(--c-com); font-style: italic; }
+.cb .tk-doc { color: var(--c-doc); font-style: italic; }
+.cb .tk-dtag { color: var(--c-dtag); font-style: italic; font-weight: 600; }
+.cb .tk-ann { color: var(--c-ann); }
+.cb .tk-fn { color: var(--c-fn); }
+.cb .tk-type { color: var(--c-type); }
+.cb .tk-prop { color: var(--c-prop); }
+.cb .tk-tag { color: var(--c-tag); }
+.cb .tk-attr { color: var(--c-attr); }
+.cb .tk-prompt { color: var(--accent); font-weight: 700; }
+.cb .tk-flag { color: var(--c-flag); }
+.cb .tk-var { color: var(--c-var); }
+.cb .tk-err { color: var(--c-err); }
+.cb .tk-dim { color: var(--ink-3); }

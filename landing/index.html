@@ -1220,6 +1220,25 @@ image-slot::part(empty) {
 (function () {
   const TALKS = [
     {
+      id: "app_functions",
+      slug: "app_functions",
+      // Spanish copy (the event is in Spanish). The English base deck lives at "./app_functions/".
+      url: "./app_functions/ourense26/",
+      thumbnail: "./assets/thumb-app-functions.png",
+      label: "android",
+      year: 2026,
+      tags: ["android", "ia", "mobile"],
+      conf: { es: "DevFest Ourense · Nov 2026", en: "DevFest Ourense · Nov 2026" },
+      title: {
+        es: ["Convierte tu app en ", "una skill"],
+        en: ["Turn your app into ", "a skill"],
+      },
+      desc: {
+        es: "App Functions: expón la lógica de tu app a agentes y asistentes como herramientas tipadas, locales y seguras. Arquitectura interna, schemas, buenas prácticas y demo en vivo.",
+        en: "App Functions: expose your app's logic to agents and assistants as typed, local, safe tools. Internals, schemas, good practices and a live demo.",
+      },
+    },
+    {
       id: "a11y",
       slug: "a11y",
       url: "./a11y/",
@@ -1259,6 +1278,7 @@ image-slot::part(empty) {
 
   const TAGS = {
     a11y: { es: "Accesibilidad", en: "Accessibility" },
+    android: { es: "Android", en: "Android" },
     mobile: { es: "Mobile", en: "Mobile" },
     ia: { es: "IA", en: "AI" },
     producto: { es: "Producto", en: "Product" },
