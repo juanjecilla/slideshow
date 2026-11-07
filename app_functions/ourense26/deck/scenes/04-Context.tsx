@@ -8,7 +8,7 @@ const ITEMS = [
   { kind: '2018', name: 'Slices', what: 'Plantillas de UI remota dibujadas dentro de Search y Assistant.', fail: 'Quien llamaba era una superficie.' },
   { kind: 'BII', name: 'App Actions', what: 'Intents predefinidos que abren tu app.', fail: 'En primer plano, atado a la UI.' },
   { kind: 'Nov 2024', name: 'MCP', what: 'Los modelos llaman a tools descritas por un esquema.', fail: 'Pensado para servidores, no para móviles.' },
-  { kind: '2025 · 2026', name: 'AppFunctions', what: 'Primera alpha en mayo de 2025, primera beta en octubre de 2026: funciones que expone la app, sin UI.', fail: '' },
+  { kind: '2025 · 2026', name: 'AppFunctions', what: 'Alpha: Mayo 2025, Beta: Octubre 2026', fail: 'Funciones expuestas sin UI' },
 ];
 
 function Context_() {
@@ -20,7 +20,7 @@ function Context_() {
         <div key={it.name}>
           <NodeBox rect={node(i)} on={here && b >= i} kind={it.kind} value={it.name} tone={here && b === i ? 'hot' : b > i && i < 3 ? 'dim' : 'normal'} />
           <Reveal on={here && b >= i} x={node(i).x} y={510} delay={300}>
-            <div style={{ width: W, fontSize: 28, lineHeight: 1.3, color: 'var(--ink)' }}>{it.what}</div>
+            <div style={{ width: W, minHeight: 110, fontSize: 28, lineHeight: 1.3, color: 'var(--ink)' }}>{it.what}</div>
             {it.fail && <div className="mono" style={{ width: W, fontSize: 24, marginTop: 20, color: 'var(--warning)' }}>{it.fail}</div>}
           </Reveal>
         </div>
