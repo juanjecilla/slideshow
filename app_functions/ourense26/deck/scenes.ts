@@ -4,8 +4,8 @@ import { BACKUP_STEPS } from './backup-steps';
 /**
  * El mapa de beats de la charla: escenas → beats. Un clic = un beat.
  * `ref` = de dónde sale (id de research.md / diapositiva del guion), `note` = apunte del ponente (solo se ve en la vista de presentador).
- * Presupuesto de tiempo (50 min): intro+yo 3 · escenario 4 · contexto 3 · tools+MCP 4 · concepto 5 · alternativas 2 ·
- * deep dive 6 · código 7 · seguridad 5 · más allá 3 · demo 10 · cierre 2 ≈ 54 → recortar en directo de "más allá"/"alternativas".
+ * Presupuesto de tiempo (50 min): intro+yo 5 · escenario 4 · contexto 3 · tools+MCP 4 · concepto 5 · alternativas 2 ·
+ * deep dive 6 · código 7 · seguridad 5 · más allá 3 · demo 10 · cierre 2 ≈ 56 → recortar en directo de "más allá"/"alternativas"/demo.
  */
 const BASE_SCENES: SceneDef[] = [
   {
@@ -16,10 +16,14 @@ const BASE_SCENES: SceneDef[] = [
     ],
   },
   {
-    id: '02', title: 'YO',
+    id: '02', title: 'INTRO',
     beats: [
       { name: 'quién', note: 'Nombre, rol y una frase de por qué te importa: haces apps, y ahora quien las llama puede ser un agente.' },
       { name: 'enlaces', note: 'Los enlaces se quedan cinco segundos. Vuelven a aparecer en la última escena.' },
+      { name: 'público: IA', note: 'Primera pregunta: ¿quién usa IA a diario? Sin alargarse; reconoce la sala.' },
+      { name: 'público: Android', note: 'Segunda: ¿quién desarrolla para Android? Te dice cuánto contexto Android puedes asumir.' },
+      { name: 'público: Studio', note: 'Tercera: ¿quién sigue abriendo Android Studio? Pausa para las manos; no reveles el giro todavía.' },
+      { name: 'giro', note: 'Haz clic para revelar el giro: tu app no se abrirá, se invocará. Enlaza con el escenario.' },
     ],
   },
   {

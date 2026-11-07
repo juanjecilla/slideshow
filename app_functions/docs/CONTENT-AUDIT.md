@@ -5,7 +5,8 @@ Facts: see `research.md`. Decisions: `~/.claude/plans/i-am-going-to-polymorphic-
 
 | Draft slide(s) | Beat(s) | Status |
 | --- | --- | --- |
-| 1 Cover | 01.1-2 | Kept. CFP title on stage; speaker role/links added (new "ME" scene 02). |
+| 1 Cover | 01.1-2 | Kept. CFP title on stage; speaker role/links added (new "INTRO" scene 02). |
+| — | 02.3-6 | **New**: live audience check (AI usage, Android developer, Android Studio) with a click-triggered plot twist. |
 | 2-3 Paradigm / headless | 03 SCENARIO (hook) + 04.5 | Reworked: opening is an animated 3-app scenario, concept lands as callback in CONTEXT. |
 | 4 Slices | 04.1 | Kept, shortened. "Deprecated 2021" dropped (no primary source, H1). |
 | 5 App Actions / BII | 04.2 | Kept, shortened. "No managed profiles" dropped (H2). |

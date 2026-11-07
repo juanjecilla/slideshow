@@ -4,8 +4,8 @@ import { BACKUP_STEPS } from './backup-steps';
 /**
  * The talk's beat map: scenes → beats. One click = one beat.
  * `ref` = where it comes from (research.md id / draft-script slide), `note` = speaker cue.
- * Time budget (50 min): open+me 3 · scenario 4 · context 3 · tools+MCP 4 · concept 5 · alternatives 2 ·
- * deep dive 6 · code 7 · safe 5 · beyond 3 · demo 10 · close 2 ≈ 54 → trim live from "beyond"/"alternatives".
+ * Time budget (50 min): open+intro 5 · scenario 4 · context 3 · tools+MCP 4 · concept 5 · alternatives 2 ·
+ * deep dive 6 · code 7 · safe 5 · beyond 3 · demo 10 · close 2 ≈ 56 → trim live from "beyond"/"alternatives"/demo.
  */
 const BASE_SCENES: SceneDef[] = [
   {
@@ -16,10 +16,14 @@ const BASE_SCENES: SceneDef[] = [
     ],
   },
   {
-    id: '02', title: 'ME',
+    id: '02', title: 'INTRO',
     beats: [
       { name: 'who', note: 'Name, role, one line on why you care: you build apps, now agents are a new kind of caller.' },
       { name: 'links', note: 'Links stay up 5 seconds. Everything lives again on the last scene.' },
+      { name: 'audience: AI', note: 'First show of hands: who uses AI on a daily basis? Keep it quick and acknowledge the split.' },
+      { name: 'audience: Android', note: 'Second: who is an Android developer? This tells you how much Android context to assume.' },
+      { name: 'audience: Studio', note: 'Third: who still opens Android Studio? Pause for hands; do not reveal the twist yet.' },
+      { name: 'twist', note: 'Click to reveal the twist: your app will not be opened; it will be called. Bridge into the scenario.' },
     ],
   },
   {
