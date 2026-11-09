@@ -33,9 +33,9 @@ Automatic beats: scene 3 beat 1 (the typed sentence, ~4 s). Everything else wait
 
 ## Config to check on the day
 
-`deck/deck.config.ts`: title, speaker, `qrUrl` (currently: `TODO` until the talk URL exists after 2026-11-07). Rebuild after editing.
+`deck/deck.config.ts`: title, speaker, `qrUrl` (set to the live Pages URL; ES deck points to `/ourense26/`). Rebuild after editing.
 
 ## Talk-specific
-- Library version on every code slide: `1.0.0-alpha10` (`deck.config.ts → libVersion`). Re-check docs, skill, samples and AndroidX release notes ≈ 2026-10-31 (see `research.md` B6).
+- Library version on every code slide: `1.0.0-beta01` (`deck.config.ts → libVersion`). `1.0.0-rc01` exists since 2026-11-04 (checked 2026-11-07); not adopted for the talk (see `research.md` B6).
 - Demo placeholders in `deck/code.ts`: `PKG`, `SVC`, function names. Reconcile with the demo project; adb output is shown live, backups are captures per step.
-- Embargo: nothing pushed or deployed before 2026-11-07.
+- Embargo ended 2026-11-07; the deck is live.

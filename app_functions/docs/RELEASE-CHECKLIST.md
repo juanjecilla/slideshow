@@ -25,13 +25,15 @@ including the web integration, so merging the PR is the only step that publishes
 - [x] Landing card → ES URL and `app_functions/ourense26/package-lock.json` in `cache-dependency-path` (done 2026-11-02).
 - [ ] Landing: check the card in both languages (ES/EN toggle) and the thumbnail.
 - [ ] Record a short screen capture of the app UI changing after `add` (the adb outputs are already captured in `docs/captures/` and in scene 14).
-- [ ] Demo repo `juanjecilla/DevfestOurense26`: make it PUBLIC before 2026-11-07 (it is private now; the resources slide 13.2 links it, user decision 2026-11-03). Check no secrets or personal data are in its history first.
+- [x] Demo repo `juanjecilla/DevfestOurense26`: make it PUBLIC (public, checked 2026-11-09) before 2026-11-07 (it is private now; the resources slide 13.2 links it, user decision 2026-11-03). Check no secrets or personal data are in its history first.
 - [ ] Open the PR (`talk/app-functions-devfest26` → `main`). The build job runs on the PR; the deploy job only on push to `main`.
 - [ ] **Shared files conflict.** The other talk branches (`talk/a11y-ai-jerez26`, `talk/adaptive-layouts-jaen26`, `talk/amar-tiempos-revueltos-barcelona26`, checked 2026-11-02) also add a build step, a landing card and a README row at the same places in `.github/workflows/deploy.yml`, `landing/index.html` and `README.md`. Whichever merges second must rebase and keep both. The order is the speaker's call. `git -C ~/Projects/Charlas worktree list` shows who works where; this talk lives in the worktree `~/Projects/Charlas-appfunctions`.
 
 ## Event day (2026-11-07)
-- [ ] Merge the PR **after** the talk starts or the morning of (the QR on the last slide points to the live URL).
-- [ ] Check https://juanjecilla.github.io/slideshow/app_functions/ and `/ourense26/` load, QR decodes, thumbnail OK.
+**Delivered 2026-11-07 at DevFest Ourense, well received.** Wrap-up 2026-11-09: PRs merged, merged branches removed.
+
+- [x] Merge the PR **after** the talk starts or the morning of (the QR on the last slide points to the live URL).
+- [x] Check https://juanjecilla.github.io/slideshow/app_functions/ and `/ourense26/` load (both HTTP 200, checked 2026-11-09), QR decodes, thumbnail OK.
 - [ ] Offline fallback: `npm run present` works without Wi-Fi.
 
 ## What the branch already contains for the web

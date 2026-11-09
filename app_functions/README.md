@@ -3,8 +3,8 @@
 DevFest Ourense 2026 · GDG Ourense · 7 Nov 2026 · Juanje Cilla. 50 min, technical audience.
 Built with [beatdeck](https://github.com/borjaperfra/beatdeck) (fork: [juanjecilla/beatdeck](https://github.com/juanjecilla/beatdeck)).
 
-> **Embargo:** nothing from this folder is deployed or pushed until 2026-11-07. It lives on a local branch
-> (`talk/app-functions-devfest26`). See `docs/RELEASE-CHECKLIST.md`.
+> **Live** since 2026-11-07 (DevFest Ourense): <https://juanjecilla.github.io/slideshow/app_functions/> (EN) and
+> `/ourense26/` (ES). See `docs/RELEASE-CHECKLIST.md`.
 
 ## Run
 
@@ -34,15 +34,15 @@ npm run shot -- 9.2  # quick frames while editing → artifacts/shot/
 
 ## Demo project
 
-Private repo `juanjecilla/DevfestOurense26` (local: `~/Projects/Demos/DevfestOurense26`). Branches are checkpoints
+Public repo `juanjecilla/DevfestOurense26` (local: `~/Projects/Demos/DevfestOurense26`). Branches are checkpoints
 (`01-base-agenda` → `02-appfunctions-skill` → `03-final` = `main`). Its README and `docs/DEMO.md` explain how to run
-the live part. The agenda in it is **sample data** until the real talk list is published.
+the live part. The agenda in it is the real DevFest Ourense one (read 2026-11-02).
 
-## Status (2026-10-11)
+## Status (2026-11-07)
 
 - English deck complete: 13 scenes + backup scene 14 (real adb outputs, appears when captures exist), 90 beats; `build` and `verify` pass.
-- Library `androidx.appfunctions 1.0.0-beta01` (checked 2026-11-02: the official skill and samples use it; the developer docs still show alpha10).
+- Library `androidx.appfunctions 1.0.0-beta01` (checked 2026-11-02: the official skill and samples use it; the developer docs still showed alpha10). `1.0.0-rc01` was published on 2026-11-04 (checked 2026-11-07, dl.google.com Maven); the talk stays on beta01.
 - Agenda: the real one, read 2026-11-02 from https://gdgourense.es/events/df26. Slot: Sat 7 Nov 13:00, Red Velvet.
-- Demo built, unit-tested and **verified on a Pixel 9 Pro** (Android 17) with beta01 + the real agenda on 2026-11-02; real outputs feed backup scene 14. Testing Agent (needs your own Gemini key for LLM mode) and Gemini not run yet.
+- Demo built, unit-tested and **verified on a Pixel 9 Pro** (Android 17) with beta01 + the real agenda on 2026-11-02; real outputs feed backup scene 14. Testing Agent verified in manual mode; LLM mode (needs your own Gemini key) not run.
 - Spanish copy (`ourense26/`): done 2026-11-02, `build` and `verify` pass; mirror every English change there (`docs/HANDOFF-ES.md`).
-- Web integration (landing card, deploy job, README row, thumbnail) prepared on the branch, not live.
+- Web integration (landing card, deploy job, README row, thumbnail) live (merged 2026-11-07, PR #5).
