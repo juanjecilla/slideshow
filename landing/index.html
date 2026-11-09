@@ -1245,7 +1245,7 @@ image-slot::part(empty) {
       thumbnail: "./assets/thumb-a11y.png",
       label: "a11y",
       year: 2026,
-      tags: ["a11y", "mobile"],
+      tags: ["a11y", "android", "ios", "mobile"],
       conf: { es: "Commit Conf · Jun 2026", en: "Commit Conf · Jun 2026" },
       title: {
         es: ["a11y, el numerónimo ", "ético."],
@@ -1276,9 +1276,12 @@ image-slot::part(empty) {
     },
   ];
 
+  const TAG_PARENT = { android: "mobile", ios: "mobile" };
+
   const TAGS = {
     a11y: { es: "Accesibilidad", en: "Accessibility" },
     android: { es: "Android", en: "Android" },
+    ios: { es: "iOS", en: "iOS" },
     mobile: { es: "Mobile", en: "Mobile" },
     ia: { es: "IA", en: "AI" },
     producto: { es: "Producto", en: "Product" },
@@ -1293,6 +1296,9 @@ image-slot::part(empty) {
       theme_dark: "Oscuro",
       theme_system: "Sistema",
       hero_kicker: "Charlas técnicas · slides online",
+      hero_title_a: "Charlas",
+      hero_title_b: "técnicas",
+      brand_section: "charlas",
       hero_sub: "Slides de las charlas técnicas que he dado en conferencias. Abiertas para todo el mundo.",
       talks_heading: "Charlas",
       filter_all: "Todas",
@@ -1320,6 +1326,9 @@ image-slot::part(empty) {
       theme_dark: "Dark",
       theme_system: "System",
       hero_kicker: "Tech talks · slides online",
+      hero_title_a: "Tech",
+      hero_title_b: "talks",
+      brand_section: "talks",
       hero_sub: "Slides from the technical talks I've given at conferences. Open for everyone.",
       talks_heading: "Talks",
       filter_all: "All",
@@ -1342,7 +1351,7 @@ image-slot::part(empty) {
     },
   };
 
-  window.SLIDESHOW_DATA = { TALKS, TAGS, I18N };
+  window.SLIDESHOW_DATA = { TALKS, TAGS, TAG_PARENT, I18N };
 })();
   </script>
 
@@ -1354,7 +1363,7 @@ image-slot::part(empty) {
   <!-- App -->
   <script type="text/babel">
 const { useState, useEffect, useMemo, useRef } = React;
-const { TALKS, TAGS, I18N } = window.SLIDESHOW_DATA;
+const { TALKS, TAGS, TAG_PARENT, I18N } = window.SLIDESHOW_DATA;
 
 const Icon = {
   sun: (
@@ -1561,7 +1570,7 @@ function Header({ theme, setTheme, lang, setLang, t }) {
           <span className="brand__dot" />
           Juanje&nbsp;<b>Cilla</b>
           <span className="brand__sep">/</span>
-          <span style={{ color: "var(--muted)" }}>charlas</span>
+          <span style={{ color: "var(--muted)" }}>{t.brand_section}</span>
         </a>
         <span className="header-spacer" />
         <nav className="header-nav">
@@ -1598,7 +1607,7 @@ function Hero({ t, count }) {
           <span className="blink">▍</span>
         </p>
         <h1 className="reveal" style={{ animationDelay: "0.05s" }}>
-          Charlas <span className="accent">técnicas</span>
+          {t.hero_title_a} <span className="accent">{t.hero_title_b}</span>
           <span className="cursor" />
         </h1>
         <p className="hero__sub reveal" style={{ animationDelay: "0.12s" }}>
@@ -1656,7 +1665,9 @@ function Talks({ lang, t, layout, setLayout, density, setDensity }) {
     return [...set];
   }, []);
 
-  const filtered = filter === "all" ? TALKS : TALKS.filter((tk) => tk.tags.includes(filter));
+  // Platform tags (android, ios) also count as "mobile" when filtering.
+  const matches = (tk, f) => tk.tags.includes(f) || tk.tags.some((g) => TAG_PARENT[g] === f);
+  const filtered = filter === "all" ? TALKS : TALKS.filter((tk) => matches(tk, filter));
 
   return (
     <section className="section" id="talks">
