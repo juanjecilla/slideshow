@@ -14,6 +14,10 @@ export const SCENES: SceneDef[] = [
       { name: 'standby', note: 'Calm screen while people sit down. The first click starts the talk.' },
       { name: 'title' },
       { name: 'vote', ref: 'D29', note: 'Ask the room: dark or light? Press T and switch live. Then say: "now it works for most of you" and move on.' },
+      { name: 'hands: TalkBack', ref: 'D5', note: 'Show of hands: who has ever turned on TalkBack on their own app? Quick, acknowledge the split.' },
+      { name: 'hands: fix', ref: 'D5', note: 'Second: who has ever shipped an accessibility fix? Do not comment yet.' },
+      { name: 'hands: settings', ref: 'D5', note: 'Third: who changed the font size or dark mode on their phone? Pause for hands. Do not reveal the twist yet.' },
+      { name: 'twist', ref: 'D5', note: 'Click to reveal. Link it to the dark/light vote: you just chose an accessibility setting. Accessibility is not a niche, you are all users of it. Bridge into 02 ME.' },
     ],
   },
   {
