@@ -13,7 +13,7 @@ DevFest Jerez de la Frontera · 21 Nov 2026 · Coworking CYCE · 45 min. English
 
 ## The live demo (scenes 06–10): device
 
-The demo runs on a **real Pixel with Gemini Nano** (AICore). The emulator cannot do the on-device parts (no Nano).
+The demo runs on a **real Pixel 9 Pro with Gemini Nano** (AICore; the author's own phone). The emulator cannot do the on-device parts (no Nano).
 
 | Step | Command / check |
 | --- | --- |
@@ -34,14 +34,14 @@ Two builds sit side by side on the Pixel: `com.codingpit.muviss.a11ybroken` (bra
 | **06.2 audit** | open `.a11ybroken` on the Pixel; **dismiss any system dialog**; in the terminal: `$H/a11y-audit/scripts/dump_tree.sh out settings` then `python3 $H/a11y-audit/scripts/tree_audit.py out/settings.xml --density $(cat out/settings.density)`. With Claude Code: *"Use the a11y-audit skill on the running app. Dump the search, settings and a movie-detail screen and report findings by person."* | settings: 2 × `unlabeled 52x48dp`; search: `EditText unlabeled`; detail: `CheckBox unlabeled` | the slide already shows the outputs (06.2); overview → 14 |
 | **06.3 listen** | `python3 $H/talkback-speak/scripts/speak.py out/settings.xml` | `«unlabeled», checkbox, checked, double tap to activate` | slide 06.3 |
 | **07.2 200 %** | `.a11ytalk` open on Search; `$H/device-toggles/scripts/a11y-device.sh font-scale 2.0`, wait 8 s, `… shot out/200.png` | bottom bar whole words on `.a11ytalk`; open `.a11ybroken` (or the main build) to show `Searc/h`. **Then `reset`** | slides 07.2–07.3 (real captures) |
-| **06.7 / 08.3 on-device** | `.a11ytalk` → a movie → **Describe image** / **Short & simple** | the answer under the buttons, labelled "on your device" | the dashed boxes: replace them with captures before the day. Buttons missing = no AICore: say so, move on |
+| **06.8 / 08.3 on-device** | `.a11ytalk` → a movie → **Describe image** / **Short & simple** | the answer under the buttons, labelled "on your device" | the dashed boxes: replace them with captures before the day. Buttons missing = no AICore: say so, move on |
 | **09.2–09.4 motor** | no device: the scan, then the green test on the slides | — | — |
 
 Pre-flight (10 min before): both apps installed, `device-toggles reset`, TalkBack off, animations on, Do Not Disturb on (a notification dialog during a `uiautomator dump` breaks the audit: it showed up as `Muviss isn't responding` once), the terminal font at 24 pt+.
 
 ## What to capture on the Pixel (the two dashed boxes in the deck)
 
-1. **06.7 "A picture nobody described"** → `Describe image` on a detail backdrop. Screenshot + the text it returns (English).
+1. **06.8 "A picture nobody described"** → `Describe image` on a detail backdrop. Screenshot + the text it returns (English).
 2. **08.3 "A button. Nothing leaves the phone."** → `Short & simple` on a synopsis (Spanish and English). Screenshot of the result with its label.
 3. **03.3 the hook** → TalkBack on the unfixed app **with sound**: `adb shell screenrecord` records no audio, so use the phone's own screen recorder (internal audio on) or record the room. Branch `demo/a11y-broken` (pre-#233) is built the same way (`.a11ytalk`).
 
@@ -72,8 +72,12 @@ No automatic beats: every click is a beat.
 
 ## Timing (45 min)
 
-01 Open 1.5 · 02 Me 1 · 03 Hook 2 · 04 Why now 3 · 05 Map 2 · 06 Blind 9 · 07 Low vision 6 · 08 Cognitive 5 · 09 Motor 4 · 10 Shift left 3 · 11 Limits 2 · 12 Close 2 · 13 Q&A 4.
-If short of time, cut in this order: 10 Shift left → 07.5 contrast → 06.6 stack → 09.5.
+01 Open 1.5 (dark/light vote, then three shows of hands and the click-revealed twist: keep the hands under a minute) · 02 Me 1 · 03 Hook 2 · 04 Why now 3 · 05 Map 2 · 06 Blind 9 · 07 Low vision 6 · 08 Cognitive 5 · 09 Motor 4 · 10 Shift left 3 · 11 Limits 2 · 12 Close 2 · 13 Q&A 4.
+If short of time, cut in this order: 01 hands (1.4–1.6, keep the twist 1.7) → 10 Shift left → 07.5 contrast → 06.6 stack → 09.5.
+
+## Two decks
+
+English is the default (`/slideshow/a11y_ai/`); the Spanish copy is `jerez26/` (`/slideshow/a11y_ai/jerez26/`). Same beat map, notes and captures. Image Description output stays in English (R1.3).
 
 ## Config to check on the day
 

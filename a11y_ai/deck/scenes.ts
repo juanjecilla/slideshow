@@ -5,7 +5,7 @@ import type { SceneDef } from 'beatdeck';
  * `ref` = fact id in docs/research.md (R…) or decision in docs/DECISIONS.md (D…), `note` = speaker cue
  * (the presenter view shows them; the audience never does, and the screen-reader live region never reads them:
  * it reads deck/sr.ts).
- * Scenes 06–10 and 14 are placeholders until docs/AUDIT.md decides what goes in (checkpoint ~3 Nov).
+ * Scenes 06–10 and 14 come from docs/AUDIT.md. Open gaps (Pixel captures): docs/RELEASE-CHECKLIST.md.
  */
 export const SCENES: SceneDef[] = [
   {

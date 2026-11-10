@@ -85,6 +85,18 @@ Hoy es 19 oct y quedan 33 días. app_functions se publica el 7 nov, así que el 
 | R-10 | Visual direction: **Inspector** (`themes/inspector.css`) | The talk looks like the tool that audits the app: a real device with boxes and labels drawn from the UiAutomator bounds (`tools/gen-overlays.py`), tool panels for code and output, a dot-grid workspace, dark workspace on `T`. Same beat map, captures, notes and screen-reader summaries as before |
 | R-9 | The stage is now `aria-hidden` and there are two real buttons (Previous/Next step) | **Found in review, not by me**: every scene layer stays mounted (opacity only), so a screen reader read the whole deck at once (`ariaSnapshot` at beat 1.2 contained "Questions?", "Hephaestus"…). The live region alone was not enough. The slide now says "tries to be accessible" |
 
+## Revisions for the 20 Nov release (2026-11-10)
+
+| # | What changed | Why |
+|---|---|---|
+| R-11 | Engine upgraded to beatdeck **0.8.1** (fork `juanjecilla/beatdeck`) with `npm run upgrade --from <clone>`; engine freeze Wed 18 Nov | `upgrade` pulls from upstream `borjaperfra` (still 0.5.1), so the fork needs `--from`. Brings `CodeBlock`, a stricter layout audit and the regression suite; the Ourense talk's code frames are the same component |
+| R-12 | Code and tool output render in `CodeBlock` frames (`deck/ui.tsx` `Mono`); text unchanged | Same look as the Ourense talk. Code frames stay dark in both themes: title bar and highlights are tied to the `--code-*` tokens in `themes/inspector.css` |
+| R-13 | Scene 06 gained a beat: `checkbox` (code) and `checkbox: heard` (speak output). `Describe image` is now 06.8 | The old 6.5 had three stacked blocks and overflowed the slide once code got a frame; two beats are also easier to read from the back of a room |
+| R-14 | Scene 01 gained four beats: three shows of hands and a click-revealed twist ("You just picked an accessibility setting. You are all users of it.") | Same device as the Ourense audience check (no auto delay), tied to the dark/light vote. No statistic involved |
+| R-15 | Scene 12 gained `resources` (toolkit, Muviss app, slides) before the accessibility close | People leave with every link. Links checked 2026-11-10; the slides URL is live only after the merge |
+| R-16 | `tools/contrast.mjs` defaulted to the old `themes/a11y.css` and could not see the code frame | It reported ✓ while checking the wrong file. Now defaults to `inspector.css` and checks the `--code-*` tokens against the frame ground (46 pairs) |
+| R-17 | English stays the default deck; the Spanish copy `jerez26/` ships the same night | Decision of 2026-11-10. Translated from the frozen EN deck so the two never drift |
+
 ## beatdeck accessibility: what the engine does and does not give (measured with `tools/check-a11y.mjs`)
 
 Measured on the production build, 2026-10-19. Candidate fork issues for `juanjecilla/beatdeck`:
