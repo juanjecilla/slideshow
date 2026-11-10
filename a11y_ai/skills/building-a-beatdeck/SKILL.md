@@ -20,7 +20,7 @@ else (`deck/`, `src/`, `npm run …`) is relative to the deck project.
 If the working directory has no `src/beatdeck/`, scaffold one, clean it and install:
 
 ```bash
-npx degit borjaperfra/beatdeck my-talk && cd my-talk
+npx degit juanjecilla/beatdeck my-talk && cd my-talk
 npm run init -- --title "<title>" --author "<speaker>" --lang <en|es|…> [--theme light] [--demo]
 npm install
 ```
@@ -36,7 +36,7 @@ It also resets the demo's `qrUrl` to `TODO` and clears its tagline: set the real
 
 Then read `AGENTS.md`. The demo deck (on GitHub in `deck/`, or locally with `init --demo`) is the reference
 implementation of every pattern below. `init` removes the heavier example from your project; read it on GitHub when you need it:
-https://github.com/borjaperfra/beatdeck/tree/main/examples/kernel-panic — a 47-beat production talk. Look at
+https://github.com/juanjecilla/beatdeck/tree/main/examples/kernel-panic — a 47-beat production talk. Look at
 `index.tsx` (custom chrome, `isCut` + `Overlay` for a cut to black), `deck/timeline.ts` (every kind of automatic
 beat), `architecture/` (one SVG world spanning several scenes) and `simulation/` (a Canvas 2D particle layer).
 
@@ -60,7 +60,7 @@ target URL, real screenshots/logos/photos. Put originals in `reference/` (read-o
   - **narration** (prose, `>` quotes: what the speaker *says*) → the presenter view (`source` / `note`). On
     stage it becomes a short statement in the speaker's own words — condensed, never reworded into new claims;
   - **facts** (bullets, figures, names) → on stage, exactly as written (same numbers, same rounding, same "~");
-  - **code blocks, commands, formulas, output** → on stage character for character (`Terminal`, or a
+  - **code blocks, commands, formulas, output** → on stage character for character (`Terminal`, `CodeBlock` for highlighted code in a frame, or a
     `data-exact` element — see step 6), never retyped from memory;
   - **stage directions** ("on screen…", "show how it grows…") → instructions for you, not text to display.
 
@@ -158,14 +158,17 @@ npm run verify -- --source=reference/<script>.md   # + every Terminal line / dat
 
 Besides comparing frames, `verify` audits the visible text of every beat and **fails** on text outside the
 1920×1080 stage, text overlapping other text, and `µ`/`ß` broken by uppercase; it **warns** on text under
-18 px. When the source has exact text (code, commands, formulas, quotes), pass `--source`: Terminal lines are
+18 px and when text sits inside the safe margin of an edge (`safeMargin` in `deck.config.ts`, default
+120 px left/right, 100 px top/bottom; `--strict` makes warnings fail). A talk in several languages: `references/authoring.md` →
+"Several languages"; `verify` then runs every locale. When the source has exact text (code, commands, formulas, quotes), pass `--source`: Terminal lines are
 checked automatically, and any other element that must match the script verbatim gets a `data-exact`
 attribute (`<div data-exact>distancia = c × (t_llegada − t_envío)</div>`). `data-exact` text is compared with the
 source as prose (Markdown markers like `**`, `>`, bullets and line breaks don't count, so a sentence may span
 quote lines); Terminal lines are compared character for character. `npm run shot -- … --source=…` checks the
 same while iterating. The check is one-way: it proves stage text is in the script, not that every script fact
 reached the stage — that is the content audit's job. If an overlap is intentional
-(a glitch layer, text over its own shadow), mark that element `data-audit="off"` and say why.
+(a glitch layer, text over its own shadow), mark that element `data-audit="off"` and say why. The same goes for
+covered text (a card, image or shape painted over text), which is reported as a warning.
 
 If a beat has an intentionally random or live layer (particles, dithering, a clock), give that beat a
 `tolerance` (% of pixels) in `scenes.ts` and say why. Never raise tolerances to silence a real mismatch.
@@ -179,6 +182,7 @@ settle, the closing QR scans, no placeholder left except an explicit, reported `
 
 Write `docs/RUNBOOK.md` from `references/runbook-template.md` (how to run it on the day, keys, presenter
 window, failure recovery). Tell the user what is still `TODO` and what you decided on their behalf.
+When they want the talk as a PDF or images, follow `skills/exporting-a-beatdeck/SKILL.md`.
 
 ## Hard rules
 

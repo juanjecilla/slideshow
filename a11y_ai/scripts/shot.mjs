@@ -4,28 +4,49 @@
 //   npm run shot -- 3              → every beat of scene 3
 //   npm run shot -- 2.1-2.4        → a range
 //   npm run shot -- 3 --source=reference/script.md   (+ the exact-text check, as in verify)
+//   npm run shot -- 3 --locale=es   (a deck with `locales`; {locale} in --source is replaced)
 //   npm run shot -- 4.3 --mode=kernel-panic   (an example, beatdeck repo only)   --dist=dist (a build instead of the dev server)
 //
 // Each beat is loaded straight from its URL (?capture=1), shot once it has settled, and audited
 // (the same text checks as `npm run verify`). With more than one beat it also writes <out>/contact.png.
+// --strict: warnings (small text, safe-area) count as problems.
 // For the full proof, run `npm run verify`.
 import { mkdirSync, readFileSync } from 'node:fs';
-import { auditFrame, contactSheet, launchBrowser, missingFromSource, name, settle, startServer } from './lib.mjs';
+import { basename, dirname, resolve } from 'node:path';
+import { auditFrame, builtLocales, contactSheet, coveredWarnings, edgeWarnings, launchBrowser, missingFromSource, name, settle, startServer } from './lib.mjs';
 
 const args = process.argv.slice(2);
 const flag = (k) => args.find((a) => a.startsWith(`--${k}=`))?.split('=')[1];
 const specs = args.filter((a) => !a.startsWith('--'));
 const OUT = flag('out') ?? 'artifacts/shot';
-const SOURCE = flag('source');
+let dist = flag('dist');
+const rawLocale = flag('locale');
+if (args.includes('--locale') || rawLocale === '') { console.error('✕ shot: --locale needs a value: --locale=<code>'); process.exit(1); }
+// the effective locale: --locale, else the first of a multi-locale build (its default), else none
+const built = dist ? builtLocales(dist) : null;
+// --dist=<root>/<locale> of a multi-locale build: that folder name is the locale
+const folder = dist && !built && builtLocales(dirname(resolve(dist)))?.includes(basename(resolve(dist))) ? basename(resolve(dist)) : undefined;
+if (dist && rawLocale && !built && rawLocale !== folder) {
+  console.error(`✕ shot: --locale=${rawLocale} does not fit --dist=${dist}: ${folder ? `that is the ${folder} build` : 'it has no locales.json'}; pass the build root (and --locale), or drop --locale`);
+  process.exit(1);
+}
+const LOCALE = rawLocale ?? built?.[0] ?? folder;
+const SOURCE = flag('source')?.replaceAll('{locale}', LOCALE ?? '{locale}');
+if (SOURCE?.includes('{locale}')) { console.error('✕ shot: --source has {locale}, pass --locale=<code>'); process.exit(1); }
+const STRICT = args.includes('--strict');
 const sourceText = SOURCE ? readFileSync(SOURCE, 'utf8') : null;
 if (!specs.length) {
-  console.error('usage: npm run shot -- <scene>[.<beat>] [<from>-<to>] … [--mode=<example>] [--dist=<dir>] [--out=<dir>]');
+  console.error('usage: npm run shot -- <scene>[.<beat>] [<from>-<to>] … [--mode=<example>] [--locale=<code>] [--dist=<dir>] [--strict] [--out=<dir>]');
   process.exit(1);
 }
 mkdirSync(OUT, { recursive: true });
 
-const dist = flag('dist');
-const { base, stop } = await startServer(dist ? { dist, port: 4176 } : { dev: true, mode: flag('mode'), port: 4176 });
+if (built) {
+  if (!built.includes(LOCALE)) { console.error(`✕ shot: ${dist} has locales ${built.join(', ')}, not ${LOCALE}`); process.exit(1); }
+  dist = `${dist}/${LOCALE}`;
+}
+const env = LOCALE && !dist ? { BEATDECK_LOCALE: LOCALE } : {};
+const { base, stop } = await startServer(dist ? { dist, port: 4176 } : { dev: true, mode: flag('mode'), port: 4176, env });
 const browser = await launchBrowser();
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
 const errors = [];
@@ -63,12 +84,13 @@ for (const [s, b] of wanted) {
   const file = `${OUT}/${name(s, b)}.png`;
   await page.screenshot({ path: file });
   shots.push({ file, label: `${s}.${b}` });
-  const { errors: found, warnings, exact } = await page.evaluate(auditFrame);
-  const issues = [...found, ...(sourceText ? missingFromSource(exact, sourceText).map((e) => `${JSON.stringify(e.t)} is not in ${SOURCE}`) : [])];
+  const { errors: found, warnings: small, edges, covered, exact } = await page.evaluate(auditFrame);
+  const warnings = [...small, ...edgeWarnings(edges), ...coveredWarnings(covered)];
+  const issues = [...found, ...(STRICT ? warnings : []), ...(sourceText ? missingFromSource(exact, sourceText).map((e) => `${JSON.stringify(e.t)} is not in ${SOURCE}`) : [])];
   problems += issues.length;
   console.log(`${issues.length ? '✕' : '✓'} ${s}.${b} → ${file}`);
   issues.forEach((i) => console.log('    ' + i));
-  warnings.forEach((w) => console.log('    (warning) ' + w));
+  warnings.forEach((w) => console.log(`    (${STRICT ? 'strict' : 'warning'}) ` + w));
 }
 errors.forEach((e) => console.log('  [error] ' + e));
 if (shots.length > 1) {
