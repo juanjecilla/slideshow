@@ -123,6 +123,7 @@ export const SCENES: SceneDef[] = [
       { name: 'god', ref: 'R5.1', note: 'Homer calls him lame. Built things for everyone else.' },
       { name: 'maidens', ref: 'R5.2', note: 'Iliad 18.417–421. Do not mention self-propelled legs (R5.4) or tripods until R5.3 is checked.' },
       { name: 'toolkit', ref: 'D20', note: 'QR. The repo goes public today (docs/RELEASE-CHECKLIST.md).' },
+      { name: 'resources', ref: 'D5', note: 'Three links, one slide: the toolkit, the app with the fixes (branches talk/a11y-ai-jerez26 and demo/a11y-broken), and these slides. Links checked 2026-11-10; the slides URL is live only after the merge.' },
       { name: 'meta', ref: 'D16', note: 'Verified by tools/check-a11y.mjs: live region, hidden stage, buttons, keyboard, theme, reduced motion. NOT verified: a real screen reader (VoiceOver/NVDA). That is why the slide says tries.' },
     ],
   },

@@ -9,6 +9,12 @@ const ACCESSIBLE = [
   'Reduced motion respected',
 ];
 
+const LINKS: [string, string][] = [
+  ['toolkit', 'github.com/juanjecilla/hephaestus'],
+  ['app', 'github.com/juanjecilla/muviss-kmp'],
+  ['slides', 'juanjecilla.github.io/slideshow/a11y_ai'],
+];
+
 function Close_() {
   const { here, b } = useScene();
   const qr = qrConfigured(config.qrUrl);
@@ -28,8 +34,19 @@ function Close_() {
         </Reveal>
       )}
 
-      <Reveal on={here && b === 3} x={120} y={150}><div className="t-statement" style={{ fontSize: 110, lineHeight: 1.05 }}>This deck tries<br />to be accessible.</div></Reveal>
-      <Reveal on={here && b === 3} x={120} y={450} delay={300}>
+      <Reveal on={here && b === 3} out={here && b > 3} x={120} y={170}><div className="t-statement" style={{ fontSize: 100, lineHeight: 1.05 }}>Go and break it.</div></Reveal>
+      {LINKS.map(([k, u], i) => (
+        <Reveal key={k} on={here && b === 3} out={here && b > 3} x={158} y={400 + i * 130} delay={200 + i * 150}>
+          <div style={{ display: 'flex', gap: 40, alignItems: 'baseline' }}>
+            <span className="t-meta" style={{ fontSize: 22, width: 230 }}>{k}</span>
+            <span className="mono" style={{ fontSize: 44 }}>{u}</span>
+          </div>
+        </Reveal>
+      ))}
+      <Reveal on={here && b === 3} out={here && b > 3} x={158} y={880} delay={900}><span className="t-meta" style={{ fontSize: 22 }}>links checked 2026-11-10 · the slides go live when the talk is merged</span></Reveal>
+
+      <Reveal on={here && b === 4} x={120} y={150}><div className="t-statement" style={{ fontSize: 110, lineHeight: 1.05 }}>This deck tries<br />to be accessible.</div></Reveal>
+      <Reveal on={here && b === 4} x={120} y={450} delay={300}>
         <Panel title="checked by tools/check-a11y.mjs" style={{ width: 1500 }}>
           {ACCESSIBLE.map((line) => (
             <div key={line} style={{ display: 'flex', gap: 24, alignItems: 'baseline', padding: '8px 0' }}>
@@ -39,7 +56,7 @@ function Close_() {
           ))}
         </Panel>
       </Reveal>
-      <Reveal on={here && b === 3} x={120} y={900} delay={900}><span className="chip info">Open it with your screen reader. Tell me what breaks.</span></Reveal>
+      <Reveal on={here && b === 4} x={120} y={900} delay={900}><span className="chip info">Open it with your screen reader. Tell me what breaks.</span></Reveal>
     </>
   );
 }

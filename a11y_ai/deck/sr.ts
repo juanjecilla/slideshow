@@ -63,6 +63,7 @@ export const SR: Record<string, string> = {
   '12.god': 'Hephaestus, the Greek god of the forge, was lame.',
   '12.maidens': 'He built golden maidens who helped him walk. He built his own assistive technology.',
   '12.toolkit': 'Take the toolkit: github.com/juanjecilla/hephaestus.',
+  '12.resources': 'Resources: the toolkit at github.com/juanjecilla/hephaestus, the Muviss app at github.com/juanjecilla/muviss-kmp, and these slides at juanjecilla.github.io/slideshow/a11y_ai.',
   '12.meta': 'This deck tries to be accessible: contrast in both themes, announcements instead of the pictures, real Previous and Next buttons. Open it with your screen reader and tell me what breaks.',
   '13.questions': 'Questions?',
 };

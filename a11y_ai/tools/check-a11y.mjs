@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Is the deck itself accessible? Checks what scene 12.4 claims, in a real browser, on the production build.
+// Is the deck itself accessible? Checks what scene 12.5 claims, in a real browser, on the production build.
 //   npm run build && node tools/check-a11y.mjs        → prints PASS/FAIL per claim, writes artifacts/a11y/*.png
 import { mkdirSync } from 'node:fs';
 import { launchBrowser, startServer } from '../scripts/lib.mjs';

@@ -9,7 +9,7 @@ DevFest Jerez de la Frontera · 21 Nov 2026 · Coworking CYCE · 45 min. English
 2. Projector at 1920×1080 if possible; any other ratio gets bars, never distortion.
 3. **P** opens the presenter window; drag it to your screen. It must say "stage connected". Click the stage, **F** for fullscreen. You are on 1.1.
 4. Theme: the room picks dark or light in 1.3 (joke), **T** switches live. The choice is remembered per browser: before the talk, press **T** until it shows the theme you want to start from.
-5. Run `node tools/check-a11y.mjs` (after `npm run build`): every claim in scene 12.4 must say PASS.
+5. Run `node tools/check-a11y.mjs` (after `npm run build`): every claim in scene 12.5 must say PASS.
 
 ## The live demo (scenes 06–10): device
 
