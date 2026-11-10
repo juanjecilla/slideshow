@@ -63,6 +63,7 @@ export const SCENES: SceneDef[] = [
       { name: 'listen', ref: 'B1', note: 'speak.py: what TalkBack says. «unlabeled» before, one merged label after (#238/#245). It is an approximation of TalkBack, say so.' },
       { name: 'twice', ref: 'B2', note: 'No tool flagged this. Reading speak.py output as a user did. Fix: caption is visual only, the poster is the label (first attempt moved the label to the caption and left cut-off cards unlabeled: found on device).' },
       { name: 'checkbox', ref: 'B3', note: 'A checkbox beside a clickable row: two controls for one thing, one with no label. Still on main when we audited.' },
+      { name: 'checkbox: heard', ref: 'B3', note: 'What it sounds like: before, "button" and a separate unnamed checkbox; after, one "checkbox" with its name.' },
       { name: 'stack', ref: 'B4', note: 'The deck keeps the cards behind the top one in the tree. clearAndSetSemantics {} on the backing cards.' },
       { name: 'describe', ref: 'R1.3', note: 'ML Kit GenAI Image Description, on the phone, beta. TODO: replace the dashed box with the real output captured on the Pixel (docs/RUNBOOK.md).' },
       { name: 'limits', ref: 'R1.2', note: 'English only (R1.3), beta (R1.2). A model can describe what is not there: a person reads it before it ships.' },

@@ -1,4 +1,4 @@
-import { Reveal, Terminal, type TermLine } from 'beatdeck';
+import { CodeBlock, Reveal, type Lang, type TermLine } from 'beatdeck';
 import type { Ov } from './overlays';
 
 /** A tool panel: a title bar and a body. Where code, tool output and notes live. */
@@ -12,12 +12,12 @@ export function Panel({ title, children, style }: { title?: string; children: Re
 }
 
 /** Real tool output or code, character-exact (deck/captures.ts, deck/code.ts), in a panel. */
-export function Mono({ on, out, x, y, lines, size = 28, width, title }: {
-  on: boolean; out?: boolean; x: number; y: number; lines: (string | TermLine)[]; size?: number; width?: number; title?: string;
+export function Mono({ on, out, x, y, lines, size = 28, width, title, lang = 'term', fit = true, right }: {
+  on: boolean; out?: boolean; x: number; y: number; lines: (string | TermLine)[]; size?: number; width?: number; title?: string; lang?: Lang; fit?: boolean; right?: number;
 }) {
   return (
     <Reveal on={on} out={out} x={x} y={y}>
-      <Panel title={title} style={{ width }}><Terminal lines={lines} size={size} /></Panel>
+      <CodeBlock lines={lines} lang={lang} file={title} size={size} fit={fit ? { x, y, right } : undefined} style={{ ...(width ? { width } : {}), ...(!fit && right ? { maxWidth: right - x } : {}) }} />
     </Reveal>
   );
 }

@@ -18,11 +18,11 @@ function Motor_() {
       <Eyebrow on={at(1)} out={gone(1)} text="a11y-audit · scan_compose.py" />
       <Say on={at(1)} out={gone(1)} text="The scan says 24 dp." size={84} />
       <Mono on={at(1)} out={gone(1)} x={120} y={300} size={30} title="scan_compose.py" lines={small.map((l) => ({ t: l, marks: [{ text: 'small-target' }] }))} />
-      <Mono on={at(1)} out={gone(1)} x={120} y={470} size={26} title="SearchScreen.kt" lines={[CODE.clearButton]} />
+      <Mono on={at(1)} out={gone(1)} x={120} y={470} size={26} title="SearchScreen.kt" lang="kotlin" lines={[CODE.clearButton]} />
 
       <Eyebrow on={at(2)} out={gone(2)} text="before the fix: a test" />
       <Say on={at(2)} out={gone(2)} text="So: measure it." size={84} />
-      <Mono on={at(2)} out={gone(2)} x={120} y={300} size={22} title="AccessibilityTest.kt" lines={code(CODE.clearTest)} />
+      <Mono on={at(2)} out={gone(2)} x={120} y={300} size={22} title="AccessibilityTest.kt" lang="kotlin" lines={code(CODE.clearTest)} />
 
       <Reveal on={at(3)} x={120} y={200}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 50 }}>

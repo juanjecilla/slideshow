@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // WCAG 2.x contrast audit of a theme file, over every combination the deck can show.
-//   node tools/contrast.mjs [themes/a11y.css]        exits 1 on any failure (text needs 4.5:1)
+//   node tools/contrast.mjs [themes/inspector.css]        exits 1 on any failure (text needs 4.5:1)
 // Cascades the rules the way the browser would for <html data-theme="…" data-scene="…">:
 // every selector's [data-theme='x'] / [data-scene='y'] conditions must hold; later rules win.
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const file = process.argv[2] ?? 'themes/a11y.css';
+const file = process.argv[2] ?? 'themes/inspector.css';
 const css = readFileSync(new URL(`../${file}`, import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
 
 const blocks = [...css.matchAll(/([^{}@]+?)\s*{([^{}]*)}/g)]
@@ -50,6 +50,15 @@ for (const theme of themes) for (const scene of scenes) {
     n++;
     if (r < 4.5) { bad++; console.log(`FAIL ${theme.padEnd(5)} scene ${String(scene ?? '·').padEnd(2)} ${fg} on ${bgk}  ${r.toFixed(2)}`); }
   }
+}
+// Code frames (CodeBlock): fixed dark ground, so every token colour is checked against it, once.
+const codeCss = readFileSync(new URL('../themes/neutral.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+const code = Object.fromEntries([...codeCss.matchAll(/--(code-[\w-]+):\s*(#[0-9a-fA-F]{3,6})\s*;/g)].map((m) => [m[1], m[2]]));
+for (const [k, v] of Object.entries(code)) {
+  if (k === 'code-bg') continue;
+  const r = ratio(parse(v), parse(code['code-bg']));
+  n++;
+  if (r < 4.5) { bad++; console.log(`FAIL code frame ${k} on code-bg  ${r.toFixed(2)}`); }
 }
 console.log(bad ? `\n${bad} of ${n} pairs below 4.5:1` : `all ${n} text pairs ≥ 4.5:1 (${themes.length} themes × ${scenes.length} scenes)`);
 process.exit(bad ? 1 : 0);

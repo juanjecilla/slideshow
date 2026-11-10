@@ -31,6 +31,7 @@ export const SR: Record<string, string> = {
   '06.listen': 'What TalkBack says for a settings switch: unlabeled before, one clear label after.',
   '06.twice': 'Every poster was announced twice. The scanner does not flag it.',
   '06.checkbox': 'One thing, two controls, one of them unnamed. Before and after code.',
+  '06.checkbox: heard': 'What TalkBack says: before, a button and a separate unnamed checkbox; after, one checkbox with its name.',
   '06.stack': 'TalkBack walked the whole stack of cards, not only the top one.',
   '06.describe': 'A picture nobody described. An on-device model can describe it.',
   '06.limits': 'English only. Beta. It can describe what is not there.',

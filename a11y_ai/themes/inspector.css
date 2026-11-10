@@ -98,3 +98,12 @@
   position: static; width: auto; height: auto; margin: 0; padding: 14px 26px; overflow: visible; clip: auto; pointer-events: auto;
   font: 600 28px var(--font-sans); color: var(--bg); background: var(--ink); border-radius: 12px; outline: 4px solid var(--accent); outline-offset: 3px;
 }
+
+/* Code frames (CodeBlock) stay dark in both themes: their title bar must be readable on that dark ground,
+   not on the theme's ink tokens (which are dark text in the light theme). */
+.bd-code-file { color: var(--code-plain); }
+.bd-code-dots i { background: var(--code-com); }
+.bd-code-bar { border-bottom-color: var(--code-com); }
+/* Highlights inside a code frame: the theme accent is dark blue in the light theme, unreadable on the dark frame. */
+.bd-code .bd-mk.on, .bd-code .bd-mk::after { color: var(--code-fn); }
+.bd-code .bd-mk::before { background: var(--code-fn); }

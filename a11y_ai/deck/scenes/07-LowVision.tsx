@@ -30,17 +30,17 @@ function LowVision_() {
       <Eyebrow on={at(2)} out={gone(2)} text="the fix" />
       <Say on={at(2)} out={gone(2)} text="Labels stop growing at 1.3×." size={60} />
       <Reveal on={at(2)} out={gone(2)} x={120} y={280}><Panel style={{ width: 820 }}><div className="t-editorial" style={{ fontSize: 36, lineHeight: 1.25, color: 'var(--ink-2)' }}>Trade-off, said out loud: these five labels stop following the user fully. The rest of the app does.</div></Panel></Reveal>
-      <Mono on={at(2)} out={gone(2)} x={120} y={800} size={21} title="MuvissApp.kt" lines={code(CODE.navCap)} />
+      <Mono on={at(2)} out={gone(2)} x={120} y={770} size={21} title="MuvissApp.kt" lang="kotlin" lines={code(CODE.navCap)} />
       <Phone on={at(2)} out={gone(2)} src={navBefore} alt="Before" x={1060} y={110} h={640} overlays={OV.navBefore} boxes={at(2)} />
       <Phone on={at(2)} out={gone(2)} src={navAfter} alt="After: whole words" x={1420} y={110} h={640} overlays={OV.navAfter} boxes={at(2)} />
 
       <Eyebrow on={at(3)} out={gone(3)} text="same signal, another place" />
       <Say on={at(3)} out={gone(3)} text="Bigger text, fewer columns." size={60} />
-      <Mono on={at(3)} out={gone(3)} x={120} y={800} size={24} title="PosterGridCells.kt" lines={code(CODE.gridCells)} />
+      <Mono on={at(3)} out={gone(3)} x={120} y={850} size={22} title="PosterGridCells.kt" lang="kotlin" lines={code(CODE.gridCells)} />
       <Phone on={at(3)} out={gone(3)} src={grid100} alt="Search results at normal text size" x={1060} y={110} h={640} />
       <Phone on={at(3)} out={gone(3)} src={grid200} alt="Search results at 200% text: one wide card" x={1420} y={110} h={640} />
-      <Reveal on={at(3)} out={gone(3)} x={1100} y={800}><span className="chip">100%</span></Reveal>
-      <Reveal on={at(3)} out={gone(3)} x={1460} y={800}><span className="chip ok">200%</span></Reveal>
+      <Reveal on={at(3)} out={gone(3)} x={1100} y={765}><span className="chip">100%</span></Reveal>
+      <Reveal on={at(3)} out={gone(3)} x={1460} y={765}><span className="chip ok">200%</span></Reveal>
 
       <Eyebrow on={at(4)} out={gone(4)} text="contrast-check · literals" />
       <Say on={at(4)} out={gone(4)} text="Amber text over a poster." size={70} />

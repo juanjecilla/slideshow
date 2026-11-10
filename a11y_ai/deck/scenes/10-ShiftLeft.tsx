@@ -24,7 +24,7 @@ function ShiftLeft_() {
 
       <Eyebrow on={at(2)} out={gone(2)} text="Accessibility Test Framework · Compose 1.8+" />
       <Say on={at(2)} out={gone(2)} text="Checks that run with your tests." size={64} />
-      <Mono on={at(2)} out={gone(2)} x={120} y={300} size={24} title="androidInstrumentedTest" lines={code(CODE.atf)} />
+      <Mono on={at(2)} out={gone(2)} x={120} y={300} size={24} title="androidInstrumentedTest" lang="kotlin" lines={code(CODE.atf)} />
 
       <Eyebrow on={at(3)} out={gone(3)} text="tell the agent, once · AGENTS.md" />
       <Say on={at(3)} out={gone(3)} text="Rules the next agent reads." size={64} />

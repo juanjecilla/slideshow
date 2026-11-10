@@ -31,14 +31,14 @@ function Cognitive_() {
 
       <Eyebrow on={at(2)} out={gone(2)} text="on-device · Rewriting · SHORTEN" />
       <Say on={at(2)} out={gone(2)} text="A button. Nothing leaves the phone." size={56} />
-      <Mono on={at(2)} out={gone(2)} x={120} y={260} size={20} title="MlKitOnDeviceAi.shorten" lines={code(CODE.shorten)} />
-      <Reveal on={at(2)} out={gone(2)} x={120} y={720}>
+      <Mono on={at(2)} out={gone(2)} x={120} y={640} size={22} title="MlKitOnDeviceAi.shorten" lang="kotlin" lines={code(CODE.shorten)} />
+      <Reveal on={at(2)} out={gone(2)} x={120} y={260}>
         <div data-audit="off" style={{ width: 1150, border: '3px dashed var(--hair-strong)', borderRadius: 18, padding: '24px 30px', background: 'var(--surface)' }}>
           <span className="t-eyebrow">TODO · capture on the Pixel</span>
           <div className="t-editorial" style={{ fontSize: 38, marginTop: 10 }}>“Short &amp; simple” on a real synopsis, with its label</div>
         </div>
       </Reveal>
-      <Phone on={at(2)} out={gone(2)} src={detailAfter} alt="Detail screen" x={PX} y={110} />
+      <Phone on={at(2)} out={gone(2)} src={detailAfter} alt="Detail screen" x={PX} y={110} h={500} />
 
       <Eyebrow on={at(3)} out={gone(3)} text="which languages, per API" />
       <Say on={at(3)} out={gone(3)} text="Check the language first." size={72} />
