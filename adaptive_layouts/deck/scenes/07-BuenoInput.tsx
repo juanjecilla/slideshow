@@ -1,6 +1,6 @@
 import { Scene } from 'beatdeck';
 import { CODE, SRC } from '../code';
-import { Bullets, Eyebrow, Line, Mono, Say, Src, useBeat, Western } from '../ui';
+import { Bullets, Eyebrow, Line, Mono, Say, useBeat, Western } from '../ui';
 
 function BuenoInput_() {
   const { here, b, at, gone } = useBeat();

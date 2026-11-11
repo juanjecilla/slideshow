@@ -2,7 +2,7 @@ import { Scene } from 'beatdeck';
 import { BOX, CAP } from '../assets';
 import { CODE, SRC } from '../code';
 import { DOCS } from '../docs-code';
-import { Bullets, Capture, Eyebrow, Line, Mono, Say, Src, useBeat, Western } from '../ui';
+import { Bullets, Capture, Eyebrow, Line, Mono, Say, useBeat, Western } from '../ui';
 
 function BuenoM3_() {
   const { here, b, at, gone } = useBeat();

@@ -30,7 +30,7 @@ function Malo_() {
       <Eyebrow on={at(2)} out={gone(2)} text="Dispositivos" />
       <Reveal3000 on={at(2)} out={gone(2)} />
       <Line on={at(2)} out={gone(2)} text="dispositivos Android en el mundo" y={690} size={64} />
-      <Src on={at(2)} out={gone(2)} y={800} text="Cifra anunciada en Google I/O 2021" />
+      <Src on={at(2)} out={gone(2)} y={800} text="Dato de 2021 (Google I/O), desactualizado: no hay un total más reciente · comprobado 2026-11-11" />
 
       {/* 2.4 large screens */}
       <Eyebrow on={at(3)} out={gone(3)} text="Dispositivos" />

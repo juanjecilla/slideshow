@@ -1,5 +1,7 @@
 import { Scene } from 'beatdeck';
 import { DOCS, ORIGINAL } from '../docs-code';
+import { Quote } from '../quote/Quote';
+import { QUOTES } from '../quotes';
 import { Eyebrow, Intertitle, Line, Mono, Say, Src, useBeat, Western } from '../ui';
 
 /** R4: what Android 16 ignores on sw ≥ 600 dp for apps that target API 36. */
@@ -66,9 +68,7 @@ function Feo_() {
       {/* 3.14 Android 17 */}
       <Eyebrow on={at(13)} out={gone(13)} text="Android 17 · API 37" />
       <Say on={at(13)} out={gone(13)} text="Sin opt-out." y={230} size={170} color="var(--accent)" />
-      <Line on={at(13)} out={gone(13)} size={44} y={520}
-        text="“When you target API level 37, your app must be capable of adapting to a variety of display sizes.”" />
-      <Src on={at(13)} out={gone(13)} y={800} text="Android Developers Blog · 19 de mayo de 2026" />
+      <Quote quote={QUOTES.android37} on={at(13)} out={gone(13)} x={210} y={470} />
 
       {/* 3.15 */}
       <Western on={at(14)} text="Adaptarse o Morir" y={380} size={160} />
