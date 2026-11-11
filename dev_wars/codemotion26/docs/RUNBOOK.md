@@ -14,6 +14,10 @@ Keys: → / space next, ← previous, 1-8 jump to a scene, O overview, P present
 
 The clips on slides 14 and 15 start on the beat after the poster (`14: clips`, `15: clips`) and play silently (the clips have no audio track); the presenter window never plays them.
 
+## Licence
+
+`LICENSE` (MIT) covers the beatdeck engine and tooling. The media in `deck/assets` (film stills, memes, logos, the four clips) belongs to its owners and is not covered by it; the clips are other people's social-media videos, bundled only so the talk plays offline.
+
 ## Rebuild the slides from Google Slides
 
 Source: Google Slides deck `1-WwK79Y7tLdx8WOd4gXUEodFJ1kXXCvpoy6PI6mSJAQ` ("Dev Wars - El despertar del ego - Codemotion 2026"). Checked 2026-11-11.
