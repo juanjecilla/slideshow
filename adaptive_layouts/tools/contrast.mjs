@@ -34,5 +34,15 @@ for (const [k, s] of PAIRS) {
   if (!ok) bad++;
   console.log(`${ok ? 'ok  ' : 'FAIL'} ${k.padEnd(13)} on ${s.padEnd(8)} ${r.toFixed(2)}`);
 }
+// Code frames (CodeBlock): fixed dark ground, so every token colour is checked against it, once.
+const codeCss = readFileSync(new URL('../themes/neutral.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+const code = Object.fromEntries([...codeCss.matchAll(/--(code-[\w-]+):\s*(#[0-9a-fA-F]{3,6})\s*;/g)].map((m) => [m[1], m[2]]));
+for (const [k, v] of Object.entries(code)) {
+  if (k === 'code-bg') continue;
+  const r = ratio(parse(v), parse(code['code-bg']));
+  const ok = r >= 4.5;
+  if (!ok) bad++;
+  console.log(`${ok ? 'ok  ' : 'FAIL'} ${k.padEnd(13)} on code-bg  ${r.toFixed(2)}`);
+}
 console.log(bad ? `\n${bad} failing pair(s)` : '\nall text pairs ≥ 4.5:1');
 process.exit(bad ? 1 : 0);

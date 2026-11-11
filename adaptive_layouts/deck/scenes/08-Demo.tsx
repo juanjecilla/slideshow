@@ -29,8 +29,7 @@ function Demo_() {
       {/* 8.8 */}
       <Eyebrow on={at(7)} out={gone(7)} text="Deuda 2" />
       <Say on={at(7)} out={gone(7)} text="Predictive back" y={250} size={150} />
-      <Mono on={at(7)} out={gone(7)} y={500} size={40} lines={CODE.backOptIn} />
-      <Src on={at(7)} out={gone(7)} y={580} text={`Muviss · AndroidManifest.xml:25`} />
+      <Mono on={at(7)} out={gone(7)} y={500} size={40} lines={CODE.backOptIn} title="Muviss · AndroidManifest.xml:25" />
       <Line on={at(7)} out={gone(7)} text="Activado en el manifest, sin paneles que lo aprovechen." y={720} size={60} dim />
 
       {/* 8.9 */}

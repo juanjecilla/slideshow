@@ -60,3 +60,9 @@
   pointer-events: auto;
   font: 700 28px var(--font-sans); color: var(--bg); background: var(--ink); border-radius: 10px; outline: 4px solid var(--accent); outline-offset: 3px;
 }
+
+/* CodeBlock window frame: the ground is a fixed dark (neutral.css --code-*), so the bar text must not use the sand-theme ink. */
+.bd-code { border-color: var(--ink); border-width: 2px; }
+.bd-code-file { color: var(--code-plain); }
+.bd-code-dots i { background: var(--code-com); }
+.bd-code-bar { border-bottom-color: var(--code-com); }

@@ -23,10 +23,10 @@ function Feo_() {
       {/* 3.4–3.5 the hacks, from the original's slide 16 */}
       <Eyebrow on={at(3)} out={gone(3)} text="Las ñapas" />
       <Say on={at(3)} out={gone(3)} text="¿Es tablet?" y={230} size={170} />
-      <Mono on={at(3)} out={gone(3)} y={560} size={52} lines={ORIGINAL.isTablet} />
+      <Mono on={at(3)} out={gone(3)} y={560} size={52} lines={ORIGINAL.isTablet} lang="xml" title="res/values/bools.xml" />
       <Eyebrow on={at(4)} out={gone(4)} text="Las ñapas" />
       <Say on={at(4)} out={gone(4)} text="Bloqueamos la orientación." y={230} size={120} />
-      <Mono on={at(4)} out={gone(4)} y={560} size={52} lines={ORIGINAL.orientation} />
+      <Mono on={at(4)} out={gone(4)} y={560} size={52} lines={ORIGINAL.orientation} lang="xml" title="AndroidManifest.xml" />
 
       {/* 3.6 a11y — TODO(speaker): the original has only a title and a GIF; D15 */}
       <Eyebrow on={at(5)} out={gone(5)} text="a11y" />
@@ -38,7 +38,7 @@ function Feo_() {
       <Say on={at(6)} out={gone(6)} text="Pantallas grandes." y={400} size={170} />
       <Eyebrow on={at(7)} out={gone(7)} text="Pantallas grandes" />
       <Say on={at(7)} out={gone(7)} text="Orientaciones forzadas." y={300} size={140} />
-      <Mono on={at(7)} out={gone(7)} y={620} size={52} lines={ORIGINAL.orientation} />
+      <Mono on={at(7)} out={gone(7)} y={620} size={52} lines={ORIGINAL.orientation} lang="xml" title="AndroidManifest.xml" />
       <Eyebrow on={at(8)} out={gone(8)} text="Pantallas grandes" />
       <Say on={at(8)} out={gone(8)} text="MinAspectRatio" y={290} size={150} />
       <Say on={at(8)} out={gone(8)} text="MaxAspectRatio" y={480} size={150} />
@@ -54,14 +54,14 @@ function Feo_() {
 
       {/* 3.12 the list */}
       <Eyebrow on={at(11)} out={gone(11)} text="Android 16 · lo que se ignora" />
-      <Mono on={at(11)} out={gone(11)} y={230} size={58} lines={IGNORED} />
+      <Mono on={at(11)} out={gone(11)} y={230} size={46} lines={IGNORED} lang="plain" />
       <Line on={at(11)} out={gone(11)} text="Excepto: juegos · la opción del usuario · pantallas < sw600dp" y={820} size={46} dim />
 
       {/* 3.13 opt-out */}
       <Eyebrow on={at(12)} out={gone(12)} text="Android 16 · opt-out" />
       <Say on={at(12)} out={gone(12)} text="Hay un opt-out. Temporal." y={230} size={120} />
-      <Mono on={at(12)} out={gone(12)} y={480} size={30} lines={DOCS.optOut} />
-      <Src on={at(12)} out={gone(12)} y={720} text="developer.android.com · Behavior changes: Android 16 · atributos en varias líneas" />
+      <Mono on={at(12)} out={gone(12)} y={400} size={30} lines={DOCS.optOut} lang="xml" title="Behavior changes: Android 16 · reformateado" />
+      <Src on={at(12)} out={gone(12)} y={840} text="developer.android.com · Behavior changes: Android 16 · atributos en varias líneas" />
 
       {/* 3.14 Android 17 */}
       <Eyebrow on={at(13)} out={gone(13)} text="Android 17 · API 37" />

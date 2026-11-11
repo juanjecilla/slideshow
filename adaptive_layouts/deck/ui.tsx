@@ -1,4 +1,4 @@
-import { flags, reducedMotion, Reveal, Terminal, useScene, type TermLine } from 'beatdeck';
+import { CodeBlock, flags, reducedMotion, Reveal, useScene, type Lang, type TermLine } from 'beatdeck';
 
 /** The scene's beat predicates, so each scene reads as a list of beats. */
 export function useBeat() {
@@ -68,13 +68,19 @@ export function Intertitle({ on, out, part, name }: { on: boolean; out?: boolean
   );
 }
 
-/** Code (or real output), character-exact, from deck/code.ts and deck/docs-code.ts. */
-export function Mono({ on, out, x = 150, y, lines, size = 30, width }: {
+/**
+ * Code (or real output), character-exact, from deck/code.ts and deck/docs-code.ts, in a syntax-highlighted window frame.
+ * `fit` shrinks the text so the frame never leaves the stage (x → `right`, default the right margin).
+ */
+export function Mono({ on, out, x = 150, y, lines, size = 30, width, title, lang = 'kotlin', right, fit = true }: {
   on: boolean; out?: boolean; x?: number; y: number; lines: readonly (string | TermLine)[]; size?: number; width?: number;
+  title?: string; lang?: Lang; right?: number; fit?: boolean;
 }) {
   return (
     <Reveal on={on} out={out} x={x} y={y}>
-      <Terminal lines={[...lines]} size={size} width={width} />
+      <CodeBlock lines={[...lines]} lang={lang} file={title} size={size}
+        fit={fit ? { x, y, right } : undefined}
+        style={{ ...(width ? { width } : {}), ...(!fit && right ? { maxWidth: right - x } : {}) }} />
     </Reveal>
   );
 }

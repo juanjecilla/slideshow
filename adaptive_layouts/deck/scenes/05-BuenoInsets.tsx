@@ -19,28 +19,23 @@ function BuenoInsets_() {
 
       {/* 5.4 Muviss case 2 */}
       <Eyebrow on={at(3)} out={gone(3)} text="Caso 2 · Muviss · MainActivity.kt" />
-      <Mono on={at(3)} out={gone(3)} y={330} size={48} lines={CODE.edge} />
-      <Src on={at(3)} out={gone(3)} y={560} text={SRC.edge} />
+      <Mono on={at(3)} out={gone(3)} y={330} size={48} lines={CODE.edge} title={SRC.edge} />
 
       {/* 5.5 one place for every screen */}
       <Eyebrow on={at(4)} out={gone(4)} text="Muviss · ScreenInsets.kt" />
-      <Mono on={at(4)} out={gone(4)} y={250} size={30} lines={CODE.screenInsets} />
-      <Src on={at(4)} out={gone(4)} y={700} text={SRC.screenInsets} />
+      <Mono on={at(4)} out={gone(4)} y={250} size={30} lines={CODE.screenInsets} title={SRC.screenInsets} />
 
       {/* 5.6 */}
       <Eyebrow on={at(5)} out={gone(5)} text="Muviss · por qué safeDrawing, y sin abajo" />
-      <Mono on={at(5)} out={gone(5)} y={300} size={32} lines={CODE.insetsWhy} />
-      <Src on={at(5)} out={gone(5)} y={540} text={SRC.insetsWhy} />
+      <Mono on={at(5)} out={gone(5)} y={300} size={32} lines={CODE.insetsWhy} title={SRC.insetsWhy} />
 
       {/* 5.7 */}
       <Eyebrow on={at(6)} out={gone(6)} text="Muviss · por qué un Scaffold anidado no padea dos veces" />
-      <Mono on={at(6)} out={gone(6)} y={300} size={34} lines={CODE.insetsConsumed} />
-      <Src on={at(6)} out={gone(6)} y={500} text={SRC.insetsConsumed} />
+      <Mono on={at(6)} out={gone(6)} y={300} size={34} lines={CODE.insetsConsumed} title={SRC.insetsConsumed} />
 
       {/* 5.8 */}
       <Eyebrow on={at(7)} out={gone(7)} text="Muviss · y se puede testear" />
-      <Mono on={at(7)} out={gone(7)} y={300} size={32} lines={CODE.insetsTest} />
-      <Src on={at(7)} out={gone(7)} y={500} text={SRC.insetsTest} />
+      <Mono on={at(7)} out={gone(7)} y={300} size={32} lines={CODE.insetsTest} title={SRC.insetsTest} />
       <Say on={at(7)} out={gone(7)} text="Los insets, un parámetro." y={700} size={100} color="var(--accent)" />
     </>
   );

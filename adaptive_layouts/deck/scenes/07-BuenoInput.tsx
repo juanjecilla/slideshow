@@ -17,31 +17,26 @@ function BuenoInput_() {
 
       {/* 7.3 Muviss case 4 */}
       <Eyebrow on={at(2)} out={gone(2)} text="Caso 4 · Muviss desktop · Main.kt" />
-      <Mono on={at(2)} out={gone(2)} y={180} size={30} lines={CODE.menubar} />
-      <Src on={at(2)} out={gone(2)} y={950} text={SRC.menubar} />
+      <Mono on={at(2)} out={gone(2)} y={180} size={30} lines={CODE.menubar} title={SRC.menubar} />
 
       {/* 7.4 */}
       <Eyebrow on={at(3)} out={gone(3)} text="Muviss · un atajo por plataforma" />
-      <Mono on={at(3)} out={gone(3)} y={230} size={30} lines={CODE.accelerator} />
-      <Mono on={at(3)} out={gone(3)} y={520} size={32} lines={CODE.viewShortcuts} />
-      <Src on={at(3)} out={gone(3)} y={780} text={`${SRC.accelerator} · ${SRC.viewShortcuts}`} />
+      <Mono on={at(3)} out={gone(3)} y={230} size={30} lines={CODE.accelerator} title={SRC.accelerator} />
+      <Mono on={at(3)} out={gone(3)} y={520} size={32} lines={CODE.viewShortcuts} title={SRC.viewShortcuts} />
 
       {/* 7.5 the ⌘Q trap */}
       <Eyebrow on={at(4)} out={gone(4)} text="Muviss · la trampa de macOS" />
       <Say on={at(4)} out={gone(4)} text="⌘Q ya es del sistema." y={200} size={110} />
-      <Mono on={at(4)} out={gone(4)} y={440} size={30} lines={CODE.quitWhy} />
-      <Src on={at(4)} out={gone(4)} y={760} text={SRC.quitWhy} />
+      <Mono on={at(4)} out={gone(4)} y={440} size={30} lines={CODE.quitWhy} title={SRC.quitWhy} />
 
       {/* 7.6 */}
       <Eyebrow on={at(5)} out={gone(5)} text="Muviss · DesktopWindowState.kt" />
-      <Mono on={at(5)} out={gone(5)} y={280} size={30} lines={CODE.windowState} />
-      <Src on={at(5)} out={gone(5)} y={640} text={SRC.windowState} />
+      <Mono on={at(5)} out={gone(5)} y={280} size={30} lines={CODE.windowState} title={SRC.windowState} />
       <Line on={at(5)} out={gone(5)} text="La ventana recuerda su tamaño y su posición." y={780} size={64} dim />
 
       {/* 7.7 */}
       <Eyebrow on={at(6)} out={gone(6)} text="Muviss · Triage con teclado" />
-      <Mono on={at(6)} out={gone(6)} y={170} size={30} lines={CODE.triageKeys} />
-      <Src on={at(6)} out={gone(6)} y={950} text={SRC.triageKeys} />
+      <Mono on={at(6)} out={gone(6)} y={170} size={30} lines={CODE.triageKeys} title={SRC.triageKeys} />
 
       {/* 7.8 */}
       <Say on={at(7)} out={gone(7)} text="S: lo que un teclado tiene" y={330} size={110} />
