@@ -1,8 +1,6 @@
 # Runbook
 
-Dev Wars - El despertar del ego, default (event-agnostic) version. 75 slides, 8 scenes. The deck as presented at Codemotion Madrid 2026 is in `codemotion26/` (its own project, built to `/dev_wars/codemotion26/`).
-
-To give it at another event: put the event on the opening/closing slides in the Google Slides deck (or edit `deck/deck.config.ts` for the presenter view), re-generate, rebuild.
+Dev Wars - El despertar del ego, default (event-agnostic) version. 8 scenes, 82 beats. The deck as presented at Codemotion Madrid 2026 is in `codemotion26/` (its own project, built to `/dev_wars/codemotion26/`).
 
 ## Run it
 
@@ -14,31 +12,20 @@ npm run dev          # http://127.0.0.1:5173/#1.1 while editing
 
 Keys: → / space next, ← previous, 1-8 jump to a scene, O overview, P presenter window, F fullscreen. Every beat has an address (`#scene.beat`).
 
-The clips on slides 14 and 15 start on the beat after the poster (`14: clips`, `15: clips`) and play with sound; the presenter window never plays them. If you drive from the presenter window, first click or press F in the audience window so the browser lets it play with sound.
+- **1.8 (the crawl)** scrolls by itself for about 45 seconds; click when you are ready to move on.
+- **2.6 and 2.7** play their clips by themselves, silent. They rewind when you leave the beat. The presenter window shows a still.
+- **3.9 (frameworks)** builds the wall by itself (about 2 s).
 
-## Licence
+## Giving it at another event
 
-`LICENSE` (MIT) covers the beatdeck engine and tooling. The media in `deck/assets` (film stills, memes, logos, the four clips) belongs to its owners and is not covered by it; the clips are other people's social-media videos, bundled only so the talk plays offline.
+Nothing in the deck names an event. Put one in `deck/deck.config.ts` (`event`) if you want it in the presenter notes; add your own closing slide in `deck/scenes/08-Cierre.tsx`.
 
-## Rebuild the slides from Google Slides
+## Edit
 
-Source: Google Slides deck `1-WwK79Y7tLdx8WOd4gXUEodFJ1kXXCvpoy6PI6mSJAQ` ("Dev Wars - El despertar del ego - Codemotion 2026"). Checked 2026-11-11.
-
-```bash
-D=$(mktemp -d)
-curl -L -o "$D/deck.pptx" "https://docs.google.com/presentation/d/1-WwK79Y7tLdx8WOd4gXUEodFJ1kXXCvpoy6PI6mSJAQ/export/pptx"   # the deck is "anyone with the link"
-unzip -q "$D/deck.pptx" -d "$D/x"
-python3 -I tools/pptx_to_deck.py "$D/x" deck "" default   # deck/slides.gen.ts + deck/assets (needs cwebp); "default" = no Codemotion logo, no slide 76
-python3 -I tools/make_audit.py deck docs/CONTENT-AUDIT.md
-```
-
-Clips (full length, 720p H.264, poster frame each):
-
-```bash
-tools/encode_clips.sh <trail.mp4> <marathon.mp4> <speed-project.mp4> <trail-youtube.mp4>
-```
-
-Where the clips come from (Drive file ids and the YouTube id are in `tools/pptx_to_deck.py`, `CLIPS`; URLs in `deck/deck.config.ts`). Download the YouTube one with `yt-dlp -f 'bv*[height<=720]+ba/b[height<=720]' --merge-output-format mp4 <url>`.
+- One file per scene in `deck/scenes/`; `defineBeats([...])` at the top names the beats, `at('name')` / `from('name')` / `between('a','b')` decide what is on screen.
+- Building blocks are in `deck/ui.tsx`: `Title`, `Eyebrow`, `Lines`, `Quote`, `Img`, `Photo` (full-bleed, cuts), `Paper`, `Clip`, `Versus`, `Caption`.
+- Images and clips: `deck/assets/` (`video/` for clips). Re-encode clips with `tools/encode_clips.sh <trail.mp4> <marathon.mp4> <speed-project.mp4> <trail-youtube.mp4>` (720p max, H.264, no audio; needs ffmpeg).
+- Clip sources: Drive file ids `1qhPB4Dr05iBmHNNhHUHM8jVQHy6k6qpy`, `1FMKyfudDjwXjGRaoS9r0do1QhmFKoAeM`, `1sWFhMhuLHc6xKNxMF8CBPJ0yon_2tncx`, YouTube `2Y3gmYO8TCE` (URLs in `deck/deck.config.ts`). Checked 2026-11-11. Download the YouTube one with `yt-dlp -f 'bv*[height<=720]+ba/b[height<=720]' --merge-output-format mp4 <url>`.
 
 ## Verify
 
@@ -48,8 +35,12 @@ npm run verify    # every beat forwards, backwards and from the URL (artifacts/v
 npm run shot -- 3 4.2   # quick frames
 ```
 
+## Licence
+
+`LICENSE` (MIT) covers the beatdeck engine and tooling. The media in `deck/assets` (film stills, memes, logos, the four clips) belongs to its owners and is not covered by it; the clips are other people's social-media videos, bundled only so the talk plays offline.
+
 ## If something breaks on the day
 
-- Clip does not play: press → to move on; the slide is complete without it.
+- A clip does not play: press → to move on; the beat is complete without it.
 - No Wi-Fi: nothing needs it (the build is offline).
 - Wrong beat: edit the URL hash (`#4.6`) or open the overview with O.

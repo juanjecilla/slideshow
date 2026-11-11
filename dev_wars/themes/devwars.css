@@ -1,0 +1,47 @@
+/*
+ * Dev Wars · theme on top of neutral.css.
+ * Space-black stage, off-white type, one accent: the yellow of the crawl. A cold blue for the opening line.
+ * "Paper" is the light stage used for the debate beats (logo versus, framework wall), where logos need a white ground.
+ */
+:root {
+  --accent: #ffe81f;
+  --accent-strong: #ffd400;
+  --space-blue: #4bd5ee;
+  --paper: #f2efe6;
+  --paper-ink: #0b0b0c;
+  --paper-ink-2: rgba(11, 11, 12, 0.6);
+}
+
+/* Layers: hard cuts. A scene or a full-bleed image appears and disappears at once; text rises in. */
+.dw-photo { position: absolute; inset: 0; }
+.dw-photo img { display: block; width: 100%; height: 100%; user-select: none; -webkit-user-drag: none; }
+.dw-shade { position: absolute; inset: 0; pointer-events: none; }
+.dw-shade-bottom { background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.55) 26%, rgba(0, 0, 0, 0) 55%); }
+.dw-shade-top { background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 40%); }
+.dw-paper { position: absolute; inset: 0; background: var(--paper); }
+
+.dw-rise { will-change: opacity, transform; }
+.reduced-motion .dw-rise, .capture .dw-rise { transition: none !important; }
+
+.dw-img { display: block; user-select: none; -webkit-user-drag: none; }
+.dw-line { white-space: nowrap; font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; }
+.dw-quote { font-weight: 500; letter-spacing: -0.035em; line-height: 1.08; }
+.dw-mono { font-family: var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.dw-mark { background: var(--accent); color: var(--paper-ink); padding: 0 0.16em; margin: 0 -0.04em; }
+.dw-clip { display: block; background: #000; object-fit: contain; }
+
+/* The crawl: perspective text that scrolls away. Frozen (fully readable) in capture / reduced motion. */
+.dw-crawl-stage { position: absolute; inset: 0; overflow: hidden; perspective: 900px; perspective-origin: 50% 38%; }
+.dw-crawl {
+  position: absolute; left: 330px; width: 1260px; top: 160px;
+  transform-origin: 50% 100%; transform: rotateX(50deg) translateY(0);
+  color: var(--accent); font-weight: 700; text-align: justify; font-size: 62px; line-height: 1.32; letter-spacing: -0.01em;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 26%); mask-image: linear-gradient(to bottom, transparent 0%, #000 26%);
+}
+.dw-crawl p { margin: 0 0 1.4em; }
+.dw-crawl[data-run='1'] { animation: dw-crawl 46s linear forwards; }
+@keyframes dw-crawl {
+  from { transform: rotateX(50deg) translateY(900px); }
+  to { transform: rotateX(50deg) translateY(-760px); }
+}
+.capture .dw-crawl[data-run='1'], .reduced-motion .dw-crawl[data-run='1'] { animation: none; transform: rotateX(50deg) translateY(-430px); }

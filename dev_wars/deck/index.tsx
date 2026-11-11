@@ -1,14 +1,28 @@
 import { defineDeck } from 'beatdeck';
 import '../themes/neutral.css';
-import './deck.css';
+import '../themes/devwars.css';
 import { config } from './deck.config';
 import { SCENES } from './scenes';
-import { SceneLayer } from './SceneLayer';
+import { Prologue } from './scenes/01-Prologue';
+import { Ego } from './scenes/02-Ego';
+import { Opiniones } from './scenes/03-Opiniones';
+import { Templo } from './scenes/04-Templo';
+import { Marfil } from './scenes/05-Marfil';
+import { Oscuro } from './scenes/06-Oscuro';
+import { Esperanza } from './scenes/07-Esperanza';
+import { Cierre } from './scenes/08-Cierre';
 
 function Stage() {
   return (
     <>
-      {SCENES.map((_, i) => <SceneLayer key={i} scene={i} />)}
+      <Prologue />
+      <Ego />
+      <Opiniones />
+      <Templo />
+      <Marfil />
+      <Oscuro />
+      <Esperanza />
+      <Cierre />
     </>
   );
 }
@@ -19,7 +33,8 @@ export default defineDeck({
   lang: 'es',
   scenes: SCENES,
   Stage,
-  Chrome: null, // the original slides carry no chrome of their own
-  fonts: ['400 40px "IBM Plex Sans"', '600 40px "IBM Plex Sans"', '700 40px "IBM Plex Sans"'],
+  // No chrome of our own on stage; the operator UI (overview O, presenter P) is the engine's.
+  Chrome: null,
+  fonts: ['600 100px "Inter Variable"', '500 60px "Inter Variable"', '400 32px "JetBrains Mono Variable"'],
   qrUrl: config.qrUrl,
 });
