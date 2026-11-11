@@ -12,10 +12,10 @@ function Demo_() {
       <Line on={at(0)} out={gone(0)} text="Muviss, redimensionándose." y={650} size={72} dim />
 
       {/* 8.2–8.5 clips (the live run is optional; docs/RUNBOOK.md) */}
-      <Capture on={at(1)} out={gone(1)} x={349} y={140} w={BOX.clip.w} h={BOX.clip.h} src={CAP.videoRail} video label="De ancho a estrecho: rail y barra inferior" todo="Vídeo: la ventana de escritorio pasa de ancha a estrecha." />
-      <Capture on={at(2)} out={gone(2)} x={349} y={140} w={BOX.clip.w} h={BOX.clip.h} src={CAP.videoDetail} video label="El detalle pasa a dos columnas" todo="Vídeo: el detalle cruza los 840 dp." />
-      <Capture on={at(3)} out={gone(3)} x={349} y={140} w={BOX.clip.w} h={BOX.clip.h} src={CAP.videoGrid} video label="La rejilla recoloca las columnas" todo="Vídeo: GridCells.Adaptive al cambiar el ancho." />
-      <Capture on={at(4)} out={gone(4)} x={349} y={140} w={BOX.clip.w} h={BOX.clip.h} src={CAP.videoKeys} video label="Atajos de teclado: ⌘F y ⌘," todo="Vídeo: atajos de teclado." />
+      <Capture on={at(1)} out={gone(1)} x={349} y={125} w={BOX.clip.w} h={BOX.clip.h} src={CAP.videoRail} video label="De ancho a estrecho: rail y barra inferior" todo="Vídeo: la ventana de escritorio pasa de ancha a estrecha." />
+      <Capture on={at(2)} out={gone(2)} x={349} y={125} w={BOX.clip.w} h={BOX.clip.h} src={CAP.videoDetail} video label="El detalle pasa a dos columnas" todo="Vídeo: el detalle cruza los 840 dp." />
+      <Capture on={at(3)} out={gone(3)} x={349} y={125} w={BOX.clip.w} h={BOX.clip.h} src={CAP.videoGrid} video label="La rejilla recoloca las columnas" todo="Vídeo: GridCells.Adaptive al cambiar el ancho." />
+      <Capture on={at(4)} out={gone(4)} x={349} y={125} w={BOX.clip.w} h={BOX.clip.h} src={CAP.videoKeys} video label="Atajos de teclado: ⌘F y ⌘," todo="Vídeo: atajos de teclado." />
 
       {/* 8.6 debt */}
       <Western on={at(5)} out={gone(5)} text="Lo que Muviss" y={260} size={190} />

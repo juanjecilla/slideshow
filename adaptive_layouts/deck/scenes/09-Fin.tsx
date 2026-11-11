@@ -1,6 +1,13 @@
 import { QR, Scene } from 'beatdeck';
 import { config } from '../deck.config';
-import { Bullets, Eyebrow, Intertitle, Line, Say, useBeat, Western } from '../ui';
+import { Bullets, Eyebrow, Intertitle, Line, Say, Src, useBeat, Western } from '../ui';
+
+const RESOURCES = [
+  ['Android adaptive apps', config.links.adaptive],
+  ['Canonical layouts', config.links.canonical],
+  ['Muviss, el código de la charla', config.links.muviss],
+  ['Las slides', config.qrLabel],
+] as const;
 
 function Fin_() {
   const { here, b, at, gone } = useBeat();
@@ -35,20 +42,30 @@ function Fin_() {
       <Say on={at(5)} out={gone(5)} text="Aprovechar el tamaño de la pantalla" y={310} size={88} />
       <Say on={at(5)} out={gone(5)} text="para múltiples ventanas." y={460} size={88} color="var(--accent)" />
 
-      {/* 9.7 */}
-      <Western on={at(6)} out={gone(6)} text="Gracias" y={300} size={280} />
-      <Line on={at(6)} out={gone(6)} text="linktr.ee/juanje.cilla  ·  juanje-cilla" y={700} size={56} dim />
+      {/* 9.7 resources */}
+      <Eyebrow on={at(6)} out={gone(6)} text="Recursos" />
+      {RESOURCES.map(([label, url], i) => (
+        <div key={url}>
+          <Say on={at(6)} out={gone(6)} text={label} y={200 + i * 150} size={64} />
+          <Line on={at(6)} out={gone(6)} text={url} y={275 + i * 150} size={38} dim />
+        </div>
+      ))}
+      <Src on={at(6)} out={gone(6)} y={920} text={`enlaces comprobados ${config.linksChecked}`} />
 
-      {/* 9.8 the talk on the web */}
-      <Eyebrow on={at(7)} out={gone(7)} text="La charla, en la web" />
-      <Say on={at(7)} out={gone(7)} text="Código, notas" y={260} size={120} />
-      <Say on={at(7)} out={gone(7)} text="y fuentes." y={410} size={120} color="var(--accent)" />
-      <Line on={at(7)} out={gone(7)} text={config.qrLabel} y={720} size={44} />
-      <Line on={at(7)} out={gone(7)} text="linktr.ee/juanje.cilla" y={810} size={44} dim />
-      {at(7) && <QR url={config.qrUrl} size={560} x={1130} y={240} />}
+      {/* 9.8 */}
+      <Western on={at(7)} out={gone(7)} text="Gracias" y={300} size={280} />
+      <Line on={at(7)} out={gone(7)} text="linktr.ee/juanje.cilla  ·  juanje-cilla" y={700} size={56} dim />
 
-      {/* 9.9 */}
-      <Western on={at(8)} text="Preguntas" y={380} size={230} />
+      {/* 9.9 the talk on the web */}
+      <Eyebrow on={at(8)} out={gone(8)} text="La charla, en la web" />
+      <Say on={at(8)} out={gone(8)} text="Código, notas" y={260} size={120} />
+      <Say on={at(8)} out={gone(8)} text="y fuentes." y={410} size={120} color="var(--accent)" />
+      <Line on={at(8)} out={gone(8)} text={config.qrLabel} y={720} size={44} />
+      <Line on={at(8)} out={gone(8)} text="linktr.ee/juanje.cilla" y={810} size={44} dim />
+      {at(8) && <QR url={config.qrUrl} size={560} x={1130} y={240} />}
+
+      {/* 9.10 */}
+      <Western on={at(9)} text="Preguntas" y={380} size={230} />
     </>
   );
 }

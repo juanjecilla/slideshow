@@ -1,4 +1,5 @@
 import { Scene } from 'beatdeck';
+import { Standby } from '../standby/Standby';
 import { Bullets, Eyebrow, Line, Say, Src, useBeat, Western } from '../ui';
 
 function Open_() {
@@ -6,7 +7,9 @@ function Open_() {
   return (
     <>
       {/* 1.1 standby */}
-      <Eyebrow on={at(0)} out={gone(0)} text="DevFest Jaén 2026 · GDG Jaén · online" y={480} />
+      <Eyebrow on={at(0)} out={gone(0)} text="DevFest Jaén 2026 · GDG Jaén · online" />
+      <Western on={at(0)} out={gone(0)} text="Adaptive Layouts" y={190} size={130} />
+      <Standby on={at(0)} out={gone(0)} />
 
       {/* 1.2 title */}
       <Western on={at(1)} out={gone(1)} text="Adaptive Layouts" y={300} size={150} />

@@ -2,7 +2,7 @@ import { Scene } from 'beatdeck';
 import { DOCS, ORIGINAL } from '../docs-code';
 import { Quote } from '../quote/Quote';
 import { QUOTES } from '../quotes';
-import { Eyebrow, Intertitle, Line, Mono, Say, Src, useBeat, Western } from '../ui';
+import { Capture, Eyebrow, Intertitle, Line, Mono, Say, Src, useBeat, Western } from '../ui';
 
 /** R4: what Android 16 ignores on sw ≥ 600 dp for apps that target API 36. */
 const IGNORED = ['screenOrientation', 'resizeableActivity', 'minAspectRatio', 'maxAspectRatio', 'setRequestedOrientation()', 'getRequestedOrientation()'] as const;
@@ -30,10 +30,15 @@ function Feo_() {
       <Say on={at(4)} out={gone(4)} text="Bloqueamos la orientación." y={230} size={120} />
       <Mono on={at(4)} out={gone(4)} y={560} size={52} lines={ORIGINAL.orientation} lang="xml" title="AndroidManifest.xml" />
 
-      {/* 3.6 a11y — TODO(speaker): the original has only a title and a GIF; D15 */}
-      <Eyebrow on={at(5)} out={gone(5)} text="a11y" />
-      <Say on={at(5)} out={gone(5)} text="El tamaño de fuente" y={300} size={130} />
-      <Say on={at(5)} out={gone(5)} text="también cambia el layout." y={470} size={130} color="var(--ink-2)" />
+      {/* 3.6 a11y — "you may remember me from such talks as…" (D15) */}
+      <Eyebrow on={at(5)} out={gone(5)} text="Presentación, otra vez" />
+      <Capture on={at(5)} out={gone(5)} x={150} y={250} w={520} h={560} label="Troy McClure presentándose" todo="Meme de Troy McClure (lo aporta Juanje): imagen en deck/assets/." />
+      <Say on={at(5)} out={gone(5)} text="Quizás me recordéis" x={760} y={250} size={84} />
+      <Say on={at(5)} out={gone(5)} text="de charlas como…" x={760} y={350} size={84} color="var(--accent)" />
+      <Line on={at(5)} out={gone(5)} x={760} y={540} size={46} text="a11y, el numerónimo ético" />
+      <Line on={at(5)} out={gone(5)} x={760} y={605} size={34} dim text="Commit Conf · jun 2026 · juanjecilla.github.io/slideshow/a11y" />
+      <Line on={at(5)} out={gone(5)} x={760} y={715} size={46} text="a11y on Android? AI makes it easy" />
+      <Line on={at(5)} out={gone(5)} x={760} y={780} size={34} dim text="DevFest Jerez · 21 nov 2026" />
 
       {/* 3.7–3.10 problems */}
       <Eyebrow on={at(6)} out={gone(6)} text="Problemas" />

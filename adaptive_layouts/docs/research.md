@@ -43,10 +43,10 @@ Same post: apps that meet the adaptive quality bar earn an "Optimized for large 
 
 ## Devices
 
-**R7 — Large screens: "over 580 million".** Same post as R6 (19 May 2026): "with over 580 million large screen devices in the hands of users".
+**R7 — Large screens: "over 580 million".** (Re-checked on the page 2026-11-11; the same post says multi-device users spend 9x more and large-screen users ~5x more, "Google Internal Data, 2026".) Same post as R6 (19 May 2026): "with over 580 million large screen devices in the hands of users".
 
 **R8 — "3.000M Android devices" is from 2021.** Announced at Google I/O 2021 ([TechCrunch, 18 May 2021](https://techcrunch.com/2021/05/18/android-now-powers-3b-devices)).
-I found no 2026 total with the same wording. The original slide (Nov 2025) says "3.000M dispositivos Android en el
+I found no 2026 total with the same wording (searched again 2026-11-11: no official figure; the nearest are "over 500 million" large-screen devices, Android Developers Blog 19 Dec 2025, and R7). Decision D27: the slide keeps the number and says it is from 2021 and outdated. The original slide (Nov 2025) says "3.000M dispositivos Android en el
 mundo": on stage it is labelled with its date, or replaced by R7. **TODO(speaker):** pick one.
 
 ## Material 3 Adaptive

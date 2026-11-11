@@ -51,14 +51,14 @@ function Malo_() {
       <Eyebrow on={at(5)} out={gone(5)} text="Contexto" />
       <Say on={at(5)} out={gone(5)} text="Orientación" y={250} size={170} />
       <Line on={at(5)} out={gone(5)} text="Portrait / Landscape" y={470} size={72} dim />
-      <Device on={at(5)} out={gone(5)} x={300} y={640} w={160} h={290} label="Portrait" />
+      <Device on={at(5)} out={gone(5)} x={300} y={610} w={160} h={290} label="Portrait" />
       <Device on={at(5)} out={gone(5)} x={760} y={700} w={290} h={160} label="Landscape" />
 
       {/* 2.7 zoom */}
       <Eyebrow on={at(6)} out={gone(6)} text="Contexto" />
       <Say on={at(6)} out={gone(6)} text="Zoom" y={250} size={170} />
       <Line on={at(6)} out={gone(6)} text="1x … 3x" y={470} size={72} dim />
-      <Scale on={at(6)} out={gone(6)} x={300} y={640} kind="zoom" />
+      <Scale on={at(6)} out={gone(6)} x={300} y={590} kind="zoom" />
 
       {/* 2.8 font size */}
       <Eyebrow on={at(7)} out={gone(7)} text="Contexto" />
