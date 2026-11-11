@@ -1,6 +1,7 @@
 import { defineDeck } from 'beatdeck';
 import '../themes/neutral.css';
 import '../themes/western.css';
+import { LiveRegion, SrNav, StagePicture } from './a11y';
 import { config } from './deck.config';
 import { SCENES } from './scenes';
 import { Open } from './scenes/01-Open';
@@ -18,6 +19,9 @@ import { Backup } from './scenes/10-Backup';
 function Stage() {
   return (
     <>
+      <LiveRegion />
+      <SrNav />
+      <StagePicture>
       <Open />
       <Malo />
       <Feo />
@@ -28,6 +32,7 @@ function Stage() {
       <Demo />
       <Fin />
       <Backup />
+      </StagePicture>
     </>
   );
 }
