@@ -1,5 +1,7 @@
 import { QR, Reveal, Scene, qrConfigured, useScene } from 'beatdeck';
 import { config } from '../deck.config';
+import { Quote } from '../quote/Quote';
+import { QUOTES } from '../quotes';
 import { Panel } from '../ui';
 
 const ACCESSIBLE = [
@@ -26,27 +28,29 @@ function Close_() {
       <Reveal on={here && b === 1} out={here && b > 1} x={120} y={300}><div className="t-statement" style={{ fontSize: 100, lineHeight: 1.1 }}>He built golden maidens<br />to help him walk.</div></Reveal>
       <Reveal on={here && b === 1} out={here && b > 1} x={124} y={640} delay={500}><span className="chip">Iliad, book 18</span></Reveal>
 
-      <Reveal on={here && b === 2} out={here && b > 2} x={120} y={260}><div className="t-statement" style={{ fontSize: 130, lineHeight: 1.05 }}>Build what<br />you need.</div></Reveal>
-      <Reveal on={here && b === 2} out={here && b > 2} x={124} y={620} delay={300}><span className="chip info">Take the toolkit</span></Reveal>
+      <Quote quote={QUOTES.bjarno} on={here && b === 2} out={here && b > 2} y={290} />
+
+      <Reveal on={here && b === 3} out={here && b > 3} x={120} y={260}><div className="t-statement" style={{ fontSize: 130, lineHeight: 1.05 }}>Build what<br />you need.</div></Reveal>
+      <Reveal on={here && b === 3} out={here && b > 3} x={124} y={620} delay={300}><span className="chip info">Take the toolkit</span></Reveal>
       {qr && (
-        <Reveal on={here && b === 2} out={here && b > 2} x={1260} y={200} delay={400}>
+        <Reveal on={here && b === 3} out={here && b > 3} x={1260} y={200} delay={400}>
           <Panel title={config.qrLabel} style={{ width: 460 }}><QR url={config.qrUrl} size={380} /></Panel>
         </Reveal>
       )}
 
-      <Reveal on={here && b === 3} out={here && b > 3} x={120} y={170}><div className="t-statement" style={{ fontSize: 100, lineHeight: 1.05 }}>Go and break it.</div></Reveal>
+      <Reveal on={here && b === 4} out={here && b > 4} x={120} y={170}><div className="t-statement" style={{ fontSize: 100, lineHeight: 1.05 }}>Go and break it.</div></Reveal>
       {LINKS.map(([k, u], i) => (
-        <Reveal key={k} on={here && b === 3} out={here && b > 3} x={158} y={400 + i * 130} delay={200 + i * 150}>
+        <Reveal key={k} on={here && b === 4} out={here && b > 4} x={158} y={400 + i * 130} delay={200 + i * 150}>
           <div style={{ display: 'flex', gap: 40, alignItems: 'baseline' }}>
             <span className="t-meta" style={{ fontSize: 22, width: 230 }}>{k}</span>
             <span className="mono" style={{ fontSize: 44 }}>{u}</span>
           </div>
         </Reveal>
       ))}
-      <Reveal on={here && b === 3} out={here && b > 3} x={158} y={880} delay={900}><span className="t-meta" style={{ fontSize: 22 }}>links checked 2026-11-10 · the slides go live when the talk is merged</span></Reveal>
+      <Reveal on={here && b === 4} out={here && b > 4} x={158} y={880} delay={900}><span className="t-meta" style={{ fontSize: 22 }}>links checked 2026-11-10 · the slides go live when the talk is merged</span></Reveal>
 
-      <Reveal on={here && b === 4} x={120} y={150}><div className="t-statement" style={{ fontSize: 110, lineHeight: 1.05 }}>This deck tries<br />to be accessible.</div></Reveal>
-      <Reveal on={here && b === 4} x={120} y={450} delay={300}>
+      <Reveal on={here && b === 5} x={120} y={150}><div className="t-statement" style={{ fontSize: 110, lineHeight: 1.05 }}>This deck tries<br />to be accessible.</div></Reveal>
+      <Reveal on={here && b === 5} x={120} y={450} delay={300}>
         <Panel title="checked by tools/check-a11y.mjs" style={{ width: 1500 }}>
           {ACCESSIBLE.map((line) => (
             <div key={line} style={{ display: 'flex', gap: 24, alignItems: 'baseline', padding: '8px 0' }}>
@@ -56,7 +60,7 @@ function Close_() {
           ))}
         </Panel>
       </Reveal>
-      <Reveal on={here && b === 4} x={120} y={900} delay={900}><span className="chip info">Open it with your screen reader. Tell me what breaks.</span></Reveal>
+      <Reveal on={here && b === 5} x={120} y={900} delay={900}><span className="chip info">Open it with your screen reader. Tell me what breaks.</span></Reveal>
     </>
   );
 }

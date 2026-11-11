@@ -1,0 +1,9 @@
+/* <Quote> (deck/quote/Quote.tsx). Theme tokens only, so both themes work. */
+.quote { margin: 0; width: 1500px; position: relative; }
+.quote-glyph { position: absolute; left: -80px; top: -120px; font: 800 260px/1 var(--font-sans); color: var(--accent); opacity: 0.55; user-select: none; }
+.quote-text { margin: 0; font-size: 72px; line-height: 1.14; color: var(--ink); text-wrap: balance; }
+.quote-em { color: var(--accent); font-weight: 700; }
+.quote-caption { margin-top: 56px; transition: opacity 600ms ease 600ms; }
+.quote-author { font-size: 40px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
+.quote-role { font-size: 32px; font-weight: 500; color: var(--ink-2); }
+.quote-meta { display: block; margin-top: 14px; font-size: 22px; }

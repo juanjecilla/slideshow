@@ -11,13 +11,14 @@ export const SCENES: SceneDef[] = [
   {
     id: '01', title: 'OPEN',
     beats: [
-      { name: 'standby', note: 'Calm screen while people sit down. The first click starts the talk.' },
+      { name: 'standby', auto: true, note: 'Loading animation while people sit down (deck/standby). Counts down to config.startsAt; loops if unset; ?start=HH:MM to rehearse. The first click starts the talk.' },
       { name: 'title' },
       { name: 'vote', ref: 'D29', note: 'Ask the room: dark or light? Press T and switch live. Then say: "now it works for most of you" and move on.' },
       { name: 'hands: TalkBack', ref: 'D5', note: 'Show of hands: who has ever turned on TalkBack on their own app? Quick, acknowledge the split.' },
       { name: 'hands: fix', ref: 'D5', note: 'Second: who has ever shipped an accessibility fix? Do not comment yet.' },
       { name: 'hands: settings', ref: 'D5', note: 'Third: who changed the font size or dark mode on their phone? Pause for hands. Do not reveal the twist yet.' },
-      { name: 'twist', ref: 'D5', note: 'Click to reveal. Link it to the dark/light vote: you just chose an accessibility setting. Accessibility is not a niche, you are all users of it. Bridge into 02 ME.' },
+      { name: 'twist', ref: 'D5', note: 'Click to reveal. Link it to the dark/light vote: you just chose an accessibility setting. Accessibility is not a niche, you are all users of it.' },
+      { name: 'quote', ref: 'R7.1', note: 'The twist said it is easier for you. For some people it is what makes it possible (Radabaugh, IBM, 1988). "People" in brackets: the NCD 1993 text says "Americans". Bridge into 02 ME.' },
     ],
   },
   {
@@ -123,6 +124,7 @@ export const SCENES: SceneDef[] = [
     beats: [
       { name: 'god', ref: 'R5.1', note: 'Homer calls him lame. Built things for everyone else.' },
       { name: 'maidens', ref: 'R5.2', note: 'Iliad 18.417–421. Do not mention self-propelled legs (R5.4) or tripods until R5.3 is checked.' },
+      { name: 'quote', ref: 'R7.2', note: 'Hephaestus built for himself; designing for access widens who you reach. Label on screen: attributed, source not found. Say it: "I checked this quote like we checked the audit: no source. Still true."' },
       { name: 'toolkit', ref: 'D20', note: 'QR. The repo goes public today (docs/RELEASE-CHECKLIST.md).' },
       { name: 'resources', ref: 'D5', note: 'Three links, one slide: the toolkit, the app with the fixes (branches talk/a11y-ai-jerez26 and demo/a11y-broken), and these slides. Links checked 2026-11-10; the slides URL is live only after the merge.' },
       { name: 'meta', ref: 'D16', note: 'Verified by tools/check-a11y.mjs: live region, hidden stage, buttons, keyboard, theme, reduced motion. NOT verified: a real screen reader (VoiceOver/NVDA). That is why the slide says tries.' },
