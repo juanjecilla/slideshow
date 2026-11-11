@@ -1,13 +1,15 @@
 # Content audit: Google Slides deck -> beats
 
+The table says what each beat carries (Spanish words as in the source; the English table `deck/i18n/en.ts` is a translation of them). Slide numbers are the original deck's.
+
 Source: "Dev Wars - El despertar del ego - Codemotion 2026" (Google Slides, 76 slides, id `1-WwK79Y7tLdx8WOd4gXUEodFJ1kXXCvpoy6PI6mSJAQ`), given at Codemotion Madrid 2026. Checked 2026-11-11.
 This deck keeps every slide's content, in the same order, except slide 76 (event feedback QR). Look and structure are new (see DECISIONS).
 
 | Slide | Beat (scene.beat) | What it carries |
 |---|---|---|
-| 1 | 1.1 | Title "Dev Wars / El despertar del ego" |
+| 1 | 1.1 | Title "Dev Wars / El despertar del ego" (EN: The Ego Awakens), with an animated loading bar |
 | 2 | 1.2, 1.3 | "A long time ago in a galaxy far, far away...." typeset; click = the COMPANY stamp over "galaxy" |
-| 3 | 1.4 | Dev Wars / The Ego Awakens logo (real image) |
+| 3 | 1.4 | Dev Wars / The Ego Awakens logo (real image), full screen, watermark removed |
 | 4 | 1.5 | DISCLAIMER stamp (real image) |
 | 5 | 1.6, 1.7 | Disclaimer list (5 points + sub-point); click = the Tusken GIF |
 | 6 | 1.8 | Opening crawl, typeset natively; text transcribed from the original image (kept verbatim, "una sombra amenaza" included) |
@@ -41,7 +43,7 @@ This deck keeps every slide's content, in the same order, except slide 76 (event
 | 40 | 4.13, 4.14 | The code screenshot; click = REJECTED stamp |
 | 41 | 5.1 | El arquitecto de marfil |
 | 42 | 5.2 | 4 points + Thrawn |
-| 43, 44, 45 | 5.3, 5.4, 5.5 | The three screenshots (two tweets, a comments thread) |
+| 43, 44, 45 | 5.3, 5.4, 5.5 | The three screenshots (two tweets, a chat thread). 5.4 and 5.5 are anonymised: names, handle, avatar and internal identifiers covered with bars (same framing as the Codemotion deck), the two SOLID passages in 5.5 outlined in red |
 | 46 | 5.6 | Validación Black Mirror style |
 | 47 | 5.7 | Nuevas drogas de diseño (Star 195k) |
 | 48-53 | 5.8-5.13 | Compararnos (star history), Are you going exponential?, Mira cómo molo, El truqui, La realidad, Git wars |
@@ -51,7 +53,7 @@ This deck keeps every slide's content, in the same order, except slide 76 (event
 | 57 | 6.4 | La necesidad por demostrar: 4 points |
 | 58 | 6.5 | CTO a.k.a "El gurú" |
 | 59 | 6.6 | Un plan sin nadie al volante: 4 points |
-| 60 | 6.7 | CTO a.k.a "El gurú" / La empresa a.k.a "la tóxica" |
+| 60 | 6.7 | La empresa a.k.a "la tóxica" (the "CTO a.k.a El gurú" line is dropped: the guru already has his beat, 6.5) |
 | 61 | 6.8 | Cultura de la competición: 4 points |
 | 62-67 | 6.9-6.14 | El finde fantasma: title + five photos |
 | 68 | 6.15 | El resultado: 4 points |
@@ -64,7 +66,7 @@ This deck keeps every slide's content, in the same order, except slide 76 (event
 
 - Typos fixed: "¿Tiene senido?", "No exite", "Infraestructora", "Organizado GDG Aranjuez", "se vió", "Mira como molo" (-> "Mira cómo molo").
 - Drawn natively instead of pictures of text: the opening line, the crawl, the framework rows, the QR.
-- Not carried over: Codemotion frames, logos, corner decoration, slide numbers, slide 76.
+- Not carried over: Codemotion frames, logos, corner decoration, slide numbers, slide 76; the CTO label of slide 60 (user's call, 2026-11-11).
 - Clips: the original links them; here they play by themselves, silent.
 
 ## Open

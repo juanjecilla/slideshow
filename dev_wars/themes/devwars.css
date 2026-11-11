@@ -30,6 +30,16 @@
 .dw-mark { background: var(--accent); color: var(--paper-ink); padding: 0 0.16em; margin: 0 -0.04em; }
 .dw-clip { display: block; background: #000; object-fit: contain; }
 
+/* Loading bar of the first beat: a saber-yellow light that sweeps back and forth. Static in capture / reduced motion. */
+.dw-loader { position: relative; width: 760px; height: 6px; border-radius: 3px; overflow: hidden; background: rgba(255, 255, 255, 0.12); }
+.dw-loader i {
+  position: absolute; top: 0; bottom: 0; left: -32%; width: 32%; border-radius: 3px;
+  background: linear-gradient(90deg, rgba(255, 232, 31, 0), var(--accent) 50%, rgba(255, 232, 31, 0));
+  box-shadow: 0 0 26px 2px rgba(255, 232, 31, 0.55); animation: dw-sweep 2.6s cubic-bezier(0.55, 0, 0.45, 1) infinite;
+}
+@keyframes dw-sweep { from { left: -32%; } to { left: 100%; } }
+.capture .dw-loader i, .reduced-motion .dw-loader i { animation: none; left: 34%; }
+
 /* The crawl: perspective text that scrolls away. Frozen (fully readable) in capture / reduced motion. */
 .dw-crawl-stage { position: absolute; inset: 0; overflow: hidden; perspective: 900px; perspective-origin: 50% 38%; }
 .dw-crawl {
@@ -39,7 +49,7 @@
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 26%); mask-image: linear-gradient(to bottom, transparent 0%, #000 26%);
 }
 .dw-crawl p { margin: 0 0 1.4em; }
-.dw-crawl[data-run='1'] { animation: dw-crawl 46s linear forwards; }
+.dw-crawl[data-run='1'] { animation: dw-crawl 26s linear forwards; }
 @keyframes dw-crawl {
   from { transform: rotateX(50deg) translateY(900px); }
   to { transform: rotateX(50deg) translateY(-760px); }

@@ -3,7 +3,8 @@
  * After editing, rebuild (`npm run build` / `npm run present`).
  */
 export const config = {
-  title: 'Dev Wars: El despertar del ego',
+  /** One build per locale: English (default, at /) and Spanish (at /es/). The texts live in deck/i18n. */
+  locales: ['en', 'es'],
   author: 'Juanje Cilla',
   /** Fill in when the talk is given at an event. Empty = nothing about an event anywhere in the deck. */
   event: '',

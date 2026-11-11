@@ -71,13 +71,15 @@ jobs:
           npm run build -- --base /slideshow/app_functions/ourense26/
         working-directory: app_functions/ourense26
 
-      # Dev Wars (beatdeck): default event-agnostic deck at /dev_wars/, the Codemotion Madrid 2026 deck at /dev_wars/codemotion26/.
+      # Dev Wars (beatdeck): the event-agnostic deck, English at /dev_wars/ and Spanish at /dev_wars/es/ (not on the landing:
+      # not presented yet), and the Codemotion Madrid 2026 deck at /dev_wars/codemotion26/.
+      # Both locales build with relative asset paths, so they work from any folder.
       - name: Install dev_wars dependencies
         run: npm ci
         working-directory: dev_wars
 
-      - name: Build dev_wars slides
-        run: npm run build -- --base /slideshow/dev_wars/
+      - name: Build dev_wars slides (en, es)
+        run: npm run build
         working-directory: dev_wars
 
       - name: Install dev_wars/codemotion26 dependencies
@@ -101,8 +103,9 @@ jobs:
             mkdir -p dist/app_functions/ourense26
             cp -r app_functions/ourense26/dist/. dist/app_functions/ourense26/
           fi
-          mkdir -p dist/dev_wars
-          cp -r dev_wars/dist/. dist/dev_wars/
+          mkdir -p dist/dev_wars/es
+          cp -r dev_wars/dist/en/. dist/dev_wars/
+          cp -r dev_wars/dist/es/. dist/dev_wars/es/
           mkdir -p dist/dev_wars/codemotion26
           cp -r dev_wars/codemotion26/dist/. dist/dev_wars/codemotion26/
           cp landing/index.html dist/index.html

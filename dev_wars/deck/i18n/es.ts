@@ -1,0 +1,137 @@
+/** Español: the talk as given (the words of the Google Slides deck, typos fixed). Checked against the English table. */
+import type { Strings } from './en';
+
+export const strings = {
+  title: 'Dev Wars: El despertar del ego',
+  subtitle: 'El despertar del ego',
+
+  prologue: {
+    notes: {
+      title: 'Inicio tranquilo: el título con una barra de carga mientras la gente se sienta. La charla empieza con el primer clic.',
+      company: 'El sello: "a company far, far away".',
+      crawl: 'El texto se desplaza solo (unos 25 s). Haz clic cuando quieras seguir.',
+    },
+    crawl: [
+      'Es un periodo de guerra civil en el repositorio. Las naves de los desarrolladores rebeldes han logrado una victoria contra el Imperio de los frameworks obsoletos. Pero el EGO, una sombra amenaza con dividir a los equipos.',
+      'Mientras el código se expande por la galaxia, los ingenieros luchan no por la eficiencia, sino por tener la razón. En medio de este caos, surge la necesidad de encontrar el equilibrio en la Fuerza...',
+    ],
+    manifesto: [
+      'Star Wars como hilo conductor',
+      'No voy a decir verdades absolutas',
+      'Experiencias reales',
+      'No pasa en todos lados',
+      'No soy perfecto',
+      'El humor por encima de todo',
+    ],
+    junior: { eyebrow: 'Programador a.k.a', title: '“El Junior”' },
+    senior: { eyebrow: 'Software Engineer a.k.a', title: '“El Senior”' },
+  },
+
+  ego: {
+    conflict: ['El conflicto ', 'galáctico'],
+    the: 'El Ego',
+    notBad: ['No es malo per se', 'Nos ayuda a adaptarnos, definirnos y relacionarnos', 'Es malo si es rígido y defensivo'],
+    sports: 'El Ego en el deporte',
+    good: 'Bien',
+    bad: 'Mal',
+    clips: 'Los vídeos se reproducen solos, sin sonido.',
+    techTitle: ['El Ego en ', 'Tech'],
+    tech: ['Sobreponer nuestras ideas por encima de todo', 'Inseguridades', 'Priorización del YO en contra del NOSOTROS', 'Conformismo'],
+  },
+
+  opinions: {
+    head: 'Opiniones opinionadas',
+    title: ['Opiniones', 'opinionadas'],
+    wallNote: 'Los frameworks se van apilando solos (el original los revela de uno en uno con cada clic).',
+    clones: 'El ataque de los clones',
+    listTitle: 'Opiniones',
+    list: ['Fragmentación extrema', 'Picarse sobre quién es mejor', 'Necesidades de negocio', 'Todo tiene su espacio'],
+    yeahBut: 'Ya pero…',
+    yeahButLines: ['¿Tiene sentido?', '¿Aporta algo?', 'Es que en tech os gusta debatir esto'],
+    makesSense: '¿Tiene sentido?',
+  },
+
+  temple: {
+    title: ['El templo de la ', 'sabiduría'],
+    titleText: 'El templo de la sabiduría',
+    pairs: [
+      ['No existe la verdad absoluta', 'Todo depende del contexto'],
+      ['Expertise del equipo', '¿Sabemos usarlo ya?'],
+      ['Madurez tecnológica', '¿Lo vi en un post de Medium ayer?'],
+      ['Tiempos de entrega', '¿Perfección o time-to-market menor?'],
+      ['Necesidades reales', '¿Un motor de plasma para ir a por pan?'],
+    ],
+    attack: ['El Ataque de la', 'Sobreingeniería'],
+    overTitle: 'Sobreingeniería',
+    over: ['Cuando planificamos “demasiado”', '“Por si acaso en el futuro…”', 'Nuevas tecnologías no maduras', 'Guiarnos por estándares sin contexto'],
+    useCase: 'Caso de uso',
+    quote: ['“El cliente necesita un formulario de contacto para una campaña de marketing de 2 semanas. Esperamos ', '100 leads al día', '.”'],
+    solution: 'Solución',
+    solutionRows: [
+      'Arquitectura: Monolito vs Microservicios',
+      'Comunicación: Directa a BD vs Event Driven',
+      'Infraestructura: Hosting gestionado vs Kubernetes',
+      'Persistencia: SQL vs Redis + Postgres + Elastic',
+      'Frontend: Componentes en React vs Micro frontends',
+    ],
+    whatIf: '¿Y si…?',
+    mvp: ['Un MVP no tiene que ser perfecto', 'Importa más demostrar el concepto', 'No hacen falta tests', 'No reinventes la rueda', 'No tiene por qué escalar'],
+    interviews: 'Ego en entrevistas',
+    interviewQuote: '“… tienes que hacer una petición a una API y mostrar el resultado en un listado…”',
+    blank: 'Proyecto en blanco - 20 minutos',
+    stack: ['Arquitectura Clean', 'Repositorio con Data sources', 'Inyección de dependencias con Dagger Hilt', 'Retrofit', 'Jetpack Compose'],
+  },
+
+  ivory: {
+    lines: ['El arquitecto', 'de marfil'],
+    head: ['El arquitecto de ', 'marfil'],
+    headText: 'El arquitecto de marfil',
+    list: ['Diseña sin tener en cuenta el equipo', 'Sólo excelencia técnica', 'Portfolio demostrable', 'Decisiones top-to-bottom'],
+    blackMirror: ['Validación', 'Black Mirror style'],
+    drugs: 'Nuevas drogas de diseño',
+    compare: 'Y por supuesto compararnos',
+    exponential: 'Are you going exponential?',
+    cool: 'Mira cómo molo',
+    trick: 'El truqui',
+    reality: 'La realidad',
+    gitWars: 'Git wars',
+  },
+
+  dark: {
+    title: ['El Lado Oscuro', 'del Liderazgo'],
+    ladder: 'Plan de carrera',
+    ladderAlt: '(Career ladder)',
+    tl: { eyebrow: 'Lead Software Engineer a.k.a', title: '“El TL”' },
+    proveTitle: 'La necesidad por demostrar',
+    prove: ['El career plan exige resultados', 'No todos pueden ascender', 'Cultura tóxica', 'Métricas everywhere'],
+    guru: { eyebrow: 'CTO a.k.a', title: '“El gurú”' },
+    wheelTitle: 'Un plan sin nadie al volante',
+    wheel: ['El gurú tiene una idea', 'Decisiones unilaterales', 'Tecnología desconocida', 'Cambios de alto riesgo'],
+    toxic: { eyebrow: 'La empresa a.k.a', title: '“la tóxica”' },
+    competitionTitle: 'Cultura de la competición',
+    competition: ['Fomentar la productividad', 'Presión permanente', 'Sobrecarga de trabajo', 'Cambios constantes'],
+    weekend: ['El finde', 'fantasma'],
+    weekendText: 'El finde fantasma',
+    resultTitle: 'El resultado',
+    result: ['El desarrollador quedó invisibilizado', 'Méritos para la persona que no tocaba', 'La empresa salió ganando', 'La cultura se vio debilitada'],
+  },
+
+  hope: {
+    title: ['Una nueva', 'esperanza'],
+    team: { eyebrow: 'El equipo a.k.a', title: '“tus compis”' },
+    realismTitle: 'Realismo técnico',
+    realism: ['Elige tus batallas', 'No luches por el lenguaje que más te gusta', 'Elige el que mejor resuelve la problemática', 'Entiende los diferentes puntos de vista', 'Analiza el contexto y las necesidades', 'Piensa siempre en tu equipo'],
+    padawanTitle: 'El camino del padawan',
+    padawan: ['Ayuda a los que lo necesiten', 'Defiende a tu equipo', 'Impulsa su talento', 'Hazles visibles', 'Tenlos en cuenta'],
+    conclusionsTitle: 'Conclusiones',
+    conclusions: ['Por lo general, no vas a heredar la empresa', 'El equipo es lo más importante', 'Las luchas internas suelen beneficiar a la empresa', 'Mantén la mente abierta y elige bien tus batallas', 'Simplemente, sé buena gente'],
+  },
+
+  close: {
+    way: '“This is the way.”',
+    qrNote: 'El QR es el QR de Linktree de la diapositiva final original.',
+    speaker: 'El speaker a.k.a Yo',
+    name: 'Juanje Cilla',
+    lines: ['Desarrollador de Software', 'Organizador GDG Aranjuez', 'Escribo en Substack', 'Tengo un podcast'],
+  },
+} satisfies Strings;

@@ -13,12 +13,12 @@ import { cierre } from './scenes/08-Cierre';
  * Codemotion Madrid 2026 (slide numbers of this deck's own numbering, see docs/CONTENT-AUDIT.md).
  */
 export const SCENES: SceneDef[] = [
-  { id: '01', title: 'Prólogo', beats: prologue.defs },
-  { id: '02', title: 'El Ego', beats: ego.defs },
-  { id: '03', title: 'Opiniones opinionadas', beats: opiniones.defs },
-  { id: '04', title: 'El templo de la sabiduría', beats: templo.defs },
-  { id: '05', title: 'El arquitecto de marfil', beats: marfil.defs },
-  { id: '06', title: 'El lado oscuro del liderazgo', beats: oscuro.defs },
-  { id: '07', title: 'Una nueva esperanza', beats: esperanza.defs },
-  { id: '08', title: 'Cierre', beats: cierre.defs },
+  { id: '01', title: 'Prologue', beats: prologue.defs },
+  { id: '02', title: 'The Ego', beats: ego.defs },
+  { id: '03', title: 'Opinionated opinions', beats: opiniones.defs },
+  { id: '04', title: 'The temple of wisdom', beats: templo.defs },
+  { id: '05', title: 'The ivory tower architect', beats: marfil.defs },
+  { id: '06', title: 'The dark side of leadership', beats: oscuro.defs },
+  { id: '07', title: 'A new hope', beats: esperanza.defs },
+  { id: '08', title: 'Close', beats: cierre.defs },
 ];

@@ -43,11 +43,11 @@ export function useBeats<N extends string>(i: Record<N, number>) {
 /* ------------------------------------------------------------------ layers that cut */
 
 /** Full-bleed image. Appears and disappears at once (nothing crossfades, no black between two photos). */
-export function Photo({ on, src, fit = 'cover', pos = '50% 50%', shade }: {
-  on: boolean; src: string; fit?: 'cover' | 'contain'; pos?: string; shade?: 'bottom' | 'top';
+export function Photo({ on, src, fit = 'cover', pos = '50% 50%', shade, bg }: {
+  on: boolean; src: string; fit?: 'cover' | 'contain'; pos?: string; shade?: 'bottom' | 'top'; bg?: string;
 }) {
   return (
-    <div className="dw-photo" style={{ opacity: on ? 1 : 0 }}>
+    <div className="dw-photo" style={{ opacity: on ? 1 : 0, background: bg }}>
       <img src={asset(src)} alt="" draggable={false} style={{ objectFit: fit, objectPosition: pos }} />
       {shade && <div className={`dw-shade dw-shade-${shade}`} />}
     </div>
@@ -142,13 +142,45 @@ export function Quote({ on, children, x = 150, y, size = 80, width = 1500, tone 
   );
 }
 
-/** An image placed on the stage. */
-export function Img({ on, src, x, y, w, h, fit = 'contain', delay, style, alt = '' }: {
+/** An image placed on the stage. `crop` = fractions [left, top, right, bottom] of the file that are left out. */
+export function Img({ on, src, x, y, w, h, fit = 'contain', delay, style, alt = '', crop, children }: {
   on: boolean; src: string; x: number; y: number; w: number; h: number; fit?: 'contain' | 'cover'; delay?: number; style?: CSSProperties; alt?: string;
+  crop?: [number, number, number, number]; children?: ReactNode;
 }) {
+  if (crop) {
+    const [l, t, r, b] = crop;
+    const cw = 1 - l - r, ch = 1 - t - b;
+    return (
+      <Rise on={on} x={x} y={y} delay={delay}>
+        <div style={{ position: 'relative', width: w, height: h, overflow: 'hidden', ...style }}>
+          <img className="dw-img" src={asset(src)} alt={alt} draggable={false}
+            style={{ position: 'absolute', width: `${100 / cw}%`, height: `${100 / ch}%`, left: `${(-l / cw) * 100}%`, top: `${(-t / ch) * 100}%` }} />
+        </div>
+        {children}
+      </Rise>
+    );
+  }
   return (
     <Rise on={on} x={x} y={y} delay={delay}>
       <img className="dw-img" src={asset(src)} alt={alt} draggable={false} style={{ width: w, height: h, objectFit: fit, ...style }} />
+    </Rise>
+  );
+}
+
+/** A bar over part of a screenshot (anonymising it). Stage coordinates. */
+export function Redact({ on, x, y, w, h, delay = 120 }: { on: boolean; x: number; y: number; w: number; h: number; delay?: number }) {
+  return (
+    <Rise on={on} x={x} y={y} delay={delay} rise={0}>
+      <div style={{ width: w, height: h, background: '#000', boxShadow: '0 0 0 1px rgba(255,255,255,0.14)' }} />
+    </Rise>
+  );
+}
+
+/** A red outline that marks a passage of a screenshot. Stage coordinates. */
+export function Mark({ on, x, y, w, h, delay = 400 }: { on: boolean; x: number; y: number; w: number; h: number; delay?: number }) {
+  return (
+    <Rise on={on} x={x} y={y} delay={delay} rise={0}>
+      <div style={{ width: w, height: h, border: '6px solid #ff0000', boxSizing: 'border-box' }} />
     </Rise>
   );
 }
@@ -167,7 +199,7 @@ export function Caption({ on, eyebrow, title, y = 760, size = 150 }: { on: boole
  * A silent clip. Plays while its beat is on screen, rewinds when it leaves. `?capture=1` (verify, shot) and the
  * presenter window show the poster instead: frames stay comparable and the presenter never plays a second copy.
  */
-export function Clip({ on, name, x, y, w, h }: { on: boolean; name: string; x: number; y: number; w: number; h: number }) {
+export function Clip({ on, name, x, y, w, h, fit = 'contain' }: { on: boolean; name: string; x: number; y: number; w: number; h: number; fit?: 'contain' | 'cover' }) {
   const ref = useRef<HTMLVideoElement>(null);
   const still = flags.capture || flags.presenter;
   useEffect(() => {
@@ -180,8 +212,8 @@ export function Clip({ on, name, x, y, w, h }: { on: boolean; name: string; x: n
   return (
     <Rise on={on} x={x} y={y}>
       {still
-        ? <img className="dw-clip" src={poster} alt="" draggable={false} style={{ width: w, height: h }} />
-        : <video ref={ref} className="dw-clip" src={asset(`video/${name}.mp4`)} poster={poster} muted loop playsInline preload="auto" style={{ width: w, height: h }} />}
+        ? <img className="dw-clip" src={poster} alt="" draggable={false} style={{ width: w, height: h, objectFit: fit }} />
+        : <video ref={ref} className="dw-clip" src={asset(`video/${name}.mp4`)} poster={poster} muted loop playsInline preload="auto" style={{ width: w, height: h, objectFit: fit }} />}
     </Rise>
   );
 }

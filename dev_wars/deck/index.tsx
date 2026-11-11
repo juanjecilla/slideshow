@@ -2,6 +2,7 @@ import { defineDeck } from 'beatdeck';
 import '../themes/neutral.css';
 import '../themes/devwars.css';
 import { config } from './deck.config';
+import { strings as s } from './i18n';
 import { SCENES } from './scenes';
 import { Prologue } from './scenes/01-Prologue';
 import { Ego } from './scenes/02-Ego';
@@ -29,8 +30,7 @@ function Stage() {
 
 export default defineDeck({
   id: 'dev-wars',
-  title: config.title,
-  lang: 'es',
+  title: s.title,
   scenes: SCENES,
   Stage,
   // No chrome of our own on stage; the operator UI (overview O, presenter P) is the engine's.

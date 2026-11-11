@@ -1,6 +1,6 @@
 # Decisions
 
-Dev Wars - El despertar del ego. The default, event-agnostic deck, written natively for beatdeck. The deck exactly as presented at Codemotion Madrid 2026 (a slide-for-slide copy) lives in `codemotion26/`. Checked 2026-11-11.
+Dev Wars: The Ego Awakens (Spanish: El despertar del ego). The default, event-agnostic deck, written natively for beatdeck, in English (default) and Spanish. The deck exactly as presented at Codemotion Madrid 2026 (a slide-for-slide copy) lives in `codemotion26/`. Checked 2026-11-11.
 
 | # | Decision | Why |
 |---|---|---|
@@ -18,7 +18,12 @@ Dev Wars - El despertar del ego. The default, event-agnostic deck, written nativ
 | D12 | Images: WebP (alpha kept), GIF stays a GIF; named by what they are (`luke.webp`, `react.webp`). | Easy to maintain. |
 | D13 | No chrome on stage, no standby screen; the first beat is the title on black (calm start). | The original has none. |
 | D14 | Safe margin: titles that hug the top edge are pushed down 30 px (`safeTop` in `ui.tsx`). | The engine's audit wants 100 px. |
+| D15 | Two languages, one deck: English is the default (served at `/dev_wars/`), Spanish at `/dev_wars/es/`. Texts live in `deck/i18n/en.ts` and `es.ts` (beatdeck's own multi-locale build, `locales` in `deck.config.ts`, `npm run build` -> `dist/en`, `dist/es`). Scene ids, titles and beat names are English in both (operator vocabulary). | User's call (2026-11-11). The Spanish table is the talk as given. |
+| D16 | Neither language is listed on the landing page or the README table. | Not presented at an event yet (user's call, 2026-11-11). The URLs exist but nothing links to them. |
+| D17 | Images that carry text of their own (RAE entries, the tweets, the chat thread, "El mejor") stay in Spanish in both languages: they are real artefacts. | Not ours to redraw or translate. |
+| D18 | Anonymised screenshots (beats 5.4 and 5.5): the tweet's author name and handle, and in the chat thread the avatar, names and internal identifiers, are covered with black bars; the two "SOLID" passages are outlined in red. Same framing and positions as the Codemotion deck. | Protect the identity of the people in them (user's call, 2026-11-11). |
+| D19 | The logo beat (1.4) is full screen with the AI-tool watermark painted out (`logo-clean.webp`); the COMPANY stamp (1.3) sits on a dark plate with alpha so it reads; the first beat has an animated loading bar; the crawl runs in about 26 s; the right clip of 2.6 has the same size as the left (centre crop). | User's calls (2026-11-11). |
 
 ## Verification
 
-`npm run build` and `npm run verify` pass (82 beats forwards, backwards and from the URL, frames identical, QR decodes, no remote requests). Beat 1.7 has a 3% tolerance: an animated GIF is on screen.
+`npm run build` and `npm run verify` pass for both locales (82 beats forwards, backwards and from the URL, frames identical, QR decodes, no remote requests). Beat 1.7 has a 3% tolerance: an animated GIF is on screen.

@@ -1,50 +1,37 @@
+import { strings as s } from '../i18n';
 import { Eyebrow, Img, Lines, Quote, Rise, Sc, Title, defineBeats, useBeats } from '../ui';
 
+/** `ref` = slide number in the Google Slides deck given at Codemotion Madrid 2026. */
 export const templo = defineBeats([
-  { name: 'verdad', ref: 'slide 32' },
-  { name: 'equipo', ref: 'slide 32' },
-  { name: 'madurez', ref: 'slide 32' },
-  { name: 'entrega', ref: 'slide 32' },
-  { name: 'necesidades', ref: 'slide 32' },
-  { name: 'ataque', ref: 'slide 33' },
-  { name: 'sobreingenieria', ref: 'slide 34' },
-  { name: 'caso', ref: 'slide 35' },
-  { name: 'solucion', ref: 'slide 36' },
+  { name: 'truth', ref: 'slide 32' },
+  { name: 'team', ref: 'slide 32' },
+  { name: 'maturity', ref: 'slide 32' },
+  { name: 'delivery', ref: 'slide 32' },
+  { name: 'needs', ref: 'slide 32' },
+  { name: 'attack', ref: 'slide 33' },
+  { name: 'overengineering', ref: 'slide 34' },
+  { name: 'use-case', ref: 'slide 35' },
+  { name: 'solution', ref: 'slide 36' },
   { name: 'mvp', ref: 'slide 37' },
-  { name: 'entrevista-1', ref: 'slide 38' },
-  { name: 'entrevista-2', ref: 'slide 39' },
-  { name: 'entrevista-codigo', ref: 'slide 40' },
-  { name: 'rechazado', ref: 'slide 40 (click)' },
+  { name: 'interview-1', ref: 'slide 38' },
+  { name: 'interview-2', ref: 'slide 39' },
+  { name: 'interview-code', ref: 'slide 40' },
+  { name: 'rejected', ref: 'slide 40 (click)' },
 ] as const);
 
 const I = templo.i;
-
-const PAIRS = [
-  ['No existe la verdad absoluta', 'Todo depende del contexto'],
-  ['Expertise del equipo', '¿Sabemos usarlo ya?'],
-  ['Madurez tecnológica', '¿Lo vi en un post de Medium ayer?'],
-  ['Tiempos de entrega', '¿Perfección o time-to-market menor?'],
-  ['Necesidades reales', '¿Un motor de plasma para ir a por pan?'],
-] as const;
-const PAIR_BEATS = ['verdad', 'equipo', 'madurez', 'entrega', 'necesidades'] as const;
-
-const SOLUTION = [
-  'Arquitectura: Monolito vs Microservicios',
-  'Comunicación: Directa a BD vs Event Driven',
-  'Infraestructura: Hosting gestionado vs Kubernetes',
-  'Persistencia: SQL vs Redis + Postgres + Elastic',
-  'Frontend: Componentes en React vs Micro frontends',
-];
+const PAIR_BEATS = ['truth', 'team', 'maturity', 'delivery', 'needs'] as const;
 
 function Body() {
   const { at, from, between } = useBeats(I);
-  const temple = between('verdad', 'necesidades');
+  const temple = between('truth', 'needs');
+  const t = s.temple;
   return (
     <>
       {/* the temple of wisdom: one pair per beat, Yoda stays */}
-      <Title on={temple} y={90} size={92} text="El templo de la sabiduría">El templo de la <span style={{ color: 'var(--accent)' }}>sabiduría</span></Title>
+      <Title on={temple} y={90} size={92} text={t.titleText}>{t.title[0]}<span style={{ color: 'var(--accent)' }}>{t.title[1]}</span></Title>
       <Img on={temple} src="yoda.webp" x={1210} y={250} w={500} h={600} />
-      {PAIRS.map(([a, b], k) => {
+      {t.pairs.map(([a, b], k) => {
         const shown = from(PAIR_BEATS[k]) && temple;
         return (
           <Rise key={a} on={shown} x={150} y={290 + k * 140}>
@@ -55,59 +42,44 @@ function Body() {
       })}
 
       {/* overengineering */}
-      <Title on={at('ataque')} y={250} size={190}>El Ataque de la</Title>
-      <Title on={at('ataque')} y={450} size={190} color="var(--accent)" delay={140}>Sobreingeniería</Title>
+      <Title on={at('attack')} y={250} size={190}>{t.attack[0]}</Title>
+      <Title on={at('attack')} y={450} size={190} color="var(--accent)" delay={140}>{t.attack[1]}</Title>
 
-      <Title on={at('sobreingenieria')} y={110} size={112}>Sobreingeniería</Title>
-      <Lines on={at('sobreingenieria')} y={340} size={62} width={1000} gap={1.65} step={240} lines={[
-        'Cuando planificamos “demasiado”',
-        '“Por si acaso en el futuro…”',
-        'Nuevas tecnologías no maduras',
-        'Guiarnos por estándares sin contexto',
-      ]} />
-      <Img on={at('sobreingenieria')} src="deathstar-beam.webp" x={1210} y={300} w={560} h={394} delay={200} />
+      <Title on={at('overengineering')} y={110} size={112}>{t.overTitle}</Title>
+      <Lines on={at('overengineering')} y={340} size={62} width={1000} gap={1.65} step={240} lines={t.over} />
+      <Img on={at('overengineering')} src="deathstar-beam.webp" x={1210} y={300} w={560} h={394} delay={200} />
 
-      <Eyebrow on={at('caso')} y={170}>Caso de uso</Eyebrow>
-      <Quote on={at('caso')} y={260} size={86} width={1560}>“El cliente necesita un formulario de contacto para una campaña de marketing de 2 semanas. Esperamos <span style={{ color: 'var(--accent)' }}>100 leads al día</span>.”</Quote>
+      <Eyebrow on={at('use-case')} y={170}>{t.useCase}</Eyebrow>
+      <Quote on={at('use-case')} y={260} size={86} width={1560}>{t.quote[0]}<span style={{ color: 'var(--accent)' }}>{t.quote[1]}</span>{t.quote[2]}</Quote>
 
-      <Eyebrow on={at('solucion')} y={96}>Caso de uso</Eyebrow>
-      <Title on={at('solucion')} y={150} size={112}>Solución</Title>
-      {SOLUTION.map((s, k) => {
-        const [label, rest] = s.split(': ');
+      <Eyebrow on={at('solution')} y={96}>{t.useCase}</Eyebrow>
+      <Title on={at('solution')} y={215} size={112}>{t.solution}</Title>
+      {t.solutionRows.map((row, k) => {
+        const [label, rest] = row.split(': ');
         return (
-          <Rise key={s} on={at('solucion')} x={150} y={340 + k * 124} delay={k * 220}>
+          <Rise key={row} on={at('solution')} x={150} y={420 + k * 116} delay={k * 220}>
             <div className="dw-mono" style={{ fontSize: 26, color: 'var(--accent)', marginBottom: 6 }}>{label}</div>
-            <div className="dw-line" style={{ fontSize: 58 }}>{rest}</div>
+            <div className="dw-line" style={{ fontSize: 56 }}>{rest}</div>
           </Rise>
         );
       })}
 
-      <Title on={at('mvp')} y={110} size={120}>¿Y si…?</Title>
+      <Title on={at('mvp')} y={110} size={120}>{t.whatIf}</Title>
       <Lines on={at('mvp')} y={330} size={66} width={1000} gap={1.65} step={240} lines={[
-        { t: 'Un MVP no tiene que ser perfecto', accent: true },
-        'Importa más demostrar el concepto',
-        'No hacen falta tests',
-        'No reinventes la rueda',
-        'No tiene por qué escalar',
+        { t: t.mvp[0], accent: true }, t.mvp[1], t.mvp[2], t.mvp[3], t.mvp[4],
       ]} />
       <Img on={at('mvp')} src="jarjar.webp" x={1230} y={230} w={500} h={618} delay={300} />
 
       {/* interviews */}
-      <Eyebrow on={between('entrevista-1', 'rechazado')} y={96}>Ego en entrevistas</Eyebrow>
-      <Quote on={at('entrevista-1')} y={250} size={88} width={1560}>“… tienes que hacer una petición a una API y mostrar el resultado en un listado…”</Quote>
-      <Rise on={at('entrevista-1')} x={150} y={800} delay={500}><div className="dw-mono" style={{ fontSize: 36, color: 'var(--accent)' }}>Proyecto en blanco - 20 minutos</div></Rise>
+      <Eyebrow on={between('interview-1', 'rejected')} y={96}>{t.interviews}</Eyebrow>
+      <Quote on={at('interview-1')} y={250} size={88} width={1560}>{t.interviewQuote}</Quote>
+      <Rise on={at('interview-1')} x={150} y={800} delay={500}><div className="dw-mono" style={{ fontSize: 36, color: 'var(--accent)' }}>{t.blank}</div></Rise>
 
-      <Lines on={at('entrevista-2')} y={200} size={72} width={1620} gap={1.5} step={230} lines={[
-        'Arquitectura Clean',
-        'Repositorio con Data sources',
-        'Inyección de dependencias con Dagger Hilt',
-        'Retrofit',
-        'Jetpack Compose',
-      ]} />
-      <Rise on={at('entrevista-2')} x={150} y={900} delay={1200}><div className="dw-mono" style={{ fontSize: 36, color: 'var(--accent)' }}>Proyecto en blanco - 20 minutos</div></Rise>
+      <Lines on={at('interview-2')} y={200} size={72} width={1620} gap={1.5} step={230} lines={t.stack} />
+      <Rise on={at('interview-2')} x={150} y={900} delay={1200}><div className="dw-mono" style={{ fontSize: 36, color: 'var(--accent)' }}>{t.blank}</div></Rise>
 
-      <Img on={between('entrevista-codigo', 'rechazado')} src="code.webp" x={210} y={250} w={1500} h={657} />
-      <Img on={at('rechazado')} src="rejected.webp" x={620} y={330} w={680} h={680} style={{ transform: 'rotate(-10deg)' }} />
+      <Img on={between('interview-code', 'rejected')} src="code.webp" x={210} y={250} w={1500} h={657} />
+      <Img on={at('rejected')} src="rejected.webp" x={620} y={330} w={680} h={680} style={{ transform: 'rotate(-10deg)' }} />
     </>
   );
 }

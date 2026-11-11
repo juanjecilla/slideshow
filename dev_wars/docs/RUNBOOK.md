@@ -1,24 +1,30 @@
 # Runbook
 
-Dev Wars - El despertar del ego, default (event-agnostic) version. 8 scenes, 82 beats. The deck as presented at Codemotion Madrid 2026 is in `codemotion26/` (its own project, built to `/dev_wars/codemotion26/`).
+Dev Wars: The Ego Awakens, default (event-agnostic) version, in English (`/dev_wars/`) and Spanish (`/dev_wars/es/`). 8 scenes, 82 beats. Not listed on the landing page yet (not presented at an event). The deck as presented at Codemotion Madrid 2026 is in `codemotion26/` (its own project, built to `/dev_wars/codemotion26/`).
 
 ## Run it
 
 ```bash
 npm install
-npm run present      # production build served on http://127.0.0.1:4173, works offline
-npm run dev          # http://127.0.0.1:5173/#1.1 while editing
+npm run present      # builds both languages, serves dist/ on http://127.0.0.1:4173 (en/ and es/), works offline
+npm run dev          # English, http://127.0.0.1:5173/#1.1 while editing
+BEATDECK_LOCALE=es npm run dev   # Spanish
 ```
 
 Keys: → / space next, ← previous, 1-8 jump to a scene, O overview, P presenter window, F fullscreen. Every beat has an address (`#scene.beat`).
 
-- **1.8 (the crawl)** scrolls by itself for about 45 seconds; click when you are ready to move on.
+- **1.1** shows the title with a loading bar (it loops) while people sit down.
+- **1.8 (the crawl)** scrolls by itself for about 25 seconds; click when you are ready to move on.
 - **2.6 and 2.7** play their clips by themselves, silent. They rewind when you leave the beat. The presenter window shows a still.
 - **3.9 (frameworks)** builds the wall by itself (about 2 s).
 
 ## Giving it at another event
 
 Nothing in the deck names an event. Put one in `deck/deck.config.ts` (`event`) if you want it in the presenter notes; add your own closing slide in `deck/scenes/08-Cierre.tsx`.
+
+## Languages
+
+Texts: `deck/i18n/en.ts` (source) and `es.ts` (checked against it: `tsc` fails on a missing or extra key). `npm run build` writes `dist/en/` and `dist/es/`; `npm run verify` walks both; `npm run shot -- 3 --locale=es` for one language. Images with text of their own (dictionary entries, the tweets, the chat thread, "El mejor") stay in Spanish in both.
 
 ## Edit
 
