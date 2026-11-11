@@ -36,6 +36,7 @@ jobs:
             a11y/package-lock.json
             app_functions/package-lock.json
             app_functions/ourense26/package-lock.json
+            dev_wars/package-lock.json
             dev_wars/codemotion26/package-lock.json
 
       - name: Install bc2026 dependencies
@@ -70,7 +71,15 @@ jobs:
           npm run build -- --base /slideshow/app_functions/ourense26/
         working-directory: app_functions/ourense26
 
-      # Dev Wars as presented at Codemotion Madrid 2026 (beatdeck).
+      # Dev Wars (beatdeck): default event-agnostic deck at /dev_wars/, the Codemotion Madrid 2026 deck at /dev_wars/codemotion26/.
+      - name: Install dev_wars dependencies
+        run: npm ci
+        working-directory: dev_wars
+
+      - name: Build dev_wars slides
+        run: npm run build -- --base /slideshow/dev_wars/
+        working-directory: dev_wars
+
       - name: Install dev_wars/codemotion26 dependencies
         run: npm ci
         working-directory: dev_wars/codemotion26
@@ -92,6 +101,8 @@ jobs:
             mkdir -p dist/app_functions/ourense26
             cp -r app_functions/ourense26/dist/. dist/app_functions/ourense26/
           fi
+          mkdir -p dist/dev_wars
+          cp -r dev_wars/dist/. dist/dev_wars/
           mkdir -p dist/dev_wars/codemotion26
           cp -r dev_wars/codemotion26/dist/. dist/dev_wars/codemotion26/
           cp landing/index.html dist/index.html

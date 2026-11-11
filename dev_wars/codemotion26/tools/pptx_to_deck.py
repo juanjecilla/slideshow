@@ -33,6 +33,10 @@ EMU = 1920 / 9144000
 PT = 1920 / 720  # px per point at this slide size (10in wide)
 
 SRC, DECK, VIDEOS = sys.argv[1], sys.argv[2], sys.argv[3]
+# `default` = the event-agnostic deck: no Codemotion logo on the layouts, no closing Codemotion feedback-QR slide.
+MODE = sys.argv[4] if len(sys.argv) > 4 else 'event'
+BRAND_IMAGES = ('image17.',)   # "CONFERENCE MADRID 2026" logo, top right of the content layouts
+DROP_SLIDES = {76}             # Codemotion feedback QR
 ASSETS = os.path.join(DECK, 'assets')
 os.makedirs(ASSETS, exist_ok=True)
 
@@ -468,6 +472,8 @@ def layout(part):
     items = list(walk(root.find('p:cSld/p:spTree', NS), rm, root, 'layout', part))
     # Layout placeholders (title/body/sldNum) are prompts, not content: only decoration is drawn.
     items = [i for i in items if i['kind'] != 'shape' or 'text' not in i]
+    if MODE == 'default':
+        items = [i for i in items if not (i['kind'] == 'img' and i['src'].startswith(BRAND_IMAGES))]
     for n, i in enumerate(items):
         i['id'] = '%s.%d' % (name, n)
     bg = background(root, rm) or background(master, mrm) or {'color': '#' + SCHEME['lt1']}
@@ -493,6 +499,8 @@ prel = rels('ppt/presentation.xml')
 slide_parts = [prel[s.get(R_ID)] for s in pres.find('p:sldIdLst', NS)]
 slides = []
 for n, part in enumerate(slide_parts, start=1):
+    if MODE == 'default' and n in DROP_SLIDES:
+        continue
     root = tree(part)
     rm = rels(part)
     lay_part = next(v for v in rm.values() if 'slideLayouts/' in v)

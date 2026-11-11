@@ -1,0 +1,234 @@
+// DOM audit of the current frame. Plain JS on purpose: Node scripts (verify, shot, export) pass it to
+// `page.evaluate`, which serializes the function, so `auditFrame` must stay self-contained (no imports, no closures).
+// The dev badge imports it too. Types: audit.d.ts.
+
+/**
+ * Looks only at text that is actually visible: effective opacity (own × ancestors) > 0.5, not hidden, not inside
+ * `[data-audit="off"]`. Returns { errors, warnings, edges, covered, exact } — `edges` are safe-area warnings (text
+ * closer than the deck's `audit.safeMargin` to an edge, one per text node and edge); `covered` is text with a painted
+ * element on top of it (one per text node); `exact` are the texts that must match the source verbatim
+ * (Terminal lines and `[data-exact]` elements). `.bd-code` frames (CodeBlock) are audited as objects too: outside the
+ * stage, over the chrome, text drawn over them (their own text is excluded) → errors; closer than `safeMargin` to an edge → `edges`.
+ */
+export function auditFrame() {
+  const stage = document.querySelector('.stage');
+  const res = { errors: [], warnings: [], exact: [], edges: [], covered: [] };
+  if (!stage) return res;
+  const sr = stage.getBoundingClientRect();
+  const k = sr.width / 1920;
+  const visible = (el) => {
+    let o = 1;
+    for (let e = el; e && e !== stage.parentElement; e = e.parentElement) {
+      if (e.dataset?.audit === 'off') return false;
+      const cs = getComputedStyle(e);
+      if (cs.visibility === 'hidden' || cs.display === 'none') return false;
+      o *= +cs.opacity;
+    }
+    return o > 0.5;
+  };
+  const margin = window.__beatdeck?.audit?.safeMargin ?? null;
+  // an opaque cut (or operator blackout) hides everything before it in the DOM; only the Overlay is drawn above it
+  const cut = stage.querySelector('[data-bd-cut]');
+  const cutOn = !!cut && +getComputedStyle(cut).opacity > 0.5;
+  const nearEdge = new Map(); // text node → { edge → entry }: the closest line of each node per edge
+  const coveredBy = new Map(); // text node → { t, by, hits }: the most-covered line of each node
+  const short = (t) => JSON.stringify(t.trim().replace(/\s+/g, ' ').slice(0, 40));
+  const label = (e) => e.tagName.toLowerCase() + (typeof e.className === 'string' && e.className.trim() ? '.' + e.className.trim().split(/\s+/)[0] : '');
+  // does this element paint anything of its own? (an empty layer on top of text is not a cover)
+  // (an <svg> or <canvas> box says nothing about what is drawn in it: only SVG shapes the hit test returns count)
+  const paints = (e) => {
+    if (/^(img|video|picture)$/i.test(e.tagName)) return true;
+    if (/^(svg|canvas)$/i.test(e.tagName)) return false;
+    const cs = getComputedStyle(e);
+    if (e instanceof SVGElement) {
+      if (/^(text|tspan|g|defs)$/i.test(e.tagName)) return false;
+      return (cs.fill !== 'none' && +cs.fillOpacity > 0.3) || (cs.stroke !== 'none' && +cs.strokeOpacity > 0.3 && parseFloat(cs.strokeWidth) > 1);
+    }
+    if (cs.backgroundImage !== 'none') return true;
+    const m = cs.backgroundColor.match(/rgba?\(([^)]+)\)/);
+    if (!m) return false;
+    const p = m[1].split(/[,/ ]+/).filter(Boolean);
+    return p.length < 4 || +p[3] > 0.5;
+  };
+  // elementsFromPoint skips `pointer-events: none`: lift it while sampling
+  const lift = document.createElement('style');
+  lift.textContent = '*{pointer-events:auto!important}';
+  document.head.appendChild(lift);
+  const boxes = [];
+  const small = new Set();
+  const walker = document.createTreeWalker(stage, NodeFilter.SHOW_TEXT);
+  try {
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      if (!n.textContent.trim()) continue;
+      const el = n.parentElement;
+      if (!el || !visible(el)) continue;
+      const cs = getComputedStyle(el);
+      // characters that change meaning under text-transform: uppercase (µ → Greek Μ, ß → SS)
+      if (/[µß]/.test(n.textContent) && cs.textTransform === 'uppercase') {
+        res.errors.push(`uppercase changes ${short(n.textContent)} (µ/ß): wrap the unit in <span className="keep-case">`);
+      }
+      const px = parseFloat(cs.fontSize) / k;
+      if (px < 17.5) small.add(`${short(n.textContent)} is ${Math.round(px)} px (stage minimum 18)`);
+      const underCut = cutOn && cut.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_PRECEDING;
+      const range = document.createRange();
+      range.selectNodeContents(n);
+      for (const r of range.getClientRects()) {
+        if (r.width < 1 || r.height < 1) continue;
+        // the line box of large type is much taller than its glyphs: keep the central ~0.8 em for overlap tests
+        const fpx = parseFloat(cs.fontSize);
+        const inset = Math.max(0, (r.height - 0.8 * fpx) / 2);
+        const b = { x: (r.left - sr.left) / k, y: (r.top + inset - sr.top) / k, w: r.width / k, h: (r.height - 2 * inset) / k, t: n.textContent, n, under: !!underCut };
+        boxes.push(b);
+        if (b.x < -2 || b.y < -2 || b.x + b.w > 1922 || b.y + b.h > 1082) {
+          res.errors.push(`${short(b.t)} is outside the 1920×1080 stage (x ${Math.round(b.x)}…${Math.round(b.x + b.w)}, y ${Math.round(b.y)}…${Math.round(b.y + b.h)})`);
+          continue;
+        }
+        if (margin && !el.closest('[data-bd-chrome]') && !underCut) {
+          // safe area: inside the stage but cramped against an edge
+          // the full line box, not the trimmed one used for overlaps: authors place text by its box
+          const top = (r.top - sr.top) / k, bottom = (r.bottom - sr.top) / k;
+          const gaps = [['left', b.x, margin.x], ['right', 1920 - (b.x + b.w), margin.x], ['top', top, margin.y], ['bottom', 1080 - bottom, margin.y]];
+          for (const [edge, d, m] of gaps) {
+            if (d >= m) continue;
+            const mine = nearEdge.get(n) ?? nearEdge.set(n, {}).get(n);
+            if (!mine[edge] || d < mine[edge].d) mine[edge] = { t: short(b.t), edge, d, m };
+          }
+        }
+        // covered text: a painted element above the text at most of five sample points along the line
+        if (!underCut && !el.closest('[data-bd-chrome]')) {
+          const above = new Map(); // coverer → points it covers
+          for (const f of [0.1, 0.3, 0.5, 0.7, 0.9]) {
+            const vx = sr.left + (b.x + f * b.w) * k, vy = sr.top + (b.y + b.h / 2) * k;
+            for (const c of document.elementsFromPoint(vx, vy)) {
+              if (c === el || c.contains(el) || el.contains(c)) break; // reached the text's own layer
+              if (c === cut || cut?.contains(c) || c.closest('[data-bd-chrome]') || !stage.contains(c) || !visible(c) || !paints(c)) continue;
+              above.set(c, (above.get(c) ?? 0) + 1);
+              break;
+            }
+          }
+          for (const [c, hits] of above) {
+            if (hits < 3) continue;
+            const prev = coveredBy.get(n);
+            if (!prev || hits > prev.hits) coveredBy.set(n, { t: short(b.t), by: label(c), hits });
+          }
+        }
+      }
+    }
+  } finally {
+    lift.remove();
+  }
+  // code frames (CodeBlock): the frame is one object; its own text is excluded from the text-over-frame test
+  const rectOf = (r) => ({ x: (r.left - sr.left) / k, y: (r.top - sr.top) / k, w: r.width / k, h: (r.height) / k });
+  const hit = (a, c) => Math.min(a.x + a.w, c.x + c.w) - Math.max(a.x, c.x) > 0 && Math.min(a.y + a.h, c.y + c.h) - Math.max(a.y, c.y) > 0;
+  // frames below an active cut are hidden by it; one in the Overlay (after the cut in the DOM) is still on screen
+  const frames = [...stage.querySelectorAll('.bd-code')].filter((el) => visible(el) && !(cutOn && cut.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_PRECEDING)).map((el) => {
+    const f = rectOf(el.getBoundingClientRect());
+    return { el, ...f, name: JSON.stringify(el.querySelector('.bd-code-file')?.textContent ?? 'code') };
+  });
+  // deck chrome a frame must not touch: elements that paint (background, image, painted shape, visible border) or hold
+  // their own text. Empty layers and plain wrappers are not chrome; a rect covering half the stage is a backdrop;
+  // chrome below an active cut is hidden by it, like the frames.
+  // visible border widths per side, in stage px (the computed width is untransformed CSS px, so no scaling by k)
+  const borderWidths = (e) => {
+    const cs = getComputedStyle(e);
+    const w = {};
+    for (const side of ['Top', 'Right', 'Bottom', 'Left']) {
+      const m = cs[`border${side}Color`].match(/rgba?\(([^)]+)\)/);
+      const a = m ? (m[1].split(/[,/ ]+/).filter(Boolean)[3] ?? 1) : 1;
+      w[side] = cs[`border${side}Style`] !== 'none' && +a > 0.3 ? parseFloat(cs[`border${side}Width`]) || 0 : 0;
+    }
+    return w;
+  };
+  const bordered = (e) => Object.values(borderWidths(e)).some((w) => w > 0);
+  // a border-only element is only its painted edges: a frame inside the outline is not touching it.
+  // Border widths are CSS px; the strips are in stage px, so scale by how much the element renders larger than its CSS
+  // box (a transform on it or an ancestor), measured as rendered stage width / offsetWidth (the stage's own scale
+  // is already divided out by rectOf).
+  const edgeRects = (e, r) => {
+    const w = borderWidths(e);
+    const sx = e.offsetWidth ? r.w / e.offsetWidth : 1;
+    const sy = e.offsetHeight ? r.h / e.offsetHeight : 1;
+    return [
+      w.Top > 0 && { x: r.x, y: r.y, w: r.w, h: w.Top * sy },
+      w.Bottom > 0 && { x: r.x, y: r.y + r.h - w.Bottom * sy, w: r.w, h: w.Bottom * sy },
+      w.Left > 0 && { x: r.x, y: r.y, w: w.Left * sx, h: r.h },
+      w.Right > 0 && { x: r.x + r.w - w.Right * sx, y: r.y, w: w.Right * sx, h: r.h },
+    ].filter(Boolean);
+  };
+  const ownText = (e) => [...e.childNodes].some((c) => c.nodeType === 3 && c.textContent.trim());
+  const chrome = frames.length
+    ? [...document.querySelectorAll('[data-bd-chrome], [data-bd-chrome] *')] // the marked root can paint (a footer bar) too
+      .filter((e) => visible(e) && !(cutOn && cut.compareDocumentPosition(e) & Node.DOCUMENT_POSITION_PRECEDING) && (ownText(e) || paints(e) || bordered(e)))
+      .map((e) => {
+        const r = rectOf(e.getBoundingClientRect());
+        const solid = ownText(e) || paints(e);
+        return { e, r, solid, backdrop: solid && r.w * r.h >= 0.5 * 1920 * 1080 };
+      })
+      // a 1px rule is chrome; a painted rect covering half the stage is a backdrop (its fill is not an obstacle, its
+      // visible border still is). A border-only outline of any size is chrome: only its edge strips are obstacles.
+      .filter(({ e, r, backdrop }) => r.w > 0 && r.h > 0 && (!backdrop || bordered(e)))
+      .flatMap(({ e, r, solid, backdrop }) => (backdrop || !solid ? edgeRects(e, r) : [r]).map((rect) => ({ e, ...rect }))) // keep the source element: a frame is not an obstacle to itself
+      .filter((r) => r.w > 0 && r.h > 0)
+    : [];
+  // is the text under the frame in paint order? Look at the stack at the middle of their overlap. Unknown → not behind.
+  const lift2 = document.createElement('style');
+  lift2.textContent = '*{pointer-events:auto!important}';
+  document.head.appendChild(lift2);
+  const behind = (f, b) => {
+    const x0 = Math.max(f.x, b.x), x1 = Math.min(f.x + f.w, b.x + b.w), y0 = Math.max(f.y, b.y), y1 = Math.min(f.y + f.h, b.y + b.h);
+    const stack = document.elementsFromPoint(sr.left + ((x0 + x1) / 2) * k, sr.top + ((y0 + y1) / 2) * k);
+    const above = stack.findIndex((e) => f.el.contains(e)); // 0 = topmost
+    const text = stack.findIndex((e) => e === b.n.parentElement);
+    return above >= 0 && text >= 0 && above < text;
+  };
+  try {
+    for (const f of frames) {
+      if (f.x < -2 || f.y < -2 || f.x + f.w > 1922 || f.y + f.h > 1082) res.errors.push(`code frame ${f.name} is outside the 1920×1080 stage (x ${Math.round(f.x)}…${Math.round(f.x + f.w)}, y ${Math.round(f.y)}…${Math.round(f.y + f.h)})`);
+      else if (chrome.some((c) => !f.el.contains(c.e) && hit(f, c))) res.errors.push(`code frame ${f.name} reaches the deck chrome (footer ticks or title): shrink it or use fit`);
+      else if (margin) {
+        for (const [edge, d, m] of [['left', f.x, margin.x], ['right', 1920 - (f.x + f.w), margin.x], ['top', f.y, margin.y], ['bottom', 1080 - (f.y + f.h), margin.y]]) {
+          if (d < m) res.edges.push({ t: `code frame ${f.name}`, edge, d: Math.round(d), m });
+        }
+      }
+      for (const b of boxes) {
+        // the frame's own text is not "over" it; another frame's text is. Text under an active cut is not on screen
+        if (f.el.contains(b.n) || b.under || !hit(f, b)) continue;
+        // text BEHIND the frame is hidden by it: the covered-text warning reports that. Only text drawn over the frame is an error
+        if (behind(f, b)) continue;
+        res.errors.push(`${short(b.t)} overlaps the code frame ${f.name} (move one of them)`);
+      }
+    }
+  } finally {
+    lift2.remove();
+  }
+  // overlapping text: two different text nodes whose line boxes share > 30% of the smaller one
+  const seen = new Set();
+  for (let i = 0; i < boxes.length; i++) {
+    for (let j = i + 1; j < boxes.length; j++) {
+      const a = boxes[i], c = boxes[j];
+      if (a.n === c.n) continue;
+      const ix = Math.min(a.x + a.w, c.x + c.w) - Math.max(a.x, c.x);
+      const iy = Math.min(a.y + a.h, c.y + c.h) - Math.max(a.y, c.y);
+      if (ix <= 0 || iy <= 0) continue;
+      if (ix * iy > 0.3 * Math.min(a.w * a.h, c.w * c.h)) {
+        const key = `${a.t}|${c.t}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        res.errors.push(`text overlaps: ${short(a.t)} and ${short(c.t)} (add data-audit="off" if intended)`);
+      }
+    }
+  }
+  for (const byEdge of nearEdge.values()) for (const e of Object.values(byEdge)) res.edges.push({ ...e, d: Math.round(e.d) });
+  for (const { t, by } of coveredBy.values()) res.covered.push({ t, by });
+  res.warnings.push(...small);
+  for (const el of stage.querySelectorAll('.bd-term-line, [data-exact]')) {
+    if (visible(el) && el.textContent.trim()) res.exact.push({ t: el.textContent, term: el.classList.contains('bd-term-line') });
+  }
+  return res;
+}
+
+/** A safe-area entry from `auditFrame` as a warning line. */
+export const edgeLine = (e) => `${e.t} is ${e.d} px from the ${e.edge} edge (safe margin ${e.m})`;
+
+/** A covered-text entry from `auditFrame` as a warning line. */
+export const coveredLine = (c) => `${c.t} is covered by ${c.by} (add data-audit="off" to the covering element if intended)`;
