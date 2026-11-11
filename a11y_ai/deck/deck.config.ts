@@ -9,6 +9,12 @@ export const config = {
   author: 'Juanje Cilla',
   role: 'Software Engineer · Revolut',
   event: 'DevFest Jerez de la Frontera 2026 · 21 Nov 2026',
+  /**
+   * When the talk starts, ISO with offset (e.g. '2026-11-21T10:00:00+01:00'). The standby screen counts down to
+   * it and scans over the last 10 minutes. Empty = no clock: the standby animation just loops.
+   * `?start=HH:MM` on the URL overrides it for rehearsals.
+   */
+  startsAt: '',
   links: {
     github: 'github.com/juanjecilla',
     linkedin: 'linkedin.com/in/juanje-cilla',

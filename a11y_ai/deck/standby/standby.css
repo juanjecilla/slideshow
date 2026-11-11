@@ -1,0 +1,75 @@
+/* 01.standby loading animation (deck/standby/Standby.tsx). Inspector tokens only, so both themes work. */
+.sb { position: absolute; inset: 0; pointer-events: none; transition: opacity 600ms ease; }
+
+/* phase 1 — the same dot grid as .stage, in accent, revealed by a growing radial mask */
+.sb-grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, var(--accent) 2.8px, transparent 3.1px);
+  background-size: 40px 40px; background-position: 20px 20px;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 calc(var(--r) - 260px), transparent var(--r));
+  mask-image: radial-gradient(circle at 50% 50%, #000 calc(var(--r) - 260px), transparent var(--r));
+  opacity: 0.6;
+  animation: sb-shimmer 4s ease-in-out infinite;
+}
+@keyframes sb-shimmer { 50% { opacity: 0.35; } }
+
+/* the title: centred, two rows, glow breathing */
+.sb-title { display: flex; align-items: center; justify-content: center; }
+.sb-title h1 { margin: 0; font-size: 120px; display: flex; flex-direction: column; align-items: center; gap: 52px; }
+.sb-glow { animation: sb-breathe 3.6s ease-in-out infinite; text-shadow: 0 0 28px color-mix(in srgb, var(--accent) 26%, transparent); }
+@keyframes sb-breathe {
+  50% { text-shadow: 0 0 64px color-mix(in srgb, var(--accent) 52%, transparent); }
+}
+.sb .chip.info { background: color-mix(in srgb, var(--accent) 14%, var(--surface)); }
+.sb-line { display: flex; gap: 40px; }
+.sb-word { position: relative; display: inline-block; }
+
+/* phase 2 — per-word bounds + reading-order badge, quiet once drawn */
+.sb-bounds {
+  position: absolute; inset: -8px -14px; border: 2px solid var(--hair-strong); border-radius: 10px;
+  opacity: 0; transform: scale(1.06); transition: opacity 400ms ease, transform 400ms ease;
+}
+.sb-bounds.on { opacity: 1; transform: none; }
+.sb-bounds b {
+  position: absolute; left: -2px; top: -30px; font: 600 20px var(--font-mono); color: var(--ink-3); letter-spacing: 0;
+}
+
+/* persona check-ins */
+.sb-persona {
+  display: flex; align-items: center; gap: 14px; padding: 0 22px; box-sizing: border-box;
+  border: 2px solid var(--hair-strong); border-radius: 26px; background: var(--surface); color: var(--ink-3);
+  font: 600 24px var(--font-sans); transition: opacity 500ms ease, border-color 500ms ease, background-color 500ms ease, color 500ms ease;
+}
+.sb-persona.hidden { opacity: 0; }
+.sb-persona.checked { border-color: var(--c); color: var(--c); background: color-mix(in srgb, var(--c) 14%, var(--surface)); }
+.sb-persona span { color: var(--ink); }
+.sb-persona em {
+  position: absolute; right: -12px; top: -14px; width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--c); color: var(--bg);
+  opacity: 0; transform: scale(0.4); transition: opacity 300ms ease, transform 300ms cubic-bezier(.3, 1.6, .5, 1);
+}
+.sb-persona.checked em { opacity: 1; transform: none; }
+
+/* countdown / state */
+.sb-count { display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 500; color: var(--ink-2); letter-spacing: 0.02em; }
+.sb-count.ready { color: var(--ok); font-weight: 700; }
+
+/* the focus box */
+.sb-focus {
+  position: absolute; box-sizing: border-box; border: 3px solid var(--accent); border-radius: 14px;
+  background: var(--accent-fill); opacity: 0;
+  transition: left 520ms cubic-bezier(.5, 0, .2, 1), top 520ms cubic-bezier(.5, 0, .2, 1), width 520ms cubic-bezier(.5, 0, .2, 1), height 520ms cubic-bezier(.5, 0, .2, 1), opacity 400ms ease;
+}
+.sb-focus.on { opacity: 1; }
+.sb-focus span {
+  position: absolute; left: -3px; top: -38px; padding: 3px 12px; border-radius: 8px 8px 8px 0;
+  background: var(--accent); color: var(--bg); font: 600 20px var(--font-mono);
+}
+
+/* progress bar */
+.sb-bar { position: absolute; left: 360px; top: 986px; width: 1200px; height: 6px; border-radius: 3px; background: var(--hair); overflow: hidden; }
+.sb-bar i { display: block; height: 100%; background: var(--accent); }
+
+/* frozen frames (capture, print) and reduced motion: nothing moves */
+.sb.frozen *, .reduced-motion .sb * { animation: none !important; transition: none !important; }
+@media print { .sb * { animation: none !important; transition: none !important; } }
