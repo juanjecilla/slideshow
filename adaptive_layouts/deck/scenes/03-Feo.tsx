@@ -31,53 +31,56 @@ function Feo_() {
       <Say on={at(4)} out={gone(4)} text="Bloqueamos la orientación." y={230} size={120} />
       <Mono on={at(4)} out={gone(4)} y={560} size={52} lines={ORIGINAL.orientation} lang="xml" title="AndroidManifest.xml" />
 
-      {/* 3.6 a11y — "you may remember me from such talks as…" (D15) */}
-      <Eyebrow on={at(5)} out={gone(5)} text="Presentación, otra vez" />
-      <Capture on={at(5)} out={gone(5)} x={170} y={290} w={500} h={500} src={CAP.troy} label="Troy McClure · Los Simpson" todo="Troy McClure" />
-      <Say on={at(5)} out={gone(5)} text="Quizás me recordéis" x={760} y={250} size={84} />
-      <Say on={at(5)} out={gone(5)} text="de charlas como…" x={760} y={350} size={84} color="var(--accent)" />
-      <Line on={at(5)} out={gone(5)} x={760} y={540} size={46} text="a11y, el numerónimo ético" />
-      <Line on={at(5)} out={gone(5)} x={760} y={605} size={34} dim text="Commit Conf · jun 2026 · juanjecilla.github.io/slideshow/a11y" />
-      <Line on={at(5)} out={gone(5)} x={760} y={715} size={46} text="a11y on Android? AI makes it easy" />
-      <Line on={at(5)} out={gone(5)} x={760} y={780} size={34} dim text="DevFest Jerez · 21 nov 2026" />
+      {/* 3.6 a11y? — full screen: the thing that is forgotten most often */}
+      <Western on={at(5)} out={gone(5)} text="a11y?" y={330} size={420} />
+
+      {/* 3.7 a11y — "you may remember me from such talks as…" (D15) */}
+      <Eyebrow on={at(6)} out={gone(6)} text="Presentación, otra vez" />
+      <Capture on={at(6)} out={gone(6)} x={170} y={290} w={500} h={500} src={CAP.troy} label="Troy McClure · Los Simpson" todo="Troy McClure" />
+      <Say on={at(6)} out={gone(6)} text="Quizás me recordéis" x={760} y={250} size={84} />
+      <Say on={at(6)} out={gone(6)} text="de charlas como…" x={760} y={350} size={84} color="var(--accent)" />
+      <Line on={at(6)} out={gone(6)} x={760} y={540} size={46} text="a11y, el numerónimo ético" />
+      <Line on={at(6)} out={gone(6)} x={760} y={605} size={34} dim text="Commit Conf · jun 2026 · juanjecilla.github.io/slideshow/a11y" />
+      <Line on={at(6)} out={gone(6)} x={760} y={715} size={46} text="a11y on Android? AI makes it easy" />
+      <Line on={at(6)} out={gone(6)} x={760} y={780} size={34} dim text="DevFest Jerez · 21 nov 2026" />
 
       {/* 3.7–3.10 problems */}
-      <Eyebrow on={at(6)} out={gone(6)} text="Problemas" />
-      <Say on={at(6)} out={gone(6)} text="Pantallas grandes." y={400} size={170} />
-      <Eyebrow on={at(7)} out={gone(7)} text="Pantallas grandes" />
-      <Say on={at(7)} out={gone(7)} text="Orientaciones forzadas." y={300} size={140} />
-      <Mono on={at(7)} out={gone(7)} y={620} size={52} lines={ORIGINAL.orientation} lang="xml" title="AndroidManifest.xml" />
+      <Eyebrow on={at(7)} out={gone(7)} text="Problemas" />
+      <Say on={at(7)} out={gone(7)} text="Pantallas grandes." y={400} size={170} />
       <Eyebrow on={at(8)} out={gone(8)} text="Pantallas grandes" />
-      <Say on={at(8)} out={gone(8)} text="MinAspectRatio" y={290} size={150} />
-      <Say on={at(8)} out={gone(8)} text="MaxAspectRatio" y={480} size={150} />
+      <Say on={at(8)} out={gone(8)} text="Orientaciones forzadas." y={300} size={140} />
+      <Mono on={at(8)} out={gone(8)} y={620} size={52} lines={ORIGINAL.orientation} lang="xml" title="AndroidManifest.xml" />
       <Eyebrow on={at(9)} out={gone(9)} text="Pantallas grandes" />
-      <Say on={at(9)} out={gone(9)} text="ResizeableActivity" y={380} size={150} />
+      <Say on={at(9)} out={gone(9)} text="MinAspectRatio" y={290} size={150} />
+      <Say on={at(9)} out={gone(9)} text="MaxAspectRatio" y={480} size={150} />
+      <Eyebrow on={at(10)} out={gone(10)} text="Pantallas grandes" />
+      <Say on={at(10)} out={gone(10)} text="ResizeableActivity" y={380} size={150} />
 
       {/* 3.11 Android 16 */}
-      <Eyebrow on={at(10)} out={gone(10)} text="Android 16 · API 36" />
-      <Say on={at(10)} out={gone(10)} text="Se ignoran" y={250} size={170} />
-      <Say on={at(10)} out={gone(10)} text="en pantallas ≥ 600 dp." y={450} size={150} color="var(--accent)" />
-      <Line on={at(10)} out={gone(10)} text="Si tu app apunta a la API 36." y={720} size={64} dim />
-      <Src on={at(10)} out={gone(10)} y={860} text="developer.android.com · Behavior changes: Android 16" />
+      <Eyebrow on={at(11)} out={gone(11)} text="Android 16 · API 36" />
+      <Say on={at(11)} out={gone(11)} text="Se ignoran" y={250} size={170} />
+      <Say on={at(11)} out={gone(11)} text="en pantallas ≥ 600 dp." y={450} size={150} color="var(--accent)" />
+      <Line on={at(11)} out={gone(11)} text="Si tu app apunta a la API 36." y={720} size={64} dim />
+      <Src on={at(11)} out={gone(11)} y={860} text="developer.android.com · Behavior changes: Android 16" />
 
       {/* 3.12 the list */}
-      <Eyebrow on={at(11)} out={gone(11)} text="Android 16 · lo que se ignora" />
-      <Mono on={at(11)} out={gone(11)} y={230} size={46} lines={IGNORED} lang="plain" />
-      <Line on={at(11)} out={gone(11)} text="Excepto: juegos · la opción del usuario · pantallas < sw600dp" y={820} size={46} dim />
+      <Eyebrow on={at(12)} out={gone(12)} text="Android 16 · lo que se ignora" />
+      <Mono on={at(12)} out={gone(12)} y={230} size={46} lines={IGNORED} lang="plain" />
+      <Line on={at(12)} out={gone(12)} text="Excepto: juegos · la opción del usuario · pantallas < sw600dp" y={820} size={46} dim />
 
       {/* 3.13 opt-out */}
-      <Eyebrow on={at(12)} out={gone(12)} text="Android 16 · opt-out" />
-      <Say on={at(12)} out={gone(12)} text="Hay un opt-out. Temporal." y={230} size={120} />
-      <Mono on={at(12)} out={gone(12)} y={400} size={30} lines={DOCS.optOut} lang="xml" title="Behavior changes: Android 16 · reformateado" />
-      <Src on={at(12)} out={gone(12)} y={840} text="developer.android.com · Behavior changes: Android 16 · atributos en varias líneas" />
+      <Eyebrow on={at(13)} out={gone(13)} text="Android 16 · opt-out" />
+      <Say on={at(13)} out={gone(13)} text="Hay un opt-out. Temporal." y={230} size={120} />
+      <Mono on={at(13)} out={gone(13)} y={400} size={30} lines={DOCS.optOut} lang="xml" title="Behavior changes: Android 16 · reformateado" />
+      <Src on={at(13)} out={gone(13)} y={840} text="developer.android.com · Behavior changes: Android 16 · atributos en varias líneas" />
 
       {/* 3.14 Android 17 */}
-      <Eyebrow on={at(13)} out={gone(13)} text="Android 17 · API 37" />
-      <Say on={at(13)} out={gone(13)} text="Sin opt-out." y={230} size={170} color="var(--accent)" />
-      <Quote quote={QUOTES.android37} on={at(13)} out={gone(13)} x={210} y={470} />
+      <Eyebrow on={at(14)} out={gone(14)} text="Android 17 · API 37" />
+      <Say on={at(14)} out={gone(14)} text="Sin opt-out." y={190} size={150} color="var(--accent)" />
+      <Quote quote={QUOTES.android37} on={at(14)} out={gone(14)} x={210} y={560} size={60} />
 
       {/* 3.15 */}
-      <Western on={at(14)} text="Adaptarse o Morir" y={380} size={160} />
+      <Western on={at(15)} text="Adaptarse o Morir" y={380} size={160} />
     </>
   );
 }

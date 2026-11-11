@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { CodeBlock, flags, reducedMotion, Reveal, useScene, type Lang, type TermLine } from 'beatdeck';
 
 /** The scene's beat predicates, so each scene reads as a list of beats. */
@@ -58,6 +59,12 @@ export function Line({ on, out, text, x = 150, y, size = 56, dim }: {
  * `part` is the original deck's section ("1 · Problemática"), `name` the western title ("El Malo").
  */
 export function Intertitle({ on, out, part, name }: { on: boolean; out?: boolean; part: string; name: string }) {
+  // The deck chrome (title // scene, beat ticks) is dark ink: while a night card is up it switches to sand (themes/western.css).
+  useEffect(() => {
+    if (!on || out) return;
+    document.documentElement.dataset.night = '1';
+    return () => { delete document.documentElement.dataset.night; };
+  }, [on, out]);
   return (
     <Reveal on={on} out={out} x={0} y={0} rise={0} className="night" style={{ width: 1920, height: 1080 }}>
       <div className="t-eyebrow" style={{ position: 'absolute', left: 150, top: 130 }}>{part}</div>

@@ -1,16 +1,37 @@
 import { CountUp, Scene } from 'beatdeck';
+import { DEVICES } from '../devices';
+import { AppMock, Combinatorics, DeviceStory, Poses, ResizeDemo, WindowModes } from '../visuals';
 import { Bullets, Device, Eyebrow, Intertitle, Line, Say, Src, useBeat } from '../ui';
+import { Reveal } from 'beatdeck';
 
 /** The three axes of the problem, in the order the original deck gives them. */
 const AXES = ['Dispositivos', 'Contexto', 'Estado'] as const;
 
-/** Illustrative boxes (1x, 2x, 3x): the proportions are drawn, not measured. */
-function Scale({ on, out, x, y, kind }: { on: boolean; out?: boolean; x: number; y: number; kind: 'zoom' | 'font' }) {
-  const sizes = [1, 2, 3];
+const N = DEVICES.length;
+/** First beat of each part: 0 intertitle, 1 axes, 2 the 2021 figure, 3 large screens, then one beat per device and the grid. */
+const DEV0 = 4;
+const B = DEV0 + N + 1; // context starts after the grid beat
+
+/** Title on the left, its one-line subtitle to the right of it: the picture gets the rest of the screen. */
+function Head({ on, out, eyebrow, title, sub, subX = 1130, size = 150 }: { on: boolean; out?: boolean; eyebrow: string; title: string; sub: string; subX?: number; size?: number }) {
   return (
     <>
-      {sizes.map((k, i) => (
-        <Device key={k} on={on} out={out} x={x + i * 330} y={y + (kind === 'zoom' ? 160 - k * 50 : 0)} w={k * 100} h={k * 100} label={`${k}x`} desk={false} />
+      <Eyebrow on={on} out={out} text={eyebrow} />
+      <Say on={on} out={out} text={title} y={190} size={size} />
+      <Line on={on} out={out} text={sub} x={subX} y={265} size={56} dim />
+    </>
+  );
+}
+
+/** Three copies of the same little app at 1x, 2x, 3x: zoom grows everything, font size grows only the text. */
+function MockRow({ on, out, text }: { on: boolean; out?: boolean; text: boolean }) {
+  return (
+    <>
+      {[1, 2, 3].map((k, i) => (
+        <Reveal key={k} on={on} out={out} x={260 + i * 500} y={470} delay={i * 150}>
+          <AppMock f={1 + (k - 1) * 0.5} text={text} w={340} h={380} />
+          <div className="say-sm">{k}x</div>
+        </Reveal>
       ))}
     </>
   );
@@ -18,6 +39,7 @@ function Scale({ on, out, x, y, kind }: { on: boolean; out?: boolean; x: number;
 
 function Malo_() {
   const { here, b, entry, at, gone, span } = useBeat();
+  const inStory = span(DEV0, DEV0 + N);
   return (
     <>
       {/* 2.1 */}
@@ -40,54 +62,36 @@ function Malo_() {
       <Line on={at(3)} out={gone(3)} text="pantallas grandes en manos de usuarios" y={690} size={64} />
       <Src on={at(3)} out={gone(3)} y={800} text="Android Developers Blog · 19 de mayo de 2026" />
 
-      {/* 2.5 forms */}
-      <Eyebrow on={at(4)} out={gone(4)} text="Dispositivos" />
-      <Device on={at(4)} out={gone(4)} x={170} y={330} w={150} h={300} label="Móvil" />
-      <Device on={at(4)} out={gone(4)} x={480} y={330} w={300} h={300} label="Plegable" fold />
-      <Device on={at(4)} out={gone(4)} x={940} y={350} w={380} h={280} label="Tablet" />
-      <Device on={at(4)} out={gone(4)} x={1480} y={350} w={300} h={220} label="Escritorio" desk />
+      {/* 2.5 … one beat per kind of screen: each arrives in the middle, then settles into the row; the last beat is the grid */}
+      <Eyebrow on={inStory} out={gone(DEV0 + N)} text={b === DEV0 + N ? 'Dispositivos · todos' : 'Dispositivos'} />
+      <DeviceStory k={b - DEV0} show={inStory} />
 
-      {/* 2.6 orientation */}
-      <Eyebrow on={at(5)} out={gone(5)} text="Contexto" />
-      <Say on={at(5)} out={gone(5)} text="Orientación" y={250} size={170} />
-      <Line on={at(5)} out={gone(5)} text="Portrait / Landscape" y={470} size={72} dim />
-      <Device on={at(5)} out={gone(5)} x={300} y={610} w={160} h={290} label="Portrait" />
-      <Device on={at(5)} out={gone(5)} x={760} y={700} w={290} h={160} label="Landscape" />
+      {/* context: orientation, zoom, font size */}
+      <Head on={at(B)} out={gone(B)} eyebrow="Contexto" title="Orientación" sub="Portrait / Landscape" />
+      <Device on={at(B)} out={gone(B)} x={420} y={470} w={200} h={360} label="Portrait" />
+      <Device on={at(B)} out={gone(B)} x={900} y={560} w={360} h={200} label="Landscape" />
 
-      {/* 2.7 zoom */}
-      <Eyebrow on={at(6)} out={gone(6)} text="Contexto" />
-      <Say on={at(6)} out={gone(6)} text="Zoom" y={250} size={170} />
-      <Line on={at(6)} out={gone(6)} text="1x … 3x" y={470} size={72} dim />
-      <Scale on={at(6)} out={gone(6)} x={300} y={590} kind="zoom" />
+      <Head on={at(B + 1)} out={gone(B + 1)} eyebrow="Contexto" title="Zoom" sub="1x … 3x · todo crece" subX={760} />
+      <MockRow on={at(B + 1)} out={gone(B + 1)} text={false} />
 
-      {/* 2.8 font size */}
-      <Eyebrow on={at(7)} out={gone(7)} text="Contexto" />
-      <Say on={at(7)} out={gone(7)} text="Font size" y={250} size={170} />
-      <Line on={at(7)} out={gone(7)} text="2x, 3x…" y={470} size={72} dim />
-      {[1, 2, 3].map((k) => (
-        <div key={k} className="t-western" style={{ position: 'absolute', left: 300 + (k - 1) * 380, top: 700 - k * 20, fontSize: 70 * k, opacity: at(7) ? 1 : 0, transition: 'opacity 500ms var(--ease)' }}>Aa</div>
-      ))}
+      <Head on={at(B + 2)} out={gone(B + 2)} eyebrow="Contexto" title="Font size" sub="2x, 3x… · crece el texto" subX={900} />
+      <MockRow on={at(B + 2)} out={gone(B + 2)} text />
 
-      {/* 2.9 state, same app */}
-      <Eyebrow on={at(8)} out={gone(8)} text="Estado" />
-      <Say on={at(8)} out={gone(8)} text="Misma app" y={250} size={170} />
-      <Bullets here={here} b={b} from={8} to={8} together y={520} size={80} gap={36} items={['Abierto', 'Cerrado', 'Doblado']} />
+      {/* state: the same app (poses), several apps (concepts, then the resize) */}
+      <Head on={at(B + 3)} out={gone(B + 3)} eyebrow="Estado" title="Misma app" sub="Abierto · Cerrado · Doblado" subX={1000} />
+      <Poses on={at(B + 3)} out={gone(B + 3)} y={470} />
 
-      {/* 2.10 state, several apps */}
-      <Eyebrow on={at(9)} out={gone(9)} text="Estado" />
-      <Say on={at(9)} out={gone(9)} text="Varias apps" y={250} size={170} />
-      <Bullets here={here} b={b} from={9} to={9} together y={520} size={80} gap={36} items={['Ajuste de tamaño', 'Comunicación']} />
+      <Head on={at(B + 4)} out={gone(B + 4)} eyebrow="Estado" title="Varias apps" sub="Multiventana" subX={1050} />
+      <WindowModes on={at(B + 4)} out={gone(B + 4)} y={470} />
 
-      {/* 2.11 recap */}
-      <Bullets here={here} b={b} from={10} to={10} together y={230} size={150} gap={50} items={AXES} />
+      <Head on={at(B + 5)} out={gone(B + 5)} eyebrow="Estado" title="Ajuste de tamaño" sub="la app se adapta" subX={1180} size={120} />
+      <ResizeDemo on={at(B + 5)} out={gone(B + 5)} y={390} />
 
-      {/* 2.12 */}
-      <Say on={at(11)} out={gone(11)} text="¿Y todo a la vez?" y={400} size={170} />
-
-      {/* 2.13 */}
-      <Say on={span(12, 12)} text="Dispositivos ×" y={190} size={160} />
-      <Say on={span(12, 12)} text="Contexto ×" y={390} size={160} />
-      <Say on={span(12, 12)} text="Estado" y={590} size={160} color="var(--accent)" />
+      {/* recap, all at once, the combinations */}
+      <Bullets here={here} b={b} from={B + 6} to={B + 6} together y={230} size={150} gap={50} items={AXES} />
+      <Say on={at(B + 7)} out={gone(B + 7)} text="¿Y todo a la vez?" y={400} size={170} />
+      <Say on={at(B + 8)} text="Y todo a la vez." y={130} size={120} />
+      <Combinatorics on={at(B + 8)} />
     </>
   );
 }

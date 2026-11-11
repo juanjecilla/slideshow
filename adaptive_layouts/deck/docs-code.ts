@@ -11,7 +11,8 @@ export const ORIGINAL = {
     '    <bool name="isTablet">true</bool>',
     '</resources>',
   ],
-  orientation: ['android:screenOrientation="portrait"'],
+  /** The original shows only the attribute; it is wrapped in its tag here so it reads (and highlights) as manifest XML. */
+  orientation: ['<activity', '    android:name=".MainActivity"', '    android:screenOrientation="portrait" />'],
 } as const;
 
 /** R2 · developer.android.com/develop/ui/compose/layouts/adaptive/use-window-size-classes (updated 2026-09-22). */

@@ -66,3 +66,10 @@
 .bd-code-file { color: var(--code-plain); }
 .bd-code-dots i { background: var(--code-com); }
 .bd-code-bar { border-bottom-color: var(--code-com); }
+
+/* Chrome on an intertitle: dark ink would vanish on the night ground (ui.tsx Intertitle sets data-night). */
+html[data-night] .chrome-id, html[data-night] .chrome-title { color: var(--night-ink); }
+html[data-night] .chrome-sep { color: var(--night-accent); }
+html[data-night] .chrome-ticks span { background: rgba(241, 226, 189, 0.3); }
+html[data-night] .chrome-ticks span.done { background: rgba(241, 226, 189, 0.6); }
+html[data-night] .chrome-ticks span.here { background: var(--night-accent); }

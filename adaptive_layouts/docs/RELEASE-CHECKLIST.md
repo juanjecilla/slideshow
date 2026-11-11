@@ -12,6 +12,7 @@ Merge to `main` on **20 Nov 2026**; talk on 21 Nov. Tick as you go.
 
 ## Build
 
+- [x] 117 beats; `npm run verify` 0 warnings, 2026-11-11 (after the content pass).
 - [x] `npm run build` passes (typecheck, bundle, offline check), 2026-11-11.
 - [ ] `npm run verify` exits 0; open `artifacts/verify/contact.png` and the full-size frames of scenes 4–7 (the code ones).
 - [x] `node tools/contrast.mjs` → all pairs ≥ 4.5:1 (now includes code tokens), 2026-11-11.

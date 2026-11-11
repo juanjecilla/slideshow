@@ -1,4 +1,5 @@
 import type { SceneDef } from 'beatdeck';
+import { DEVICES } from './devices';
 
 /**
  * The talk's beat map: scenes → beats. One click = one beat.
@@ -12,10 +13,7 @@ export const SCENES: SceneDef[] = [
     beats: [
       { name: 'standby', note: 'Pantalla en calma mientras entra la gente. El primer clic arranca la charla.' },
       { name: 'title', ref: 'S01 S02', source: 'Adaptative Layouts · Adaptarse o Morir', note: 'Adaptive Layouts: Adaptarse o Morir. Presentarse en una frase.' },
-      { name: 'event', ref: 'D2', note: 'DevFest Jaén 2026, GDG Jaén, online. Agradecer a la organización.' },
-      { name: 'who', ref: 'S03', source: 'Juanje Cilla · Senior Software Engineer · Más de 10 años en Android', note: 'Quién soy: lo justo.' },
-      { name: 'who-teach', ref: 'S03', source: 'Profesor en KeepCoding · Bootcamp Desarrollo Mobile', note: 'Doy clase en el bootcamp de mobile de KeepCoding.' },
-      { name: 'who-community', ref: 'S03', source: 'GDG Aranjuez (Organizador) · Coding Pit · Welcome to La Secta', note: 'Comunidades: organizo GDG Aranjuez.' },
+      { name: 'who', ref: 'S03', source: 'Juanje Cilla · Senior Software Engineer · Más de 10 años en Android · GDG Aranjuez (Organizador) · Coding Pit · Welcome to La Secta', note: 'Quién soy, lo justo, y las comunidades: organizo GDG Aranjuez. (Fusiona los antiguos 1.4 y 1.6; se quitan el evento y KeepCoding.)' },
       { name: 'muviss', ref: 'D6 R30', note: 'La charla viene con una app real: Muviss. Android, iOS (iPhone e iPad), escritorio y web. Todo el código que veréis es suyo, con archivo y línea.' },
       { name: 'agenda', ref: 'S04', source: '1. Problemática · 2. Soluciones antiguas · 3. Adaptive Layouts · 4. Conclusiones', note: 'El malo, el feo, el bueno y el fin. Y una demo con Muviss al final del bueno.' },
     ],
@@ -27,15 +25,17 @@ export const SCENES: SceneDef[] = [
       { name: 'three', ref: 'S06', source: 'Dispositivos · Contexto · Estado', note: 'Tres ejes: dispositivos, contexto y estado. Los vamos a ir viendo uno a uno.' },
       { name: 'devices-2021', ref: 'S07 R8', source: '3.000M Dispositivos Android en el mundo', note: 'La cifra del original viene de Google I/O 2021. TODO(speaker): decidir si se queda con su fecha o se quita; hay un dato más reciente en el siguiente beat.' },
       { name: 'devices-large', ref: 'R7', note: 'Más de 580 millones de pantallas grandes (Android Developers Blog, 19 mayo 2026). No es un nicho.' },
-      { name: 'devices-forms', ref: 'S08', note: 'Móvil, plegable, tablet, Chromebook, escritorio. Las imágenes del original eran fotos de dispositivos: aquí son siluetas propias.' },
-      { name: 'ctx-orientation', ref: 'S09', source: 'Orientación · Portrait / Landscape', note: 'Contexto 1: la orientación. En el móvil es un giro; en un plegable o en una ventana, no tanto.' },
+      ...DEVICES.map((d) => ({ name: `dev-${d.id}`, ref: 'R12', note: d.note })),
+      { name: 'dev-all', ref: 'R12', note: 'Todas las pantallas en una cuadrícula. Una sola app puede acabar en cualquiera de ellas.' },
+      { name: 'ctx-orientation', ref: 'S09', source: 'Orientación · Portrait / Landscape', note: 'Contexto 1: la orientación. En el móvil es un giro; en un plegable o en una ventana, no tanto. Título a la izquierda, subtítulo a la derecha.' },
       { name: 'ctx-zoom', ref: 'S09', source: 'Zoom · 1x … 3x', note: 'Contexto 2: el zoom de pantalla.' },
       { name: 'ctx-font', ref: 'S09', source: 'Font size · 2x, 3x…', note: 'Contexto 3: el tamaño de fuente. El texto crece y el layout tiene que aguantar.' },
       { name: 'state-same', ref: 'S10', source: 'Misma app · Abierto · Cerrado · Doblado', note: 'Estado, misma app: abierto, cerrado, doblado.' },
-      { name: 'state-multi', ref: 'S10', source: 'Varias apps · Ajuste de tamaño · Comunicación', note: 'Estado, varias apps: ajuste de tamaño y comunicación entre ventanas.' },
+      { name: 'state-multi', ref: 'S10 R12', source: 'Varias apps · Multiventana', note: 'Estado, varias apps: pantalla dividida, ventanas libres e imagen en imagen.' },
+      { name: 'state-resize', ref: 'S10', source: 'Ajuste de tamaño', note: 'Animación: la ventana de tu app cambia de ancho y la app reacciona (lista + detalle, solo lista, lista corta). Es el problema en pequeño.' },
       { name: 'recap', ref: 'S11', source: 'Dispositivos · Contexto · Estado', note: 'Los tres ejes juntos.' },
       { name: 'all-at-once', ref: 'S12', note: 'Y todo a la vez. (El original usa un GIF de meme; aquí es texto.)' },
-      { name: 'combinatorics', ref: 'S13', note: 'Dispositivos × Contexto × Estado. Aquí sí, mente en blanco. (Sin cifra: no la tenemos.)' },
+      { name: 'combinatorics', ref: 'S13', note: 'Animación: tres rodillos (dispositivo, contexto, estado) que aterrizan en combinaciones distintas. Mente en blanco. (Sin cifra: no la tenemos.)' },
     ],
   },
   {
@@ -46,6 +46,7 @@ export const SCENES: SceneDef[] = [
       { name: 'xml-cost', ref: 'S15', source: 'Poca reusabilidad · Configuraciones complejas', note: 'Poca reutilización y configuraciones cada vez más complejas.' },
       { name: 'hack-istablet', ref: 'S16', note: 'Las ñapas. Un recurso booleano para decidir si "es tablet". Código tal cual del original.' },
       { name: 'hack-orientation', ref: 'S16', note: 'Otra ñapa: bloquear la orientación en el manifest.' },
+      { name: 'a11y-forgot', ref: 'D15', note: 'Pantalla completa: "a11y?". Pausa. Es lo que más se olvida. Que cada quien se lo pregunte.' },
       { name: 'a11y', ref: 'S17 D14', source: 'Soluciones antiguas · a11y', note: 'Troy McClure: "Hola, soy Juanje Cilla. Quizás me recordéis de charlas como…". Dos charlas de accesibilidad: la de Commit Conf (ya en el slideshow) y la de DevFest Jerez (21 nov, mismo día). Ajustar el tiempo verbal según el orden. Luego un puente: el tamaño de fuente también cambia el layout.' },
       { name: 'problems', ref: 'S18', source: 'Pantallas grandes', note: 'El resultado en pantallas grandes.' },
       { name: 'problem-orientation', ref: 'S18', source: 'Orientaciones forzadas', note: 'Orientaciones forzadas.' },

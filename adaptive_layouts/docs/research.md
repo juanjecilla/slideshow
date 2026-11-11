@@ -93,3 +93,138 @@ no tablet/foldable/desktop screenshots in the repo.
 - Slide 21 listed 3 size classes (Compact, Medium, Expanded); now 5 (R1).
 - Slide 28 "Do: `resizeableActivity="true"`, drop `screenOrientation` and min/maxAspectRatio": since API 36 they are ignored on sw ≥ 600 dp (R4); the advice becomes "don't depend on them".
 - Slide 7 "3.000M" → R8.
+
+## Devices catalogue (R12)
+
+Research pass on 2026-11-11, primary sources only (developer.android.com, Android Developers Blog, blog.google). Every entry carries its check date and URL. Items marked **UNCERTAIN** are not stated as fact on stage without a re-check.
+
+Ecosystem anchors: Google's official device list ("Device form factors") names seven categories: phones/tablets/foldables, cars, TV, Android XR, Wear OS, ChromeOS and Googlebook ([developer.android.com/multidevice](https://developer.android.com/multidevice), checked 2026-11-11). The May 2026 post says "over 580 million large screen devices" ([Adaptive development for the expanding Android ecosystem](https://developer.android.com/blog/posts/adaptive-development-for-the-expanding-android-ecosystem), 19 May 2026, checked 2026-11-11).
+
+### 1. Teléfono / Phone
+- **What:** Handheld Android phone, the default target and the baseline for adaptive layouts.
+- **Surface:** Android (phones).
+- **Phone app reaches it:** Yes, natively.
+- **Window class:** Compact width (< 600 dp) in portrait.
+- **Source:** [Phones, tablets, and foldables](https://developer.android.com/phones-tablets-foldables) and [Use window size classes](https://developer.android.com/develop/ui/compose/layouts/adaptive/use-window-size-classes), checked 2026-11-11.
+
+### 2. Tableta / Tablet
+- **What:** Large-screen Android device, usually landscape, with the same app as phones.
+- **Surface:** Android (tablets).
+- **Phone app reaches it:** Yes, if layouts adapt. Android 16+ ignores orientation locks on sw >= 600 dp.
+- **Window class:** Medium or Expanded (600–1199 dp).
+- **Source:** [Behavior changes: Android 16](https://developer.android.com/about/versions/16/behavior-changes-16), checked 2026-11-11; [Phones, tablets, and foldables](https://developer.android.com/phones-tablets-foldables), checked 2026-11-11.
+
+### 3. Plegable / Foldable (book, flip, tabletop postures)
+- **What:** A phone that unfolds into a tablet-size screen. Postures: flat, tabletop (half-open horizontal), book (half-open vertical).
+- **Surface:** Android (foldables). Dual-screen mode and rear display mode are listed as supported foldable display modes.
+- **Phone app reaches it:** Yes. Foldables are mobile form factors in the same APK.
+- **Window class:** Compact on the cover screen, Medium/Expanded when open. Changes instantly on fold/unfold.
+- **Source:** [Foldables quality guidelines](https://developer.android.com/docs/quality-guidelines/adaptive-app-quality/experiences/foldables), checked 2026-11-11; [Support trifolds and landscape foldables](https://developer.android.com/develop/ui/compose/layouts/adaptive/foldables/trifolds-and-landscape-foldables), checked 2026-11-11.
+- **Note:** Flip (clamshell) as a named category is not defined on the pages checked. Describe by posture, not by name. **UNCERTAIN** for a strict "flip" category.
+
+### 4. Tri-plegable / Tri-fold
+- **What:** Foldable with two folds, unfolding to a large display. Developer docs cite the Samsung Trifold as an example.
+- **Surface:** Android (foldables).
+- **Phone app reaches it:** Yes, as a foldable.
+- **Window class:** Medium or Expanded when fully unfolded. No tabletop or HALF_OPENED posture.
+- **Source:** [Support trifolds and landscape foldables](https://developer.android.com/develop/ui/compose/layouts/adaptive/foldables/trifolds-and-landscape-foldables), checked 2026-11-11.
+- **Note:** No launch date or model name is verified on a primary source in this pass. **UNCERTAIN** on the model list.
+
+### 5. Pantalla conectada / Connected display (escritorio desde el móvil)
+- **What:** Phone or tablet plugged into an external monitor. It opens a desktop session with a taskbar and freely resizable windows.
+- **Surface:** Android (Connected Displays), available on supported Pixel and Samsung devices.
+- **Phone app reaches it:** Yes, with no code change, if layouts adapt. Windows are freely resizable, so any window class applies at runtime. Phones start a new desktop session on the external display. Tablets extend one session across both screens.
+- **Window class:** Large (1200–1599 dp) or Extra-large (>= 1600 dp) on a monitor (the connected-display post cites an Extra-large desktop monitor as its example). Large and Extra-large are opt-in via `currentWindowAdaptiveInfo(supportLargeAndXLargeWidth = true)`.
+- **Status:** General availability with Android 16 QPR3. Blog dated 3 Mar 2026. Supported devices: Pixel 8/9/10 series and Samsung devices such as S26, Fold7, Flip7, Tab S11.
+- **Source:** [Android devices extend seamlessly to connected displays](https://developer.android.com/blog/posts/android-devices-extend-seamlessly-to-connected-displays), 3 Mar 2026, checked 2026-11-11.
+
+### 6. Chromebook (ChromeOS)
+- **What:** Laptop or convertible running ChromeOS, with Android apps from Google Play.
+- **Surface:** ChromeOS.
+- **Phone app reaches it:** Yes, via Google Play. The page asks for keyboard, trackpad and mouse support.
+- **Window class:** Large or Extra-large in landscape (inferred; the page names no size class).
+- **Source:** [ChromeOS](https://developer.android.com/chrome-os), checked 2026-11-11; [Adaptive development for the expanding Android ecosystem](https://developer.android.com/blog/posts/adaptive-development-for-the-expanding-android-ecosystem), 19 May 2026, checked 2026-11-11 (cites "Large-screen users (tablets, foldables, and Chromebooks)").
+
+### 7. Googlebook (laptop, Android-based)
+- **What:** A new laptop category built on a shared Android foundation. It is the next generation of ChromeOS. The OS is "Googlebook OS". Phone apps run on it.
+- **Surface:** Googlebook OS (built on a shared Android foundation; the next generation of ChromeOS). Apps run in free-form windows with multi-instance support.
+- **Phone app reaches it:** Yes. Optimized apps get a "Optimized for desktop" badge on Google Play.
+- **Window class:** Large or Extra-large (inferred). Layout follows window size, not physical display.
+- **Status:** Announced 12 May 2026 (The Android Show: I/O Edition). Pre-orders 21 Sep 2026. US shelves 4 Oct 2026. From $899. OEMs: Acer, ASUS, Dell, HP, Lenovo.
+- **Sources:** [Land your apps on Googlebook with adaptive development](https://developer.android.com/blog/posts/land-your-apps-on-googlebook-with-adaptive-development), 22 Sep 2026, checked 2026-11-11; [Googlebook pre-order announcement](https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/), checked 2026-11-11; [Googlebook developer page](https://developer.android.com/googlebook), checked 2026-11-11.
+- **Note:** The 12 May date comes from secondary coverage (search results), not the Google page. **UNCERTAIN.** Check before stage use.
+
+### 8. Televisor / TV (Google TV, Android TV)
+- **What:** Living-room TV with a remote control, a directional pad, or a pointer remote. Apps are designed for a 10-foot view.
+- **Surface:** Android TV / Google TV.
+- **Phone app reaches it:** Partially. The 19 May 2026 post cites "enhanced pointer support for Android TV" as a way for adaptive apps to reach the living room. Classic TV apps are D-pad, 10-foot designs.
+- **Window class:** Not stated on the TV page. Do not assume a class.
+- **Status:** Google TV and Android TV together reach over 300 million monthly active devices, per the May 2026 developer post.
+- **Sources:** [Android TV](https://developer.android.com/tv), checked 2026-11-11; [Increase Google TV app discovery](http://android-developers.googleblog.com/2026/05/increase-google-tv-app-discovery.html), 19 May 2026, checked 2026-11-11.
+- **Note:** The developer.android.com TV page still says "Android TV" throughout; "Google TV" appears only in the blog post. Device types are not described on the page. **UNCERTAIN** on the exact device list.
+
+### 9. Reloj / Watch (Wear OS)
+- **What:** Smartwatch running Wear OS, with glanceable UI and a round or square screen.
+- **Surface:** Wear OS. The latest version named on the developer page is Wear OS 7.
+- **Phone app reaches it:** No. Separate app built with Compose for Wear OS.
+- **Window class:** Not covered by window size classes. Small screen; Compose for Wear OS.
+- **Source:** [Wear OS](https://developer.android.com/wear), checked 2026-11-11; [Enhance your app for the new Pixel lineup](https://developer.android.com/blog/posts/enhance-your-app-for-the-new-pixel-lineup-unveiled-at-made-by-google), 11 Aug 2026, checked 2026-11-11 (Pixel Watch 5, Wear OS 7).
+
+### 10. Coche / Car (Android Auto y Android Automotive OS)
+- **What:** Two surfaces. (a) Android Auto: the phone projects a driver-optimized version of the app to the car's screen. (b) Android Automotive OS: the car runs Android itself, with apps installed on the infotainment system.
+- **Surface:** Android Auto (projection from phone, Android 9+). Android Automotive OS (cars with Google built-in).
+- **Phone app reaches it:** Android Auto shows a driver-optimized version of the app, not the phone layout. Android Automotive OS: the Car Ready Mobile Apps program distributes selected video, game and browser apps, by invitation only, and only when parked. Apps are not usable while driving.
+- **Window class:** Car display, not covered by phone window classes. Driver-optimized templates.
+- **Status:** Car Ready Mobile Apps distribution from February 2025, cars with Google built-in only. Android Auto support for those apps is "stay tuned". Google reported 250 million+ Android Auto-compatible cars (May 2026, secondary coverage of blog.google).
+- **Sources:** [Android Auto and Android Automotive OS](https://developer.android.com/cars), checked 2026-11-11; [Car ready mobile apps](https://developer.android.com/training/cars/car-ready-mobile-apps), checked 2026-11-11.
+- **Note:** The 250 million figure is secondary. **UNCERTAIN.**
+
+### 11. Gafas XR con cable / Wired XR glasses (XREAL AURA)
+- **What:** Wired XR glasses with a portable compute puck. Under 95 grams.
+- **Surface:** Android XR.
+- **Phone app reaches it:** Yes, as 2D panels. The XR post says existing apps "work out of the box on day one"; full immersion needs the Jetpack XR SDK.
+- **Window class:** Not a phone size class. Spatial/glanceable UI, Compose Glimmer for optical see-through.
+- **Status:** Launched at Android Developer Summit (Nov 2026). Post dated 6 Nov 2026.
+- **Source:** [Build for an expanding lineup of Android XR devices](https://developer.android.com/blog/posts/build-android-xr-devices-tools), 6 Nov 2026, checked 2026-11-11.
+
+### 12. Auriculares XR / Headset XR (Galaxy XR)
+- **What:** Mixed-reality headset with an immersive or passthrough view.
+- **Surface:** Android XR.
+- **Phone app reaches it:** Yes, as 2D panels. The 19 May 2026 post lists XR among "large screens devices including foldables, tablets, Chromebooks and XR". Full immersion needs the Jetpack XR SDK or Android XR SDK.
+- **Window class:** Spatial volumes, not a phone window class.
+- **Status:** Galaxy XR is "already available today" per the June 2026 developer post. Launch 21 Oct 2025 at $1,799 is from secondary coverage only.
+- **Sources:** [What's New in Android XR](https://developer.android.com/blog/posts/what-s-new-in-android-xr-tooling-engine-support-and-ecosystem-updates), 15 Jun 2026, checked 2026-11-11; [Android XR](https://developer.android.com/xr), checked 2026-11-11.
+- **Note:** The developer page names no specific device. **UNCERTAIN** on the launch date and price.
+
+### 13. Gafas inteligentes / AI glasses (audio y pantalla)
+- **What:** Lightweight glasses with a camera, microphone and speaker (audio glasses), or with an in-lens display (display glasses). They work with the phone.
+- **Surface:** Android XR (intelligent eyewear).
+- **Phone app reaches it:** No. Audio-first or glanceable app design.
+- **Window class:** None. Design guidance is "AI Glasses" and sound/earcon guidance.
+- **Status:** At I/O 2026 (19 May 2026), Google said audio glasses are "launching first, coming later this fall". Display glasses are announced without a date. Partners named in the 19 May 2026 post: Samsung, Gentle Monster, Warby Parker. **UNCERTAIN** on whether audio glasses have shipped as of 2026-11-11.
+- **Sources:** [Intelligent eyewear is coming this fall](https://blog.google/products-and-platforms/platforms/android/android-xr-io-2026/), 19 May 2026, checked 2026-11-11; [AI Glasses design](https://developer.android.com/design/ui/ai-glasses), checked 2026-11-11 (linked from the developer page).
+
+### Not covered in this pass (no primary source found)
+- Rollable phones: not mentioned in any Android developer page checked. Excluded.
+- Play Games on PC (Windows): checked 2026-11-11. The page says games can be distributed "across mobile, tablets, Chromebooks, and Windows PCs", but it does not say that all Android games run there. It covers games only. Source: [Google Play Games on PC](https://developer.android.com/games/playgames/overview), last updated 2026-10-13. Not added as a kind; an exotic option only for a games talk.
+- E-ink readers, projectors, kiosks/POS, smart displays: not checked on primary sources in this pass. Excluded; add only after a primary-source check.
+- Desktop windowing as a generic term: covered by connected displays and Googlebook. Source: [Desktop experiences](https://developer.android.com/design/ui/desktop), checked 2026-11-11 (defines the free-form, taskbar, multi-desktop model; does not name devices).
+- Android 17 release status: the Android 17 page states the adaptive-first standard but gives no release date; API 37 is shown in links only. Source: [Android 17](https://developer.android.com/about/versions/17), checked 2026-11-11. The 19 May 2026 blog says "With the release of Android 17", so treat it as released. **UNCERTAIN** on the exact release date.
+
+### Recommended slide order (familiar to exotic), 12 kinds
+Icon suggestions use simple inline SVG shapes on a 24x24 grid.
+
+1. **Teléfono** — Phone. Icon: tall rounded rectangle with a small circle at the bottom.
+2. **Tableta** — Tablet. Icon: wide rounded rectangle, landscape, with a small circle at the bottom edge.
+3. **Plegable** — Foldable. Icon: two rounded rectangles side by side with a dashed vertical fold line in the middle.
+4. **Tri-plegable** — Tri-fold. Icon: three rounded rectangles in a row, with two dashed fold lines.
+5. **Pantalla conectada** — Connected display. Icon: phone shape on the left, arrow pointing right, monitor shape on the right.
+6. **Chromebook** — Icon: laptop shape with a rectangular screen and a flat base line.
+7. **Googlebook** — Icon: the same laptop shape, with a small circle in the top-left corner of the screen.
+8. **Televisor** — Icon: wide rectangle with a short stand line below, and a small rounded D-pad circle in the lower right corner of the screen.
+9. **Reloj** — Icon: circle with a short strap line above and below.
+10. **Coche** — Icon: flat car silhouette, a trapezoid body with two circles for wheels.
+11. **Gafas XR con cable / headset XR** — Icon: two circles side by side joined by a bridge, with a short line from each circle to the edge.
+12. **Gafas inteligentes** — Icon: same two-circle glasses icon, with a small dot in one lens (camera).
+
+**Use the full set (12) only if the slide budget allows.** Cut 4 (tri-fold) and 12 (gafas inteligentes) first if needed; both have **UNCERTAIN** status.
