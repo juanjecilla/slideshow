@@ -68,6 +68,13 @@ Estado: ✅ verificado en fuente primaria · ⚠️ fuente secundaria · ❓ pen
 | R6.8 | A caption cut off by the viewport drops out of a clickable's merged label (the card reads as unlabeled) | ✅ device |
 | R6.9 | `uiautomator dump` returns `null root node` while a window animates and shows system dialogs (ANR) as the whole tree: an audit must dismiss them and retry | ✅ |
 
+## R7 · Citas (2026-11-11)
+
+| id | Hecho | Estado | Fuente |
+|---|---|---|---|
+| R7.1 | Radabaugh: «For Americans without disabilities, technology makes things easier. For Americans with disabilities, technology makes things possible.» Epígrafe del informe NCD de 1993 (Executive Summary → "The Vision"), atribuido a «Radabaugh, 1988». En el deck "Americans" va como "[people]". El original de 1988 (IBM) no se ha encontrado; su cargo en IBM sale de fuentes secundarias, por eso la diapositiva dice solo "IBM, 1988". La versión popular "most people" es una paráfrasis posterior | ✅ cita · ⚠️ original 1988 | https://www.ncd.gov/report/study-on-the-financing-of-assistive-technology-devices-and-services-for-individuals-with-disabilities/ · copia 2008: https://webarchive.library.unt.edu/eot2008/20080916154540/http:/www.ncd.gov/newsroom/publications/1993/assistive.htm (checked 2026-11-11) |
+| R7.2 | Bjarnø: «When you design for accessibility, you're not limiting your options; you're expanding your audience.» **Sin fuente primaria**: ni en sus charlas, ni en W3C, ni en webs de citas. Sí consta que fue participante del EOWG (W3C Invited Expert). El texto inglés es una traducción de la versión española recibida. Se mantiene en el deck con la etiqueta "Attributed to … original source not found" | ⚠️ atribución no verificada | https://www.w3.org/groups/wg/eowg/participants (checked 2026-11-11) |
+
 ## Pendientes
 - Leer la lista oficial de dispositivos de AICore y probar `checkFeatureStatus()` en el Pixel.
 - Texto consolidado de la Ley 11/2023 (BOE) y EUR-Lex para la Directiva.

@@ -73,6 +73,8 @@ State below was checked **2026-11-10** unless a row says otherwise.
 
 ## After
 
+- [ ] Port `<Quote>` (`deck/quote/`) to beatdeck: issue on `juanjecilla/beatdeck`, issue #17 on the fork, same route as the standby (#16)
+- [ ] Translate the two quotes for `jerez26/` (Spanish lines are in the grilling notes; Bjarnø keeps the unverified label)
 - [ ] Image Description is English-only (R1.3): the live output stays English in the ES deck
 - [ ] Muviss issues from 2026-10-19 stay open: #458 rating badge contrast over posters · #459 real TalkBack / Switch Access pass · #460 ATF checks in instrumented tests · #461 upstream the audit fixes · #462 on-device ML Kit experiment
 
