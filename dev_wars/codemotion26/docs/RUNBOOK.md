@@ -12,7 +12,7 @@ npm run dev          # http://127.0.0.1:5173/#1.1 while editing
 
 Keys: → / space next, ← previous, 1-8 jump to a scene, O overview, P presenter window, F fullscreen. Every beat has an address (`#scene.beat`).
 
-The clips on slides 14 and 15 start on the beat after the poster (`14: clips`, `15: clips`) and play with sound; leave the presenter window muted (it never plays them).
+The clips on slides 14 and 15 start on the beat after the poster (`14: clips`, `15: clips`) and play silently (the clips have no audio track); the presenter window never plays them.
 
 ## Rebuild the slides from Google Slides
 

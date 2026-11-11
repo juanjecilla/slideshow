@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Re-encode the clips shown on slides 14 and 15 (full length, <=720p H.264 + AAC) into deck/assets/video/.
+# Re-encode the clips shown on slides 14 and 15 (full length, <=720p H.264, no audio track) into deck/assets/video/.
 # Usage: tools/encode_clips.sh <trail.mp4> <marathon.mp4> <speed-project.mp4> <trail-youtube.mp4>
 # Sources: see docs/RUNBOOK.md (Drive ids and the YouTube id are in tools/pptx_to_deck.py, CLIPS).
 set -euo pipefail
@@ -8,7 +8,7 @@ mkdir -p "$out"
 enc() {
   ffmpeg -v error -y -i "$1" \
     -vf "scale=-2:'min(720,ih)'" \
-    -c:v libx264 -crf 28 -preset slow -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart "$out/$2"
+    -c:v libx264 -crf 28 -preset slow -pix_fmt yuv420p -an -movflags +faststart "$out/$2"
 }
 enc "$1" trail-leire.mp4
 enc "$2" maraton-barcelona.mp4

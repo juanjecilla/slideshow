@@ -9,13 +9,13 @@ Dev Wars - El despertar del ego, as presented at Codemotion Madrid 2026. Rebuilt
 | D3 | 8 scenes (the deck's own sections, `deck/model.ts`), one slide = one beat. | beatdeck jumps to scenes with keys 1-9 and keeps every scene layer mounted; 76 scenes would break both. The audience sees the same slides. |
 | D4 | Click animations of the original become extra beats of that slide (slides 2, 5, 25 [12 clicks], 40). Fade only. | One click = one beat. The original had no transitions. |
 | D5 | Slides 14 and 15 get one extra beat that starts their clips. | In the original the pictures link to the clips; in a beatdeck the click is the beat. |
-| D6 | The four clips are bundled as local files (720p max, H.264, full length): three from Drive, one (`2Y3gmYO8TCE`) from YouTube. Sources are listed in `deck/deck.config.ts` (presenter notes only). | `npm run build` fails on remote URLs (offline rule). Clips are other people's social videos: they are in the repo only to play offline on the web version, the user's call (2026-11-11). |
+| D6 | The four clips are bundled as local files (720p max, H.264, full length, no audio track by the user's call 2026-11-11): three from Drive, one (`2Y3gmYO8TCE`) from YouTube. Sources are listed in `deck/deck.config.ts` (presenter notes only). | `npm run build` fails on remote URLs (offline rule). Clips are other people's social videos: they are in the repo only to play offline on the web version, the user's call (2026-11-11). |
 | D7 | Typos fixed: "¿Tiene senido?", "No exite", "Infraestructora", "Organizado GDG Aranjuez", "se vió". | User's call (2026-11-11). |
 | D8 | Images: PNG/JPG converted to WebP (q84, alpha kept); the GIF stays a GIF. | 30 MB of media in the PPTX became about 4 MB. |
 | D9 | Font: IBM Plex Sans (400/600/700 from `@fontsource`). The source uses "IBM Plex Sans SemiBold". | Local font files, no CDN. |
 | D10 | `Chrome: null`; no standby screen, no QR. | The original has neither. `qrUrl` stays `TODO`. |
 | D11 | Slide numbers are not drawn. | The original slides do not show them. |
-| D12 | Videos: `?capture=1` and the presenter window never play them (poster only). | `verify`/`shot` compare frames; the presenter view mirrors the stage and would double the audio. |
+| D12 | Videos: `?capture=1` and the presenter window never play them (poster only). | `verify`/`shot` compare frames; the presenter view mirrors the stage and would play a second copy. |
 
 ## Known differences from the PDF
 

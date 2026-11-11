@@ -62,7 +62,8 @@ function Video({ item, playing, poster }: { item: ItemData; playing: boolean; po
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    // The presenter window mirrors the stage: it must not play a second copy. `?capture=1` (verify/shot) keeps the poster.
+    // Clips are silent (no audio track). The presenter window mirrors the stage: it must not play a second copy.
+    // `?capture=1` (verify/shot) keeps the poster.
     if (playing && !flags.presenter && !flags.capture) {
       void v.play().catch(() => undefined);
     } else {
@@ -72,7 +73,7 @@ function Video({ item, playing, poster }: { item: ItemData; playing: boolean; po
   }, [playing]);
   // verify/shot (`?capture=1`) compare frames: a still poster keeps them deterministic (decoding timing differs per load).
   if (flags.capture) return <img className="dw-video" src={poster} alt={item.alt ?? ''} draggable={false} />;
-  return <video ref={ref} className="dw-video" src={file(item.video!)} poster={poster} playsInline preload="auto" aria-label={item.alt} />;
+  return <video ref={ref} className="dw-video" src={file(item.video!)} poster={poster} muted playsInline preload="auto" aria-label={item.alt} />;
 }
 
 function Item({ item, local, play }: { item: ItemData; local: number; play: number }) {

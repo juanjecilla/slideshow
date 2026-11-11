@@ -6,11 +6,7 @@ import { SCENES } from './scenes';
 import { SceneLayer } from './SceneLayer';
 
 function Stage() {
-  return (
-    <>
-      {SCENES.map((_, i) => <SceneLayer key={i} scene={i} />)}
-    </>
-  );
+  return <SceneLayer />;
 }
 
 export default defineDeck({

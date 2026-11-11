@@ -1,24 +1,23 @@
-import { Scene, useScene } from 'beatdeck';
+import { usePos } from 'beatdeck';
 import { SlideView } from './Slide';
-import { beatsOf, locate, slidesOf } from './model';
+import { beatsOf, locate } from './model';
+import { SLIDES } from './slides.gen';
 
-/** Draws the slides of one scene. Only the slide on screen and its neighbours are mounted (images decode ahead). */
-function Layer({ scene }: { scene: number }) {
-  const { here, b } = useScene();
-  if (!here) return null;
-  const at = locate(scene, b);
+/**
+ * Draws the slide on screen (and its neighbours, hidden, so images decode ahead).
+ * One layer for the whole talk instead of one `<Scene>` per scene: `<Scene>` fades out, waits, then fades in,
+ * which shows as a black gap between scenes. The original deck has no transitions, so slides cut.
+ */
+export function SceneLayer() {
+  const { s, b } = usePos();
+  const at = locate(s, b);
   if (!at) return null;
-  const list = slidesOf(scene);
-  const i = list.findIndex((s) => s.n === at.slide.n);
+  const i = SLIDES.findIndex((x) => x.n === at.slide.n);
   return (
-    <>
-      {list.slice(Math.max(0, i - 1), i + 2).map((s) => (
-        <SlideView key={s.n} slide={s} live={s.n === at.slide.n} local={s.n === at.slide.n ? at.local : s.n < at.slide.n ? beatsOf(s) - 1 : 0} />
+    <div className="layer">
+      {SLIDES.slice(Math.max(0, i - 1), i + 2).map((x) => (
+        <SlideView key={x.n} slide={x} live={x.n === at.slide.n} local={x.n === at.slide.n ? at.local : x.n < at.slide.n ? beatsOf(x) - 1 : 0} />
       ))}
-    </>
+    </div>
   );
 }
-
-export const SceneLayer = ({ scene }: { scene: number }) => (
-  <Scene index={scene}><Layer scene={scene} /></Scene>
-);
