@@ -135,7 +135,8 @@ export function SlideView({ slide, live, local }: { slide: SlideData; live: bool
   return (
     <div className="dw-slide" data-live={live ? 'on' : 'off'} data-slide={slide.n} style={bgStyle(slide.bg ?? lay.bg)}>
       {lay.items.map((it) => <Item key={it.id} item={it} local={0} play={0} />)}
-      {slide.items.map((it) => <Item key={it.id} item={it} local={local} play={slide.play ?? 0} />)}
+      {/* Only the slide on screen may play its clips: a neighbour is mounted (hidden) for preloading. */}
+      {slide.items.map((it) => <Item key={it.id} item={it} local={local} play={live ? slide.play ?? 0 : 0} />)}
     </div>
   );
 }

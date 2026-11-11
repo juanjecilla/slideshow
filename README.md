@@ -15,7 +15,7 @@ Slides for conference talks, built with [Slidev](https://sli.dev/) and deployed 
 
 ## Setup
 
-Each talk is a standalone project (Slidev, or [beatdeck](https://github.com/juanjecilla/beatdeck) for `app_functions/` and `dev_wars/`). To run locally:
+Each talk is a standalone project (Slidev, or [beatdeck](https://github.com/juanjecilla/beatdeck) (checked 2026-11-11) for `app_functions/` and `dev_wars/`). To run locally:
 
 ```bash
 cd <talk-folder>

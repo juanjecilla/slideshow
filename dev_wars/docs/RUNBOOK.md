@@ -14,7 +14,11 @@ npm run dev          # http://127.0.0.1:5173/#1.1 while editing
 
 Keys: → / space next, ← previous, 1-8 jump to a scene, O overview, P presenter window, F fullscreen. Every beat has an address (`#scene.beat`).
 
-The clips on slides 14 and 15 start on the beat after the poster (`14: clips`, `15: clips`) and play with sound; leave the presenter window muted (it never plays them).
+The clips on slides 14 and 15 start on the beat after the poster (`14: clips`, `15: clips`) and play with sound; the presenter window never plays them. If you drive from the presenter window, first click or press F in the audience window so the browser lets it play with sound.
+
+## Licence
+
+`LICENSE` (MIT) covers the beatdeck engine and tooling. The media in `deck/assets` (film stills, memes, logos, the four clips) belongs to its owners and is not covered by it; the clips are other people's social-media videos, bundled only so the talk plays offline.
 
 ## Rebuild the slides from Google Slides
 
