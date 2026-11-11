@@ -18,10 +18,14 @@
 //          [--max-wait=8000]  per-beat settle timeout (ms)   [--min-wait=500]
 //          [--jobs=4]         pages loading beats from the URL in parallel
 //          [--source=<file>]  Terminal lines and [data-exact] text must appear verbatim in this file
+//                             (with several locales: `{locale}` in the path, e.g. reference/script.{locale}.md)
+//          [--strict]         warnings (text under 18 px, text inside the safe margin, covered text) fail the run too
 // Needs a Chromium-family browser: Chrome, Edge, Playwright's Chromium, or $BEATDECK_BROWSER (see scripts/lib.mjs).
+import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import { auditFrame, contactSheet, launchBrowser, missingFromSource, name, settle as settleOn, sleep, startServer } from './lib.mjs';
+import { fileURLToPath } from 'node:url';
+import { auditFrame, builtLocales, contactSheet, coveredWarnings, edgeWarnings, imageDiff, launchBrowser, missingFromSource, name, settle as settleOn, sleep, startServer } from './lib.mjs';
 
 const args = process.argv.slice(2);
 const pos = args.filter((a) => !a.startsWith('--'));
@@ -32,6 +36,23 @@ const DIFF = opt('diff', 0.1);
 const MAX_WAIT = opt('max-wait', 8000);
 const MIN_WAIT = opt('min-wait', 500);
 const JOBS = Math.max(1, opt('jobs', 4));
+const STRICT = args.includes('--strict');
+// a multi-locale build (<dist>/locales.json): verify each locale on its own, one after the other (one preview port)
+const locales = builtLocales(DIST);
+if (locales) {
+  const source = args.find((a) => a.startsWith('--source='))?.slice(9);
+  const flags = args.filter((a) => a.startsWith('--') && !a.startsWith('--source='));
+  rmSync(OUT, { recursive: true, force: true });
+  const failed = [];
+  for (const l of locales) {
+    console.log(`\n── ${l} ──`);
+    const own = source ? [`--source=${source.replaceAll('{locale}', l)}`] : [];
+    const r = spawnSync(process.execPath, [fileURLToPath(import.meta.url), `${DIST}/${l}`, `${OUT}/${l}`, ...flags, ...own], { stdio: 'inherit' });
+    if (r.status !== 0) failed.push(l);
+  }
+  console.log(`\n${failed.length ? '✕' : '✓'} verify · ${locales.length} locales (${locales.join(', ')})${failed.length ? ` · failed: ${failed.join(', ')}` : ''}`);
+  process.exit(failed.length ? 1 : 0);
+}
 const SOURCE = args.find((a) => a.startsWith('--source='))?.slice(9);
 if (SOURCE && !existsSync(SOURCE)) { console.error(`✕ verify: --source ${SOURCE} does not exist`); process.exit(1); }
 const JSQR = createRequire(import.meta.url).resolve('jsqr/dist/jsQR.js');
@@ -92,6 +113,8 @@ for (const [s, b] of all) {
   const audit = await page.evaluate(auditFrame);
   audit.errors.forEach((e) => layout.push(`${s}.${b} ${e}`));
   audit.warnings.forEach((w) => warnings.add(w));
+  edgeWarnings(audit.edges).forEach((w) => warnings.add(`${s}.${b} ${w}`));
+  coveredWarnings(audit.covered).forEach((w) => warnings.add(`${s}.${b} ${w}`));
   audit.exact.forEach((e) => { if (!exact.has(e.t)) exact.set(e.t, { ...e, at: `${s}.${b}` }); });
   const h = await hashOf();
   if (h !== `#${s}.${b}`) errors.push(`[walk] expected #${s}.${b}, got ${h}`);
@@ -132,17 +155,7 @@ if (back.at(-1)?.join('.') !== '1.1') errors.push(`[back] PageUp from the end st
 const cmp = await context.newPage();
 await cmp.setContent('<canvas id=a></canvas><canvas id=b></canvas>');
 const b64 = (f) => `data:image/png;base64,${readFileSync(f).toString('base64')}`;
-async function diffPct(fa, fb) {
-  return cmp.evaluate(async ([ua, ub]) => {
-    const img = (u) => new Promise((r) => { const i = new Image(); i.onload = () => r(i); i.src = u; });
-    const [ia, ib] = await Promise.all([img(ua), img(ub)]);
-    const px = (i, id) => { const c = document.getElementById(id); c.width = i.width; c.height = i.height; const x = c.getContext('2d'); x.drawImage(i, 0, 0); return x.getImageData(0, 0, i.width, i.height).data; };
-    const a = px(ia, 'a'), b = px(ib, 'b');
-    let n = 0;
-    for (let k = 0; k < a.length; k += 4) if (Math.abs(a[k] - b[k]) > 40 || Math.abs(a[k + 1] - b[k + 1]) > 40 || Math.abs(a[k + 2] - b[k + 2]) > 40) n++;
-    return (100 * n) / (a.length / 4);
-  }, [b64(fa), b64(fb)]);
-}
+const diffPct = (fa, fb) => imageDiff(cmp, readFileSync(fa), readFileSync(fb));
 const mismatches = [];
 for (const [s, b] of all) {
   const d = await diffPct(`${OUT}/walk-${name(s, b)}.png`, `${OUT}/direct-${name(s, b)}.png`);
@@ -212,7 +225,7 @@ writeFileSync(`${OUT}/report.json`, JSON.stringify(report, null, 2));
 await browser.close();
 stop();
 
-const ok = !errors.length && !remote.length && !mismatches.length && !layout.length && !notInSource.length;
+const ok = !errors.length && !remote.length && !mismatches.length && !layout.length && !notInSource.length && !(STRICT && warnings.size);
 console.log(`${ok ? '✓' : '✕'} verify · ${all.length} beats walked, ${back.length} walked back, ${all.length} reloaded from the URL · ${report.seconds}s`);
 console.log(`  frames identical (≤ ${DIFF}% px): ${mismatches.length ? `${mismatches.length} mismatch(es)` : 'yes'}`);
 mismatches.forEach((m) => console.log('    ' + m));
@@ -220,7 +233,7 @@ console.log(`  text and layout: ${layout.length ? `${layout.length} problem(s)` 
 layout.forEach((m) => console.log('    ' + m));
 console.log(`  exact text: ${SOURCE ? (notInSource.length ? `${notInSource.length} line(s) not in the source` : `${exact.size} line(s) match ${SOURCE}`) : `${exact.size} line(s) on stage, not checked (pass --source=<script>)`}`);
 notInSource.forEach((m) => console.log('    ' + m));
-if (warnings.size) { console.log(`  warnings (not failing): ${warnings.size}`); [...warnings].slice(0, 12).forEach((w) => console.log('    ' + w)); if (warnings.size > 12) console.log(`    … see report.json`); }
+if (warnings.size) { console.log(`  warnings (${STRICT ? 'failing: --strict' : 'not failing'}): ${warnings.size}`); [...warnings].slice(0, 12).forEach((w) => console.log('    ' + w)); if (warnings.size > 12) console.log(`    … see report.json`); }
 console.log(`  QR: ${qrUrl ? (decoded.size ? `decodes to ${qrUrl} on ${[...decoded.keys()].join(', ')}` : 'NOT FOUND') : 'not configured (qrUrl is TODO)'}`);
 console.log(`  console errors/warnings: ${errors.length} · remote requests: ${remote.length} · presenter: ${connected ? 'connected' : 'NOT connected'}`);
 errors.forEach((e) => console.log('    ' + e));

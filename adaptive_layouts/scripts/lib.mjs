@@ -1,5 +1,6 @@
 // Shared by verify.mjs and shot.mjs.
 import { spawn } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import { chromium } from 'playwright-core';
 
 /**
@@ -27,12 +28,12 @@ export const name = (s, b) => `${String(s).padStart(2, '0')}-${String(b).padStar
  * Serve the deck locally: `vite preview` of a build (`dist`), or the dev server (`dev: true`, no build needed;
  * `mode` picks an example). Resolves to { base, stop }.
  */
-export async function startServer({ dist = 'dist', dev = false, mode, port = 4174 } = {}) {
+export async function startServer({ dist = 'dist', dev = false, mode, port = 4174, env = {} } = {}) {
   const vite = 'node_modules/vite/bin/vite.js';
   const argv = dev
     ? [vite, '--host', '127.0.0.1', '--port', String(port), '--strictPort', ...(mode ? ['--mode', mode] : [])]
     : [vite, 'preview', '--outDir', dist, '--host', '127.0.0.1', '--port', String(port), '--strictPort'];
-  const server = spawn(process.execPath, argv, { stdio: 'pipe' });
+  const server = spawn(process.execPath, argv, { stdio: 'pipe', env: { ...process.env, ...env } });
   const stop = () => { try { server.kill(); } catch { /* already gone */ } };
   process.on('exit', stop);
   const base = `http://127.0.0.1:${port}/`;
@@ -58,87 +59,113 @@ export async function settle(page, { min = 500, max = 8000 } = {}) {
   return Date.now() - start;
 }
 
+// The frame audit lives in the engine (src/beatdeck/audit.js) so the dev badge shares it; scripts pass it to page.evaluate.
+import { coveredLine, edgeLine } from '../src/beatdeck/audit.js';
+export { auditFrame } from '../src/beatdeck/audit.js';
+
 /**
- * DOM audit of the current frame (runs in the page via page.evaluate). Looks only at text that is actually
- * visible: effective opacity (own × ancestors) > 0.5, not hidden, not inside `[data-audit="off"]`.
- * Returns { errors, warnings, exact } — `exact` are the texts that must match the source verbatim
- * (Terminal lines and `[data-exact]` elements).
+ * % of pixels that differ (by more than 40 in any channel) between two PNGs, decoded in `page` (any page).
+ * `a` and `b` are Buffers (or data URLs); the images must have the same size. `scale` < 1 compares both
+ * downsampled (averaged), which ignores antialiasing and keeps structural differences.
  */
-export function auditFrame() {
+export async function imageDiff(page, a, b, scale = 1) {
+  const url = (x) => (typeof x === 'string' ? x : `data:image/png;base64,${x.toString('base64')}`);
+  return page.evaluate(async ([ua, ub, sc]) => {
+    const img = (u) => new Promise((r) => { const i = new Image(); i.onload = () => r(i); i.src = u; });
+    const px = (i) => {
+      const c = document.createElement('canvas'); c.width = Math.round(i.width * sc); c.height = Math.round(i.height * sc);
+      const x = c.getContext('2d'); x.imageSmoothingQuality = 'high'; x.drawImage(i, 0, 0, c.width, c.height);
+      return x.getImageData(0, 0, c.width, c.height).data;
+    };
+    const [A, B] = (await Promise.all([img(ua), img(ub)])).map(px);
+    let n = 0;
+    for (let k = 0; k < A.length; k += 4) if (Math.abs(A[k] - B[k]) > 40 || Math.abs(A[k + 1] - B[k + 1]) > 40 || Math.abs(A[k + 2] - B[k + 2]) > 40) n++;
+    return (100 * n) / (A.length / 4);
+  }, [url(a), url(b), scale]);
+}
+
+/**
+ * Like imageDiff, between a PNG (Buffer) and a raw RGBA bitmap of `w`×`h` px (what PDFium renders). Both are
+ * downsampled by `scale` the same way before they are compared.
+ */
+export async function imageDiffRgba(page, png, rgba, w, h, scale = 1) {
+  return page.evaluate(async ([u, b64, w, h, sc]) => {
+    const i = await new Promise((r) => { const im = new Image(); im.onload = () => r(im); im.src = u; });
+    const bytes = Uint8Array.from(atob(b64), (ch) => ch.charCodeAt(0));
+    const full = document.createElement('canvas'); full.width = w; full.height = h;
+    full.getContext('2d').putImageData(new ImageData(new Uint8ClampedArray(bytes.buffer), w, h), 0, 0);
+    const px = (src) => {
+      const c = document.createElement('canvas'); c.width = Math.round(w * sc); c.height = Math.round(h * sc);
+      const x = c.getContext('2d'); x.imageSmoothingQuality = 'high'; x.drawImage(src, 0, 0, c.width, c.height);
+      return x.getImageData(0, 0, c.width, c.height).data;
+    };
+    const A = px(i), B = px(full);
+    let n = 0;
+    for (let k = 0; k < A.length; k += 4) if (Math.abs(A[k] - B[k]) > 40 || Math.abs(A[k + 1] - B[k + 1]) > 40 || Math.abs(A[k + 2] - B[k + 2]) > 40) n++;
+    return (100 * n) / (A.length / 4);
+  }, [`data:image/png;base64,${png.toString('base64')}`, Buffer.from(rgba).toString('base64'), w, h, scale]);
+}
+
+/**
+ * Visible text of the current frame as lines in stage px, `[{ t, x, y, w, h, size }]` (runs in the page via
+ * page.evaluate, self-contained). Same visibility rule as auditFrame; used for the text layer of raster PDF pages.
+ */
+export function textRuns() {
   const stage = document.querySelector('.stage');
-  const res = { errors: [], warnings: [], exact: [] };
-  if (!stage) return res;
+  if (!stage) return [];
   const sr = stage.getBoundingClientRect();
   const k = sr.width / 1920;
   const visible = (el) => {
     let o = 1;
     for (let e = el; e && e !== stage.parentElement; e = e.parentElement) {
-      if (e.dataset?.audit === 'off') return false;
       const cs = getComputedStyle(e);
       if (cs.visibility === 'hidden' || cs.display === 'none') return false;
       o *= +cs.opacity;
     }
     return o > 0.5;
   };
-  const short = (t) => JSON.stringify(t.trim().replace(/\s+/g, ' ').slice(0, 40));
-  const boxes = [];
-  const small = new Set();
+  const out = [];
   const walker = document.createTreeWalker(stage, NodeFilter.SHOW_TEXT);
   for (let n = walker.nextNode(); n; n = walker.nextNode()) {
-    if (!n.textContent.trim()) continue;
     const el = n.parentElement;
-    if (!el || !visible(el)) continue;
+    if (!n.textContent.trim() || !el || !visible(el)) continue;
     const cs = getComputedStyle(el);
-    // characters that change meaning under text-transform: uppercase (µ → Greek Μ, ß → SS)
-    if (/[µß]/.test(n.textContent) && cs.textTransform === 'uppercase') {
-      res.errors.push(`uppercase changes ${short(n.textContent)} (µ/ß): wrap the unit in <span className="keep-case">`);
-    }
-    const px = parseFloat(cs.fontSize) / k;
-    if (px < 17.5) small.add(`${short(n.textContent)} is ${Math.round(px)} px (stage minimum 18)`);
+    const size = parseFloat(cs.fontSize) / k;
+    // one run per line box: split the node's text at the line breaks the layout made
+    const text = n.textContent;
+    let from = 0, lastTop = null, lastRect = null;
+    const flush = (end) => {
+      const t = text.slice(from, end).replace(/\s+/g, ' ').trim();
+      if (t && lastRect) out.push({ t: cs.textTransform === 'uppercase' ? t.toUpperCase() : t, x: (lastRect.left - sr.left) / k, y: (lastRect.top - sr.top) / k, w: lastRect.width / k, h: lastRect.height / k, size });
+    };
     const range = document.createRange();
-    range.selectNodeContents(n);
-    for (const r of range.getClientRects()) {
-      if (r.width < 1 || r.height < 1) continue;
-      // the line box of large type is much taller than its glyphs: keep the central ~0.8 em for overlap tests
-      const fpx = parseFloat(cs.fontSize);
-      const inset = Math.max(0, (r.height - 0.8 * fpx) / 2);
-      const b = { x: (r.left - sr.left) / k, y: (r.top + inset - sr.top) / k, w: r.width / k, h: (r.height - 2 * inset) / k, t: n.textContent, n };
-      boxes.push(b);
-      if (b.x < -2 || b.y < -2 || b.x + b.w > 1922 || b.y + b.h > 1082) {
-        res.errors.push(`${short(b.t)} is outside the 1920×1080 stage (x ${Math.round(b.x)}…${Math.round(b.x + b.w)}, y ${Math.round(b.y)}…${Math.round(b.y + b.h)})`);
-      }
+    for (let i = 0; i < text.length; i++) {
+      range.setStart(n, i); range.setEnd(n, i + 1);
+      const r = range.getClientRects()[0];
+      if (!r || r.width === 0) continue;
+      if (lastTop !== null && Math.abs(r.top - lastTop) > r.height / 2) { flush(i); from = i; lastRect = null; }
+      lastTop = r.top;
+      lastRect = lastRect ? { left: Math.min(lastRect.left, r.left), top: Math.min(lastRect.top, r.top), width: Math.max(lastRect.left + lastRect.width, r.right) - Math.min(lastRect.left, r.left), height: Math.max(lastRect.height, r.height) } : { left: r.left, top: r.top, width: r.width, height: r.height };
     }
+    flush(text.length);
   }
-  // overlapping text: two different text nodes whose line boxes share > 30% of the smaller one
-  const seen = new Set();
-  for (let i = 0; i < boxes.length; i++) {
-    for (let j = i + 1; j < boxes.length; j++) {
-      const a = boxes[i], c = boxes[j];
-      if (a.n === c.n) continue;
-      const ix = Math.min(a.x + a.w, c.x + c.w) - Math.max(a.x, c.x);
-      const iy = Math.min(a.y + a.h, c.y + c.h) - Math.max(a.y, c.y);
-      if (ix <= 0 || iy <= 0) continue;
-      if (ix * iy > 0.3 * Math.min(a.w * a.h, c.w * c.h)) {
-        const key = `${a.t}|${c.t}`;
-        if (seen.has(key)) continue;
-        seen.add(key);
-        res.errors.push(`text overlaps: ${short(a.t)} and ${short(c.t)} (add data-audit="off" if intended)`);
-      }
-    }
-  }
-  res.warnings.push(...small);
-  for (const el of stage.querySelectorAll('.bd-term-line, [data-exact]')) {
-    if (visible(el) && el.textContent.trim()) res.exact.push({ t: el.textContent, term: el.classList.contains('bd-term-line') });
-  }
-  return res;
+  return out;
 }
+
+/** Locales of a multi-locale build (`<dist>/locales.json`, written by scripts/build.mjs), else null. */
+export function builtLocales(dist) {
+  try { return JSON.parse(readFileSync(`${dist}/locales.json`, 'utf8')).locales; } catch { return null; }
+}
+
+/** Covered-text and safe-area entries from auditFrame as warning lines. */
+export const coveredWarnings = (covered) => covered.map(coveredLine);
+export const edgeWarnings = (edges) => edges.map(edgeLine);
 
 /**
  * Render a contact sheet of frames (`[{ file, label }]`) into `out` using `page` (any blank page).
  * Four 480×270 thumbnails per row, labelled.
  */
 export async function contactSheet(page, frames, out) {
-  const { readFileSync } = await import('node:fs');
   const cols = 4, w = 480, h = 270;
   const cells = frames.map(({ file, label }) => `<figure><img src="data:image/png;base64,${readFileSync(file).toString('base64')}"><figcaption>${label}</figcaption></figure>`).join('');
   await page.setViewportSize({ width: cols * (w + 8) + 8, height: 600 });
@@ -162,3 +189,9 @@ export function missingFromSource(entries, md) {
   const prose = proseOf(md);
   return entries.filter(({ t, term }) => (term ? !raw.includes(t) : !prose.includes(t.replace(/\s+/g, ' ').trim())));
 }
+
+/** The result recorded for a page that could not be captured (every field the report reads is present). */
+export const failedPage = ([s, b]) => ({ s, b, shot: null, pdf: null, mode: 'vector', runs: null, printDiff: null, losses: [{ level: 'error', text: 'the page could not be captured' }] });
+
+/** One page of report.json. `printDiff` is null when the page was not compared (ambient motion, failed capture). */
+export const reportPage = (r) => ({ page: `${r.s}.${r.b}`, mode: r.mode, printDiff: r.printDiff == null ? null : +r.printDiff.toFixed(2), losses: r.losses });

@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 // Brings a talk project up to date with beatdeck, without touching the talk.
 //
-//   npm run upgrade                     latest beatdeck (main)
+//   npm run upgrade                     latest released beatdeck (newest vX.Y.Z tag; main if there is none)
+//   npm run upgrade -- --ref main       the newest code, released or not
 //   npm run upgrade -- --ref v0.3.0     a tag, branch or commit
 //   npm run upgrade -- --from ../beatdeck   a local copy instead of GitHub
 //   npm run upgrade -- --dry-run        show what would change
 //   npm run upgrade -- --clean          also remove beatdeck-repo leftovers (showcase, plugin files, old CI)
 //
 // What it touches:
-//   engine   src/beatdeck/, skills/building-a-beatdeck/, scripts/{check-offline,verify,shot,lib,upgrade}.mjs,
+//   engine   src/beatdeck/, skills/{building,exporting}-a-beatdeck/, scripts/{check-offline,verify,shot,export,lib,upgrade}.mjs,
 //            themes/neutral.css, themes/light.css → replaced. If you had edited one, your version is kept in
 //            .beatdeck-backup/<time>/ first (engine files are not meant to be edited for one talk).
 //   shared   vite.config.ts, tsconfig.json, src/main.tsx, src/vite-env.d.ts, .gitignore, .gitattributes,
@@ -20,13 +21,28 @@
 // you changed.
 import { createHash } from 'node:crypto';
 import { execSync } from 'node:child_process';
-import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, realpathSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-export const ENGINE_DIRS = ['src/beatdeck', 'skills/building-a-beatdeck'];
-export const ENGINE_FILES = ['scripts/check-offline.mjs', 'scripts/verify.mjs', 'scripts/shot.mjs', 'scripts/lib.mjs', 'scripts/upgrade.mjs', 'themes/neutral.css', 'themes/light.css'];
+/** Where talks get their engine from. */
+export const SOURCE_REPO = 'juanjecilla/beatdeck';
+
+/** Newest vX.Y.Z tag in `git ls-remote --tags` output (prereleases and non-version tags ignored), or null. */
+export function latestTag(lsRemote) {
+  const versions = [];
+  for (const line of String(lsRemote).split('\n')) {
+    const m = line.match(/refs\/tags\/v(\d+)\.(\d+)\.(\d+)(\^\{\})?\s*$/);
+    if (m) versions.push([+m[1], +m[2], +m[3]]);
+  }
+  if (!versions.length) return null;
+  versions.sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2]);
+  return 'v' + versions[versions.length - 1].join('.');
+}
+
+export const ENGINE_DIRS = ['src/beatdeck', 'skills/building-a-beatdeck', 'skills/exporting-a-beatdeck'];
+export const ENGINE_FILES = ['scripts/build.mjs', 'scripts/check-offline.mjs', 'scripts/verify.mjs', 'scripts/shot.mjs', 'scripts/export.mjs', 'scripts/lib.mjs', 'scripts/upgrade.mjs', 'themes/neutral.css', 'themes/light.css'];
 // shared config: [path in the talk, path in the beatdeck repo]
 export const SHARED = [
   ['vite.config.ts', 'vite.config.ts'], ['tsconfig.json', 'tsconfig.json'], ['src/main.tsx', 'src/main.tsx'],
@@ -36,7 +52,11 @@ export const SHARED = [
 export const SHARED_FILES = SHARED.map(([t]) => t);
 const MANIFEST = '.beatdeck.json';
 // scripts that belong to the beatdeck repo itself, never to a talk
-const REPO_ONLY_SCRIPT = (k) => k.includes('kernel-panic') || k === 'init';
+const REPO_ONLY_SCRIPT = (k) => k.includes('kernel-panic') || k.endsWith(':i18n') || k === 'i18n' || k === 'init' || k === 'test' || k.startsWith('test:');
+// engine scripts whose old default value is replaced by the new one (an edited script is left alone)
+const PREVIOUS_SCRIPTS = {
+  build: ['tsc --noEmit -p . && vite build && node scripts/check-offline.mjs dist deck'],
+};
 
 /** How a repo file looks inside a talk project (the same edits `init` makes). */
 export function forTalk(path, text) {
@@ -75,8 +95,12 @@ async function main() {
   const argv = process.argv.slice(2);
   const arg = (k) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : undefined; };
   const dry = argv.includes('--dry-run');
-  const ref = arg('ref') ?? 'main';
   const from = arg('from');
+  let ref = arg('ref');
+  if (!ref && !from) {
+    try { ref = latestTag(execSync(`git ls-remote --tags https://github.com/${SOURCE_REPO}.git`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })); } catch { /* offline or no git: fall back */ }
+  }
+  ref ??= 'main';
 
   // the beatdeck repo itself (talks copied before `init` existed also have .claude-plugin/, but their own name)
   const ownName = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).name;
@@ -92,8 +116,8 @@ async function main() {
   if (!src) {
     tmp = mkdtempSync(join(tmpdir(), 'beatdeck-'));
     src = join(tmp, 'b');
-    console.log(`… fetching borjaperfra/beatdeck#${ref}`);
-    execSync(`npx -y degit borjaperfra/beatdeck#${ref} "${src}"`, { stdio: 'inherit' });
+    console.log(`… fetching ${SOURCE_REPO}#${ref}`);
+    execSync(`npx -y degit ${SOURCE_REPO}#${ref} "${src}"`, { stdio: 'inherit' });
   }
   if (!existsSync(join(src, 'src/beatdeck'))) { console.error(`upgrade: ${src} is not a beatdeck copy`); process.exit(1); }
   const upPkg = JSON.parse(readFileSync(join(src, 'package.json'), 'utf8'));
@@ -117,13 +141,14 @@ async function main() {
     if (!existsSync(join(root, f))) { write(f, next); log.added.push(f); continue; }
     const cur = readFileSync(join(root, f));
     if (sha(cur) === sha(next)) continue;
-    if (!manifest || edited(f)) keep(f);
+    // no recorded hash (a file under an engine dir added by a newer beatdeck) counts as edited: back it up first
+    if (!manifest || known[f] === undefined || edited(f)) keep(f);
     write(f, next);
     log.replaced.push(f);
   }
   for (const f of localEngine) {
     if (upEngine.includes(f)) continue;
-    if (!manifest || edited(f)) keep(f);
+    if (!manifest || known[f] === undefined || edited(f)) keep(f);
     if (!dry) rmSync(join(root, f));
     log.removed.push(f);
   }
@@ -153,7 +178,11 @@ async function main() {
     }
   }
   for (const [k, v] of Object.entries(upPkg.scripts ?? {})) {
-    if (REPO_ONLY_SCRIPT(k) || pkg.scripts?.[k]) continue;
+    if (REPO_ONLY_SCRIPT(k)) continue;
+    if (pkg.scripts?.[k]) {
+      if (PREVIOUS_SCRIPTS[k]?.includes(pkg.scripts[k]) && pkg.scripts[k] !== v) { pkg.scripts[k] = v; log.pkg.push(`script "${k}" → ${v}`); }
+      continue;
+    }
     (pkg.scripts ??= {})[k] = v;
     log.pkg.push(`script "${k}" added`);
   }
@@ -189,4 +218,5 @@ async function main() {
   console.log(dry ? '  nothing written.' : '  next: npm install && npm run build && npm run verify');
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url))) await main();
+// real paths on both sides: argv[1] keeps a symlinked project path, import.meta.url is already resolved
+if (process.argv[1] && realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url))) await main();

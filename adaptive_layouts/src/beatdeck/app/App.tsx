@@ -1,16 +1,20 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { STAGE_H, STAGE_W, StageScale } from './stage';
 import { deck, useDeck } from '../engine';
 import { bindKeys, localTarget, startCursorAutoHide } from '../navigation';
 import { startStageSync } from '../presenter';
 import { parseHash } from '../persistence';
 import { flags } from '../flags';
+import { LOCALE } from '../locale';
 import type { DeckDefinition, DeckState } from '../types';
 import { DefaultChrome } from './DefaultChrome';
 import { qrConfigured } from '../components/QR';
-import { gsap } from 'gsap';
+import { isBusy } from '../busy';
 import { Overview } from './Overview';
 import { DebugPanel } from './DebugPanel';
+
+// development only: `import.meta.env.DEV` is false in a build, so the badge and the audit are not bundled
+const AuditBadge = import.meta.env.DEV ? lazy(() => import('./AuditBadge')) : null;
 
 /** Fit the fixed 1920×1080 stage into the viewport, preserving aspect ratio (black letterbox). */
 function useStageFit() {
@@ -45,16 +49,20 @@ export function App({ def }: { def: DeckDefinition<any> }) {
 
   useEffect(() => {
     deck.start();
-    // test hook for scripts/verify.mjs (capture mode only)
-    if (flags.capture) {
+    // test hook for scripts/verify.mjs (capture mode) and the dev audit badge
+    if (flags.capture || import.meta.env.DEV) {
       (window as unknown as { __beatdeck: unknown }).__beatdeck = {
         beats: deck.scenes.map((s) => s.beats.map((b) => !!b.auto)),
         tolerance: deck.scenes.map((s) => s.beats.map((b) => b.tolerance ?? null)),
+        locale: LOCALE,
+        meta: { id: def.id, title: def.title, lang: def.lang ?? null },
+        scenes: deck.scenes.map((s) => ({ id: s.id, title: s.title, beats: s.beats.map((b) => ({ name: b.name, note: b.note ?? '' })) })),
+        variants: def.variants ?? {},
         qrUrl: qrConfigured(def.qrUrl) ? def.qrUrl : null,
-        /** true while any GSAP tween or finite CSS animation/transition is still running */
-        busy: () =>
-          gsap.globalTimeline.getChildren(true, true, true).some((t) => t.isActive()) ||
-          document.getAnimations().some((a) => a.playState === 'running' && a.effect?.getComputedTiming().endTime !== Infinity),
+        audit: {
+          safeMargin: def.audit?.safeMargin === false ? null : { x: def.audit?.safeMargin?.x ?? 120, y: def.audit?.safeMargin?.y ?? 100 },
+        },
+        busy: isBusy,
       };
     }
     const offKeys = bindKeys(localTarget, {
@@ -101,13 +109,15 @@ export function App({ def }: { def: DeckDefinition<any> }) {
         <StageScale.Provider value={fit.scale}>
           <Stage />
         </StageScale.Provider>
-        {Chrome && <Chrome black={d.black} />}
+        {/* marker so the layout audit skips system chrome (default or the deck's own) */}
+        <div data-bd-chrome style={{ display: 'contents' }}>{Chrome && <Chrome black={d.black} />}</div>
         {/* cut to black (and operator blackout): instant, nothing on top except the Overlay */}
-        <div className="layer" style={{ background: '#000', opacity: d.cut ? 1 : 0 }} />
+        <div className="layer" data-bd-cut style={{ background: '#000', opacity: d.cut ? 1 : 0 }} />
         {Overlay && <Overlay />}
       </div>
       {overview && <Overview onClose={() => setOverview(false)} />}
       {flags.debug && <DebugPanel />}
+      {AuditBadge && !flags.capture && <Suspense fallback={null}><AuditBadge /></Suspense>}
     </div>
   );
 }

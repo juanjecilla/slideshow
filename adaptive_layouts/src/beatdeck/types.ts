@@ -59,7 +59,7 @@ export interface DeckDefinition<L = Record<string, never>> {
   id: string;
   /** Document title and default chrome label. */
   title: string;
-  /** `lang` attribute of the page. */
+  /** `lang` attribute of the page. In a multi-locale deck (`locales` in deck.config.ts) the build's locale wins. */
   lang?: string;
   scenes: SceneDef[];
 
@@ -90,4 +90,15 @@ export interface DeckDefinition<L = Record<string, never>> {
   cursorHideMs?: number;
   /** Destination of the QR on the closing screen. `'TODO'` or empty = no QR (the presenter view warns). */
   qrUrl?: string;
+  /**
+   * Layout audit (`npm run verify` / `shot`). `safeMargin` warns when visible text comes closer than this many
+   * stage px to an edge (default x 120, y 100); `false` turns the check off. Per element: `data-audit="off"`.
+   */
+  audit?: { safeMargin?: { x?: number; y?: number } | false };
+  /**
+   * Looks of the whole talk the speaker can switch live, outside the beat (a dark/light theme on `T`, say), each one
+   * an attribute on `<html>`. `npm run export` pins every one to its `default` (`--variant=theme=light` or
+   * `--variant=all` for the others), and warns about attributes it finds that are not declared here.
+   */
+  variants?: Record<string, { attr: string; values: string[]; default: string }>;
 }
