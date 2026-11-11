@@ -32,7 +32,7 @@ export const SR: Record<string, string> = {
   '03.xml-cost': 'Poca reutilización y configuraciones complejas.',
   '03.hack-istablet': 'Código: un recurso booleano para decidir si el dispositivo es una tablet.',
   '03.hack-orientation': 'Código: bloquear la orientación en el manifest.',
-  '03.a11y': 'Quizás me recordéis de otras charlas: a11y, el numerónimo ético, en Commit Conf; y a11y on Android, AI makes it easy, en DevFest Jerez, el 21 de noviembre. Imagen de Troy McClure, de Los Simpson, pendiente.',
+  '03.a11y': 'Quizás me recordéis de otras charlas: a11y, el numerónimo ético, en Commit Conf; y a11y on Android, AI makes it easy, en DevFest Jerez, el 21 de noviembre. Con Troy McClure, de Los Simpson, sonriendo.',
   '03.problems': 'El resultado en pantallas grandes.',
   '03.problem-orientation': 'Problema: orientaciones forzadas.',
   '03.problem-aspect': 'Problema: relaciones de aspecto mínima y máxima.',

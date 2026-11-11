@@ -6,6 +6,7 @@
  */
 import detailCompact from './assets/muviss-detail-compact.png';
 import detailExpanded from './assets/muviss-detail-expanded.png';
+import troy from './assets/troy-mcclure.png';
 import railCompact from './assets/muviss-rail-compact.png';
 import railExpanded from './assets/muviss-rail-expanded.png';
 import videoDetail from './assets/muviss-detail.mp4';
@@ -14,7 +15,7 @@ import videoGrid from './assets/muviss-grid.mp4';
 import videoKeys from './assets/muviss-keys.mp4';
 import videoRail from './assets/muviss-rail.mp4';
 
-export const CAP = { railCompact, railExpanded, detailCompact, detailExpanded, videoRail, videoDetail, videoGrid, videoKeys, videoFull } as const;
+export const CAP = { troy, railCompact, railExpanded, detailCompact, detailExpanded, videoRail, videoDetail, videoGrid, videoKeys, videoFull } as const;
 
 /** Stage boxes with the captures' real proportions: window 480×800 pt (compact), 1100×720 pt (expanded and clips). */
 export const BOX = {

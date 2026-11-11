@@ -1,4 +1,5 @@
 import { Scene } from 'beatdeck';
+import { CAP } from '../assets';
 import { DOCS, ORIGINAL } from '../docs-code';
 import { Quote } from '../quote/Quote';
 import { QUOTES } from '../quotes';
@@ -32,7 +33,7 @@ function Feo_() {
 
       {/* 3.6 a11y — "you may remember me from such talks as…" (D15) */}
       <Eyebrow on={at(5)} out={gone(5)} text="Presentación, otra vez" />
-      <Capture on={at(5)} out={gone(5)} x={150} y={250} w={520} h={560} label="Troy McClure presentándose" todo="Meme de Troy McClure (lo aporta Juanje): imagen en deck/assets/." />
+      <Capture on={at(5)} out={gone(5)} x={170} y={290} w={500} h={500} src={CAP.troy} label="Troy McClure · Los Simpson" todo="Troy McClure" />
       <Say on={at(5)} out={gone(5)} text="Quizás me recordéis" x={760} y={250} size={84} />
       <Say on={at(5)} out={gone(5)} text="de charlas como…" x={760} y={350} size={84} color="var(--accent)" />
       <Line on={at(5)} out={gone(5)} x={760} y={540} size={46} text="a11y, el numerónimo ético" />

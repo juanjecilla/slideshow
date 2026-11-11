@@ -5,7 +5,7 @@ Merge to `main` on **20 Nov 2026**; talk on 21 Nov. Tick as you go.
 ## Content (open items)
 
 - [x] Muviss captures and clips (done 2026-10-20, from `main` `2d2c7e40`; recipe in `docs/RUNBOOK.md`). Look at them once on the stream-sized screen.
-- [x] 3.6 "a11y" is the Troy McClure beat (D25). **Open:** drop the meme image in `deck/assets/` and replace the `Capture` placeholder; fix the tense of the note (Jerez is the same day, 21 Nov).
+- [x] 3.6 "a11y" is the Troy McClure beat (D25). **Open:** fix the tense of the note (Jerez is the same day, 21 Nov).
 - [x] 2.3 / 2.4: "3.000M" kept and marked as outdated (D27).
 - [ ] Re-check the facts in `docs/research.md` (R1–R11) the week of the talk: the docs pages are updated often. Muviss main is at `2d2c7e40`; if it moved, run `python3 tools/gen-code.py` and re-check `file:line` refs.
 - [ ] Notes (`note` in `deck/scenes.ts`) rewritten in your own words where you want them.
