@@ -1,0 +1,5 @@
+info    clipped         motor     21x48dp  View [1026,573][1080,699]
+info    clipped         motor     29x209dp  View [1005,835][1080,1383]
+info    clipped         motor     29x209dp  View [1005,1519][1080,2067]
+
+3 finding(s), 0 error(s). A clean report is not a pass: see 'Limits' in --help.

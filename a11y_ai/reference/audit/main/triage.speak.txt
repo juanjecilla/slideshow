@@ -1,0 +1,23 @@
+  1  Back, button, double tap to activate
+  2  Fill your library
+  3  How it works, button, double tap to activate
+  4  Snoozed, button, double tap to activate
+  5  Skipped, button, double tap to activate
+  6  All, checkbox, checked, double tap to activate
+  7  Movies, checkbox, double tap to activate
+  8  TV, checkbox, double tap to activate
+  9  Matchbox the Movie, image
+ 10  Hope, image
+ 11  Spider-Man: Brand New Day, image
+ 12  Spider-Man: Brand New Day
+ 13  Movie · 2026
+ 14  Fighting crime full-time as Spider-Man in a world that doesn't remember him—and the pressure of seeing his old friends move on without him—sparks a change in Peter Parker he may not have the power to control. But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves - a powerful villain no one can even see.
+ 15  Snooze, button, double tap to activate
+ 16  Skip. Not for you. Nothing is saved, and it won't come up again., Skip, button, double tap to activate
+ 17  Later. Saved to your library, not started., Later, button, double tap to activate
+ 18  Watched. Saved and marked as watched., Watched, button, double tap to activate
+ 19  Search, button, double tap to activate
+ 20  Library, button, double tap to activate
+ 21  Progress, button, double tap to activate
+ 22  Profile, button, double tap to activate
+ 23  Settings, button, double tap to activate

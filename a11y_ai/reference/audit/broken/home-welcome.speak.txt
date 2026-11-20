@@ -1,0 +1,27 @@
+  1  «unlabeled», edit box, double tap to activate
+  2  Welcome to Muviss
+  3  Find a movie or show and add it to your library.
+  4  Tick episodes as you watch — Muviss works out what's next.
+  5  Got a backlog? Fill your library one card at a time.
+  6  Got it, button, double tap to activate
+  7  Fill your library, Sort through titles one at a time — skip, save for later, or mark yourself caught up., button, double tap to activate
+  8  Movie genres
+  9  Action, button, double tap to activate
+ 10  Adventure, button, double tap to activate
+ 11  Animation, button, double tap to activate
+ 12  Comedy, button, double tap to activate
+ 13  TV genres
+ 14  Action & Adventure, button, double tap to activate
+ 15  Animation, button, double tap to activate
+ 16  Comedy, button, double tap to activate
+ 17  «unlabeled», button, double tap to activate
+ 18  Popular movies
+ 19  Spider-Man: Brand New Day, button, double tap to activate
+ 20  Hope, button, double tap to activate
+ 21  Matchbox the Movie, button, double tap to activate
+ 22  Insidious: Out of the Further, button, double tap to activate
+ 23  Search
+ 24  Library, button, double tap to activate
+ 25  Progress, button, double tap to activate
+ 26  Profile, button, double tap to activate
+ 27  Settings, button, double tap to activate

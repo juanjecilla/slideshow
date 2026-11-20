@@ -1,0 +1,27 @@
+  1  Settings
+  2  APPEARANCE
+  3  Theme
+  4  Light, checkbox, double tap to activate
+  5  Dark, checkbox, double tap to activate
+  6  System, checkbox, checked, double tap to activate
+  7  Notifications
+  8  Reminders for new episodes
+  9  «unlabeled», checkbox, checked, double tap to activate
+ 10  Notifications are turned off for Muviss in your device settings, so none will arrive.
+ 11  Open settings, button, double tap to activate
+ 12  Animations
+ 13  Motion and transitions across the app
+ 14  «unlabeled», checkbox, checked, double tap to activate
+ 15  CONTENT
+ 16  TMDB language, System default, button, double tap to activate
+ 17  Watch-provider region, United States, button, double tap to activate
+ 18  TRIAGE
+ 19  Fill your library, Sort titles quickly, button, double tap to activate
+ 20  Swipe controls, Four directions, button, double tap to activate
+ 21  Ask me again after, 1 week, button, double tap to activate
+ 22  Snoozed titles come back, Mixed in, button, double tap to activate
+ 23  Search, button, double tap to activate
+ 24  Library, button, double tap to activate
+ 25  Progress, button, double tap to activate
+ 26  Profile, button, double tap to activate
+ 27  Settings

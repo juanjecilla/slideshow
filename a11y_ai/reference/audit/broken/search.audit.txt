@@ -1,0 +1,6 @@
+error   small-target    motor     29x165dp  View [1005,1203][1080,1637]
+error   small-target    motor     29x101dp  View [1005,1887][1080,2151]
+error   unlabeled       blind     322x48dp  EditText [152,175][996,301]
+info    clipped         motor     21x48dp  View [1026,941][1080,1067]
+
+4 finding(s), 3 error(s). A clean report is not a pass: see 'Limits' in --help.

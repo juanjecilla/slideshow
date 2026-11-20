@@ -37,6 +37,7 @@ jobs:
             app_functions/package-lock.json
             app_functions/ourense26/package-lock.json
             dev_wars/codemotion26/package-lock.json
+            a11y_ai/package-lock.json
 
       - name: Install bc2026 dependencies
         run: npm ci
@@ -79,11 +80,20 @@ jobs:
         run: npm run build -- --base /slideshow/dev_wars/codemotion26/
         working-directory: dev_wars/codemotion26
 
+      - name: Install a11y_ai dependencies
+        run: npm ci
+        working-directory: a11y_ai
+
+      - name: Build a11y_ai deck
+        run: npm run build -- --base /slideshow/a11y_ai/
+        working-directory: a11y_ai
+
       - name: Assemble dist
         run: |
           mkdir -p dist/bc2026
           mkdir -p dist/a11y
           mkdir -p dist/app_functions
+          mkdir -p dist/a11y_ai
           mkdir -p dist/assets
           cp -r bc2026/dist/. dist/bc2026/
           cp -r a11y/dist/. dist/a11y/
@@ -94,6 +104,7 @@ jobs:
           fi
           mkdir -p dist/dev_wars/codemotion26
           cp -r dev_wars/codemotion26/dist/. dist/dev_wars/codemotion26/
+          cp -r a11y_ai/dist/. dist/a11y_ai/
           cp landing/index.html dist/index.html
           cp -r landing/assets/. dist/assets/
 

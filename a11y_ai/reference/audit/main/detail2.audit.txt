@@ -1,0 +1,7 @@
+error   unlabeled       blind     48x48dp  CheckBox [43,1342][169,1468]
+info    clipped         motor     110x16dp  View [42,2110][331,2151]
+info    clipped         motor     110x16dp  View [363,2110][652,2151]
+info    clipped         motor     110x16dp  View [684,2110][973,2151]
+info    clipped         motor     29x16dp  View [1005,2110][1080,2151]
+
+5 finding(s), 1 error(s). A clean report is not a pass: see 'Limits' in --help.

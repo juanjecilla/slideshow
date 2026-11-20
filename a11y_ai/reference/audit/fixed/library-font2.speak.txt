@@ -1,0 +1,16 @@
+  1  Library
+  2  Filter by type (All), button, double tap to activate
+  3  Sort (Recently added), button, double tap to activate
+  4  Lists, checkbox, double tap to activate
+  5  Library, checkbox, checked, double tap to activate
+  6  Not started, checkbox, checked, double tap to activate
+  7  Watching, checkbox, double tap to activate
+  8  Watched, checkbox, double tap to activate
+  9  Nothing here yet
+ 10  Search for a movie or show and add it to your library.
+ 11  Find something to watch, button, double tap to activate
+ 12  Search, button, double tap to activate
+ 13  Library
+ 14  Progress, button, double tap to activate
+ 15  Profile, button, double tap to activate
+ 16  Settings, button, double tap to activate

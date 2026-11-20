@@ -1,0 +1,33 @@
+  1  Search movies & TV, edit box, double tap to activate
+  2  Action, button, double tap to activate
+  3  Adventure, button, double tap to activate
+  4  Animation, button, double tap to activate
+  5  Comedy, button, double tap to activate
+  6  TV genres
+  7  Action & Adventure, button, double tap to activate
+  8  Animation, button, double tap to activate
+  9  Comedy, button, double tap to activate
+ 10  «unlabeled», button, double tap to activate
+ 11  Popular movies
+ 12  Spider-Man: Brand New Day, button, double tap to activate
+ 13  Spider-Man: Brand New Day
+ 14  Hope, button, double tap to activate
+ 15  Hope
+ 16  Matchbox the Movie, button, double tap to activate
+ 17  Matchbox the Movie
+ 18  Insidious: Out of the Further, button, double tap to activate
+ 19  Insidious: Out of the Further
+ 20  Popular TV
+ 21  Come Home Love: Lo and Behold, button, double tap to activate
+ 22  Come Home Love: Lo and Behold
+ 23  Law & Order: Special Victims Unit, button, double tap to activate
+ 24  Law & Order: Special Victims Unit
+ 25  Law & Order, button, double tap to activate
+ 26  Law & Order
+ 27  The Simpsons, button, double tap to activate
+ 28  The Simpsons
+ 29  Search
+ 30  Library, button, double tap to activate
+ 31  Progress, button, double tap to activate
+ 32  Profile, button, double tap to activate
+ 33  Settings, button, double tap to activate
