@@ -16,7 +16,7 @@ export const SR: Record<string, string> = {
   '02.links': 'GitHub, LinkedIn, Substack and YouTube links.',
   '03.eyes': 'Close your eyes.',
   '03.app': 'This is Muviss, a real Android app.',
-  '03.clip': 'Live demo: TalkBack on the app before any accessibility work.',
+  '03.clip': 'A recording, with sound, of TalkBack reading the app before any accessibility work. The voice is Spanish.',
   '03.users': 'This is how some users meet your app.',
   '04.spectrum': 'Disability can be permanent, temporary or situational: one arm, a broken arm, a baby in the other arm.',
   '04.people': '1.3 billion people, 16 percent of the world, live with a significant disability.',

@@ -33,7 +33,7 @@ export const SCENES: SceneDef[] = [
     beats: [
       { name: 'eyes', note: 'Pause. Let people actually close their eyes for the clip.' },
       { name: 'app', ref: 'D5' },
-      { name: 'clip', ref: 'D13', note: 'LIVE, no recording (R-21): on the Pixel, open the .a11ybroken build, TalkBack on, sound up, eyes closed. Swipe through Settings: the two switches are read as "unlabeled". No explanation until it ends. Fallback if TalkBack misbehaves: the speak.py output on 6.2.' },
+      { name: 'clip', ref: 'D13', note: 'Recorded 2026-11-20 on the Pixel 9 Pro, .a11ybroken build, 33 s, Spanish voice, plays with sound when the beat opens (the key or click that opens it allows the sound; if not, press play). No explanation until it ends. It is the Search and detail screens, not Settings. Originals: a11y_ai/artifacts/talkback-original (not in git). Fallback if the sound fails: live TalkBack on the Pixel, or the speak.py output on 6.2.' },
       { name: 'users', note: 'This is what some people hear. Today we fix it, and we let AI do the boring parts.' },
     ],
   },

@@ -30,7 +30,7 @@ function Map_() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 40 }}>
               <span style={{ width: 24, height: 90, borderRadius: 12, background: p.color }} />
               <span className="t-statement" style={{ fontSize: 80, color: p.color }}>{p.name}</span>
-              <span className="chip">{p.tool}</span>
+              <span className="chip" style={{ marginLeft: 'auto' }}>{p.tool}</span>
             </div>
           </Panel>
         </Reveal>

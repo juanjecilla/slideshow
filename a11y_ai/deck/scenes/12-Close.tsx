@@ -2,7 +2,7 @@ import { QR, Reveal, Scene, qrConfigured, useScene } from 'beatdeck';
 import { config } from '../deck.config';
 import { Quote } from '../quote/Quote';
 import { QUOTES } from '../quotes';
-import { Panel } from '../ui';
+import { GithubMark, Panel } from '../ui';
 
 const ACCESSIBLE = [
   'Contrast AA in both themes',
@@ -34,7 +34,9 @@ function Close_() {
       <Reveal on={here && b === 3} out={here && b > 3} x={124} y={620} delay={300}><span className="chip info">Take the toolkit</span></Reveal>
       {qr && (
         <Reveal on={here && b === 3} out={here && b > 3} x={1260} y={200} delay={400}>
-          <Panel title={config.qrLabel} style={{ width: 460 }}><QR url={config.qrUrl} size={380} /></Panel>
+          <Panel center title={<><GithubMark />{config.qrLabel.replace(/^github\.com\//, '')}</>} style={{ width: 460 }}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}><QR url={config.qrUrl} size={380} /></div>
+          </Panel>
         </Reveal>
       )}
 
@@ -47,7 +49,6 @@ function Close_() {
           </div>
         </Reveal>
       ))}
-      <Reveal on={here && b === 4} out={here && b > 4} x={158} y={880} delay={900}><span className="t-meta" style={{ fontSize: 22 }}>links checked 2026-11-10 · the slides go live when the talk is merged</span></Reveal>
 
       <Reveal on={here && b === 5} x={120} y={150}><div className="t-statement" style={{ fontSize: 110, lineHeight: 1.05 }}>This deck tries<br />to be accessible.</div></Reveal>
       <Reveal on={here && b === 5} x={120} y={450} delay={300}>

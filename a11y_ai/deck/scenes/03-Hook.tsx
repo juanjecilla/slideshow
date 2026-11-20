@@ -1,5 +1,6 @@
 import { Reveal, Scene, useScene } from 'beatdeck';
-import { Phone } from '../ui';
+import { Phone, TalkBackClip } from '../ui';
+import talkbackClip from '../assets/talkback-clip.mp4';
 import settings from '../assets/settings-before.png';
 import search from '../assets/search-before.png';
 
@@ -19,17 +20,11 @@ function Hook_() {
       </Reveal>
       <Phone on={here && b === 1} out={here && b > 1} src={search} alt="Muviss search screen on a phone" x={1380} y={110} />
 
-      {/* 03.3 the clip: live TalkBack on the Pixel (decision R-21), so the screen stays black while it plays. */}
+      {/* 03.3 the clip: TalkBack recorded on the Pixel on the unfixed build, with sound (decision R-21). */}
       <Reveal on={here && b === 2} out={here && b > 2} x={120} y={330}>
         <div className="t-statement" style={{ fontSize: 90 }}>This is what TalkBack says.</div>
       </Reveal>
-      <Reveal on={here && b === 2} out={here && b > 2} x={1380} y={110}>
-        <div className="phone" data-audit="off">
-          <div className="phone-screen" style={{ width: 383, height: 860, display: 'grid', placeItems: 'center', background: '#000', textAlign: 'center' }}>
-            <div><div className="t-eyebrow">Live</div><div className="t-editorial" style={{ fontSize: 34, marginTop: 14, padding: '0 28px', color: '#fff' }}>TalkBack on the app, with sound</div></div>
-          </div>
-        </div>
-      </Reveal>
+      <TalkBackClip on={here && b === 2} out={here && b > 2} src={talkbackClip} label="Recording of TalkBack on the Muviss app before any accessibility work, with sound" x={1380} y={110} />
 
       <Reveal on={here && b === 3} x={120} y={250}>
         <div className="t-statement" style={{ fontSize: 112, lineHeight: 1.1 }}>That is how some<br />users meet<br />your app.</div>
