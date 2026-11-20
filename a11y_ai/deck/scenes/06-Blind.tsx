@@ -2,11 +2,11 @@ import { Reveal, Scene, useScene, type TermLine } from 'beatdeck';
 import { CAP } from '../captures';
 import { CODE } from '../code';
 import { OV } from '../overlays';
-import { Eyebrow, Mono, PersonIntro, Phone, Say } from '../ui';
+import { Eyebrow, Mono, Panel, PersonIntro, Phone, Say } from '../ui';
+import pixelDescribe from '../assets/pixel-describe.png';
 import settings from '../assets/settings-before.png';
 import posters from '../assets/posters-before.png';
 import detail from '../assets/detail-before.png';
-import detailAfter from '../assets/detail-after.png';
 import triage from '../assets/triage-before.png';
 
 const C = 'var(--blind)';
@@ -63,12 +63,11 @@ function Blind_() {
       <Say on={at(7)} out={gone(7)} text="A picture nobody described." />
       <Mono right={1340} on={at(7)} out={gone(7)} x={120} y={260} size={20} title="MlKitOnDeviceAi.describeImage" lang="kotlin" lines={code(CODE.describe)} />
       <Reveal on={at(7)} out={gone(7)} x={120} y={720}>
-        <div data-audit="off" style={{ width: 1150, border: '3px dashed var(--hair-strong)', borderRadius: 18, padding: '24px 30px', background: 'var(--surface)' }}>
-          <span className="t-eyebrow">TODO · capture on the Pixel</span>
-          <div className="t-editorial" style={{ fontSize: 38, marginTop: 10 }}>the description Gemini Nano gives for a real backdrop</div>
-        </div>
+        <Panel title="Pixel 9 Pro · on device · the app's own output" style={{ width: 1150 }}>
+          <div className="t-editorial" style={{ fontSize: 38 }}>“A dark car drives down a dusty road towards a sunset with strange, fiery plumes rising in the distance.”</div>
+        </Panel>
       </Reveal>
-      <Phone on={at(7)} out={gone(7)} src={detailAfter} alt="Detail screen with the backdrop boxed: no description" x={PX} y={110} overlays={OV.detailBackdrop} boxes={at(7)} />
+      <Phone on={at(7)} out={gone(7)} src={pixelDescribe} alt="Muviss detail screen on a Pixel 9 Pro: the on-device description of the backdrop, in English, shown under the synopsis" x={PX} y={110} aspect={960 / 1990} />
 
       <Reveal on={at(8)} x={120} y={230}><div className="panel" style={{ width: 1500 }}><div className="panel-body"><div className="t-statement" style={{ fontSize: 120 }}>English only.</div></div></div></Reveal>
       <Reveal on={at(8)} x={120} y={470} delay={200}><div className="panel" style={{ width: 1500 }}><div className="panel-body"><div className="t-statement" style={{ fontSize: 120, color: 'var(--warning)' }}>Beta.</div></div></div></Reveal>

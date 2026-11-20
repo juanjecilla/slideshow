@@ -33,7 +33,7 @@ export const SCENES: SceneDef[] = [
     beats: [
       { name: 'eyes', note: 'Pause. Let people actually close their eyes for the clip.' },
       { name: 'app', ref: 'D5' },
-      { name: 'clip', ref: 'D13', note: 'TODO: record TalkBack on the unfixed app (pre-#233). Play with sound. No explanation until it ends.' },
+      { name: 'clip', ref: 'D13', note: 'LIVE, no recording (R-21): on the Pixel, open the .a11ybroken build, TalkBack on, sound up, eyes closed. Swipe through Settings: the two switches are read as "unlabeled". No explanation until it ends. Fallback if TalkBack misbehaves: the speak.py output on 6.2.' },
       { name: 'users', note: 'This is what some people hear. Today we fix it, and we let AI do the boring parts.' },
     ],
   },
@@ -66,7 +66,7 @@ export const SCENES: SceneDef[] = [
       { name: 'checkbox', ref: 'B3', note: 'A checkbox beside a clickable row: two controls for one thing, one with no label. Still on main when we audited.' },
       { name: 'checkbox: heard', ref: 'B3', note: 'What it sounds like: before, "button" and a separate unnamed checkbox; after, one "checkbox" with its name.' },
       { name: 'stack', ref: 'B4', note: 'The deck keeps the cards behind the top one in the tree. clearAndSetSemantics {} on the backing cards.' },
-      { name: 'describe', ref: 'R1.3', note: 'ML Kit GenAI Image Description, on the phone, beta. TODO: replace the dashed box with the real output captured on the Pixel (docs/RUNBOOK.md).' },
+      { name: 'describe', ref: 'R1.3', note: 'ML Kit GenAI Image Description, on the phone, beta. Real output from the Pixel 9 Pro (2026-11-20, Supernatural backdrop): "A dark car drives down a dusty road towards a sunset with strange, fiery plumes rising in the distance." The car and the road are there; the "fiery plumes" are the model reading the sky. First live example of 6.9: it describes what is not quite there.' },
       { name: 'limits', ref: 'R1.2', note: 'English only (R1.3), beta (R1.2). A model can describe what is not there: a person reads it before it ships.' },
     ],
   },
@@ -85,7 +85,7 @@ export const SCENES: SceneDef[] = [
     beats: [
       { name: 'intro', ref: 'D6' },
       { name: 'wall', ref: 'C1', note: 'One 68-word paragraph (counted from the capture).' },
-      { name: 'shorten', ref: 'D11', note: 'Rewriting SHORTEN, on the phone. TODO: replace the dashed box with the real capture. The button is "Short & simple": ML Kit has no easy-read style (R1.5), say so if asked.' },
+      { name: 'shorten', ref: 'D11', note: 'Rewriting SHORTEN, on the phone, real capture from the Pixel 9 Pro (2026-11-20): 78 words → 36, labeled "shortened on your device" in the app. The capture is Spanish (a different title than the 68-word synopsis on the previous beat). The button is "Short & simple": ML Kit has no easy-read style (R1.5), say so if asked.' },
       { name: 'languages', ref: 'R1.4', note: 'Image description: English. Summarization: en/ja/ko. Rewriting: 7 languages incl. Spanish. All beta.' },
     ],
   },

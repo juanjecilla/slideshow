@@ -100,6 +100,15 @@ Hoy es 19 oct y quedan 33 días. app_functions se publica el 7 nov, así que el 
 | R-19 | `<Quote>` (`deck/quote/`, data in `deck/quotes.ts`) is a component, not a scene type; used in `01.quote` (Radabaugh) and `12.quote` (Bjarnø) | Quotes live inside beats next to other content. Same pattern as `deck/standby/`: self-contained, tokens only, `<figure><blockquote><figcaption>`, source line always shown with its check date. `emphasis.ts` is the pure part (unit-tested). To upstream to beatdeck after the talk (issue on the fork) |
 | R-20 | Bjarnø quote kept, labelled "Attributed to … original source not found (checked 2026-11-11)"; Radabaugh's "Americans" shown as "[people]" | No primary source for Bjarnø (EOWG participation is confirmed, the line is not). The label is on the slide and in the `sr` text so the deck never looks better sourced than it is; the speaker note turns it into the talk's own lesson (verify, then trust). Evidence in `docs/research.md` R7 |
 
+## Revisions on the eve of the talk (2026-11-20)
+
+| # | What changed | Why |
+|---|---|---|
+| R-21 | 06.8 and 08.3 show **real Pixel 9 Pro captures** (G1/G2 closed); 03.3 is a black screen labeled "Live" and the TalkBack clip is played live on the phone (G3 → fallback); G4 (VoiceOver pass) and G5 (full Muviss build) are cut | The Pixel only became available on the 20th. `adb screenrecord` has no audio, and a silent clip would defeat the hook. Both ML Kit features ran on device: Image Description returned "A dark car drives down a dusty road towards a sunset with strange, fiery plumes rising in the distance." (the "fiery plumes" are the model reading the sky: a live example for 6.9); Rewriting took a 78-word synopsis to 36. Captures are cropped to hide the status bar (notification icons); `Phone` gained an `aspect` prop for them |
+| R-22 | The Spanish edition `jerez26/` still ships tonight (R-17 stands), as its **own PR after the EN deck and the Jaén deck**; speaker notes stay English; every string an assistive technology reads (`sr.ts`, `alt`, aria labels, standby text, quotes) is translated | If the translation is late, the EN deck is already live and nothing is blocked. An accessibility talk cannot have English announcements under `lang="es"` |
+
+Facts found while doing it: the Muviss worktrees had **no `local.properties`** (the checklist said they did), so the first install had no TMDB key and no data; only `sdk.dir` and `TMDB_API_KEY` were copied (no sync or Supabase keys, so the demo build has sync off). The Pixel had 544 MB free (install failed with `INSUFFICIENT_STORAGE`); freed by the author to 4.5 GB. `adb` is not on `PATH` (`~/Library/Android/sdk/platform-tools/adb`) and Gradle needs `ANDROID_HOME`.
+
 ## beatdeck accessibility: what the engine does and does not give (measured with `tools/check-a11y.mjs`)
 
 Measured on the production build, 2026-10-19. Candidate fork issues for `juanjecilla/beatdeck`:

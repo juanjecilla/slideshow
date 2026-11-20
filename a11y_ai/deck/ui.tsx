@@ -25,10 +25,12 @@ export function Mono({ on, out, x, y, lines, size = 28, width, title, lang = 'te
 const TONE: Record<Ov['tone'], string> = { bad: 'bad', ok: 'ok', info: 'info' };
 
 /** A real Android screenshot in a device, with boxes and labels drawn over it from the UiAutomator bounds. */
-export function Phone({ on, out, src, alt, x, y, h = 860, overlays = [], boxes = false, bezel = 15 }: {
+export function Phone({ on, out, src, alt, x, y, h = 860, overlays = [], boxes = false, bezel = 15, aspect = 1080 / 2424 }: {
   on: boolean; out?: boolean; src: string; alt: string; x: number; y: number; h?: number; overlays?: Ov[]; boxes?: boolean; bezel?: number;
+  /** width / height of the image; the emulator captures are 1080x2424, the cropped Pixel captures 960x1990 */
+  aspect?: number;
 }) {
-  const w = Math.round((h * 1080) / 2424);
+  const w = Math.round(h * aspect);
   return (
     <Reveal on={on} out={out} x={x} y={y}>
       <div className="phone" style={{ padding: bezel }}>

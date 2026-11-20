@@ -19,14 +19,14 @@ function Hook_() {
       </Reveal>
       <Phone on={here && b === 1} out={here && b > 1} src={search} alt="Muviss search screen on a phone" x={1380} y={110} />
 
-      {/* 03.3 the clip. TODO: the recording with sound (docs/RUNBOOK.md). */}
+      {/* 03.3 the clip: live TalkBack on the Pixel (decision R-21), so the screen stays black while it plays. */}
       <Reveal on={here && b === 2} out={here && b > 2} x={120} y={330}>
         <div className="t-statement" style={{ fontSize: 90 }}>This is what TalkBack says.</div>
       </Reveal>
       <Reveal on={here && b === 2} out={here && b > 2} x={1380} y={110}>
         <div className="phone" data-audit="off">
-          <div className="phone-screen" style={{ width: 383, height: 860, display: 'grid', placeItems: 'center', background: 'var(--surface)', border: '3px dashed var(--hair-strong)', textAlign: 'center' }}>
-            <div><div className="t-eyebrow">TODO · clip</div><div className="t-editorial" style={{ fontSize: 34, marginTop: 14, padding: '0 28px', color: 'var(--ink)' }}>TalkBack on the app, with sound</div></div>
+          <div className="phone-screen" style={{ width: 383, height: 860, display: 'grid', placeItems: 'center', background: '#000', textAlign: 'center' }}>
+            <div><div className="t-eyebrow">Live</div><div className="t-editorial" style={{ fontSize: 34, marginTop: 14, padding: '0 28px', color: '#fff' }}>TalkBack on the app, with sound</div></div>
           </div>
         </div>
       </Reveal>

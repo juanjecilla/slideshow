@@ -3,7 +3,7 @@ import { CODE } from '../code';
 import { OV } from '../overlays';
 import { Eyebrow, Mono, Panel, PersonIntro, Phone, Say } from '../ui';
 import synopsis from '../assets/detail-synopsis.png';
-import detailAfter from '../assets/detail-after.png';
+import pixelShorten from '../assets/pixel-shorten.png';
 
 const C = 'var(--cognitive)';
 const code = (s: string) => s.split('\n');
@@ -33,12 +33,11 @@ function Cognitive_() {
       <Say on={at(2)} out={gone(2)} text="A button. Nothing leaves the phone." size={56} />
       <Mono on={at(2)} out={gone(2)} x={120} y={640} size={22} title="MlKitOnDeviceAi.shorten" lang="kotlin" lines={code(CODE.shorten)} />
       <Reveal on={at(2)} out={gone(2)} x={120} y={260}>
-        <div data-audit="off" style={{ width: 1150, border: '3px dashed var(--hair-strong)', borderRadius: 18, padding: '24px 30px', background: 'var(--surface)' }}>
-          <span className="t-eyebrow">TODO · capture on the Pixel</span>
-          <div className="t-editorial" style={{ fontSize: 38, marginTop: 10 }}>“Short &amp; simple” on a real synopsis, with its label</div>
-        </div>
+        <Panel title="Pixel 9 Pro · on device · 78 words → 36" style={{ width: 1150 }}>
+          <div className="t-editorial" style={{ fontSize: 36 }}>Sam y Dean Winchester perdieron a su madre por una fuerza demoníaca. Su padre los entrenó como soldados para luchar contra el mal en América. Ahora viajan en su Impala del '67, enfrentándose a amenazas sobrenaturales.</div>
+        </Panel>
       </Reveal>
-      <Phone on={at(2)} out={gone(2)} src={detailAfter} alt="Detail screen" x={PX} y={110} h={500} />
+      <Phone on={at(2)} out={gone(2)} src={pixelShorten} alt="Muviss detail screen on a Pixel 9 Pro: the synopsis shortened on the device, labeled as shortened on the device" x={PX} y={110} h={500} aspect={960 / 1990} />
 
       <Eyebrow on={at(3)} out={gone(3)} text="which languages, per API" />
       <Say on={at(3)} out={gone(3)} text="Check the language first." size={72} />

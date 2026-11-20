@@ -31,14 +31,21 @@ State below was checked **2026-11-10** unless a row says otherwise.
 
 | # | Gap | What closes it | By | If it stays open |
 | --- | --- | --- | --- | --- |
-| G1 | ML Kit GenAI (Image Description, Rewriting) never ran on a real device | Pixel 9 Pro: `adb shell pm list packages \| grep aicore`; open a movie detail on `.a11ytalk`: **Describe image** and **Short & simple** must appear; first use downloads the model (network, minutes, same Google account) | Tue 17 | Replace the dashed boxes in 06.8 / 08.3 with the code + a line "not verified on a device"; say so in the talk |
-| G2 | 06.8 / 08.3 show a dashed `TODO · capture on the Pixel` box | Screenshot + returned text from G1 → `deck/assets/`, replace the boxes, rebuild | Tue 17 | no dashed box ships (see G1 fallback) |
-| G3 | 03.3 hook clip (TalkBack on the unfixed app, **with sound**) is a placeholder | Phone's own screen recorder with internal audio on (`adb screenrecord` has no audio), on `.a11ybroken`; add a WebVTT/transcript | Tue 17 | Black screen + say it live with TalkBack on the Pixel |
+| G1 ✓ | **Closed 2026-11-20:** both features ran on the Pixel 9 Pro (AICore present, Nano already available; buttons appear; outputs in `docs/DECISIONS.md` R-21). Was: ML Kit GenAI (Image Description, Rewriting) never ran on a real device | Pixel 9 Pro: `adb shell pm list packages \| grep aicore`; open a movie detail on `.a11ytalk`: **Describe image** and **Short & simple** must appear; first use downloads the model (network, minutes, same Google account) | Tue 17 | Replace the dashed boxes in 06.8 / 08.3 with the code + a line "not verified on a device"; say so in the talk |
+| G2 ✓ | **Closed 2026-11-20:** `deck/assets/pixel-describe.png` and `pixel-shorten.png` replace the boxes. Was: 06.8 / 08.3 show a dashed `TODO · capture on the Pixel` box | Screenshot + returned text from G1 → `deck/assets/`, replace the boxes, rebuild | Tue 17 | no dashed box ships (see G1 fallback) |
+| G3 ✓ (fallback) | **2026-11-20:** 03.3 is a black screen labeled "Live"; TalkBack is played live on the Pixel with `.a11ybroken` (note on 3.3). Was: 03.3 hook clip (TalkBack on the unfixed app, **with sound**) is a placeholder | Phone's own screen recorder with internal audio on (`adb screenrecord` has no audio), on `.a11ybroken`; add a WebVTT/transcript | Tue 17 | Black screen + say it live with TalkBack on the Pixel |
 | G4 | A real TalkBack pass on Muviss; a real screen reader (VoiceOver/NVDA) on the deck | VoiceOver pass over the EN deck, one run through scenes 1–13 (live region speaks each beat, Previous/Next reachable). TalkBack: Muviss issue #459 stays open | Thu 19 | The slide says "tries to be accessible": keep it soft, and add what was not tested |
 | G5 | Muviss full `./gradlew build` / `ciWasm`, iOS app in Xcode | Run both; only if they were affected since 2026-10-19 | Thu 19 | Say "compiled for JS, Wasm and iOS simulator", not "builds on CI" |
 | G6 | hephaestus install lines (`/plugin marketplace add juanjecilla/hephaestus`) never tried against GitHub: the repo is private | Make it public, then try the install in a clean Claude Code session | Fri 20 (release) | README keeps its "untested until public" line until then |
 | G7 | The slides URLs and the QR cannot be checked before the merge | After merge: open both decks, scan the QR on a phone | Fri 20 | Fall back to `dist/` on a USB stick |
 | G8 | Research **Pending** items in `docs/research.md` (Pixel AICore list, Ley 11/2023 text, Journeys and a11y) | Re-check each; the Pixel 9 Pro line is closed by G1 | Mon 16 | Do not state them as facts on a slide |
+
+## Eve of the talk, 2026-11-20 (checked)
+
+- [x] Pixel 9 Pro: `.a11ytalk` and `.a11ybroken` built and installed (needed `ANDROID_HOME` and a `local.properties` with `TMDB_API_KEY`); G1–G3 closed or on fallback
+- [x] Gate on the EN deck: `build`, `verify` (65 beats, 0 console errors, 0 remote requests, 6 non-failing warnings), `check-a11y` 12/12, `contrast` 46/46, no `TODO` in `deck/`
+- [ ] G4 (VoiceOver pass) and G5 (full Muviss build): **cut** (R-21); say "tries to be accessible" and "compiled for JS, Wasm and iOS simulator"
+- [ ] PR, merge, `jerez26/` and the public resources: see the Friday list below
 
 ## Before the day
 

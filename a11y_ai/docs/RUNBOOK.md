@@ -27,6 +27,8 @@ Check AICore/ML Kit on the Pixel **before anything else**: `adb shell pm list pa
 
 ## Live demo script (what to do, what to expect, what to fall back to)
 
+**Scene 03 (hook) is live too** (no recording, R-21): on beat 3.3 the slide is a black phone labeled "Live". On the Pixel open `.a11ybroken`, TalkBack on, sound up, swipe through Settings; the two switches are read as "unlabeled". Fallback: the `speak.py` output on 6.2.
+
 Two builds sit side by side on the Pixel: `com.codingpit.muviss.a11ybroken` (branch `demo/a11y-broken`, before the fixes) and `com.codingpit.muviss.a11ytalk` (branch `talk/a11y-ai-jerez26`). Build both the day before (`./gradlew :app:androidApp:assembleDebug` in each worktree, then `adb install -r`). In a terminal, from the hephaestus clone: `export H=~/Projects/hephaestus/skills`.
 
 | Beat | You do | You should see | If it fails |
