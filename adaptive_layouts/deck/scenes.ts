@@ -47,7 +47,7 @@ export const SCENES: SceneDef[] = [
       { name: 'hack-istablet', ref: 'S16', note: 'Las ñapas. Un recurso booleano para decidir si "es tablet". Código tal cual del original.' },
       { name: 'hack-orientation', ref: 'S16', note: 'Otra ñapa: bloquear la orientación en el manifest.' },
       { name: 'a11y-forgot', ref: 'D15', note: 'Pantalla completa: "a11y?". Pausa. Es lo que más se olvida. Que cada quien se lo pregunte.' },
-      { name: 'a11y', ref: 'S17 D14', source: 'Soluciones antiguas · a11y', note: 'Troy McClure: "Hola, soy Juanje Cilla. Quizás me recordéis de charlas como…". Dos charlas de accesibilidad: la de Commit Conf (ya en el slideshow) y la de DevFest Jerez (21 nov, mismo día). Ajustar el tiempo verbal según el orden. Luego un puente: el tamaño de fuente también cambia el layout.' },
+      { name: 'a11y', ref: 'S17 D14', source: 'Soluciones antiguas · a11y', note: 'Troy McClure: "Hola, soy Juanje Cilla. Quizás me recordéis de charlas como…". Dos charlas de accesibilidad: la de Commit Conf (ya en el slideshow) y la de DevFest Jerez (21 nov, esta misma tarde: aún no la he dado, así que en futuro). Luego un puente: el tamaño de fuente también cambia el layout.' },
       { name: 'problems', ref: 'S18', source: 'Pantallas grandes', note: 'El resultado en pantallas grandes.' },
       { name: 'problem-orientation', ref: 'S18', source: 'Orientaciones forzadas', note: 'Orientaciones forzadas.' },
       { name: 'problem-aspect', ref: 'S18', source: 'MinAspectRatio / MaxAspectRatio', note: 'Relaciones de aspecto mínimas y máximas.' },
