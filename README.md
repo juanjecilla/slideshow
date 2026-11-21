@@ -8,6 +8,7 @@ Slides for conference talks, built with [Slidev](https://sli.dev/) and deployed 
 
 | Talk | Conference | Date | Slides | Video |
 |------|-----------|------|--------|-------|
+| [Adaptive Layouts — Adaptarse o Morir](adaptive_layouts/) | DevFest Jaén 2026 · GDG Jaén · Online | November 2026 | [▶ Ver slides](https://juanjecilla.github.io/slideshow/adaptive_layouts/) | |
 | [App Functions — Convierte tu app en una skill](app_functions/) | DevFest Ourense 2026 · GDG Ourense | November 2026 | [▶ Ver slides](https://juanjecilla.github.io/slideshow/app_functions/) | |
 | [a11y — Accesibilidad para Mortales](a11y/) | Commit Conf 2026 | June 2026 | [▶ Ver slides](https://juanjecilla.github.io/slideshow/a11y/) | [▶ Ver charla](https://www.youtube.com/watch?v=D8JnZuwzV6E&t=135s) (checked 2026-11-11) |
 | [¿a11y en Android? Ahora es fácil con la IA](a11y_ai/) | DevFest Jerez 2026 | 21 Nov 2026 | [▶ Ver slides](https://juanjecilla.github.io/slideshow/a11y_ai/) | |
