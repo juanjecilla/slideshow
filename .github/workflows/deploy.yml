@@ -38,6 +38,7 @@ jobs:
             app_functions/ourense26/package-lock.json
             dev_wars/codemotion26/package-lock.json
             a11y_ai/package-lock.json
+            a11y_ai/jerez26/package-lock.json
             adaptive_layouts/package-lock.json
 
       - name: Install bc2026 dependencies
@@ -89,6 +90,14 @@ jobs:
         run: npm run build -- --base /slideshow/a11y_ai/
         working-directory: a11y_ai
 
+      # Spanish edition (a11y_ai/jerez26): only built once it exists.
+      - name: Build a11y_ai deck (ES edition, /jerez26/)
+        if: ${{ hashFiles('a11y_ai/jerez26/package.json') != '' }}
+        run: |
+          npm ci
+          npm run build -- --base /slideshow/a11y_ai/jerez26/
+        working-directory: a11y_ai/jerez26
+
       - name: Install adaptive_layouts dependencies
         run: npm ci
         working-directory: adaptive_layouts
@@ -115,6 +124,10 @@ jobs:
           mkdir -p dist/dev_wars/codemotion26
           cp -r dev_wars/codemotion26/dist/. dist/dev_wars/codemotion26/
           cp -r a11y_ai/dist/. dist/a11y_ai/
+          if [ -d a11y_ai/jerez26/dist ]; then
+            mkdir -p dist/a11y_ai/jerez26
+            cp -r a11y_ai/jerez26/dist/. dist/a11y_ai/jerez26/
+          fi
           cp -r adaptive_layouts/dist/. dist/adaptive_layouts/
           cp landing/index.html dist/index.html
           cp -r landing/assets/. dist/assets/
