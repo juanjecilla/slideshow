@@ -49,7 +49,7 @@ export function AppMock({ f = 1, text = false, w = 300, h = 420 }: { f?: number;
         {text ? (
           <>
             <div className="am-t" style={{ fontSize: 26 * f }}>Muviss</div>
-            <div className="am-p" style={{ fontSize: 20 * f }}>Series y películas que quieres ver, todas en un solo sitio.</div>
+            <div className="am-p" style={{ fontSize: 20 * f }}>Series and movies you want to watch, all in one place.</div>
           </>
         ) : (
           <>
@@ -72,9 +72,9 @@ export function Poses({ on, out, y = 560 }: { on: boolean; out?: boolean; y?: nu
   const S = { stroke: 'var(--ink)', strokeWidth: 9, strokeLinejoin: 'round', strokeLinecap: 'round', fill: 'var(--surface)' } as const;
   const hinge = <circle r="7" fill="var(--ochre)" />;
   const items = [
-    { name: 'Cerrado', svg: <><rect x="-90" y="-16" width="180" height="14" rx="6" {...S} /><rect x="-90" y="-2" width="180" height="14" rx="6" {...S} /></> },
-    { name: 'Abierto', svg: <><rect x="-130" y="-8" width="130" height="16" rx="6" {...S} /><rect x="0" y="-8" width="130" height="16" rx="6" {...S} /><g>{hinge}</g></> },
-    { name: 'Doblado', svg: <><rect x="-120" y="0" width="120" height="16" rx="6" {...S} /><g transform="rotate(-100)"><rect x="0" y="0" width="120" height="16" rx="6" {...S} /></g><g>{hinge}</g></> },
+    { name: 'Closed', svg: <><rect x="-90" y="-16" width="180" height="14" rx="6" {...S} /><rect x="-90" y="-2" width="180" height="14" rx="6" {...S} /></> },
+    { name: 'Open', svg: <><rect x="-130" y="-8" width="130" height="16" rx="6" {...S} /><rect x="0" y="-8" width="130" height="16" rx="6" {...S} /><g>{hinge}</g></> },
+    { name: 'Folded', svg: <><rect x="-120" y="0" width="120" height="16" rx="6" {...S} /><g transform="rotate(-100)"><rect x="0" y="0" width="120" height="16" rx="6" {...S} /></g><g>{hinge}</g></> },
   ];
   return (
     <>
@@ -92,9 +92,9 @@ export function Poses({ on, out, y = 560 }: { on: boolean; out?: boolean; y?: nu
 export function WindowModes({ on, out, y = 560 }: { on: boolean; out?: boolean; y?: number }) {
   const W = { stroke: 'var(--ink)', strokeWidth: 7, fill: 'var(--surface)', strokeLinejoin: 'round' } as const;
   const modes = [
-    { name: 'Pantalla dividida', svg: <><rect x="10" y="10" width="280" height="170" rx="10" {...W} /><path d="M150 10 V180" stroke="var(--ink)" strokeWidth="7" /><rect x="22" y="26" width="116" height="22" rx="5" fill="var(--ochre)" /><rect x="162" y="26" width="116" height="22" rx="5" fill="var(--accent)" /></> },
-    { name: 'Ventanas libres', svg: <><rect x="10" y="10" width="280" height="170" rx="10" {...W} /><rect x="30" y="34" width="150" height="100" rx="8" {...W} /><rect x="120" y="70" width="150" height="90" rx="8" {...W} fill="var(--bg)" /><rect x="34" y="38" width="142" height="16" fill="var(--ochre)" /><rect x="124" y="74" width="142" height="16" fill="var(--accent)" /></> },
-    { name: 'Imagen en imagen', svg: <><rect x="10" y="10" width="280" height="170" rx="10" {...W} /><rect x="24" y="24" width="252" height="142" rx="6" fill="var(--hair)" stroke="none" /><rect x="188" y="108" width="84" height="54" rx="6" {...W} fill="var(--bg)" /><rect x="192" y="112" width="76" height="12" fill="var(--accent)" /></> },
+    { name: 'Split screen', svg: <><rect x="10" y="10" width="280" height="170" rx="10" {...W} /><path d="M150 10 V180" stroke="var(--ink)" strokeWidth="7" /><rect x="22" y="26" width="116" height="22" rx="5" fill="var(--ochre)" /><rect x="162" y="26" width="116" height="22" rx="5" fill="var(--accent)" /></> },
+    { name: 'Free windows', svg: <><rect x="10" y="10" width="280" height="170" rx="10" {...W} /><rect x="30" y="34" width="150" height="100" rx="8" {...W} /><rect x="120" y="70" width="150" height="90" rx="8" {...W} fill="var(--bg)" /><rect x="34" y="38" width="142" height="16" fill="var(--ochre)" /><rect x="124" y="74" width="142" height="16" fill="var(--accent)" /></> },
+    { name: 'Picture in picture', svg: <><rect x="10" y="10" width="280" height="170" rx="10" {...W} /><rect x="24" y="24" width="252" height="142" rx="6" fill="var(--hair)" stroke="none" /><rect x="188" y="108" width="84" height="54" rx="6" {...W} fill="var(--bg)" /><rect x="192" y="112" width="76" height="12" fill="var(--accent)" /></> },
   ];
   return (
     <>
@@ -133,8 +133,8 @@ export function ResizeDemo({ on, out, x = 210, y = 330 }: { on: boolean; out?: b
 
 const PICK = {
   d: DEVICES.map((d) => d.name),
-  c: ['Vertical', 'Horizontal', 'Zoom 1x', 'Zoom 3x', 'Fuente 1x', 'Fuente 2x'],
-  s: ['Abierto', 'Cerrado', 'Doblado', 'Ajuste de tamaño', 'Pantalla dividida', 'Ventana libre'],
+  c: ['Portrait', 'Landscape', 'Zoom 1x', 'Zoom 3x', 'Font 1x', 'Font 2x'],
+  s: ['Open', 'Closed', 'Folded', 'Resizing', 'Split screen', 'Free window'],
 } as const;
 
 /** Dispositivos × Contexto × Estado: three reels that keep landing on a new combination. Still frame = one fixed combination. */
@@ -148,9 +148,9 @@ export function Combinatorics({ on, out }: { on: boolean; out?: boolean }) {
   }, [still, on, out]);
   const pick = (arr: readonly string[], salt: number) => arr[(t * salt + (salt * 3)) % arr.length];
   const reels = [
-    { title: 'Dispositivo', v: pick(PICK.d, 1) },
-    { title: 'Contexto', v: pick(PICK.c, 5) },
-    { title: 'Estado', v: pick(PICK.s, 7) },
+    { title: 'Device', v: pick(PICK.d, 1) },
+    { title: 'Context', v: pick(PICK.c, 5) },
+    { title: 'State', v: pick(PICK.s, 7) },
   ];
   return (
     <Reveal on={on} out={out} x={150} y={400}>

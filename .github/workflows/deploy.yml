@@ -40,6 +40,7 @@ jobs:
             a11y_ai/package-lock.json
             a11y_ai/jerez26/package-lock.json
             adaptive_layouts/package-lock.json
+            adaptive_layouts/jaen2026/package-lock.json
 
       - name: Install bc2026 dependencies
         run: npm ci
@@ -106,6 +107,14 @@ jobs:
         run: npm run build -- --base /slideshow/adaptive_layouts/
         working-directory: adaptive_layouts
 
+      # Spanish edition (adaptive_layouts/jaen2026): only built once it exists.
+      - name: Build adaptive_layouts slides (ES edition, /jaen2026/)
+        if: ${{ hashFiles('adaptive_layouts/jaen2026/package.json') != '' }}
+        run: |
+          npm ci
+          npm run build -- --base /slideshow/adaptive_layouts/jaen2026/
+        working-directory: adaptive_layouts/jaen2026
+
       - name: Assemble dist
         run: |
           mkdir -p dist/bc2026
@@ -129,6 +138,10 @@ jobs:
             cp -r a11y_ai/jerez26/dist/. dist/a11y_ai/jerez26/
           fi
           cp -r adaptive_layouts/dist/. dist/adaptive_layouts/
+          if [ -d adaptive_layouts/jaen2026/dist ]; then
+            mkdir -p dist/adaptive_layouts/jaen2026
+            cp -r adaptive_layouts/jaen2026/dist/. dist/adaptive_layouts/jaen2026/
+          fi
           cp landing/index.html dist/index.html
           cp -r landing/assets/. dist/assets/
 

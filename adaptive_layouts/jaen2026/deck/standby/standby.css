@@ -1,0 +1,53 @@
+/* 01.standby (deck/standby/Standby.tsx): a window that resizes forever. Western tokens only. */
+.sb { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; }
+.sb-win {
+  position: absolute; left: 50%; top: 620px; transform: translate(-50%, -50%);
+  width: 520px; height: 360px; overflow: hidden; display: flex;
+  background: var(--surface); border: 6px solid var(--ink); border-radius: 22px;
+  box-shadow: 14px 14px 0 var(--ochre);
+  animation: sb-resize 16s ease-in-out infinite;
+}
+/* phone: bottom bar, one column. Everything wider: rail on the left, poster beside the text. */
+.sb-rail { flex: none; width: 34px; background: var(--ink); animation: sb-rail 16s ease-in-out infinite; }
+.sb-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.sb-bar { flex: none; height: 0; background: var(--ink); animation: sb-bar 16s ease-in-out infinite; }
+.sb-body { flex: 1; display: flex; gap: 18px; padding: 22px; min-height: 0; flex-direction: row; animation: sb-flow 16s ease-in-out infinite; }
+.sb-poster { flex: none; width: 36%; background: var(--ochre); border-radius: 8px; animation: sb-poster 16s ease-in-out infinite; }
+.sb-text { flex: 1; display: flex; flex-direction: column; gap: 16px; padding-top: 6px; }
+.sb-text i { display: block; height: 16px; border-radius: 8px; background: var(--hair-strong); }
+.sb-text i:nth-child(1) { width: 90%; background: var(--accent); }
+.sb-text i:nth-child(3) { width: 60%; }
+
+/* phone → foldable → tablet → desktop → phone */
+@keyframes sb-resize {
+  0%, 18%   { width: 190px; height: 380px; }
+  25%, 43%  { width: 360px; height: 380px; }
+  50%, 68%  { width: 520px; height: 360px; }
+  75%, 93%  { width: 780px; height: 440px; }
+  100%      { width: 190px; height: 380px; }
+}
+@keyframes sb-rail { 0%, 18% { width: 0; } 25%, 93% { width: 34px; } 100% { width: 0; } }
+@keyframes sb-bar  { 0%, 18% { height: 34px; } 25%, 93% { height: 0; } 100% { height: 34px; } }
+@keyframes sb-flow { 0%, 18% { flex-direction: column; } 25%, 93% { flex-direction: row; } 100% { flex-direction: column; } }
+@keyframes sb-poster { 0%, 18% { width: 100%; height: 40%; } 25%, 93% { width: 36%; height: auto; } 100% { width: 100%; height: 40%; } }
+
+.sb-labels { position: absolute; left: 0; right: 0; top: 850px; height: 80px; }
+.sb-label {
+  position: absolute; inset: 0; text-align: center; font: 700 54px var(--font-sans); color: var(--accent);
+  letter-spacing: -0.01em; opacity: 0; animation: sb-label 16s ease-in-out infinite;
+}
+.sb-l0 { animation-delay: 0s; }
+.sb-l1 { animation-delay: 4s; }
+.sb-l2 { animation-delay: 8s; }
+.sb-l3 { animation-delay: 12s; }
+@keyframes sb-label { 0% { opacity: 0; } 3%, 22% { opacity: 1; } 25%, 100% { opacity: 0; } }
+
+/* one still frame: tablet size, "Tablet" label, no motion (capture, reduced motion, print) */
+.sb-still, .sb-still * { animation: none !important; }
+.sb-still .sb-win { width: 520px; height: 360px; }
+.sb-still .sb-l2 { opacity: 1; }
+@media (prefers-reduced-motion: reduce), print {
+  .sb-win, .sb-rail, .sb-bar, .sb-body, .sb-poster, .sb-label { animation: none; }
+  .sb-win { width: 520px; height: 360px; }
+  .sb-l2 { opacity: 1; }
+}

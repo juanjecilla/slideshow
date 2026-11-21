@@ -1,11 +1,11 @@
 /**
  * Quotes shown with <Quote> (deck/quote/Quote.tsx). Data only.
- * The talk is in Spanish: `text` is our translation, `original` the verbatim English, shown small under the author.
+ * The base deck is in English: `text` is the verbatim quote. (The Spanish edition `jaen2026` shows a translation in `text` and the English in `original`.)
  * The source URLs live in docs/research.md, not here: the build fails on any remote reference (offline rule).
  */
 export interface QuoteData {
   id: string;
-  /** What is read on stage (Spanish translation of `original`). */
+  /** What is read on stage. */
   text: string;
   /** Verbatim original, shown small. */
   original?: string;
@@ -25,12 +25,11 @@ export interface QuoteData {
 export const QUOTES: Record<string, QuoteData> = {
   android37: {
     id: 'android37',
-    text: 'Cuando apuntes a la API 37, tu app debe ser capaz de adaptarse a una variedad de tamaños de pantalla.',
-    original: 'When you target API level 37, your app must be capable of adapting to a variety of display sizes.',
+    text: 'When you target API level 37, your app must be capable of adapting to a variety of display sizes.',
     author: 'Fahd Imtiaz',
     role: 'Android Developers Blog',
-    source: 'Adaptive development for the expanding Android ecosystem, 19 de mayo de 2026',
+    source: 'Adaptive development for the expanding Android ecosystem, 19 May 2026',
     checked: '2026-11-11',
-    emphasis: 'debe ser capaz de adaptarse',
+    emphasis: 'must be capable of adapting',
   },
 };

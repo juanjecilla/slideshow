@@ -26,8 +26,8 @@ interface Props {
 export function Quote({ quote, on, out, x = 210, y = 200, size }: Props) {
   const parts = splitEmphasis(quote.text, quote.emphasis);
   const meta = quote.attributed
-    ? `Atribuida a ${quote.author} · fuente original no encontrada (comprobado ${quote.checked})`
-    : `${quote.source} · comprobado ${quote.checked}`;
+    ? `Attributed to ${quote.author} · original source not found (checked ${quote.checked})`
+    : `${quote.source} · checked ${quote.checked}`;
   return (
     <Reveal on={on} out={out} x={x} y={y}>
       <figure className="quote">
