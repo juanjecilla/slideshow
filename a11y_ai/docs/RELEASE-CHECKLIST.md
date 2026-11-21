@@ -61,11 +61,11 @@ State below was checked **2026-11-10** unless a row says otherwise.
 
 ## Friday 20 Nov, ~21:00 (in this order)
 
-1. [ ] Make `juanjecilla/hephaestus` **public** (Apache-2.0, README has the install lines); try the install (G6)
-2. [ ] Merge the Charlas PR: GitHub Pages deploys `/slideshow/a11y_ai/` and `/slideshow/a11y_ai/jerez26/`; open both and press → through them (G7)
-3. [ ] Push Muviss `talk/a11y-ai-jerez26` and `demo/a11y-broken` (the repo is already public)
+1. [x] Make `juanjecilla/hephaestus` **public** (Apache-2.0); install tried from a clean config and an anonymous HTTPS clone (G6), checked 2026-11-21. README lines fixed in hephaestus PR #4
+2. [x] Charlas PRs #14, #15, #16 merged; `/slideshow/a11y_ai/` and `/slideshow/a11y_ai/jerez26/` return 200 and load without console errors (G7), checked 2026-11-21
+3. [x] Muviss `talk/a11y-ai-jerez26` and `demo/a11y-broken` pushed (diff and secret scan first), checked 2026-11-21
 4. [ ] Scan the QR on a phone: it must land on the public hephaestus repo
-5. [ ] Landing: the entry opens, the ES link works
+5. [x] Landing: the card opens the Spanish edition (checked 2026-11-21)
 
 ## Saturday 21 Nov
 
