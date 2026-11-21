@@ -45,7 +45,7 @@ State below was checked **2026-11-10** unless a row says otherwise.
 - [x] Pixel 9 Pro: `.a11ytalk` and `.a11ybroken` built and installed (needed `ANDROID_HOME` and a `local.properties` with `TMDB_API_KEY`); G1–G3 closed (3.3 is a recording, without captions)
 - [x] Gate on the EN deck: `build`, `verify` (65 beats, 0 console errors, 0 remote requests, 6 non-failing warnings), `check-a11y` 12/12, `contrast` 46/46, no `TODO` in `deck/`
 - [ ] G4 (VoiceOver pass) and G5 (full Muviss build): **cut** (R-21); say "tries to be accessible" and "compiled for JS, Wasm and iOS simulator"
-- [ ] PR, merge, `jerez26/` and the public resources: see the Friday list below
+- [x] 2026-11-21: EN deck (PR #14) and Jaén (PR #15) merged and live; hephaestus public with the install verified; Muviss branches pushed; `jerez26/` in its own PR (see `DECISIONS.md` R-22)
 
 ## Before the day
 

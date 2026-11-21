@@ -1,0 +1,59 @@
+import { defineDeck } from 'beatdeck';
+import '../themes/neutral.css';
+import '../themes/inspector.css';
+import { LiveRegion, SrNav, StagePicture, ThemeToggle } from './a11y';
+import { InspectorChrome } from './Chrome';
+import { config } from './deck.config';
+import { SCENES } from './scenes';
+import { Open } from './scenes/01-Open';
+import { Me } from './scenes/02-Me';
+import { Hook } from './scenes/03-Hook';
+import { WhyNow } from './scenes/04-WhyNow';
+import { MapScene } from './scenes/05-Map';
+import { Blind } from './scenes/06-Blind';
+import { LowVision } from './scenes/07-LowVision';
+import { Cognitive } from './scenes/08-Cognitive';
+import { Motor } from './scenes/09-Motor';
+import { ShiftLeft } from './scenes/10-ShiftLeft';
+import { Limits } from './scenes/11-Limits';
+import { Close } from './scenes/12-Close';
+import { QA } from './scenes/13-QA';
+import { Backup } from './scenes/14-Backup';
+
+/** Every layer of the stage, back to front. All stay mounted; each shows itself for its own scene. */
+function Stage() {
+  return (
+    <>
+      <ThemeToggle />
+      <LiveRegion />
+      <SrNav />
+      <StagePicture>
+      <Open />
+      <Me />
+      <Hook />
+      <WhyNow />
+      <MapScene />
+      <Blind />
+      <LowVision />
+      <Cognitive />
+      <Motor />
+      <ShiftLeft />
+      <Limits />
+      <Close />
+      <QA />
+      <Backup />
+      </StagePicture>
+    </>
+  );
+}
+
+export default defineDeck({
+  id: 'a11y-on-android-ai-makes-it-easy-es',
+  title: config.title,
+  lang: 'es',
+  scenes: SCENES,
+  Stage,
+  fonts: ['400 100px "Inter Variable"', '600 100px "Inter Variable"', '400 32px "JetBrains Mono Variable"'],
+  qrUrl: config.qrUrl,
+  Chrome: InspectorChrome,
+});
