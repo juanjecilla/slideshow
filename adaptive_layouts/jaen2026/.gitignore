@@ -1,0 +1,13 @@
+node_modules/
+dist/
+dist-*/
+artifacts/
+*.tsbuildinfo
+.DS_Store
+.beatdeck-backup/
+*.beatdeck-new
+
+# third-party source material: local only, never published
+reference/*.pptx
+reference/source/media/
+.vite/

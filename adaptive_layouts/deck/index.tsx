@@ -40,7 +40,7 @@ function Stage() {
 export default defineDeck({
   id: 'adaptive-layouts',
   title: config.title,
-  lang: 'es',
+  lang: 'en',
   scenes: SCENES,
   Stage,
   fonts: ['400 100px "Rye"', '400 100px "Inter Variable"', '700 100px "Inter Variable"', '400 32px "JetBrains Mono Variable"'],

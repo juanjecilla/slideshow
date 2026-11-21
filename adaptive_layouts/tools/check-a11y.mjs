@@ -16,7 +16,7 @@ await page.waitForFunction(() => window.__beatdeck, null, { timeout: 30000 });
 await page.waitForTimeout(1500);
 
 // 1 · language
-check('lang is declared (es)', (await page.evaluate(() => document.documentElement.lang)) === 'es');
+check('lang is declared (en)', (await page.evaluate(() => document.documentElement.lang)) === 'en');
 
 // 2 · a screen-reader announcement at every step, never a speaker note
 const live = () => page.evaluate(() => document.querySelector('[role="status"]')?.textContent ?? '');
@@ -38,13 +38,13 @@ check('speaker notes never reach the live region', leaks.length === 0, leaks.joi
 // 2b · what a screen reader reaches: the current beat's announcement and the two buttons
 await page.goto(`${base}?capture=1#1.2`); await page.waitForTimeout(600);
 const tree = await page.locator('body').ariaSnapshot();
-const foreign = ['Preguntas', 'Respaldo', 'El Feo', 'Window Insets'].filter((t) => tree.includes(t));
+const foreign = ['Questions', 'Full demo backup', 'The Ugly', 'Window Insets'].filter((t) => tree.includes(t));
 check('the accessibility tree holds no other scene', foreign.length === 0, foreign.join(', '));
-check('the tree has Paso anterior and Siguiente paso', tree.includes('button "Paso anterior"') && tree.includes('button "Siguiente paso"'));
-await page.getByRole('button', { name: 'Siguiente paso' }).focus(); await page.keyboard.press('Enter'); await page.waitForTimeout(300);
-check('Enter on Siguiente is exactly one step', (await page.evaluate(() => location.hash)) === '#1.3', await page.evaluate(() => location.hash));
-await page.getByRole('button', { name: 'Paso anterior' }).focus(); await page.keyboard.press('Enter'); await page.waitForTimeout(300);
-check('Paso anterior goes back one step', (await page.evaluate(() => location.hash)) === '#1.2');
+check('the tree has Previous step and Next step', tree.includes('button "Previous step"') && tree.includes('button "Next step"'));
+await page.getByRole('button', { name: 'Next step' }).focus(); await page.keyboard.press('Enter'); await page.waitForTimeout(300);
+check('Enter on Next is exactly one step', (await page.evaluate(() => location.hash)) === '#1.3', await page.evaluate(() => location.hash));
+await page.getByRole('button', { name: 'Previous step' }).focus(); await page.keyboard.press('Enter'); await page.waitForTimeout(300);
+check('Previous goes back one step', (await page.evaluate(() => location.hash)) === '#1.2');
 await page.goto(`${base}?capture=1#1.2`); await page.waitForTimeout(400);
 await page.keyboard.press('Tab');
 check('Tab reaches a control', await page.evaluate(() => !!document.activeElement && document.activeElement.tagName === 'BUTTON'));

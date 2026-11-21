@@ -19,7 +19,7 @@ export const SCENES: SceneDef[] = [
     ],
   },
   {
-    id: '02', title: 'EL MALO',
+    id: '02', title: 'THE BAD',
     beats: [
       { name: 'intertitle', ref: 'S05', source: '1. Problemática a.k.a. El Malo', note: 'Empezamos por el malo: el problema.' },
       { name: 'three', ref: 'S06', source: 'Dispositivos · Contexto · Estado', note: 'Tres ejes: dispositivos, contexto y estado. Los vamos a ir viendo uno a uno.' },
@@ -39,7 +39,7 @@ export const SCENES: SceneDef[] = [
     ],
   },
   {
-    id: '03', title: 'EL FEO',
+    id: '03', title: 'THE UGLY',
     beats: [
       { name: 'intertitle', ref: 'S14', source: '2. Soluciones antiguas a.k.a. El Feo', note: 'Lo que hacíamos hasta ahora: el feo.' },
       { name: 'xml-independent', ref: 'S15', source: 'Múltiples layouts · Independientes', note: 'XML: un layout por configuración, cada uno por su lado.' },
@@ -60,7 +60,7 @@ export const SCENES: SceneDef[] = [
     ],
   },
   {
-    id: '04', title: 'EL BUENO · WSC',
+    id: '04', title: 'THE GOOD · WSC',
     beats: [
       { name: 'intertitle', ref: 'S19', source: '3. Adaptive Layouts a.k.a. El Bueno', note: 'Ahora el bueno.' },
       { name: 'menu', ref: 'S20', source: 'Jetpack Compose · Window Size Classes · Window Insets · Material 3 Adaptive · Adaptive input methods', note: 'Las cinco piezas de esta parte. Cada una con un caso de Muviss.' },
@@ -77,7 +77,7 @@ export const SCENES: SceneDef[] = [
     ],
   },
   {
-    id: '05', title: 'EL BUENO · INSETS',
+    id: '05', title: 'THE GOOD · INSETS',
     beats: [
       { name: 'head', ref: 'S22', source: 'Window Insets', note: 'Window Insets.' },
       { name: 'scaffold', ref: 'S22', source: 'Scaffold Components: TopAppBar · BottomAppBar · NavigationBar', note: 'Los componentes del scaffold ya saben de insets.' },
@@ -90,7 +90,7 @@ export const SCENES: SceneDef[] = [
     ],
   },
   {
-    id: '06', title: 'EL BUENO · M3',
+    id: '06', title: 'THE GOOD · M3',
     beats: [
       { name: 'head', ref: 'S23', source: 'Material 3 Adaptive', note: 'Material 3 Adaptive.' },
       { name: 'suite', ref: 'S23', source: 'NavigationSuiteScaffold', note: 'NavigationSuiteScaffold: lo que ya vimos en Muviss.' },
@@ -109,7 +109,7 @@ export const SCENES: SceneDef[] = [
     ],
   },
   {
-    id: '07', title: 'EL BUENO · INPUT',
+    id: '07', title: 'THE GOOD · INPUT',
     beats: [
       { name: 'head', ref: 'S25', source: 'Adaptive input methods · Diferentes dispositivos, nuevas entradas', note: 'Adaptive input methods: otro dispositivo, otras entradas.' },
       { name: 'inputs', ref: 'S25', source: 'Stylus · Teclados · Ratones · Herramientas de accesibilidad', note: 'Stylus, teclados, ratones y herramientas de accesibilidad.' },
@@ -141,7 +141,7 @@ export const SCENES: SceneDef[] = [
     ],
   },
   {
-    id: '09', title: 'EL FIN',
+    id: '09', title: 'THE END',
     beats: [
       { name: 'intertitle', ref: 'S27', source: '4. Conclusiones a.k.a. El FIN', note: 'El fin.' },
       { name: 'nots', ref: 'S28', source: "Not Do's: Forzar resizeableActivity, screenOrientation, min/maxAspectRatio · Tamaños con APIs antiguas y tamaño de dispositivo · Lógica específica de gestión de ventanas · Max width por defecto", note: 'Lo que no hay que hacer.' },

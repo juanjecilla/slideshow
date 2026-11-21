@@ -14,7 +14,7 @@ function BuenoM3_() {
 
       {/* 6.2 */}
       <Say on={at(1)} out={gone(1)} text="NavigationSuiteScaffold" y={330} size={120} />
-      <Line on={at(1)} out={gone(1)} text="Lo que ya vimos en Muviss." y={560} size={64} dim />
+      <Line on={at(1)} out={gone(1)} text="What we already saw in Muviss." y={560} size={64} dim />
 
       {/* 6.3–6.4 */}
       <Eyebrow on={at(2)} out={gone(2)} text="Material 3 Adaptive" />
@@ -24,19 +24,19 @@ function BuenoM3_() {
       <Bullets here={here} b={b} from={3} to={3} together y={300} size={120} gap={50} items={['Predictive Back', 'Navigable']} />
 
       {/* 6.5–6.6 the docs' list-detail, NOT Muviss */}
-      <Eyebrow on={at(4)} out={gone(4)} text="Documentación oficial · no es Muviss" />
-      <Mono on={at(4)} out={gone(4)} y={170} size={28} lines={DOCS.listDetail} title="developer.android.com · List-detail layout · abreviado" />
-      <Eyebrow on={at(5)} out={gone(5)} text="Documentación oficial · no es Muviss" />
+      <Eyebrow on={at(4)} out={gone(4)} text="Official documentation · not Muviss" />
+      <Mono on={at(4)} out={gone(4)} y={170} size={28} lines={DOCS.listDetail} title="developer.android.com · List-detail layout · abbreviated" />
+      <Eyebrow on={at(5)} out={gone(5)} text="Official documentation · not Muviss" />
       <Mono on={at(5)} out={gone(5)} y={250} size={30} lines={DOCS.listDetailBack} title="developer.android.com · List-detail layout" />
-      <Line on={at(5)} out={gone(5)} text="Predictive back: por defecto al apuntar a la API 36." y={640} size={56} />
+      <Line on={at(5)} out={gone(5)} text="Predictive back: on by default when targeting API 36." y={640} size={56} />
 
       {/* 6.7 versions */}
-      <Eyebrow on={at(6)} out={gone(6)} text="Versiones · 19 oct 2026" />
-      <Mono on={at(6)} out={gone(6)} y={290} size={50} lines={['material3-adaptive  1.3.0         estable   12 ago 2026', 'material3-adaptive  1.4.0-alpha03  alpha      7 oct 2026', 'Muviss              1.2.0']} lang="plain" title="developer.android.com · Compose Material3 Adaptive releases" />
+      <Eyebrow on={at(6)} out={gone(6)} text="Versions · 19 Oct 2026" />
+      <Mono on={at(6)} out={gone(6)} y={290} size={50} lines={['material3-adaptive  1.3.0         stable    12 Aug 2026', 'material3-adaptive  1.4.0-alpha03  alpha      7 Oct 2026', 'Muviss              1.2.0']} lang="plain" title="developer.android.com · Compose Material3 Adaptive releases" />
 
       {/* 6.8 Muviss case 3 */}
-      <Eyebrow on={at(7)} out={gone(7)} text="Caso 3 · Muviss" />
-      <Western on={at(7)} out={gone(7)} text="El detalle" y={380} size={200} />
+      <Eyebrow on={at(7)} out={gone(7)} text="Case 3 · Muviss" />
+      <Western on={at(7)} out={gone(7)} text="The detail" y={380} size={200} />
 
       {/* 6.9 */}
       <Eyebrow on={at(8)} out={gone(8)} text="Muviss · DetailScreen.kt" />
@@ -44,24 +44,24 @@ function BuenoM3_() {
       <Mono on={at(8)} out={gone(8)} y={470} size={34} lines={CODE.detailIf} title={SRC.detailIf} />
 
       {/* 6.10 */}
-      <Capture on={at(9)} out={gone(9)} x={150} y={170} w={BOX.compact.w} h={BOX.compact.h} src={CAP.detailCompact} label="Compact: una columna" todo="El detalle de una serie en ancho compact." />
-      <Capture on={at(9)} out={gone(9)} x={654} y={170} w={BOX.expanded.w} h={BOX.expanded.h} src={CAP.detailExpanded} label="Expanded: póster y texto, en dos columnas" todo="El detalle en ancho expanded (≥ 840 dp)." />
+      <Capture on={at(9)} out={gone(9)} x={150} y={170} w={BOX.compact.w} h={BOX.compact.h} src={CAP.detailCompact} label="Compact: one column" todo="A series detail at compact width." />
+      <Capture on={at(9)} out={gone(9)} x={654} y={170} w={BOX.expanded.w} h={BOX.expanded.h} src={CAP.detailExpanded} label="Expanded: poster and text, in two columns" todo="The detail at expanded width (≥ 840 dp)." />
 
       {/* 6.11 grid */}
       <Eyebrow on={at(10)} out={gone(10)} text="Muviss · SearchScreen.kt" />
       <Mono on={at(10)} out={gone(10)} y={250} size={44} lines={CODE.grid} title={SRC.grid} />
-      <Say on={at(10)} out={gone(10)} text="Las columnas salen del ancho." y={700} size={100} color="var(--accent)" />
+      <Say on={at(10)} out={gone(10)} text="The columns come from the width." y={700} size={100} color="var(--accent)" />
 
       {/* 6.12 caps */}
-      <Eyebrow on={at(11)} out={gone(11)} text="Muviss · topes de ancho" />
+      <Eyebrow on={at(11)} out={gone(11)} text="Muviss · width caps" />
       <Mono on={at(11)} out={gone(11)} y={250} size={32} lines={CODE.detailCap} title={SRC.detailCap} />
       <Mono on={at(11)} out={gone(11)} y={600} size={32} lines={CODE.cardCap} title={SRC.cardCap} />
-      <Say on={at(11)} out={gone(11)} text="Para que se pueda leer." y={830} size={90} color="var(--accent)" />
+      <Say on={at(11)} out={gone(11)} text="So it stays readable." y={830} size={90} color="var(--accent)" />
 
       {/* 6.13 the bug */}
-      <Eyebrow on={at(12)} out={gone(12)} text="Muviss · un bug de verdad (#64)" />
-      <Say on={at(12)} out={gone(12)} text="En tablet, la leyenda" y={300} size={130} />
-      <Say on={at(12)} out={gone(12)} text="de la gráfica se estiraba." y={470} size={130} />
+      <Eyebrow on={at(12)} out={gone(12)} text="Muviss · a real bug (#64)" />
+      <Say on={at(12)} out={gone(12)} text="On a tablet, the legend" y={300} size={120} />
+      <Say on={at(12)} out={gone(12)} text="of the chart stretched." y={470} size={120} />
 
       {/* 6.14 the fix */}
       <Eyebrow on={at(13)} out={gone(13)} text="Muviss · ProfileCharts.kt" />

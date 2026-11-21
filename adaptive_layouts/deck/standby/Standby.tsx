@@ -1,14 +1,14 @@
 import { flags, reducedMotion, Reveal } from 'beatdeck';
 import './standby.css';
 
-const FORMS = ['Móvil', 'Plegable', 'Tablet', 'Escritorio'] as const;
+const FORMS = ['Phone', 'Foldable', 'Tablet', 'Desktop'] as const;
 
 /**
  * 01.standby while people join: one window that never stops resizing — phone, foldable, tablet, desktop — and
  * relayouts its own content (rail ↔ bottom bar, one column ↔ two). An endless loop, no clock: the talk is online and
  * its start is the speaker's click. Verify/screenshots (`?capture=1`), reduced motion and print get one still frame
  * (the tablet size), so captures are deterministic and nothing moves for people who asked for that.
- * Aria-hidden like the rest of the stage; the live region says "La charla va a empezar."
+ * Aria-hidden like the rest of the stage; the live region says "The talk is about to start."
  */
 export function Standby({ on, out }: { on: boolean; out?: boolean }) {
   const still = flags.capture || reducedMotion.get();

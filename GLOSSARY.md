@@ -14,5 +14,5 @@ _Avoid_: OS tag
 The deck a Talk is first built as, usually in English. It lives at the Talk's own path and is the source every Edition is made from.
 
 **Edition**:
-A copy of a Talk's Base deck made for one event, usually in another language, named after the event and year (`ourense26`, `jerez26`). It is made from the frozen Base deck, published under the Base deck's path, and never edited on its own.
+A copy of a Talk's Base deck made for one event, usually in another language, named after the event and year (`ourense26`, `jerez26`, `jaen2026`). It is made from the frozen Base deck, published under the Base deck's path, and never edited on its own.
 _Avoid_: Spanish copy, translated copy, version, i18n
