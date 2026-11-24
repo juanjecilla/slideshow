@@ -4,7 +4,9 @@ Fact-check de las cifras que puede usar el deck. Fecha de consulta: 2026-10-20; 
 
 Leyenda: ✅ leído en la fuente primaria · ⚠️ solo fuente secundaria, o con matiz que hay que decir en voz alta · ❓ sin verificar, no usar en pantalla hasta cerrarlo.
 
-Regla: ninguna cifra entra en una escena sin id aquí. Lo que no esté ✅ lleva el matiz en la nota del beat o se queda como `TODO`.
+Regla: **solo datos reales**. Ninguna cifra entra en una escena sin id aquí y sin ✅. Lo que no se ha podido verificar no se pinta como cifra: pasa a la sección «Abiertas» y se cuenta como lo que es, una preocupación compartida sin respuesta todavía.
+
+Regla antigua (se mantiene): ninguna cifra entra en una escena sin id aquí. Lo que no esté ✅ lleva el matiz en la nota del beat o se queda como `TODO`.
 
 ## R1 — Productividad: lo que se siente frente a lo que se mide
 
@@ -56,7 +58,9 @@ Regla: ninguna cifra entra en una escena sin id aquí. Lo que no esté ✅ lleva
 
 **Cómo usarlo:** la historia de Cap2 se sostiene con R4.1 (✅). Los casos de empresa (R4.3, R4.4) se dicen con "según ha publicado la prensa" o se omiten. Sin importes.
 
-## R5 — Mercado tech en España
+## R5 — Mercado tech en España (cifras sin verificar: ver «Abiertas»; los datos primarios están en R6)
+
+> Desde 2026-11-24 **ninguna fila de R5 se pinta en pantalla**. Quedan aquí como rastro de lo comprobado.
 
 | id | Dato | Estado | Fuente |
 |---|---|---|---|
@@ -67,7 +71,38 @@ Regla: ninguna cifra entra en una escena sin id aquí. Lo que no esté ✅ lleva
 | R5.5 | Barómetro de Talento Digital 2026 (Digitalent Group): 51,7% de empresas prevé menos contratación junior por la IA | ❓ | TODO |
 | R5.6 | ~~Stanford: ≈−20%~~ ❌ no encontrado (checked 2026-11-24). Lo que sí dice "Canaries in the Coal Mine" (Brynjolfsson, Chandar, Chen; rev. 13 nov 2025): −**16%** relativo en el empleo de 22-25 años en las ocupaciones más expuestas a la IA. Matiz (nota de feb 2026): no se puede asegurar causalidad; tipos de interés y otros factores; el dashboard (oct 2026) ya ve ganancias en algunos grupos | ⚠️ visto solo en snippets del sitio del laboratorio; leer el paper antes de pintar | https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine/ |
 
-**Cómo usarlo:** R5.1 con R5.3 para el público junior: "las ofertas junior bajan, y nadie ha demostrado que sea por la IA". Es honesto y tranquiliza sin mentir.
+**Cómo usarlo:** no usar R5 en pantalla. Para el público junior se usa R6.3 (Manfred, primaria) y la pregunta abierta A1.
+
+## R6 — Manfred × TheirStack, Tech Career Report 2026 (primaria ✅, leída entera el 2026-11-24)
+
+Fuente: https://www.getmanfred.com/tech-career-report (texto: `/informe-es.md`, `/informe-en.md`; noviembre 2026). Talento: comunidad Manfred (127.665 profesionales). Ofertas: 167.645 ofertas tech de los últimos 12 meses (TheirStack). Encuesta «IA en desarrollo 2026»: 756 respuestas, 7 sep–18 oct 2026.
+**Licencia CC BY-NC 4.0**: cita obligatoria como «Tech Career Report 2026, Manfred × TheirStack» con enlace; uso no comercial (una charla gratuita de comunidad lo es; si el uso cambia, revisar). La cita va en pantalla en cada beat con cifra de R6.
+
+| id | Dato | Estado | Matiz obligatorio (se dice en el mismo beat o el siguiente) |
+|---|---|---|---|
+| R6.1 | **98%** usa IA en su trabajo diario y **86%** dice que le hace más productivo; solo el **20%** ha recibido formación de su empresa (45% se formó solo, 35% sin formación) | ✅ | Muestra autoseleccionada de la comunidad Manfred: 56% con más de 10 años de experiencia y 98% ya usa IA. No representa el mercado |
+| R6.2 | Solo el **21%** usa el código generado casi sin tocarlo. Entre un 45% y un 51% cree que la IA acabará con la programación «pura» (tanto quien empieza como quien lleva 20+ años) | ✅ | misma muestra |
+| R6.3 | Solo el **4,4%** de las ofertas busca perfiles junior, mientras **1 de cada 5** profesionales tiene menos de 2 años de experiencia. La mediana junior es **25.500 €**, casi el salario mediano de España (24.497 €, INE 2024) | ✅ | «Junior» = título con junior/trainee/intern/graduate, contado una vez por empresa y mes |
+| R6.4 | En ofertas de Manfred, las abiertas a menos de 2 años de experiencia pasaron del **7,8% (2022) a menos del 1% (2026)**; las que piden 5+ años, del **24% al 60%** | ✅ | Son ofertas de clientes de Manfred, no todo el mercado («siguen de cerca la tendencia del sector», dice el informe). El informe da «menos de 1%» y «0,5%» en dos sitios: decir «menos del 1%». No dice que la causa sea la IA |
+| R6.5 | De las ofertas que indican años, el **55,5%** pide de 2 a 4 años; solo **3 de cada 100** aceptan menos de 2 | ✅ | Mercado completo (TheirStack); mínimo de años que indica cada oferta |
+| R6.6 | Ofertas con IA en el título: **1,5% (2023) → 10,5% (2026)**. Las que mencionan agentes de IA se multiplicaron por **8,3** en un año. La mayor brecha oferta/talento del informe es la IA (**5,5×**) | ✅ | El índice de tensión es dirección y orden, no una ratio exacta. «IA en la descripción» (15,7%) no es «IA en el título» |
+| R6.7 | El **84%** permitiría IA en una prueba técnica (52% sí, 32% con límites, 16% no). El **46%** de las empresas con las que habló Manfred rediseñó su prueba por la IA (**6 de 13**) y el 67% de esas (**4 de 6**) eliminó la prueba para casa o el algoritmo | ✅ | **n = 13 empresas**: muestra pequeña y no representativa. Decir «6 de 13», nunca solo «46%». Los ejemplos Meta/Canva/Shopify son públicos, no datos de Manfred |
+| R6.8 | «Dos mercados bajo un nombre»: un puesto sénior en big tech cobra **×3,5** (con variable; más del doble solo en base) frente a una consultora pequeña. Solo el **10,3%** de las ofertas de desarrollo publica salario | ✅ | La mediana engaña: lo que cambia el salario es el tipo de empresa, no el tamaño |
+| R6.9 | Cita anónima de Manfred (responsable de ingeniería, scaleup de software): «The bottleneck is now in the review.» El cuello de botella pasó de escribir código a revisarlo | ✅ como cita de la entrevista; ⚠️ como tendencia | Es cualitativa, de las conversaciones de Manfred. No es una cifra |
+
+**Cómo usarlo:** Cap1 gana R6.1 (todo el mundo la usa, casi nadie la ha enseñado) y R6.2. Cap2 sustituye el bloque de España por R6.3+R6.4 («la primera barra de la escalera»), siempre con su matiz y sin atribuir causa. Cap3 usa R6.7+R6.9 («lo que se pide ahora es criterio: dirigir, revisar, defender») y R6.8 para «hacia arriba».
+
+## Abiertas — sin respuesta verificada, y lo sabemos todos
+
+No se pintan como cifra. Se cuentan como pregunta abierta y compartida: nadie tiene la respuesta todavía y casi todos tenemos la misma preocupación. Es honesto y encaja con el tono (el narrador no se las sabe todas).
+
+| id | Pregunta abierta | Qué sí hay (verificado) | Qué falta |
+|---|---|---|---|
+| A1 | ¿Está la IA cerrando la puerta de entrada a los juniors? | R6.3, R6.4: la puerta se estrecha y se mueve (ofertas <2 años: 7,8% → <1%). Manfred: «la IA no cerrará la puerta junior: la moverá» (es su apuesta, no un dato) | Causalidad. DigitalES −33% (R5.1) solo en prensa; Stanford −16% (R5.6) es de EE. UU. y los autores no aseguran causalidad; BBVA/Fedea (R5.3) no ve destrucción neta de empleo |
+| A2 | ¿Los despidos «por la IA» son por la IA? | R3.2, R3.3: Challenger cuenta motivos declarados y planes anunciados | R3.6: «AI-washing» sin estudio serio |
+| A3 | ¿La IA nos hace más rápidos de verdad? | R1.1–R1.4: lo que se siente (24%/20%) frente a lo que se mide (19%), con intervalos que incluyen el cero | Nadie sabe medirlo aún (METR lo dice) |
+| A4 | ¿Habrá topes de tokens y qué pasará con la presión? | R4.1: Mosseri espera topes; hoy Meta no los tiene | Ningún dato de costes por ingeniero verificado (R4.6) |
+| A5 | ¿Nos formará la empresa? | R6.1: solo el 20% ha recibido formación | Manfred apuesta a que se negociará como el remoto (opinión) |
 
 ## Frases que no podemos decir
 
@@ -76,7 +111,9 @@ Regla: ninguna cifra entra en una escena sin id aquí. Lo que no esté ✅ lleva
 - Importes concretos de facturas por empresa (R4.6).
 - "InfoJobs −41%" (R5.4) y "Stanford −20%" (R5.6): las cifras no existen en las fuentes.
 - "BBVA/Fedea dicen que no se puede atribuir a la IA" como cita literal (R5.3).
-- "Los juniors están acabados" (R5.3).
+- "Los juniors están acabados" (R5.3, R6.4: no hay causa demostrada).
+- "El 46% de las empresas ha cambiado sus pruebas" sin decir "6 de 13" (R6.7).
+- "El 98% de los devs usa IA" sin decir que es la comunidad Manfred (R6.1).
 
 ## Pendiente de cerrar antes del content freeze
 
