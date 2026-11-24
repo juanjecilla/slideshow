@@ -1,6 +1,6 @@
 # research — (progr)Amar en tiempos revueltos
 
-Fact-check de las cifras que puede usar el deck. Fecha de consulta: 2026-10-20. `scenes.ts` cita estos ids en `ref`.
+Fact-check de las cifras que puede usar el deck. Fecha de consulta: 2026-10-20; segunda pasada de verificación 2026-11-24 (búsqueda web, snippets de resultados: **no** se han leído los informes primarios, salvo indicación). `scenes.ts` cita estos ids en `ref`.
 
 Leyenda: ✅ leído en la fuente primaria · ⚠️ solo fuente secundaria, o con matiz que hay que decir en voz alta · ❓ sin verificar, no usar en pantalla hasta cerrarlo.
 
@@ -48,7 +48,7 @@ Regla: ninguna cifra entra en una escena sin id aquí. Lo que no esté ✅ lleva
 | id | Dato | Estado | Fuente |
 |---|---|---|---|
 | R4.1 | Adam Mosseri (Meta), Lenny's Podcast, citado por TechCrunch 14 jul 2026: "the burn rate of a strong engineer might be the same as their salary", "you're going to probably need to put in some caps" y "It's not that hard to build a token incinerator". Dijo que hoy Meta no tiene topes | ✅ cita leída en TechCrunch (secundaria de la entrevista, no el audio) | https://techcrunch.com/2026/07/14/metas-adam-mosseri-says-ai-token-budgets-could-soon-be-capped-per-engineer/ |
-| R4.2 | Meta cerró un ranking interno de gasto en tokens | ⚠️ lo cuenta TechCrunch; Mosseri lo confirma ("silly things") | misma |
+| R4.2 | Meta cerró un ranking interno de gasto en tokens (abr 2026, a los pocos días de que The Information lo publicara; top 250 usuarios). Matiz: Meta dijo a Fortune que no pidió cerrarlo; el aviso en la página citaba filtraciones de datos | ⚠️ TechCrunch + Fortune (checked 2026-11-24) | misma; https://fortune.com/2026/04/09/meta-killed-employee-ai-token-dashboard/ |
 | R4.3 | Uber agotó el presupuesto de IA para código de todo 2026 hacia abril y limitó el gasto por empleado | ⚠️ TechCrunch / The Information; sin importe verificado | misma |
 | R4.4 | Microsoft retiró licencias de Claude Code y movió ingenieros a Copilot CLI | ⚠️ TechCrunch; otras fuentes dicen que puso presupuestos por división: contradicción | misma |
 | R4.5 | GitHub Copilot pasa a facturación por uso el 1 jun 2026 | ⚠️ una sola fuente secundaria; confirmar en el changelog de GitHub | TODO |
@@ -60,12 +60,12 @@ Regla: ninguna cifra entra en una escena sin id aquí. Lo que no esté ✅ lleva
 
 | id | Dato | Estado | Fuente |
 |---|---|---|---|
-| R5.1 | DigitalES, 4.ª edición de "Radiografía de Empleos y Sectores Emergentes" (28 may 2026; datos de Job Market Insights, InfoJobs e Hirint): ofertas para programadores **junior −33%** en el último año, **sénior +13%** | ⚠️ leído en prensa (El Diario de Madrid); falta el informe | https://www.eldiariodemadrid.es/articulo/economia/inteligencia-artificial-empleo-programadores-digitales-ofertas-junior-senior/20260528154252132123.html |
+| R5.1 | (checked 2026-11-24: la cifra −33%/+13% la repiten varios medios — dplnews, interempresas, ecosistemastartup — con datos de Job Market Insights, InfoJobs e Hirint; **el informe primario de DigitalES no se ha localizado**, sigue ⚠️.) DigitalES, 4.ª edición de "Radiografía de Empleos y Sectores Emergentes" (28 may 2026; datos de Job Market Insights, InfoJobs e Hirint): ofertas para programadores **junior −33%** en el último año, **sénior +13%** | ⚠️ leído en prensa (El Diario de Madrid); falta el informe | https://www.eldiariodemadrid.es/articulo/economia/inteligencia-artificial-empleo-programadores-digitales-ofertas-junior-senior/20260528154252132123.html |
 | R5.2 | Ofertas que piden conocimientos de herramientas de IA: 8.713 convocatorias, **+64%** interanual | ⚠️ misma | misma |
-| R5.3 | **Matiz obligatorio.** BBVA Research / Fedea (sep 2026): el dato no permite atribuir la caída a la IA; la exposición es mayor en 25-34 años que en menores de 25 | ⚠️ solo vía agregadores | TODO: leer la nota original |
-| R5.4 | InfoJobs: −41% de vacantes de primer empleo para programadores junior | ❓ cifra citada por una fuente secundaria; **no usar** | TODO |
+| R5.3 | **Matiz obligatorio.** BBVA Research / Fedea (sep 2026): por ahora la IA no destruye empleo neto en España; los jóvenes son el grupo más expuesto (puestos de entrada). Felgueroso (Fedea): "no se observa desplazamiento del empleo debido a la IA". **La frase "no permite atribuir la caída a la IA" NO se ha encontrado** (checked 2026-11-24): no decirla como cita | ⚠️ prensa; el informe existe en BBVA Research, sin leer | https://www.bbvaresearch.com/publicaciones/espana-ia-y-empleo-senales-tempranas-de-ajuste/ |
+| R5.4 | ~~InfoJobs: −41% de vacantes de primer empleo para programadores junior~~ | ❌ refutado (checked 2026-11-24): no aparece en ninguna fuente. El 41% del informe de DigitalES es el porcentaje de ofertas que piden competencias personales (34% en 2024). **Descartado** | https://dplnews.com/?p=318126 |
 | R5.5 | Barómetro de Talento Digital 2026 (Digitalent Group): 51,7% de empresas prevé menos contratación junior por la IA | ❓ | TODO |
-| R5.6 | Stanford AI Index 2026: empleo de desarrolladores de EE. UU. de 22 a 25 años, ≈−20% desde 2024 | ❓ | TODO |
+| R5.6 | ~~Stanford: ≈−20%~~ ❌ no encontrado (checked 2026-11-24). Lo que sí dice "Canaries in the Coal Mine" (Brynjolfsson, Chandar, Chen; rev. 13 nov 2025): −**16%** relativo en el empleo de 22-25 años en las ocupaciones más expuestas a la IA. Matiz (nota de feb 2026): no se puede asegurar causalidad; tipos de interés y otros factores; el dashboard (oct 2026) ya ve ganancias en algunos grupos | ⚠️ visto solo en snippets del sitio del laboratorio; leer el paper antes de pintar | https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine/ |
 
 **Cómo usarlo:** R5.1 con R5.3 para el público junior: "las ofertas junior bajan, y nadie ha demostrado que sea por la IA". Es honesto y tranquiliza sin mentir.
 
@@ -74,6 +74,8 @@ Regla: ninguna cifra entra en una escena sin id aquí. Lo que no esté ✅ lleva
 - "La IA te hace más lento" (R1.3, R1.4).
 - "La IA ha dejado sin trabajo a X personas" (R3.3).
 - Importes concretos de facturas por empresa (R4.6).
+- "InfoJobs −41%" (R5.4) y "Stanford −20%" (R5.6): las cifras no existen en las fuentes.
+- "BBVA/Fedea dicen que no se puede atribuir a la IA" como cita literal (R5.3).
 - "Los juniors están acabados" (R5.3).
 
 ## Pendiente de cerrar antes del content freeze
@@ -81,5 +83,5 @@ Regla: ninguna cifra entra en una escena sin id aquí. Lo que no esté ✅ lleva
 - R1.5/R1.6: leer el informe DORA 2025.
 - R3.6, R3.7: fuente seria para "AI-washing" y casos con nombre.
 - R4.5: changelog de GitHub.
-- R5.1-R5.6: informe de DigitalES y nota de BBVA Research/Fedea.
+- R5.1-R5.6: informe de DigitalES (no localizado el 2026-11-24) y nota de BBVA Research/Fedea (localizada, sin leer). Si no se leen antes del congelado de contenido, R5.1/R5.3/R5.6 salen de pantalla y quedan como nota hablada.
 - Anécdotas del ponente ("presión por usar IA", "cómo lo gestioné"): `TODO`, las cuenta el ponente.
