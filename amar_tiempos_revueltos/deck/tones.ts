@@ -1,12 +1,6 @@
-/** Scene id → tone (themes/poster.css). Scenes not listed get the default, paper. DRAFT: the cast tones come with the visual direction. */
-export const TONES: Record<string, string> = {
-  '01': 'paper',
-  '02': 'violet',
-  '03': 'sun',
-  '04': 'night',
-  '05': 'teal',
-  '06': 'paper',
-  '07': 'night',
-  '08': 'coral',
-  '09': 'stone',
-};
+import { CONTENT } from './content';
+
+/** Scene id → tone (themes/poster.css). Declared per scene in content.ts. */
+export const TONES: Record<string, string> = Object.fromEntries(CONTENT.map((s) => [s.id, s.tone]));
+/** Scene indexes that carry no giant numeral behind the content. */
+export const NO_NUMERAL = CONTENT.map((s, i) => (s.numeral === false ? i : -1)).filter((i) => i >= 0);

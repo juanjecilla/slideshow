@@ -1,46 +1,25 @@
-/** What a screen reader announces at each beat: `<scene id>.<beat name>` → a short text equivalent of the screen. Never the speaker notes. */
-export const SR: Record<string, string> = {
-  '01.standby': 'TODO: text equivalent of this beat. (OPEN)',
-  '01.title': 'TODO: text equivalent of this beat. (OPEN)',
-  '01.previously': 'TODO: text equivalent of this beat. (OPEN)',
-  '01.hands': 'TODO: text equivalent of this beat. (OPEN)',
-  '02.cast': 'TODO: text equivalent of this beat. (REPARTO)',
-  '02.la-dev': 'TODO: text equivalent of this beat. (REPARTO)',
-  '02.direccion': 'TODO: text equivalent of this beat. (REPARTO)',
-  '02.agente-ia': 'TODO: text equivalent of this beat. (REPARTO)',
-  '02.la-factura': 'TODO: text equivalent of this beat. (REPARTO)',
-  '02.el-equipo': 'TODO: text equivalent of this beat. (REPARTO)',
-  '03.chapter': 'TODO: text equivalent of this beat. (CAP 1 · LA LLEGADA)',
-  '03.promise': 'TODO: text equivalent of this beat. (CAP 1 · LA LLEGADA)',
-  '03.feeling': 'TODO: text equivalent of this beat. (CAP 1 · LA LLEGADA)',
-  '03.measure': 'TODO: text equivalent of this beat. (CAP 1 · LA LLEGADA)',
-  '03.update': 'TODO: text equivalent of this beat. (CAP 1 · LA LLEGADA)',
-  '03.trust': 'TODO: text equivalent of this beat. (CAP 1 · LA LLEGADA)',
-  '03.amplifier': 'TODO: text equivalent of this beat. (CAP 1 · LA LLEGADA)',
-  '03.cliffhanger': 'TODO: text equivalent of this beat. (CAP 1 · LA LLEGADA)',
-  '04.chapter': 'TODO: text equivalent of this beat. (CAP 2 · LA CRISIS)',
-  '04.previously': 'TODO: text equivalent of this beat. (CAP 2 · LA CRISIS)',
-  '04.layoffs': 'TODO: text equivalent of this beat. (CAP 2 · LA CRISIS)',
-  '04.layoffs-caveat': 'TODO: text equivalent of this beat. (CAP 2 · LA CRISIS)',
-  '04.bill': 'TODO: text equivalent of this beat. (CAP 2 · LA CRISIS)',
-  '04.incinerator': 'TODO: text equivalent of this beat. (CAP 2 · LA CRISIS)',
-  '04.pressure': 'TODO: text equivalent of this beat. (CAP 2 · LA CRISIS)',
-  '04.junior-es': 'TODO: text equivalent of this beat. (CAP 2 · LA CRISIS)',
-  '04.junior-caveat': 'TODO: text equivalent of this beat. (CAP 2 · LA CRISIS)',
-  '04.cliffhanger': 'TODO: text equivalent of this beat. (CAP 2 · LA CRISIS)',
-  '05.chapter': 'TODO: text equivalent of this beat. (CAP 3 · ¿Y AHORA QUÉ?)',
-  '05.previously': 'TODO: text equivalent of this beat. (CAP 3 · ¿Y AHORA QUÉ?)',
-  '05.yo-limites': 'TODO: text equivalent of this beat. (CAP 3 · ¿Y AHORA QUÉ?)',
-  '05.yo-aprender': 'TODO: text equivalent of this beat. (CAP 3 · ¿Y AHORA QUÉ?)',
-  '05.equipo-acuerdos': 'TODO: text equivalent of this beat. (CAP 3 · ¿Y AHORA QUÉ?)',
-  '05.equipo-metricas': 'TODO: text equivalent of this beat. (CAP 3 · ¿Y AHORA QUÉ?)',
-  '05.carrera': 'TODO: text equivalent of this beat. (CAP 3 · ¿Y AHORA QUÉ?)',
-  '05.arriba': 'TODO: text equivalent of this beat. (CAP 3 · ¿Y AHORA QUÉ?)',
-  '05.gestione': 'TODO: text equivalent of this beat. (CAP 3 · ¿Y AHORA QUÉ?)',
-  '06.reconciliation': 'TODO: text equivalent of this beat. (FINAL DE TEMPORADA)',
-  '06.line': 'TODO: text equivalent of this beat. (FINAL DE TEMPORADA)',
-  '07.season-2': 'TODO: text equivalent of this beat. (POSTCRÉDITOS)',
-  '07.monday': 'TODO: text equivalent of this beat. (POSTCRÉDITOS)',
-  '08.continuara': 'TODO: text equivalent of this beat. (CONTINUARÁ…)',
-  '09.sources': 'TODO: text equivalent of this beat. (BACKUP)',
-};
+import { CAST, CONTENT, type View } from './content';
+import { config } from './deck.config';
+
+/** Text equivalent of a beat, built from what is on screen. Never the speaker notes. */
+function text(v: View): string {
+  const join = (...p: (string | undefined)[]) => p.filter(Boolean).join(' ');
+  switch (v.kind) {
+    case 'standby': return join(v.eyebrow, v.line);
+    case 'title': return join(v.title.join(' '), v.sub, v.author, v.eyebrow);
+    case 'previously': return join(v.eyebrow, v.lines.join(' '));
+    case 'statement': return join(v.eyebrow, v.say.join(' '), v.sub, v.stamp, v.credit && `Source: ${v.credit}.`);
+    case 'numbers': return join(v.eyebrow, v.say, v.rows.map((r) => `${r.big} ${r.label}.`).join(' '), v.caveat, v.credit && `Source: ${v.credit}.`);
+    case 'quote': return join(v.eyebrow, v.quote, v.by, v.sub, v.credit && `Source: ${v.credit}.`);
+    case 'chapter': return join(v.n, v.title, v.line);
+    case 'cast': return join('The cast:', CAST.join(', ') + '.', v.desc && `${CAST[v.lit]}: ${v.desc}`);
+    case 'list': return join(v.eyebrow, v.say, v.items.join('. '), v.foot, v.stamp, v.credit && `Source: ${v.credit}.`);
+    case 'todo': return join('To do.', v.eyebrow, v.what);
+    case 'qr': return join(v.eyebrow, v.say.join(' '), `QR code to ${config.qrUrl}.`);
+  }
+}
+
+/** `<scene id>.<beat name>` → announcement (LiveRegion). */
+export const SR: Record<string, string> = Object.fromEntries(
+  CONTENT.flatMap((s) => s.beats.map((b) => [`${s.id}.${b.name}`, text(b.v)] as const)),
+);

@@ -5,10 +5,10 @@
 export const config = {
   title: '(progr)Amar en tiempos revueltos',
   /** One line under the title. Empty = none. */
-  subtitle: '',
+  subtitle: 'Writing code, and looking after people, in turbulent times',
   author: 'Juanje Cilla',
   /** Destination of the QR on the closing screen. "TODO" = no QR (the presenter view warns). Never guess it. */
-  qrUrl: 'TODO',
+  qrUrl: 'https://juanjecilla.github.io/slideshow/amar_tiempos_revueltos/',
   /** Shown under the QR, e.g. "example.com/talk". */
   qrLabel: '',
 } as const;

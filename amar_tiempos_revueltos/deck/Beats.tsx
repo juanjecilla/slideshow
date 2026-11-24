@@ -1,0 +1,197 @@
+import { QR, Reveal, Scene, useScene } from 'beatdeck';
+import { config } from './deck.config';
+import { CAST, CONTENT, type View } from './content';
+import { Stamp } from './poster';
+
+/** Generic renderer: every beat of content.ts is drawn from its `View`. Stage 1920×1080, safe margin 120/100. */
+const X = 150;
+const W = 1620;
+/** Poster statements never wrap (white-space: nowrap): pick the size so the longest line fits `maxW`. */
+const fit = (lines: string[], maxW: number, max: number, min = 56, k = 0.58) =>
+  Math.max(min, Math.min(max, Math.floor(maxW / (Math.max(...lines.map((l) => l.length)) * k))));
+
+const Eyebrow = ({ on, out, text, y = 110 }: { on: boolean; out: boolean; text: string; y?: number }) => (
+  <Reveal on={on} out={out} x={X} y={y}><div className="t-eyebrow">{text}</div></Reveal>
+);
+const Credit = ({ on, out, text }: { on: boolean; out: boolean; text?: string }) =>
+  text ? <Reveal on={on} out={out} x={X} y={945} delay={300}><div className="t-meta" style={{ fontSize: 22, letterSpacing: '0.06em' }}>{text}</div></Reveal> : null;
+const Tag = ({ on, out, text }: { on: boolean; out: boolean; text?: string }) =>
+  text ? <Stamp on={on} out={out} text={text} x={1440} y={92} /> : null;
+
+function BeatView({ v, on, out }: { v: View; on: boolean; out: boolean }) {
+  switch (v.kind) {
+    case 'standby':
+      return (
+        <>
+          <Eyebrow on={on} out={out} text={v.eyebrow} y={250} />
+          {v.line && <Reveal on={on} out={out} x={X} y={330}><div className="t-editorial" style={{ fontSize: 72 }}>{v.line}</div></Reveal>}
+        </>
+      );
+    case 'title': {
+      const size = fit(v.title, W, 170, 90);
+      return (
+        <>
+          <Eyebrow on={on} out={out} text={v.eyebrow} y={200} />
+          <Reveal on={on} out={out} x={X} y={270}>
+            <div className="t-statement" style={{ fontSize: size }}>{v.title[0]}</div>
+            <div className="t-statement" style={{ fontSize: size, color: 'var(--accent)' }}>{v.title[1]}</div>
+          </Reveal>
+          <Reveal on={on} out={out} x={X} y={270 + size * 1.9 + 50} delay={200}><div className="t-editorial" style={{ fontSize: 50, maxWidth: 1500 }}>{v.sub}</div></Reveal>
+          <Reveal on={on} out={out} x={X} y={900} delay={300}><div className="t-meta" style={{ fontSize: 34 }}>{v.author}</div></Reveal>
+        </>
+      );
+    }
+    case 'previously': {
+      const size = fit(v.lines, W, 120, 70);
+      return (
+        <>
+          <Eyebrow on={on} out={out} text={v.eyebrow} />
+          {v.lines.map((l, i) => (
+            <Reveal key={l} on={on} out={out} x={X} y={250 + i * (size * 1.5)} delay={i * 250}><div className="t-statement" style={{ fontSize: size }}>{l}</div></Reveal>
+          ))}
+        </>
+      );
+    }
+    case 'statement': {
+      const size = fit(v.say, W, 128, 64);
+      const h = v.say.length * size * 0.96;
+      return (
+        <>
+          {v.eyebrow && <Eyebrow on={on} out={out} text={v.eyebrow} />}
+          <Tag on={on} out={out} text={v.stamp} />
+          <Reveal on={on} out={out} x={X} y={v.eyebrow ? 230 : 300}>
+            {v.say.map((l, i) => <div key={l} className="t-statement" style={{ fontSize: size, color: v.accent === i ? 'var(--accent)' : undefined }}>{l}</div>)}
+          </Reveal>
+          {v.sub && <Reveal on={on} out={out} x={X} y={(v.eyebrow ? 230 : 300) + h + 70} delay={200}><div className="t-editorial" style={{ fontSize: 54, maxWidth: 1500 }}>{v.sub}</div></Reveal>}
+          <Credit on={on} out={out} text={v.credit} />
+        </>
+      );
+    }
+    case 'numbers': {
+      const n = v.rows.length;
+      const gap = 50;
+      const colW = (W - (n - 1) * gap) / n;
+      const size = Math.floor(Math.min(n === 1 ? 250 : n === 2 ? 270 : 230, colW / (Math.max(...v.rows.map((r) => r.big.length)) * 0.62)));
+      return (
+        <>
+          <Eyebrow on={on} out={out} text={v.eyebrow} />
+          <Reveal on={on} out={out} x={X} y={170}><div className="t-statement" style={{ fontSize: fit([v.say], W, 80, 48) }}>{v.say}</div></Reveal>
+          {v.rows.map((r, i) => (
+            <Reveal key={r.big + i} on={on} out={out} x={X + i * (colW + gap)} y={400} delay={150 + i * 150}>
+              <div className="t-numeral" style={{ fontSize: size, color: r.accent ? 'var(--accent)' : undefined }}>{r.big}</div>
+              <div style={{ width: Math.min(colW - 40, 420), height: 8, background: 'var(--ink)', margin: '30px 0 24px' }} />
+              <div className="t-editorial" style={{ fontSize: n === 1 ? 52 : 44, maxWidth: n === 1 ? 1200 : colW - 20 }}>{r.label}</div>
+            </Reveal>
+          ))}
+          {v.caveat && <Reveal on={on} out={out} x={X} y={850} delay={450}><div className="t-editorial" style={{ fontSize: 38, maxWidth: W, color: 'var(--ink-2)' }}>{v.caveat}</div></Reveal>}
+          <Credit on={on} out={out} text={v.credit} />
+        </>
+      );
+    }
+    case 'quote': {
+      const size = 84;
+      const lines = Math.ceil((v.quote.length * size * 0.5) / 1550);
+      return (
+        <>
+          {v.eyebrow && <Eyebrow on={on} out={out} text={v.eyebrow} />}
+          <Reveal on={on} out={out} x={X} y={250}><div className="t-editorial" style={{ fontSize: size, maxWidth: 1550 }}>{v.quote}</div></Reveal>
+          <Reveal on={on} out={out} x={X} y={250 + lines * size * 1.15 + 40} delay={250}><div className="t-meta" style={{ fontSize: 28 }}>{v.by}</div></Reveal>
+          {v.sub && <Reveal on={on} out={out} x={X} y={700} delay={450}><div className="t-statement" style={{ fontSize: fit([v.sub], W, 78, 44), color: 'var(--accent)' }}>{v.sub}</div></Reveal>}
+          <Credit on={on} out={out} text={v.credit} />
+        </>
+      );
+    }
+    case 'chapter': {
+      const size = fit([v.title], W, 300, 120);
+      return (
+        <>
+          <Reveal on={on} out={out} x={X} y={220}><div className="t-meta" style={{ fontSize: 44 }}>{v.n}</div></Reveal>
+          <Reveal on={on} out={out} x={X} y={300}><div className="t-statement" style={{ fontSize: size }}>{v.title}</div></Reveal>
+          {v.line && (
+            <Reveal on={on} out={out} x={X + 8} y={300 + size + 60} delay={200}>
+              <div style={{ width: 220, height: 14, background: 'var(--ink)', marginBottom: 36 }} />
+              <div className="t-editorial" style={{ fontSize: 62, maxWidth: 1400 }}>{v.line}</div>
+            </Reveal>
+          )}
+        </>
+      );
+    }
+    case 'cast':
+      return (
+        <>
+          <Eyebrow on={on} out={out} text="The cast" />
+          {CAST.map((name, i) => (
+            <Reveal key={name} on={on} out={out} x={X} y={190 + i * 118} delay={i * 90}>
+              <div className="t-statement" style={{ fontSize: 104, opacity: v.lit < 0 || v.lit === i ? 1 : 0.3, color: v.lit === i ? 'var(--accent)' : undefined, transition: 'opacity 300ms, color 300ms' }}>{name}</div>
+            </Reveal>
+          ))}
+          {v.desc && <Reveal on={on} out={out} x={X} y={850} delay={150}><div className="t-editorial" style={{ fontSize: 58, maxWidth: W }}>{v.desc}</div></Reveal>}
+        </>
+      );
+    case 'list': {
+      const size = v.small ? 38 : 52;
+      const gap = v.small ? 110 : v.items.length > 3 ? 120 : 140;
+      const sayH = v.say ? fit([v.say], W, 100, 56) : 0;
+      const top = 110 + (v.say ? 80 + sayH + 50 : 110);
+      return (
+        <>
+          <Eyebrow on={on} out={out} text={v.eyebrow} />
+          <Tag on={on} out={out} text={v.stamp} />
+          {v.say && <Reveal on={on} out={out} x={X} y={190}><div className="t-statement" style={{ fontSize: sayH }}>{v.say}</div></Reveal>}
+          {v.items.map((it, i) => {
+            const [head, rest] = it.includes(' — ') ? it.split(' — ') : [null, it];
+            const dim = it.startsWith('…');
+            return (
+              <Reveal key={it} on={on} out={out} x={X} y={top + i * gap} delay={150 + i * 150}>
+                <div className="t-editorial" style={{ fontSize: size, maxWidth: 1500, opacity: dim ? 0.6 : 1, display: 'flex', gap: 28 }}>
+                  <span style={{ color: 'var(--accent)' }}>■</span>
+                  <span>{head && <b style={{ fontWeight: 800 }}>{head} · </b>}{rest}</span>
+                </div>
+              </Reveal>
+            );
+          })}
+          {v.foot && <Reveal on={on} out={out} x={X} y={850} delay={600}><div className="t-editorial" style={{ fontSize: 36, maxWidth: W, color: 'var(--ink-2)' }}>{v.foot}</div></Reveal>}
+          <Credit on={on} out={out} text={v.credit} />
+        </>
+      );
+    }
+    case 'todo':
+      return (
+        <>
+          <Eyebrow on={on} out={out} text={v.eyebrow} />
+          <Reveal on={on} out={out} x={X} y={250}>
+            <div style={{ border: '8px dashed var(--ink)', padding: '60px 80px', width: 1500 }}>
+              <div className="t-statement" style={{ fontSize: 200 }}>TODO</div>
+              <div className="t-editorial" style={{ fontSize: 56, marginTop: 30 }}>{v.what}</div>
+            </div>
+          </Reveal>
+        </>
+      );
+    case 'qr': {
+      const size = fit(v.say, 1000, 128, 64);
+      return (
+        <>
+          <Eyebrow on={on} out={out} text={v.eyebrow} />
+          <Reveal on={on} out={out} x={X} y={260}>{v.say.map((l) => <div key={l} className="t-statement" style={{ fontSize: size }}>{l}</div>)}</Reveal>
+          <Reveal on={on} out={out} x={X} y={260 + v.say.length * size * 0.96 + 60} delay={200}><div className="t-meta" style={{ fontSize: 22, letterSpacing: '0.04em' }}>{v.sub}</div></Reveal>
+          <Reveal on={on} out={out} x={1220} y={230} delay={250}><QR url={config.qrUrl} size={520} /></Reveal>
+        </>
+      );
+    }
+  }
+}
+
+function SceneView({ index }: { index: number }) {
+  const { here, b } = useScene();
+  return (
+    <>
+      {CONTENT[index].beats.map((beat, k) => <BeatView key={beat.name + k} v={beat.v} on={here && b === k} out={here && b > k} />)}
+    </>
+  );
+}
+
+export const Scenes = () => (
+  <>
+    {CONTENT.map((_, i) => <Scene key={i} index={i}><SceneView index={i} /></Scene>)}
+  </>
+);
