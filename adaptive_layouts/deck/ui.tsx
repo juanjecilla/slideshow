@@ -56,7 +56,7 @@ export function Line({ on, out, text, x = 150, y, size = 56, dim }: {
 
 /**
  * Title card of a part of the talk, inverted like a film intertitle: night ground, sand type.
- * `part` is the original deck's section ("1 · Problemática"), `name` the western title ("El Malo").
+ * `part` is the original deck's section ("1 · The problem"), `name` the western title ("The Bad").
  */
 export function Intertitle({ on, out, part, name }: { on: boolean; out?: boolean; part: string; name: string }) {
   // The deck chrome (title // scene, beat ticks) is dark ink: while a night card is up it switches to sand (themes/western.css).

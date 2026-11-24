@@ -5,7 +5,7 @@
 export const config = {
   title: 'Adaptive Layouts',
   /** One line under the title. Empty = none. */
-  subtitle: 'Adaptarse o Morir',
+  subtitle: 'Adapt or Die',
   author: 'Juanje Cilla',
   role: 'Senior Software Engineer',
   event: 'DevFest Jaén 2026 · GDG Jaén · Online · 21 Nov 2026',
@@ -20,7 +20,7 @@ export const config = {
   },
   /** Date every link above was last opened and found live. Re-check the week of the talk. */
   linksChecked: '2026-11-11',
-  /** Destination of the QR on the closing screen. Where the talk is deployed (D9); confirm after the first deploy. */
+  /** Destination of the QR on the closing screen: the English base deck. The Spanish edition `jaen2026` points to its own path. */
   qrUrl: 'https://juanjecilla.github.io/slideshow/adaptive_layouts/',
   /** Shown under the QR, e.g. "example.com/talk". */
   qrLabel: 'juanjecilla.github.io/slideshow/adaptive_layouts',

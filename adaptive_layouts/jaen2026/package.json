@@ -1,0 +1,47 @@
+{
+  "name": "adaptive-layouts-jaen2026",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Adaptive Layouts · Adaptarse o Morir (edición en español, DevFest Jaén 2026)",
+  "author": "Juanje Cilla",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/build.mjs",
+    "present": "npm run build && vite preview --host 127.0.0.1 --port 4173 --strictPort --open",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
+    "verify": "node scripts/verify.mjs dist artifacts/verify",
+    "shot": "node scripts/shot.mjs",
+    "upgrade": "node scripts/upgrade.mjs",
+    "typecheck": "tsc --noEmit -p .",
+    "example:i18n": "vite --mode i18n",
+    "build:i18n": "node scripts/build.mjs --mode i18n",
+    "verify:i18n": "node scripts/verify.mjs dist-i18n artifacts/verify-i18n",
+    "export": "node scripts/export.mjs dist artifacts/export",
+    "test": "node --test tests/unit/*.test.mjs",
+    "test:browser": "node --test --test-concurrency=1 tests/browser/*.test.mjs",
+    "check:a11y": "node tools/check-a11y.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource/rye": "^5.3.0",
+    "gsap": "^3.15.0",
+    "qrcode": "^1.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "jsqr": "^1.4.0",
+    "playwright-core": "^1.63.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.3",
+    "@hyzyla/pdfium": "^3.0.0",
+    "pdf-lib": "^1.17.1"
+  }
+}

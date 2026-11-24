@@ -22,7 +22,7 @@ export function LiveRegion() {
   const beat = scene?.beats[b];
   const authored = scene && beat ? SR[`${scene.id}.${beat.name}`] : undefined;
   const text = scene && beat ? (authored ?? `${scene.title}, ${beat.name}`) : '';
-  const where = scene && beat ? ` Escena ${scene.id}, paso ${b + 1} de ${scene.beats.length}.` : '';
+  const where = scene && beat ? ` Scene ${scene.id}, step ${b + 1} of ${scene.beats.length}.` : '';
   return (
     <div role="status" aria-live="polite" aria-atomic="true" data-audit="off" data-source={authored ? 'sr' : 'fallback'} style={hidden}>
       {text}
@@ -40,8 +40,8 @@ export function SrNav() {
   const press = (go: () => void) => (e: React.MouseEvent) => { e.stopPropagation(); go(); };
   return (
     <div className="sr-nav" data-audit="off">
-      <button type="button" onClick={press(() => deck.prev())}>Paso anterior</button>
-      <button type="button" onClick={press(() => deck.next())}>Siguiente paso</button>
+      <button type="button" onClick={press(() => deck.prev())}>Previous step</button>
+      <button type="button" onClick={press(() => deck.next())}>Next step</button>
     </div>
   );
 }

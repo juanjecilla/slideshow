@@ -3,6 +3,8 @@
 DevFest Jaén 2026 · GDG Jaén · **online** · 21 Nov 2026 · 1 h (45 min content, 5 min Q&A, margin).
 You share your screen: the stream compresses video, so the deck uses large type and checked contrast (D10).
 
+**Two decks (D32):** this directory is the English base deck (`/slideshow/adaptive_layouts/`). The talk is given from the Spanish edition in `jaen2026/` (`/slideshow/adaptive_layouts/jaen2026/`, its own `npm run present`). Both serve on port 4173: run one at a time. The steps below apply to either.
+
 ## The day before
 
 1. `npm install` (once, with internet) · `npm run present` → `http://127.0.0.1:4173/`. Wi-Fi can be off for the deck.
