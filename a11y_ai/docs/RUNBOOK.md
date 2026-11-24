@@ -1,6 +1,6 @@
 # Runbook — a11y on Android? AI makes it easy
 
-DevFest Jerez de la Frontera · 21 Nov 2026 · Coworking CYCE · 45 min. English deck; the Spanish copy comes later.
+DevFest Jerez de la Frontera · 21 Nov 2026 · Coworking CYCE · 45 min. English is the base deck; the Spanish edition `jerez26/` is what the landing card opens (see *Two decks*). Both are live.
 
 ## Before the talk (the day before)
 
@@ -36,18 +36,15 @@ Two builds sit side by side on the Pixel: `com.codingpit.muviss.a11ybroken` (bra
 | **06.2 audit** | open `.a11ybroken` on the Pixel; **dismiss any system dialog**; in the terminal: `$H/a11y-audit/scripts/dump_tree.sh out settings` then `python3 $H/a11y-audit/scripts/tree_audit.py out/settings.xml --density $(cat out/settings.density)`. With Claude Code: *"Use the a11y-audit skill on the running app. Dump the search, settings and a movie-detail screen and report findings by person."* | settings: 2 × `unlabeled 52x48dp`; search: `EditText unlabeled`; detail: `CheckBox unlabeled` | the slide already shows the outputs (06.2); overview → 14 |
 | **06.3 listen** | `python3 $H/talkback-speak/scripts/speak.py out/settings.xml` | `«unlabeled», checkbox, checked, double tap to activate` | slide 06.3 |
 | **07.2 200 %** | `.a11ytalk` open on Search; `$H/device-toggles/scripts/a11y-device.sh font-scale 2.0`, wait 8 s, `… shot out/200.png` | bottom bar whole words on `.a11ytalk`; open `.a11ybroken` (or the main build) to show `Searc/h`. **Then `reset`** | slides 07.2–07.3 (real captures) |
-| **06.8 / 08.3 on-device** | `.a11ytalk` → a movie → **Describe image** / **Short & simple** | the answer under the buttons, labelled "on your device" | the dashed boxes: replace them with captures before the day. Buttons missing = no AICore: say so, move on |
+| **06.8 / 08.3 on-device** | `.a11ytalk` → a movie → **Describe image** / **Short & simple** | the answer under the buttons, labelled "on your device" | the slides show the real Pixel captures (taken 2026-11-20). Buttons missing = no AICore: say so, move on |
 | **09.2–09.4 motor** | no device: the scan, then the green test on the slides | — | — |
 
 Pre-flight (10 min before): both apps installed, `device-toggles reset`, TalkBack off, animations on, Do Not Disturb on (a notification dialog during a `uiautomator dump` breaks the audit: it showed up as `Muviss isn't responding` once), the terminal font at 24 pt+.
 
-## What to capture on the Pixel (the two dashed boxes in the deck)
+## What was captured on the Pixel (done 2026-11-20)
 
-1. **06.8 "A picture nobody described"** → `Describe image` on a detail backdrop. Screenshot + the text it returns (English).
-2. **08.3 "A button. Nothing leaves the phone."** → `Short & simple` on a synopsis (Spanish and English). Screenshot of the result with its label.
-3. **03.3 the hook** → TalkBack on the unfixed app **with sound**: `adb shell screenrecord` records no audio, so use the phone's own screen recorder (internal audio on) or record the room. Branch `demo/a11y-broken` (pre-#233) is built the same way (`.a11ytalk`).
-
-Drop the files in `deck/assets/`, replace the dashed boxes, rebuild.
+- **06.8** `deck/assets/pixel-describe.png` and **08.3** `pixel-shorten.png`: Gemini Nano on the Pixel 9 Pro, the app's own output (Image Description in English, Rewriting 78 → 36 words).
+- **03.3** `deck/assets/talkback-clip.mp4`: TalkBack on the unfixed build, with sound (Spanish voice, no captions). Made from `adb screenrecord` video plus the Mac mic; originals in `artifacts/talkback-original/` (git-ignored). To redo it: see `docs/DECISIONS.md` R-21.
 
 ## During the talk
 
@@ -79,8 +76,8 @@ If short of time, cut in this order: 01 hands (1.4–1.6, keep the twist 1.7) �
 
 ## Two decks
 
-English is the default (`/slideshow/a11y_ai/`); the Spanish copy is `jerez26/` (`/slideshow/a11y_ai/jerez26/`). Same beat map, notes and captures. Image Description output stays in English (R1.3).
+English is the base deck (`/slideshow/a11y_ai/`). The Spanish **edition** is `jerez26/` (`/slideshow/a11y_ai/jerez26/`) and is what the landing card opens: slides, announcements, alt text and quotes are in Spanish; speaker notes, code and tool output stay English. Same beat map and captures. Image Description output stays in English (R1.3). Present one deck at a time: both serve on port 4173 (`npm run present` in `a11y_ai/` or in `a11y_ai/jerez26/`).
 
 ## Config to check on the day
 
-`deck/deck.config.ts`: title, speaker, event, `qrUrl` (currently `https://github.com/juanjecilla/hephaestus`, **private until 21 Nov**: see RELEASE-CHECKLIST). Rebuild after editing.
+`deck/deck.config.ts`: title, speaker, event, `qrUrl` (currently `https://github.com/juanjecilla/hephaestus`, public since 2026-11-21, checked 2026-11-21). Rebuild after editing.
