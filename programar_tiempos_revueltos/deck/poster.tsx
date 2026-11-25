@@ -90,9 +90,10 @@ export function ToneTheme({ tones }: { tones: Record<string, string> }) {
 
 /** The giant outlined scene number behind the content. Decoration: render it inside <StagePicture> so it is hidden from assistive tech. */
 export function Numeral({ hideOn = [], x = 900, y = -60, size = 900 }: { hideOn?: number[]; x?: number; y?: number; size?: number }) {
-  const { s } = usePos();
+  const { s, b } = usePos();
+  // Only on the opening beat of a scene: behind every beat it is repetitive and competes with the copy.
   return (
-    <div className="poster-numeral" data-audit="off" style={{ left: x, top: y, fontSize: size, opacity: hideOn.includes(s) ? 0 : undefined }}>
+    <div className="poster-numeral" data-audit="off" style={{ left: x, top: y, fontSize: size, opacity: hideOn.includes(s) || b !== 0 ? 0 : undefined }}>
       {String(s + 1).padStart(2, '0')}
     </div>
   );

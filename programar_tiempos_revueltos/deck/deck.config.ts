@@ -7,6 +7,8 @@ export const config = {
   /** One line under the title. Empty = none. */
   subtitle: 'Writing code, and looking after people, in turbulent times',
   author: 'Juanje Cilla',
+  /** Talk start, ISO with offset. Empty = no countdown: the standby just loops (?start=HH:MM rehearses a countdown). */
+  startsAt: '' as string,
   /** Destination of the QR on the closing screen. "TODO" = no QR (the presenter view warns). Never guess it. */
   qrUrl: 'https://juanjecilla.github.io/slideshow/programar_tiempos_revueltos/',
   /** Shown under the QR, e.g. "example.com/talk". */

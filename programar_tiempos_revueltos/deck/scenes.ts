@@ -8,5 +8,5 @@ import { CONTENT } from './content';
 export const SCENES: SceneDef[] = CONTENT.map((s) => ({
   id: s.id,
   title: s.title,
-  beats: s.beats.map((b) => ({ name: b.name, ref: b.ref, note: b.note })),
+  beats: s.beats.map((b) => ({ name: b.name, ref: b.ref, note: b.note, auto: b.auto })),
 }));

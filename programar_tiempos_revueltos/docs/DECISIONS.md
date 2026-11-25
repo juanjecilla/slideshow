@@ -1,7 +1,7 @@
 # DECISIONS — (progr)Amar en tiempos revueltos (DevFest Barcelona 2026)
 
 ## Context
-Nueva charla para **DevFest Barcelona 2026** (28 nov 2026, 30 min + 10 de preguntas). Mismo flujo que `app_functions/` y `a11y_ai/`: grilling → DECISIONS → research → beat map → escenas → verify → RUNBOOK. Es una charla sobre personas y no tiene demo técnica: el hilo es un culebrón (referencia a la serie *Amar en tiempos revueltos*) que sirve para contar datos reales sin ponerse solemne. Rama `talk/programar-tiempos-revueltos-bcn26`, worktree `../Charlas-programar` (renombrados el 2026-11-25). Hoy es 20 oct y quedan 39 días.
+Nueva charla para **DevFest Barcelona 2026** (28 nov 2026, 30 min + 10 de preguntas). Mismo flujo que `app_functions/` y `a11y_ai/`: grilling → DECISIONS → research → beat map → escenas → verify → RUNBOOK. Es una charla sobre personas y no tiene demo técnica: el hilo es un culebrón (referencia a la serie *Amar en tiempos revueltos*) que sirve para contar datos reales sin ponerse solemne. Rama `talk/amar-tiempos-revueltos-barcelona26` (nombre anterior al renombrado de 2026-11-25), worktree `../Charlas-programar`. Hoy es 20 oct y quedan 39 días.
 
 ## Decisiones (grilling cerrado el 20 oct)
 | # | Decisión |
@@ -50,7 +50,7 @@ Nueva charla para **DevFest Barcelona 2026** (28 nov 2026, 30 min + 10 de pregun
 | 08 | CONTINUARÁ…: preguntas | 10 |
 | 09 | BACKUP (última escena, no oculta: el motor no tiene escenas ocultas) | — |
 
-Estado 2026-11-24: deck completo de borrador (47 beats, `npm run verify` en verde). Aún sin cronometrar; 46 beats sin el backup.
+Estado 2026-11-25: 48 beats (47 sin el backup), `npm run verify` y contraste en verde. Aún sin cronometrar. Cap2 tiene 15 beats para ~8 min.
 
 Suma de charla: 30 min.
 
@@ -74,7 +74,8 @@ Suma de charla: 30 min.
 - ~~¿"Póster suizo" = tema Poster o estilo suizo real?~~ Resuelto 2026-11-24: PoC de ambos, **se queda Poster**; el suizo va a beatdeck como issue (#19).
 - Edition ES (`bcn26`): fecha de congelado del Base deck EN (propuesta: 26 nov noche) y quién revisa la traducción.
 - Licencia de Manfred (CC BY-NC 4.0): confirmar que el uso (charla gratuita de comunidad) es no comercial y dejar la cita en cada beat con cifra de R6.
-- Anécdotas del ponente (`TODO`).
+- Standby: elegir prototipo `a` o `b` y borrar el otro (D21).
+- Cap3 niveles «Yo» y «Equipo»: el texto sigue siendo borrador.
 - Qué recortar de Cap3 si los cuatro niveles no caben en 8 min.
-- `qrUrl` del cierre (`TODO`, no inventar).
+- Tarjeta en la landing (aún no existe).
 - Licencias/uso de nombres de la serie en el título y en el material (es solo un guiño; no se usa ningún recurso de la serie).

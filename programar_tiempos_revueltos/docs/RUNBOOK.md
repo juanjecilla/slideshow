@@ -21,7 +21,7 @@
 | O | overview (click a beat to jump) |
 | F | fullscreen |
 
-Automatic beats: <list the auto beats and how long they run>.
+Automatic beats: 1.1 (standby) loops until the first click. `?standby=a` (default) or `?standby=b` picks the prototype; `?start=HH:MM` turns the footer into a countdown.
 
 ## If something goes wrong
 
@@ -33,4 +33,4 @@ Automatic beats: <list the auto beats and how long they run>.
 
 ## Config to check on the day
 
-`deck/deck.config.ts`: title, speaker, `qrUrl` (currently: <value>). Rebuild after editing.
+`deck/deck.config.ts`: title, speaker, `qrUrl` (currently: `https://juanjecilla.github.io/slideshow/programar_tiempos_revueltos/`). Rebuild after editing.

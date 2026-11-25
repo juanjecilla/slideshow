@@ -1,0 +1,30 @@
+/* Standby (1.1). Cast colours are the tone backgrounds of themes/poster.css, with the ink checked there. */
+.sb { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; color: var(--ink); }
+.sb-at { position: absolute; left: 150px; width: 1620px; }
+.sb-head { font-size: 108px; }
+.sb-sub { font-size: 48px; margin-top: 36px; }
+.sb-source { font-size: 22px; letter-spacing: 0.06em; margin-top: 30px; }
+.sb-foot { position: absolute; left: 150px; width: 1620px; top: 975px; display: flex; justify-content: space-between; font-size: 24px; }
+
+.sb-dots { display: flex; gap: 18px; }
+.sb-dots i { width: 60px; height: 10px; background: var(--hair-strong); }
+.sb-dots i.on { background: var(--accent); }
+
+.sb-card { width: 900px; padding: 20px 36px 26px; border: 4px solid var(--ink); box-shadow: 10px 10px 0 var(--ink); }
+.sb-tone-0 { background: #5b2bd1; color: #fff; }
+.sb-tone-1 { background: #ffd23f; color: #14120f; }
+.sb-tone-2 { background: #1d4ed8; color: #fff; }
+.sb-tone-3 { background: #ef5b3c; color: #14120f; }
+.sb-tone-4 { background: #095d51; color: #fff; }
+
+.sb-bars { position: absolute; left: 0; top: 0; width: 1920px; height: 240px; display: flex; }
+.sb-bar { flex: 1; display: flex; align-items: flex-end; padding: 0 0 20px 30px; }
+.sb-bar span { color: inherit; font-size: 26px; }
+.sb-band { position: absolute; left: 0; top: 240px; width: 1920px; height: 340px; box-sizing: border-box; padding: 62px 150px; background: var(--surface); border-block: 6px solid var(--ink); }
+.sb-b .sb-head { font-size: 84px; }
+.sb-b .sb-sub { font-size: 40px; margin-top: 22px; }
+.sb-b .sb-source { margin-top: 18px; }
+
+.sb-in { animation: sb-in 500ms ease both; }
+@keyframes sb-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.sb.frozen .sb-in { animation: none; }

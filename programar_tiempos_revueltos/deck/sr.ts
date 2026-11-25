@@ -5,7 +5,7 @@ import { config } from './deck.config';
 function text(v: View): string {
   const join = (...p: (string | undefined)[]) => p.filter(Boolean).join(' ');
   switch (v.kind) {
-    case 'standby': return join(v.eyebrow, v.line);
+    case 'standby': return join('Talk starting.', v.eyebrow, v.line);
     case 'title': return join(v.title.join(' '), v.sub, v.author, v.eyebrow);
     case 'previously': return join(v.eyebrow, v.lines.join(' '));
     case 'statement': return join(v.eyebrow, v.say.join(' '), v.sub, v.stamp, v.credit && `Source: ${v.credit}.`);
