@@ -27,7 +27,7 @@ export type View =
   | { kind: 'qr'; eyebrow: string; say: string[]; sub: string };
 
 export interface BeatContent { name: string; ref?: string; note?: string; auto?: boolean; v: View }
-export interface SceneContent { id: string; title: string; tone: string; numeral?: boolean; beats: BeatContent[] }
+export interface SceneContent { id: string; title: string; tone: string; beats: BeatContent[] }
 
 export const CAST = ['The Dev', 'Management', 'The AI Agent', 'The Bill', 'The Team'] as const;
 
@@ -38,9 +38,9 @@ const SO = 'Stack Overflow Developer Survey 2025';
 
 export const CONTENT: SceneContent[] = [
   {
-    id: '01', title: 'OPEN', tone: 'paper', numeral: false,
+    id: '01', title: 'OPEN', tone: 'paper',
     beats: [
-      { name: 'standby', auto: true, note: 'Loop while people sit down (deck/standby). ?standby=a|b picks the prototype; ?start=HH:MM gives a countdown. The first click starts the talk.', v: { kind: 'standby', eyebrow: 'DevFest Barcelona · 28 Nov 2026', line: 'Juanje Cilla' } },
+      { name: 'standby', auto: true, note: 'Loop while people sit down (deck/standby). The first click starts the talk.', v: { kind: 'standby', eyebrow: 'DevFest Barcelona · 28 Nov 2026', line: 'Juanje Cilla' } },
       { name: 'title', ref: 'D5', v: { kind: 'title', eyebrow: 'DevFest Barcelona · 28 Nov 2026', title: ['(progr)Amar', 'en tiempos revueltos'], sub: 'Writing code, and looking after people, in turbulent times', author: 'Juanje Cilla' } },
       { name: 'who', ref: 'D22', note: 'Who I am, only what is needed.', v: { kind: 'about', eyebrow: 'Before we start', name: 'Juanje Cilla', role: 'Senior Software Engineer · 10+ years on Android', items: ['GDG Aranjuez · Organiser', 'Coding Pit', 'Welcome to La Secta'] } },
       { name: 'reference-ask', ref: 'D23', note: 'Ice-breaker: ask first, no picture yet.', v: { kind: 'reference', eyebrow: 'First things first', say: ['Who got', 'the reference?'], image: false, alt: 'Promotional poster of the Spanish TV series “Amar en tiempos revueltos”: the cast, in mid-twentieth-century clothes, around a table with a red checked tablecloth.', credit: '“Amar en tiempos revueltos” (TVE) · promotional image' } },
@@ -107,14 +107,14 @@ export const CONTENT: SceneContent[] = [
     ],
   },
   {
-    id: '06', title: 'SEASON FINALE', tone: 'paper', numeral: false,
+    id: '06', title: 'SEASON FINALE', tone: 'paper',
     beats: [
       { name: 'reconciliation', ref: 'D12', note: 'The Dev and the AI Agent reconcile. With conditions: people first. OWN LINE (post 42): «Las herramientas cambian, pero las personas siguen.»', v: { kind: 'statement', eyebrow: 'Season finale', say: ['The Dev and the AI Agent', 'reconcile.'], sub: 'Tools change. People stay.' } },
       { name: 'line', ref: 'D12', note: 'Spanish original: "(progr)Amar es cuidar a quien programa". Test it out loud.', v: { kind: 'statement', say: ['To (progr)Amar', 'is to care for', 'the people who program.'], accent: 2 } },
     ],
   },
   {
-    id: '07', title: 'POST-CREDITS', tone: 'night', numeral: false,
+    id: '07', title: 'POST-CREDITS', tone: 'night',
     beats: [
       { name: 'season-2', ref: 'D12', v: { kind: 'statement', eyebrow: 'After the credits', say: ['Season 2', 'is written by you.'] } },
       { name: 'monday', ref: 'D12', note: 'One action per level, 15 minutes each, no tool to buy. For Me, ask: where do you hide when there is too much?', v: { kind: 'list', eyebrow: 'Three actions for Monday', say: 'Monday', items: ['Me — a 15-minute postmortem of your week: pick one battle', 'Team — agree one rule for reviewing AI-written code', 'Up — ask “what do we measure AI usage for?”'] } },
@@ -122,13 +122,13 @@ export const CONTENT: SceneContent[] = [
     ],
   },
   {
-    id: '08', title: 'TO BE CONTINUED…', tone: 'coral', numeral: false,
+    id: '08', title: 'TO BE CONTINUED…', tone: 'coral',
     beats: [
       { name: 'continuara', ref: 'D6', note: 'Q&A, 10 min. The question back echoes the cold open (D11, D19): ask for hands again.', v: { kind: 'statement', say: ['To be continued…'], sub: 'Questions. And one back to you: who still feels they are falling behind?' } },
     ],
   },
   {
-    id: '09', title: 'BACKUP', tone: 'stone', numeral: false,
+    id: '09', title: 'BACKUP', tone: 'stone',
     beats: [
       { name: 'sources', ref: 'R1-R6', note: 'Backup: where each figure comes from. Not part of the 30 minutes.', v: { kind: 'list', eyebrow: 'Backup · sources (all checked 2026-11-24)', small: true, items: ['METR · early-2025 developer study and Feb 2026 follow-up', 'Stack Overflow Developer Survey 2025', 'Challenger, Gray & Christmas · September 2026 job-cuts report', 'TechCrunch · 14 July 2026 · Mosseri on token budgets (paraphrased)', 'Manfred × TheirStack · Tech Career Report 2026 · CC BY-NC 4.0 · getmanfred.com/tech-career-report'] } },
     ],

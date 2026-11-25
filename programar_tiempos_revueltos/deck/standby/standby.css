@@ -22,12 +22,7 @@
 .sb-wobble { animation-name: sb-wobble; animation-duration: 2s; }
 .sb-wink { transform-box: fill-box; transform-origin: center; animation: sb-wink 2.4s infinite; }
 
-.sb-orbit, .sb-upright { animation-timing-function: linear; }
 .sb-turn { animation-name: sb-spin; animation-duration: 4s; animation-timing-function: linear; }
-.sb-spin { animation-name: sb-spin; animation-duration: 36s; }
-.sb-spin-back { animation-name: sb-spin-back; animation-duration: 36s; }
-.sb-counter { animation-name: sb-spin-back; animation-duration: 52s; }
-.sb-counter-back { animation-name: sb-spin; animation-duration: 52s; }
 
 @keyframes sb-pop { from { opacity: 0; transform: scale(0.4); } 70% { opacity: 1; transform: scale(1.08); } to { opacity: 1; transform: scale(1); } }
 @keyframes sb-from-left { from { opacity: 0; transform: translateX(-500px) rotate(-20deg); } to { opacity: 1; transform: none; } }
@@ -45,6 +40,5 @@
 @keyframes sb-wobble { 0%, 100% { transform: rotate(-16deg) translateY(0); } 50% { transform: rotate(16deg) translateY(-30px); } }
 @keyframes sb-wink { 0%, 80%, 100% { transform: scaleY(1); } 90% { transform: scaleY(0.12); } }
 @keyframes sb-spin { to { transform: rotate(360deg); } }
-@keyframes sb-spin-back { to { transform: rotate(-360deg); } }
 
 .sb.frozen * { animation: none !important; }

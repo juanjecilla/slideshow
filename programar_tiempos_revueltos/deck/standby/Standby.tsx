@@ -3,16 +3,10 @@ import { useStandby } from './useStandby';
 import './standby.css';
 
 /**
- * 1.1: what loops while people sit down. Pictures only, no words. Two prototypes (D21), picked with
- * ?standby=a|b; delete the loser.
- *   a · "The soap opera": one short tableau per theme of the talk, in the talk's order.
- *   b · "Turbulent times": a beating heart in the middle of a whirl of the talk's themes.
- * In both, the title stays and a loading bar fills.
- * Frozen runs (capture, reduced motion, print) show the last tableau with every animation off.
+ * 1.1: what loops while people sit down: one short picture per theme of the talk, in the talk's order. The title
+ * stays and a loading bar fills. Frozen runs (capture, reduced motion, print) show the last picture, no animation.
  * Hidden from assistive tech with the rest of the stage; the live region says "Talk starting.".
  */
-
-const VARIANT: 'a' | 'b' = new URLSearchParams(location.search).get('standby') === 'b' ? 'b' : 'a';
 
 /** Cast colours: the tone backgrounds of themes/poster.css, with the ink checked there. */
 const CAST_COLOURS = {
@@ -140,45 +134,6 @@ const TABLEAUX: React.ReactNode[] = [
   </>,
 ];
 
-const RINGS: { r: number; s: number; spin: string; items: { name: IconName | Role; color?: string }[] }[] = [
-  { r: 330, s: 0.8, spin: 'spin', items: [{ name: 'dev' }, { name: 'agent' }, { name: 'bill' }, { name: 'boss' }, { name: 'team' }] },
-  {
-    r: 480, s: 0.6, spin: 'counter',
-    items: [
-      { name: 'box' }, { name: 'stopwatch' }, { name: 'coin', color: GOLD }, { name: 'bars', color: GOLD }, { name: 'terminal' },
-      { name: 'megaphone' }, { name: 'doc' }, { name: 'layers' }, { name: 'door' }, { name: 'train', color: RED },
-      { name: 'magnifier' }, { name: 'compass' },
-    ],
-  },
-];
-
-/** Two rings turning against each other; every item turns back so it stays upright. */
-function Whirl() {
-  return (
-    <g transform="translate(960 540)">
-      {RINGS.map((ring) => (
-        <g key={ring.r} className={`sb-anim sb-orbit sb-${ring.spin}`}>
-          {ring.items.map((it, i) => {
-            const a = (i / ring.items.length) * 2 * Math.PI - Math.PI / 2;
-            const x = Math.cos(a) * ring.r, y = Math.sin(a) * ring.r; // circles: the ring turns, an ellipse would leave the stage
-            return (
-              <g key={i} transform={`translate(${x} ${y})`}>
-                <g className={`sb-anim sb-upright sb-${ring.spin}-back`}>
-                  {it.name in CAST_COLOURS
-                    ? <Cast role={it.name as Role} x={0} y={0} s={ring.s} />
-                    : <Icon name={it.name as IconName} x={0} y={0} s={ring.s} color={it.color} />}
-                </g>
-              </g>
-            );
-          })}
-        </g>
-      ))}
-      <Icon name="heart" x={0} y={0} s={2.1} anim="beat" color={RED} />
-      <Icon name="code" x={0} y={-20} s={1.05} anim="beat" color="#fff" />
-    </g>
-  );
-}
-
 /** The title stays and a bar fills under the pictures: the talk is "loading". */
 export function Standby({ on }: { on: boolean }) {
   const st = useStandby(on);
@@ -188,7 +143,7 @@ export function Standby({ on }: { on: boolean }) {
     <div className={`sb${st.frozen ? ' frozen' : ''}`}>
       <div className="sb-title t-statement">(progr)Amar <span style={{ color: 'var(--accent)' }}>en tiempos revueltos</span></div>
       <svg className="sb-art" viewBox="0 0 1920 1080" width={1920} height={1080} aria-hidden="true">
-        {VARIANT === 'a' ? <g key={i}>{TABLEAUX[i]}</g> : <g transform="translate(960 600) scale(0.7) translate(-960 -540)"><Whirl /></g>}
+        <g key={i}>{TABLEAUX[i]}</g>
       </svg>
       <div className="sb-load"><i style={{ width: `${(st.progress * 100).toFixed(2)}%` }} /></div>
     </div>

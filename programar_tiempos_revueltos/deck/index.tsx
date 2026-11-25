@@ -7,7 +7,7 @@ import { Scenes } from './Beats';
 import { Numeral, ToneTheme } from './poster';
 import { SCENES } from './scenes';
 import { SR } from './sr';
-import { NO_NUMERAL, TONES } from './tones';
+import { NUMERALS, TONES } from './tones';
 
 /** Every layer of the stage, back to front. The scenes are drawn from content.ts by Beats.tsx. */
 function Stage() {
@@ -18,7 +18,7 @@ function Stage() {
       <LiveRegion summaries={SR} />
       <SrNav />
       <StagePicture>
-        <Numeral hideOn={NO_NUMERAL} />
+        <Numeral labels={NUMERALS} />
         <Scenes />
       </StagePicture>
     </>

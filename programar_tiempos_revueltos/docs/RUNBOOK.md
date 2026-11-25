@@ -21,7 +21,7 @@
 | O | overview (click a beat to jump) |
 | F | fullscreen |
 
-Automatic beats: 1.1 (standby) loops until the first click. `?standby=a` (default) or `?standby=b` picks the prototype. Title and loading bar stay on screen; no countdown.
+Automatic beats: 1.1 (standby) loops until the first click. Title and loading bar stay on screen; no countdown.
 
 ## If something goes wrong
 

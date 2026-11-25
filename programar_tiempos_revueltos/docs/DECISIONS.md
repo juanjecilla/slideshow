@@ -1,7 +1,7 @@
 # DECISIONS — (progr)Amar en tiempos revueltos (DevFest Barcelona 2026)
 
 ## Context
-Nueva charla para **DevFest Barcelona 2026** (28 nov 2026, 30 min + 10 de preguntas). Mismo flujo que `app_functions/` y `a11y_ai/`: grilling → DECISIONS → research → beat map → escenas → verify → RUNBOOK. Es una charla sobre personas y no tiene demo técnica: el hilo es un culebrón (referencia a la serie *Amar en tiempos revueltos*) que sirve para contar datos reales sin ponerse solemne. Rama `talk/amar-tiempos-revueltos-barcelona26` (nombre anterior al renombrado de 2026-11-25), worktree `../Charlas-programar`. Hoy es 20 oct y quedan 39 días.
+Nueva charla para **DevFest Barcelona 2026** (28 nov 2026, 30 min + 10 de preguntas). Mismo flujo que `app_functions/` y `a11y_ai/`: grilling → DECISIONS → research → beat map → escenas → verify → RUNBOOK. Es una charla sobre personas y no tiene demo técnica: el hilo es un culebrón (referencia a la serie *Amar en tiempos revueltos*) que sirve para contar datos reales sin ponerse solemne. Rama `talk/programar-tiempos-revueltos-bcn26`, worktree `../Charlas-programar` (renombrados el 2026-11-25; el PR #19 se cerró). Hoy es 20 oct y quedan 39 días.
 
 ## Decisiones (grilling cerrado el 20 oct)
 | # | Decisión |
@@ -25,10 +25,11 @@ Nueva charla para **DevFest Barcelona 2026** (28 nov 2026, 30 min + 10 de pregun
 | D17 | **(2026-11-25)** El bloque «el ruido» se queda en Cap2, 6 beats, mismo orden (cierra D10 «por confirmar»). Las frases del monólogo van solo en notas del ponente |
 | D18 | **(2026-11-25)** «Cómo lo gestioné» = dos historias ya publicadas por el ponente en Substack, ambas en Cap3: FOFO (post 42) y postmortem propio (post 38). Sustituyen al `TODO` |
 | D19 | **(2026-11-25)** Cierre en dos tiempos («Las herramientas cambian, pero las personas siguen» → «(progr)Amar es cuidar a quien programa»). Acción «Yo» del lunes: postmortem de 15 min. «Arriba» confirmada. La pregunta final vuelve a la del inicio |
-| D20 | **(2026-11-25)** El número gigante de escena solo se pinta en el primer beat de cada escena |
-| D21 | **(2026-11-25)** El standby es una animación en bucle (no hay horario publicado) **solo visual, sin texto** (corrección del ponente, 2026-11-25): iconos SVG propios sobre los temas de la charla, en su orden. El título se mantiene y una barra de carga se llena (la charla está «cargando»). Dos prototipos (`?standby=a|b`); se borra el descartado antes de congelar |
+| D20 | **(2026-11-25)** **(revisada 2026-11-25)** El número gigante de fondo es el **del capítulo** y solo se pinta en la portada de cada capítulo (1, 2, 3). El resto de escenas no lleva número |
+| D21 | **(2026-11-25)** El standby es una animación en bucle (no hay horario publicado) **solo visual, sin texto** (corrección del ponente, 2026-11-25): iconos SVG propios sobre los temas de la charla, en su orden. El título se mantiene y una barra de carga se llena (la charla está «cargando»). Elegido el prototipo A (historieta por temas); el B está borrado |
 | D22 | **(2026-11-25)** Beat de presentación (`01.who`) tras el título, con la misma bio que en Jaén (21 nov) |
 | D23 | **(2026-11-25)** Rompehielos antes de la mano alzada, en dos beats: `01.reference-ask` (solo «¿quién ha pillado la referencia?») y `01.reference` (entra el cartel promocional aportado por el ponente). «Anteriormente en…» pasa a después de la mano. **El cartel no es nuestro** (serie de TVE): se muestra como cita, con crédito; el repo y Pages son públicos |
+| D24 | **(2026-11-25)** Calendario: congelar la base EN el jueves 26; viernes 27 traducir (`bcn26/`) con los cambios finales y abrir el PR final. Hasta entonces los cambios se quedan en local |
 
 ### Notas sobre las decisiones
 - **"Póster suizo".** El usuario habló de "el póster suizo que hemos desarrollado en otra rama". En el repo no hay nada con ese nombre: lo desarrollado es el tema Poster, con serif Fraunces y no el sans con rejilla clásico suizo. Se ha asumido que es ese. Si lo que se quería era un estilo suizo real (Helvetica, rejilla estricta, reglas), es un tema nuevo: ver "Abierto".
@@ -74,9 +75,8 @@ Suma de charla: 30 min.
 
 ## Abierto
 - ~~¿"Póster suizo" = tema Poster o estilo suizo real?~~ Resuelto 2026-11-24: PoC de ambos, **se queda Poster**; el suizo va a beatdeck como issue (#19).
-- Edition ES (`bcn26`): fecha de congelado del Base deck EN (propuesta: 26 nov noche) y quién revisa la traducción.
+- Edition ES (`bcn26`): calendario en D24; falta decidir quién revisa la traducción.
 - Licencia de Manfred (CC BY-NC 4.0): confirmar que el uso (charla gratuita de comunidad) es no comercial y dejar la cita en cada beat con cifra de R6.
-- Standby: elegir prototipo `a` o `b` y borrar el otro (D21).
 - Cap3 niveles «Yo» y «Equipo»: el texto sigue siendo borrador.
 - Qué recortar de Cap3 si los cuatro niveles no caben en 8 min.
 - Tarjeta en la landing (aún no existe).
