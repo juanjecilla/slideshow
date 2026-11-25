@@ -34,24 +34,6 @@ export const MANFRED_SAMPLE = 'Manfred community: 56% have 10+ years of experien
 const METR = 'METR, 2025 study · 16 experienced developers · their own repos';
 const SO = 'Stack Overflow Developer Survey 2025';
 
-/**
- * Standby (1.1): what loops while people sit down (deck/standby). Same rules as the beats: figures only with a ref,
- * and the caveat travels inside the headline.
- */
-export const STANDBY = {
-  previously: 'Previously, in the tech world…',
-  castTitle: 'Starring',
-  today: 'Today’s episode',
-  soon: 'Starting soon',
-  headlines: [
-    { text: '120,136 job cuts cite AI', sub: 'US, announced and stated by companies. Not “fired by an AI”.', source: 'Challenger, Gray & Christmas · through Sept 2026' }, // R3.2, R3.3
-    { text: 'The junior door: 7.8% → <1%', sub: 'Manfred’s own offers, 2022 to 2026. No proven cause.', source: MANFRED }, // R6.4
-    { text: '84% in. 46% wary.', sub: '84% use or plan to use AI tools in development work. 46% distrust their accuracy.', source: SO }, // R2.1, R2.2
-    { text: 'Felt +20%. Measured −19%.', sub: '16 developers, early 2025. METR’s 2026 follow-up calls its new data an unreliable signal.', source: METR }, // R1.1, R1.2
-  ],
-  fears: ['Will my job still be here?', 'Am I falling behind?', 'Can juniors still get in?', 'Who pays the token bill?'],
-} as const;
-
 export const CONTENT: SceneContent[] = [
   {
     id: '01', title: 'OPEN', tone: 'paper', numeral: false,

@@ -26,7 +26,7 @@ Nueva charla para **DevFest Barcelona 2026** (28 nov 2026, 30 min + 10 de pregun
 | D18 | **(2026-11-25)** «Cómo lo gestioné» = dos historias ya publicadas por el ponente en Substack, ambas en Cap3: FOFO (post 42) y postmortem propio (post 38). Sustituyen al `TODO` |
 | D19 | **(2026-11-25)** Cierre en dos tiempos («Las herramientas cambian, pero las personas siguen» → «(progr)Amar es cuidar a quien programa»). Acción «Yo» del lunes: postmortem de 15 min. «Arriba» confirmada. La pregunta final vuelve a la del inicio |
 | D20 | **(2026-11-25)** El número gigante de escena solo se pinta en el primer beat de cada escena |
-| D21 | **(2026-11-25)** El standby es una animación en bucle (no hay horario publicado) con titulares de los tiempos revueltos, solo cifras con ref. Dos prototipos (`?standby=a|b`); se borra el descartado antes de congelar |
+| D21 | **(2026-11-25)** El standby es una animación en bucle (no hay horario publicado) **solo visual, sin texto** (corrección del ponente, 2026-11-25): iconos SVG propios del reparto y de los tiempos revueltos. Dos prototipos (`?standby=a|b`); se borra el descartado antes de congelar |
 
 ### Notas sobre las decisiones
 - **"Póster suizo".** El usuario habló de "el póster suizo que hemos desarrollado en otra rama". En el repo no hay nada con ese nombre: lo desarrollado es el tema Poster, con serif Fraunces y no el sans con rejilla clásico suizo. Se ha asumido que es ese. Si lo que se quería era un estilo suizo real (Helvetica, rejilla estricta, reglas), es un tema nuevo: ver "Abierto".

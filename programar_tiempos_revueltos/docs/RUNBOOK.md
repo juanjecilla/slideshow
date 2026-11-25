@@ -21,7 +21,7 @@
 | O | overview (click a beat to jump) |
 | F | fullscreen |
 
-Automatic beats: 1.1 (standby) loops until the first click. `?standby=a` (default) or `?standby=b` picks the prototype; `?start=HH:MM` turns the footer into a countdown.
+Automatic beats: 1.1 (standby) loops until the first click. `?standby=a` (default) or `?standby=b` picks the prototype. It shows no text and no countdown.
 
 ## If something goes wrong
 

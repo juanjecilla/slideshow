@@ -25,7 +25,7 @@ const Tag = ({ on, out, text }: { on: boolean; out: boolean; text?: string }) =>
 function BeatView({ v, on, out }: { v: View; on: boolean; out: boolean }) {
   switch (v.kind) {
     case 'standby':
-      return <Standby on={on} eyebrow={v.eyebrow} line={v.line} />;
+      return <Standby on={on} />;
     case 'title': {
       const size = fit(v.title, W, 170, 90);
       return (
