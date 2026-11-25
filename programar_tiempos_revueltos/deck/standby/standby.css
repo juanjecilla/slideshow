@@ -1,17 +1,21 @@
 /* Standby (1.1): motion only. Positions live in Standby.tsx. */
-.sb { position: absolute; left: 0; top: 0; overflow: hidden; }
+.sb { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; }
+.sb-art { position: absolute; left: 0; top: 0; }
+.sb-title { position: absolute; left: 0; width: 1920px; top: 90px; text-align: center; font-size: 104px; color: var(--ink); z-index: 1; }
+.sb-load { position: absolute; left: 560px; top: 985px; width: 800px; height: 22px; border: 4px solid var(--ink); border-radius: 999px; overflow: hidden; }
+.sb-load i { display: block; height: 100%; background: var(--accent); }
 .sb-anim { transform-box: view-box; transform-origin: 0 0; animation-duration: 3s; animation-iteration-count: infinite; animation-timing-function: ease-in-out; animation-fill-mode: both; }
 
-.sb-pop { animation-name: sb-pop; animation-duration: 700ms; animation-iteration-count: 1; }
-.sb-from-left { animation-name: sb-from-left; animation-duration: 1.4s; animation-iteration-count: 1; }
-.sb-from-right { animation-name: sb-from-right; animation-duration: 1.4s; animation-iteration-count: 1; }
-.sb-drop { animation-name: sb-drop; animation-duration: 1s; animation-iteration-count: 1; animation-timing-function: cubic-bezier(0.3, 1.4, 0.5, 1); }
-.sb-shrink { animation-name: sb-shrink; animation-duration: 9s; animation-iteration-count: 1; }
+.sb-pop { animation-name: sb-pop; animation-duration: 350ms; animation-iteration-count: 1; }
+.sb-from-left { animation-name: sb-from-left; animation-duration: 500ms; animation-iteration-count: 1; }
+.sb-from-right { animation-name: sb-from-right; animation-duration: 500ms; animation-iteration-count: 1; }
+.sb-drop { animation-name: sb-drop; animation-duration: 450ms; animation-iteration-count: 1; animation-timing-function: cubic-bezier(0.3, 1.4, 0.5, 1); }
+.sb-shrink { animation-name: sb-shrink; animation-duration: 2.4s; animation-iteration-count: 1; }
 .sb-beat { animation-name: sb-beat; animation-duration: 1.2s; }
 .sb-twinkle { animation-name: sb-twinkle; animation-duration: 1.6s; }
 .sb-rise { animation-name: sb-rise; }
-.sb-fall { animation-name: sb-fall; animation-duration: 2.8s; animation-timing-function: linear; }
-.sb-leave { animation-name: sb-leave; animation-duration: 3.4s; animation-timing-function: linear; }
+.sb-fall { animation-name: sb-fall; animation-duration: 1.8s; animation-timing-function: linear; }
+.sb-leave { animation-name: sb-leave; animation-duration: 2.2s; animation-timing-function: linear; }
 .sb-float { animation-name: sb-float; animation-duration: 4s; }
 .sb-flash { animation-name: sb-flash; animation-duration: 1.8s; }
 .sb-shake { animation-name: sb-shake; animation-duration: 600ms; }
@@ -19,6 +23,7 @@
 .sb-wink { transform-box: fill-box; transform-origin: center; animation: sb-wink 2.4s infinite; }
 
 .sb-orbit, .sb-upright { animation-timing-function: linear; }
+.sb-turn { animation-name: sb-spin; animation-duration: 4s; animation-timing-function: linear; }
 .sb-spin { animation-name: sb-spin; animation-duration: 36s; }
 .sb-spin-back { animation-name: sb-spin-back; animation-duration: 36s; }
 .sb-counter { animation-name: sb-spin-back; animation-duration: 52s; }

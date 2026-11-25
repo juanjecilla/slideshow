@@ -10,6 +10,39 @@ const Person = ({ x = 0, y = 0, s = 1 }) => (
 );
 
 export const ICONS = {
+  rocket: <path d="M0 -80 C36 -52 36 4 22 36 H-22 C-36 4 -36 -52 0 -80 Z M-24 8 L-54 48 L-22 44 M24 8 L54 48 L22 44 M0 54 V82 M0 -36 a13 13 0 1 0 0.1 0" {...line} />,
+  stopwatch: <path d="M0 -50 a64 64 0 1 0 0.1 0 M-18 -76 H18 M0 -76 V-50 M0 14 L30 -16 M54 -44 L68 -58" {...line} />,
+  check: <path d="M-56 4 L-16 44 L60 -40" {...line} strokeWidth={24} />,
+  cross: <path d="M-44 -44 L44 44 M44 -44 L-44 44" {...line} strokeWidth={24} />,
+  bars: <path d="M-70 70 H70 M-46 66 V10 M0 66 V-62 M46 66 V-22" {...line} strokeWidth={22} />,
+  gear: <path d="M0 -34 a34 34 0 1 0 0.1 0 M0 -76 V-52 M0 52 V76 M-76 0 H-52 M52 0 H76 M-54 -54 L-37 -37 M37 37 L54 54 M54 -54 L37 -37 M-37 37 L-54 54" {...line} strokeWidth={18} />,
+  terminal: (
+    <>
+      <rect x={-78} y={-60} width={156} height={120} rx={14} {...line} />
+      <path d="M-44 -22 L-18 2 L-44 26 M2 28 H44" {...line} />
+    </>
+  ),
+  wrench: <path d="M24 -70 C-8 -72 -28 -42 -16 -14 L-68 38 C-82 54 -56 80 -40 66 L12 14 C42 26 74 4 70 -28 L44 -4 L14 -12 L6 -42 Z" {...line} />,
+  megaphone: <path d="M-70 -18 V20 H-34 L40 56 V-54 L-34 -18 Z M-48 20 L-34 66 H-12 L-22 20 M58 -22 C70 -10 70 12 58 24" {...line} />,
+  ghost: <path d="M-52 70 V-18 C-52 -92 52 -92 52 -18 V70 L26 50 L0 70 L-26 50 Z M-18 -22 v6 M18 -22 v6" {...line} />,
+  doc: <path d="M-48 -72 H18 L48 -42 V72 H-48 Z M18 -72 V-42 H48 M-24 -10 H24 M-24 18 H24 M-24 46 H6" {...line} />,
+  layers: <path d="M0 -76 L80 -38 L0 0 L-80 -38 Z M-80 2 L0 40 L80 2 M-80 40 L0 78 L80 40" {...line} />,
+  door: (
+    <>
+      <path d="M-54 78 V-76 H54 V78 M-76 78 H76" {...line} />
+      <path d="M-54 -76 L8 -56 V96 L-54 78 Z" {...fill} />
+    </>
+  ),
+  ladder: <path d="M-36 -80 V80 M36 -80 V80 M-36 -52 H36 M-36 -16 H36 M-36 20 H36" {...line} />,
+  bell: <path d="M-52 38 C-34 24 -42 -56 0 -56 C42 -56 34 24 52 38 Z M0 -56 V-72 M-14 58 C-8 74 8 74 14 58 M-70 -66 L70 70" {...line} />,
+  magnifier: <path d="M-14 -66 a50 50 0 1 0 0.1 0 M24 22 L70 70 M-36 -26 L-18 -8 L12 -42" {...line} />,
+  compass: (
+    <>
+      <circle r={70} {...line} />
+      <path d="M30 -30 L8 8 L-30 30 L-8 -8 Z" {...fill} />
+    </>
+  ),
+  train: <path d="M-50 -70 H50 Q64 -70 64 -54 V36 Q64 50 50 50 H-50 Q-64 50 -64 36 V-54 Q-64 -70 -50 -70 Z M-64 -10 H64 M-30 18 v6 M30 18 v6 M-34 50 L-58 80 M34 50 L58 80" {...line} />,
   dev: (
     <>
       <circle cy={-50} r={27} {...line} />

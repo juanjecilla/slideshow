@@ -3,6 +3,7 @@ import { config } from './deck.config';
 import { CAST, CONTENT, type View } from './content';
 import { Stamp } from './poster';
 import { Standby } from './standby/Standby';
+import amarPoster from './assets/amar-poster.jpg';
 
 /** Generic renderer: every beat of content.ts is drawn from its `View`. Stage 1920×1080, safe margin 120/100. */
 const X = 150;
@@ -40,6 +41,21 @@ function BeatView({ v, on, out }: { v: View; on: boolean; out: boolean }) {
         </>
       );
     }
+    case 'about':
+      return (
+        <>
+          <Eyebrow on={on} out={out} text={v.eyebrow} y={170} />
+          <Reveal on={on} out={out} x={X} y={250}><div className="t-statement" style={{ fontSize: 170 }}>{v.name}</div></Reveal>
+          <Reveal on={on} out={out} x={X} y={470} delay={150}><div className="t-editorial" style={{ fontSize: 58, color: 'var(--accent)' }}>{v.role}</div></Reveal>
+          {v.items.map((it, i) => (
+            <Reveal key={it} on={on} out={out} x={X} y={620 + i * 100} delay={300 + i * 150}>
+              <div className="t-editorial" style={{ fontSize: 50, display: 'flex', gap: 28 }}><span style={{ color: 'var(--accent)' }}>■</span><span>{it}</span></div>
+            </Reveal>
+          ))}
+        </>
+      );
+    case 'reference':
+      return null; // drawn by <Reference>, which stays mounted across its two beats
     case 'previously': {
       const size = fit(v.lines, W, 120, 70);
       const top = centred(v.lines.length * size * 1.5 - size * 0.5, 250);
@@ -185,11 +201,33 @@ function BeatView({ v, on, out }: { v: View; on: boolean; out: boolean }) {
   }
 }
 
+/** The question alone, centred; on the next beat it makes room and the poster slides in. */
+function Reference({ v, on }: { v: Extract<View, { kind: 'reference' }>; on: boolean }) {
+  const img = v.image;
+  const move = 'all 700ms cubic-bezier(0.2, 0.8, 0.2, 1)';
+  return (
+    <div style={{ position: 'absolute', left: 0, top: 0, width: 1920, height: 1080, opacity: on ? 1 : 0, transition: 'opacity 300ms' }}>
+      <div style={{ position: 'absolute', left: 0, top: 340, width: img ? 1130 : 1920, textAlign: 'center', transform: `scale(${img ? 1 : 1.3})`, transition: move }}>
+        <div className="t-eyebrow" style={{ marginBottom: 50 }}>{v.eyebrow}</div>
+        {v.say.map((l) => <div key={l} className="t-statement" style={{ fontSize: 128 }}>{l}</div>)}
+      </div>
+      <div style={{ position: 'absolute', left: 1130, top: 60, opacity: img ? 1 : 0, transform: img ? 'none' : 'translateX(260px) rotate(6deg)', transition: move }}>
+        <img src={amarPoster} alt={v.alt} width={640} height={960} style={{ display: 'block', border: '6px solid var(--ink)', boxShadow: '12px 12px 0 var(--ink)' }} />
+      </div>
+      <Credit on={on && img} out={false} text={v.credit} />
+    </div>
+  );
+}
+
 function SceneView({ index }: { index: number }) {
   const { here, b } = useScene();
+  const beats = CONTENT[index].beats;
+  const refs = beats.flatMap((x) => (x.v.kind === 'reference' ? [x.v] : []));
+  const now = beats[b]?.v;
   return (
     <>
-      {CONTENT[index].beats.map((beat, k) => <BeatView key={beat.name + k} v={beat.v} on={here && b === k} out={here && b > k} />)}
+      {beats.map((beat, k) => <BeatView key={beat.name + k} v={beat.v} on={here && b === k} out={here && b > k} />)}
+      {refs.length > 0 && <Reference v={now?.kind === 'reference' ? now : refs[0]} on={here && now?.kind === 'reference'} />}
     </>
   );
 }

@@ -5,8 +5,9 @@ import './standby.css';
 /**
  * 1.1: what loops while people sit down. Pictures only, no words. Two prototypes (D21), picked with
  * ?standby=a|b; delete the loser.
- *   a · "The soap opera": the cast acts the story in six tableaux (arrival, romance, bill, layoffs, fears, together).
- *   b · "Turbulent times": a beating heart in the middle of a whirl of everything that is going round.
+ *   a · "The soap opera": one short tableau per theme of the talk, in the talk's order.
+ *   b · "Turbulent times": a beating heart in the middle of a whirl of the talk's themes.
+ * In both, the title stays and a loading bar fills.
  * Frozen runs (capture, reduced motion, print) show the last tableau with every animation off.
  * Hidden from assistive tech with the rest of the stage; the live region says "Talk starting.".
  */
@@ -49,49 +50,92 @@ function Cast({ role, ...at }: At & { role: Role }) {
 const RED = '#d93a14';
 const GOLD = '#e8a300';
 
+/** One picture per theme, in the order the talk meets them: arrival → crisis → now what → together. */
 const TABLEAUX: React.ReactNode[] = [
-  // arrival: the Dev, happily coding
+  // AI arrives: the Dev and the Agent
   <>
-    <Cast role="dev" x={960} y={580} s={1.7} anim="pop" />
-    {[[520, 700], [1390, 640], [620, 330], [1300, 320]].map(([x, y], i) => (
-      <Icon key={i} name={i % 2 ? 'spark' : 'code'} x={x} y={y} s={i % 2 ? 0.6 : 0.8} anim="rise" delay={i * 600} color={i % 2 ? GOLD : 'var(--ink)'} />
-    ))}
+    <Cast role="dev" x={560} y={560} s={1.4} anim="from-left" />
+    <Cast role="agent" x={1360} y={560} s={1.4} anim="from-right" />
+    <Icon name="heart" x={960} y={530} s={1.4} anim="beat" color={RED} />
+    {[[820, 330], [1110, 300], [960, 800]].map(([x, y], i) => <Icon key={i} name="spark" x={x} y={y} s={0.5} anim="twinkle" delay={i * 200} color={GOLD} />)}
   </>,
-  // romance: the Agent walks in
+  // what you feel vs what is measured
   <>
-    <Cast role="dev" x={560} y={580} s={1.4} anim="from-left" />
-    <Cast role="agent" x={1360} y={580} s={1.4} anim="from-right" />
-    <Icon name="heart" x={960} y={540} s={1.4} anim="beat" color={RED} />
-    {[[820, 300], [1110, 260], [960, 820]].map(([x, y], i) => <Icon key={i} name="spark" x={x} y={y} s={0.5} anim="twinkle" delay={i * 400} color={GOLD} />)}
+    <Icon name="rocket" x={600} y={540} s={2.2} anim="from-left" color={GOLD} />
+    <Icon name="question" x={960} y={560} s={1.1} anim="wobble" />
+    <Icon name="stopwatch" x={1330} y={560} s={2.2} anim="from-right" />
   </>,
-  // the bill drops in, tokens burn
+  // trust: almost right
   <>
-    <Cast role="boss" x={430} y={690} s={1.1} anim="shake" />
-    <Cast role="bill" x={960} y={500} s={1.9} anim="drop" />
-    <Cast role="agent" x={1490} y={690} s={1.1} anim="pop" />
-    {[200, 650, 1250, 1720, 760, 1160].map((x, i) => <Icon key={x} name={i % 2 ? 'flame' : 'coin'} x={x} y={200} s={0.7} anim="fall" delay={i * 450} color={i % 2 ? RED : GOLD} />)}
+    <Cast role="agent" x={960} y={560} s={1.6} anim="pop" />
+    <Icon name="check" x={520} y={540} s={1.7} anim="pop" delay={250} color="#0b8a55" />
+    <Icon name="cross" x={1400} y={540} s={1.7} anim="pop" delay={500} color={RED} />
   </>,
-  // layoffs: the boxes leave
+  // layoffs
   <>
-    <Cast role="team" x={500} y={560} s={1.6} anim="shrink" />
-    {[0, 1, 2].map((i) => <Icon key={i} name="box" x={900} y={640} s={1.3} anim="leave" delay={i * 1100} />)}
-    <Icon name="chart" x={1480} y={330} s={1.5} anim="pop" color={RED} />
+    <Cast role="team" x={480} y={550} s={1.5} anim="shrink" />
+    {[0, 1].map((i) => <Icon key={i} name="box" x={880} y={620} s={1.3} anim="leave" delay={i * 900} />)}
+    <Icon name="chart" x={1500} y={420} s={1.5} anim="pop" color={RED} />
   </>,
-  // fears: the storm
+  // the bill: tokens burn
   <>
-    <Icon name="cloud" x={960} y={280} s={3} anim="float" />
-    <Icon name="bolt" x={760} y={470} s={1.2} anim="flash" color={GOLD} />
-    <Icon name="bolt" x={1180} y={470} s={1} anim="flash" delay={700} color={GOLD} />
-    <Cast role="dev" x={960} y={730} s={1.3} anim="shake" />
-    {[[450, 620], [1500, 560], [620, 860], [1330, 840]].map(([x, y], i) => <Icon key={i} name="question" x={x} y={y} s={0.9} anim="wobble" delay={i * 350} color={RED} />)}
+    <Cast role="boss" x={430} y={660} s={1.1} anim="shake" />
+    <Cast role="bill" x={960} y={540} s={1.7} anim="drop" />
+    <Cast role="agent" x={1490} y={660} s={1.1} anim="pop" />
+    {[200, 650, 1250, 1720].map((x, i) => <Icon key={x} name={i % 2 ? 'flame' : 'coin'} x={x} y={320} s={0.7} anim="fall" delay={i * 200} color={i % 2 ? RED : GOLD} />)}
+  </>,
+  // a new model every few weeks, and the benchmarks
+  <>
+    {[430, 700, 970].map((x, i) => <Cast key={x} role="agent" x={x} y={560} s={0.9} anim="pop" delay={i * 350} />)}
+    <Icon name="bars" x={1420} y={550} s={2} anim="from-right" color={GOLD} />
+  </>,
+  // many tools
+  <>
+    <Icon name="terminal" x={520} y={560} s={1.8} anim="pop" />
+    <Icon name="wrench" x={960} y={560} s={1.8} anim="wobble" color={RED} />
+    <g transform="translate(1400 560) scale(1.8)"><g className="sb-anim sb-turn" style={{ color: 'var(--ink)' }}>{ICONS.gear}</g></g>
+  </>,
+  // everyone sharing, nobody there; AI slop
+  <>
+    <Icon name="megaphone" x={460} y={560} s={1.9} anim="shake" />
+    <Icon name="ghost" x={940} y={560} s={1.7} anim="float" />
+    {[1280, 1430, 1580].map((x, i) => <Icon key={x} name="doc" x={x} y={640 - i * 70} s={1.2} anim="drop" delay={i * 250} />)}
+  </>,
+  // layers to learn: context, harness, memory
+  <>
+    <Icon name="layers" x={960} y={560} s={3.4} anim="drop" />
+    {[[470, 420], [1460, 480], [520, 760]].map(([x, y], i) => <Icon key={i} name="question" x={x} y={y} s={0.9} anim="wobble" delay={i * 200} color={RED} />)}
+  </>,
+  // the junior door
+  <>
+    <Cast role="dev" x={520} y={620} s={1.1} anim="from-left" />
+    <Icon name="door" x={960} y={560} s={2.5} anim="pop" />
+    <Icon name="ladder" x={1430} y={550} s={2.2} anim="pop" delay={250} color={RED} />
+  </>,
+  // me: limits, and the train of FOMO
+  <>
+    <Icon name="bell" x={560} y={550} s={2} anim="shake" />
+    <Icon name="train" x={1260} y={560} s={2.2} anim="from-right" color={RED} />
+  </>,
+  // team and career: review, judgement
+  <>
+    <Cast role="team" x={500} y={560} s={1.4} anim="pop" />
+    <Icon name="magnifier" x={960} y={550} s={2} anim="float" />
+    <Icon name="compass" x={1420} y={560} s={1.9} anim="pop" delay={250} />
+  </>,
+  // upwards: ask what it is measured for
+  <>
+    <Cast role="dev" x={520} y={600} s={1.3} anim="pop" />
+    <Icon name="question" x={960} y={520} s={2} anim="wobble" color={RED} />
+    <Cast role="boss" x={1400} y={600} s={1.3} anim="pop" delay={250} />
   </>,
   // together: everyone around the heart
   <>
-    <Icon name="heart" x={960} y={560} s={2.6} anim="beat" color={RED} />
-    <Icon name="code" x={960} y={535} s={1.3} anim="beat" color="#fff" />
+    <Icon name="heart" x={960} y={590} s={2.2} anim="beat" color={RED} />
+    <Icon name="code" x={960} y={570} s={1.1} anim="beat" color="#fff" />
     {ROLES.map((role, i) => {
       const a = (-90 + i * 72) * (Math.PI / 180);
-      return <Cast key={role} role={role} x={960 + Math.cos(a) * 600} y={560 + Math.sin(a) * 370} s={0.95} anim="pop" delay={i * 180} />;
+      return <Cast key={role} role={role} x={960 + Math.cos(a) * 520} y={610 + Math.sin(a) * 260} s={0.85} anim="pop" delay={i * 100} />;
     })}
   </>,
 ];
@@ -101,8 +145,9 @@ const RINGS: { r: number; s: number; spin: string; items: { name: IconName | Rol
   {
     r: 480, s: 0.6, spin: 'counter',
     items: [
-      { name: 'box' }, { name: 'question', color: RED }, { name: 'coin', color: GOLD }, { name: 'chart', color: RED }, { name: 'flame', color: RED },
-      { name: 'bolt', color: GOLD }, { name: 'cloud' }, { name: 'spark', color: GOLD }, { name: 'code' }, { name: 'question', color: RED },
+      { name: 'box' }, { name: 'stopwatch' }, { name: 'coin', color: GOLD }, { name: 'bars', color: GOLD }, { name: 'terminal' },
+      { name: 'megaphone' }, { name: 'doc' }, { name: 'layers' }, { name: 'door' }, { name: 'train', color: RED },
+      { name: 'magnifier' }, { name: 'compass' },
     ],
   },
 ];
@@ -134,13 +179,18 @@ function Whirl() {
   );
 }
 
+/** The title stays and a bar fills under the pictures: the talk is "loading". */
 export function Standby({ on }: { on: boolean }) {
   const st = useStandby(on);
   if (!on) return null;
   const i = Math.min(TABLEAUX.length - 1, Math.floor(st.progress * TABLEAUX.length));
   return (
-    <svg className={`sb${st.frozen ? ' frozen' : ''}`} viewBox="0 0 1920 1080" width={1920} height={1080} aria-hidden="true">
-      {VARIANT === 'a' ? <g key={i}>{TABLEAUX[i]}</g> : <Whirl />}
-    </svg>
+    <div className={`sb${st.frozen ? ' frozen' : ''}`}>
+      <div className="sb-title t-statement">(progr)Amar <span style={{ color: 'var(--accent)' }}>en tiempos revueltos</span></div>
+      <svg className="sb-art" viewBox="0 0 1920 1080" width={1920} height={1080} aria-hidden="true">
+        {VARIANT === 'a' ? <g key={i}>{TABLEAUX[i]}</g> : <g transform="translate(960 600) scale(0.7) translate(-960 -540)"><Whirl /></g>}
+      </svg>
+      <div className="sb-load"><i style={{ width: `${(st.progress * 100).toFixed(2)}%` }} /></div>
+    </div>
   );
 }

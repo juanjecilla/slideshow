@@ -26,7 +26,9 @@ Nueva charla para **DevFest Barcelona 2026** (28 nov 2026, 30 min + 10 de pregun
 | D18 | **(2026-11-25)** «Cómo lo gestioné» = dos historias ya publicadas por el ponente en Substack, ambas en Cap3: FOFO (post 42) y postmortem propio (post 38). Sustituyen al `TODO` |
 | D19 | **(2026-11-25)** Cierre en dos tiempos («Las herramientas cambian, pero las personas siguen» → «(progr)Amar es cuidar a quien programa»). Acción «Yo» del lunes: postmortem de 15 min. «Arriba» confirmada. La pregunta final vuelve a la del inicio |
 | D20 | **(2026-11-25)** El número gigante de escena solo se pinta en el primer beat de cada escena |
-| D21 | **(2026-11-25)** El standby es una animación en bucle (no hay horario publicado) **solo visual, sin texto** (corrección del ponente, 2026-11-25): iconos SVG propios del reparto y de los tiempos revueltos. Dos prototipos (`?standby=a|b`); se borra el descartado antes de congelar |
+| D21 | **(2026-11-25)** El standby es una animación en bucle (no hay horario publicado) **solo visual, sin texto** (corrección del ponente, 2026-11-25): iconos SVG propios sobre los temas de la charla, en su orden. El título se mantiene y una barra de carga se llena (la charla está «cargando»). Dos prototipos (`?standby=a|b`); se borra el descartado antes de congelar |
+| D22 | **(2026-11-25)** Beat de presentación (`01.who`) tras el título, con la misma bio que en Jaén (21 nov) |
+| D23 | **(2026-11-25)** Rompehielos antes de la mano alzada, en dos beats: `01.reference-ask` (solo «¿quién ha pillado la referencia?») y `01.reference` (entra el cartel promocional aportado por el ponente). «Anteriormente en…» pasa a después de la mano. **El cartel no es nuestro** (serie de TVE): se muestra como cita, con crédito; el repo y Pages son públicos |
 
 ### Notas sobre las decisiones
 - **"Póster suizo".** El usuario habló de "el póster suizo que hemos desarrollado en otra rama". En el repo no hay nada con ese nombre: lo desarrollado es el tema Poster, con serif Fraunces y no el sans con rejilla clásico suizo. Se ha asumido que es ese. Si lo que se quería era un estilo suizo real (Helvetica, rejilla estricta, reglas), es un tema nuevo: ver "Abierto".
@@ -78,4 +80,4 @@ Suma de charla: 30 min.
 - Cap3 niveles «Yo» y «Equipo»: el texto sigue siendo borrador.
 - Qué recortar de Cap3 si los cuatro niveles no caben en 8 min.
 - Tarjeta en la landing (aún no existe).
-- Licencias/uso de nombres de la serie en el título y en el material (es solo un guiño; no se usa ningún recurso de la serie).
+- Derechos del cartel de la serie (D23): decidir si va en la versión publicada (Pages/PDF) o solo en la que se proyecta.

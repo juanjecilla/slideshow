@@ -51,5 +51,6 @@ export function useStandby(active: boolean): StandbyState {
     return () => cancelAnimationFrame(raf);
   }, [active, frozen, until]);
 
-  return standbyState(now, { until, frozen });
+  // 14 tableaux of ~2.7 s, then the last one holds before the loop starts over.
+  return standbyState(now, { until, frozen, loopMs: 44_000 });
 }

@@ -14,6 +14,8 @@ export type Row = { big: string; label: string; accent?: boolean };
 export type View =
   | { kind: 'standby'; eyebrow: string; line?: string }
   | { kind: 'title'; eyebrow: string; title: [string, string]; sub: string; author: string }
+  | { kind: 'about'; eyebrow: string; name: string; role: string; items: string[] }
+  | { kind: 'reference'; eyebrow: string; say: string[]; image: boolean; alt: string; credit: string }
   | { kind: 'statement'; eyebrow?: string; say: string[]; sub?: string; credit?: string; stamp?: string; accent?: number }
   | { kind: 'numbers'; eyebrow: string; say: string; rows: Row[]; caveat?: string; credit?: string }
   | { kind: 'quote'; eyebrow?: string; quote: string; by: string; sub?: string; credit?: string }
@@ -40,8 +42,11 @@ export const CONTENT: SceneContent[] = [
     beats: [
       { name: 'standby', auto: true, note: 'Loop while people sit down (deck/standby). ?standby=a|b picks the prototype; ?start=HH:MM gives a countdown. The first click starts the talk.', v: { kind: 'standby', eyebrow: 'DevFest Barcelona · 28 Nov 2026', line: 'Juanje Cilla' } },
       { name: 'title', ref: 'D5', v: { kind: 'title', eyebrow: 'DevFest Barcelona · 28 Nov 2026', title: ['(progr)Amar', 'en tiempos revueltos'], sub: 'Writing code, and looking after people, in turbulent times', author: 'Juanje Cilla' } },
-      { name: 'previously', ref: 'D5', note: '20 s montage of the situation in one breath: AI stays, teams are tense, the bill arrives.', v: { kind: 'previously', eyebrow: 'Previously, in the tech world…', lines: ['AI is here to stay.', 'Teams are tense.', 'The bill is coming.'] } },
+      { name: 'who', ref: 'D22', note: 'Who I am, only what is needed.', v: { kind: 'about', eyebrow: 'Before we start', name: 'Juanje Cilla', role: 'Senior Software Engineer · 10+ years on Android', items: ['GDG Aranjuez · Organiser', 'Coding Pit', 'Welcome to La Secta'] } },
+      { name: 'reference-ask', ref: 'D23', note: 'Ice-breaker: ask first, no picture yet.', v: { kind: 'reference', eyebrow: 'First things first', say: ['Who got', 'the reference?'], image: false, alt: 'Promotional poster of the Spanish TV series “Amar en tiempos revueltos”: the cast, in mid-twentieth-century clothes, around a table with a red checked tablecloth.', credit: '“Amar en tiempos revueltos” (TVE) · promotional image' } },
+      { name: 'reference', ref: 'D23', note: 'The poster comes in. Wait for the room, then go to the show of hands.', v: { kind: 'reference', eyebrow: 'First things first', say: ['Who got', 'the reference?'], image: true, alt: 'Promotional poster of the Spanish TV series “Amar en tiempos revueltos”: the cast, in mid-twentieth-century clothes, around a table with a red checked tablecloth.', credit: '“Amar en tiempos revueltos” (TVE) · promotional image' } },
       { name: 'hands', ref: 'D11', note: 'Raise your hand. Look at the room, count, move on. No external tool.', v: { kind: 'statement', eyebrow: 'Raise your hand', say: ['Who feels they are', 'falling behind with AI?'] } },
+      { name: 'previously', ref: 'D5', note: '20 s montage of the situation in one breath: AI stays, teams are tense, the bill arrives.', v: { kind: 'previously', eyebrow: 'Previously, in the tech world…', lines: ['AI is here to stay.', 'Teams are tense.', 'The bill is coming.'] } },
     ],
   },
   {

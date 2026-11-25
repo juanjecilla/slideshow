@@ -7,6 +7,8 @@ function text(v: View): string {
   switch (v.kind) {
     case 'standby': return 'Talk starting.';
     case 'title': return join(v.title.join(' '), v.sub, v.author, v.eyebrow);
+    case 'about': return join(v.eyebrow, `${v.name}.`, `${v.role}.`, v.items.join('. ') + '.');
+    case 'reference': return join(v.eyebrow, v.say.join(' '), v.image ? v.alt : undefined);
     case 'previously': return join(v.eyebrow, v.lines.join(' '));
     case 'statement': return join(v.eyebrow, v.say.join(' '), v.sub, v.stamp, v.credit && `Source: ${v.credit}.`);
     case 'numbers': return join(v.eyebrow, v.say, v.rows.map((r) => `${r.big} ${r.label}.`).join(' '), v.caveat, v.credit && `Source: ${v.credit}.`);
