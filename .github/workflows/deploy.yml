@@ -142,6 +142,10 @@ jobs:
             mkdir -p dist/adaptive_layouts/jaen2026
             cp -r adaptive_layouts/jaen2026/dist/. dist/adaptive_layouts/jaen2026/
           fi
+          # Placeholder until the DevFest Barcelona deck lands (PR #19 replaces this with the real builds).
+          mkdir -p dist/programar_tiempos_revueltos/bcn26
+          cp landing/placeholders/programar_tiempos_revueltos/index.html dist/programar_tiempos_revueltos/
+          cp landing/placeholders/programar_tiempos_revueltos/index.html dist/programar_tiempos_revueltos/bcn26/
           cp landing/index.html dist/index.html
           cp -r landing/assets/. dist/assets/
 
