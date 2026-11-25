@@ -1,8 +1,10 @@
 import { QR, Reveal, Scene, useScene } from 'beatdeck';
 import { config } from './deck.config';
-import { CAST, CONTENT, type View } from './content';
+import { CAST, CAST_TITLE, CONTENT, type View } from './content';
+import { Portrait } from './Portraits';
 import { Stamp } from './poster';
 import { Standby } from './standby/Standby';
+import { Charts } from './Charts';
 import amarPoster from './assets/amar-poster.jpg';
 
 /** Generic renderer: every beat of content.ts is drawn from its `View`. Stage 1920×1080, safe margin 120/100. */
@@ -15,13 +17,50 @@ const fit = (lines: string[], maxW: number, max: number, min = 56, k = 0.58) =>
 /** Top of a text block of height `h`, optically centred (slightly above the middle), never above `min`. */
 const centred = (h: number, min = 230) => Math.max(min, Math.round((1080 - h) * 0.46));
 
-const Eyebrow = ({ on, out, text, y = 110 }: { on: boolean; out: boolean; text: string; y?: number }) => (
-  <Reveal on={on} out={out} x={X} y={y}><div className="t-eyebrow">{text}</div></Reveal>
-);
-const Credit = ({ on, out, text }: { on: boolean; out: boolean; text?: string }) =>
-  text ? <Reveal on={on} out={out} x={X} y={945} delay={300}><div className="t-meta" style={{ fontSize: 22, letterSpacing: '0.06em' }}>{text}</div></Reveal> : null;
+/**
+ * Eyebrows at the standard height and all credits are drawn once per text by SceneView (`shared`), not once per
+ * beat: when two beats say the same, the words stay still.
+ */
+const Eyebrow = ({ on, out, text, y = 110, shared }: { on: boolean; out: boolean; text: string; y?: number; shared?: boolean }) =>
+  y === 110 && !shared ? null : <Reveal on={on} out={out} x={X} y={y}><div className="t-eyebrow">{text}</div></Reveal>;
+const Credit = ({ on, out, text, shared }: { on: boolean; out: boolean; text?: string; shared?: boolean }) =>
+  text && shared ? <Reveal on={on} out={out} x={X} y={945} delay={300}><div className="t-meta" style={{ fontSize: 22, letterSpacing: '0.06em' }}>{text}</div></Reveal> : null;
 const Tag = ({ on, out, text }: { on: boolean; out: boolean; text?: string }) =>
   text ? <Stamp on={on} out={out} text={text} x={1440} y={92} /> : null;
+
+/** The "best model" crown going round: one lap and it stops at whoever announced last. */
+function Wheel({ v, on, out }: { v: Extract<View, { kind: 'wheel' }>; on: boolean; out: boolean }) {
+  const R = 270, cx = 1400, cy = 530;
+  const turn = 360 / v.stops.length;
+  const angle = on || out ? 720 + v.at * turn : 0;
+  const spin = 'transform 2600ms cubic-bezier(0.25, 0.6, 0.15, 1)';
+  return (
+    <>
+      <Reveal on={on} out={out} x={X} y={290}>{v.say.map((l, i) => <div key={l} className="t-statement" style={{ fontSize: 96, color: i > 1 ? 'var(--accent)' : undefined }}>{l}</div>)}</Reveal>
+      <Reveal on={on} out={out} x={0} y={0}>
+        <svg width={1920} height={1080} viewBox="0 0 1920 1080">
+          <circle cx={cx} cy={cy} r={R} fill="none" stroke="var(--ink)" strokeWidth={8} strokeDasharray="6 20" />
+          {v.stops.map((name, i) => {
+            const a = (i * turn - 90) * (Math.PI / 180);
+            const x = cx + Math.cos(a) * R, y = cy + Math.sin(a) * R;
+            return (
+              <g key={name}>
+                <rect x={x - 115} y={y - 42} width={230} height={84} rx={42} fill={i === v.at ? 'var(--accent)' : 'var(--bg)'} stroke="var(--ink)" strokeWidth={5} style={{ transition: 'fill 300ms 2300ms' }} />
+                <text x={x} y={y + 13} textAnchor="middle" fontSize={38} fontWeight={800} fontFamily="var(--font-sans)" fill={i === v.at ? 'var(--bg)' : 'var(--ink)'}>{name}</text>
+              </g>
+            );
+          })}
+          <g style={{ transform: `rotate(${angle}deg)`, transformOrigin: `${cx}px ${cy}px`, transition: spin }}>
+            <path d={`M${cx} ${cy - R + 58} L${cx - 34} ${cy - R + 130} H${cx - 12} V${cy - 40} H${cx + 12} V${cy - R + 130} H${cx + 34} Z`} fill="var(--accent)" />
+          </g>
+          <circle cx={cx} cy={cy} r={26} fill="var(--ink)" />
+          <text x={cx} y={cy + 90} textAnchor="middle" fontSize={34} fontWeight={800} letterSpacing="0.1em" fontFamily="var(--font-sans)" fill="var(--ink)">{v.here.toUpperCase()}</text>
+          <text x={cx} y={cy + 130} textAnchor="middle" fontSize={26} fontFamily="var(--font-sans)" fill="var(--ink)">{v.latest}</text>
+        </svg>
+      </Reveal>
+    </>
+  );
+}
 
 function BeatView({ v, on, out }: { v: View; on: boolean; out: boolean }) {
   switch (v.kind) {
@@ -56,6 +95,39 @@ function BeatView({ v, on, out }: { v: View; on: boolean; out: boolean }) {
       );
     case 'reference':
       return null; // drawn by <Reference>, which stays mounted across its two beats
+    case 'hype':
+    case 'stock':
+      return null; // drawn by <Charts>, which stays mounted across its beats
+    case 'questions':
+      return (
+        <>
+          <Reveal on={on} out={out} x={X} y={190}><div className="t-statement" style={{ fontSize: 110 }}>{v.title}</div></Reveal>
+          <Reveal on={on} out={out} x={X} y={450} delay={200}><div className="t-statement" style={{ fontSize: fit([v.big], W, 340, 120), color: 'var(--ink)' }}>{v.big}</div></Reveal>
+        </>
+      );
+    case 'sources':
+      return (
+        <>
+          <Eyebrow on={on} out={out} text={v.eyebrow} />
+          {v.items.map((it, i) => {
+            const rows = Math.ceil(v.items.length / 2);
+            const col = i < rows ? 0 : 1;
+            return (
+              <Reveal key={it.url} on={on} out={out} x={X + col * 830} y={175 + (i % rows) * Math.floor(820 / rows)} delay={i * 50}>
+                <div style={{ width: 780 }}>
+                  <div className="t-editorial" style={{ fontSize: 23, whiteSpace: 'nowrap' }}>{it.what}</div>
+                  {/* the layers ignore the pointer: only the links on screen take it, and they must not advance the deck */}
+                  <a href={`https://${it.url}`} target="_blank" rel="noreferrer" tabIndex={-1} onClick={(e) => e.stopPropagation()}
+                    style={{ display: 'block', marginTop: 8, fontFamily: 'var(--font-mono)', fontSize: 15, lineHeight: 1.3, wordBreak: 'break-all', color: 'var(--accent)', pointerEvents: on ? 'auto' : 'none' }}>{it.url}</a>
+                  <div className="t-meta" style={{ fontSize: 15, marginTop: 6 }}>{it.checked}</div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </>
+      );
+    case 'wheel':
+      return <Wheel v={v} on={on} out={out} />;
     case 'previously': {
       const size = fit(v.lines, W, 120, 70);
       const top = centred(v.lines.length * size * 1.5 - size * 0.5, 250);
@@ -135,23 +207,14 @@ function BeatView({ v, on, out }: { v: View; on: boolean; out: boolean }) {
       );
     }
     case 'cast':
-      return (
-        <>
-          <Eyebrow on={on} out={out} text="The cast" />
-          {CAST.map((name, i) => (
-            <Reveal key={name} on={on} out={out} x={X} y={190 + i * 118} delay={i * 90}>
-              <div className="t-statement" style={{ fontSize: 104, opacity: v.lit < 0 || v.lit === i ? 1 : 0.3, color: v.lit === i ? 'var(--accent)' : undefined, transition: 'opacity 300ms, color 300ms' }}>{name}</div>
-            </Reveal>
-          ))}
-          {v.desc && <Reveal on={on} out={out} x={X} y={850} delay={150}><div className="t-editorial" style={{ fontSize: 58, maxWidth: W }}>{v.desc}</div></Reveal>}
-        </>
-      );
+    case 'finale':
+      return null; // drawn by <Cast> / <Finale>, which stay mounted across their beats
     case 'list': {
       const size = v.small ? 38 : 52;
       const sayH = v.say ? fit([v.say], W, 100, 56) : 0;
       const first = 110 + (v.say ? 80 + sayH + 50 : 110);
       const room = (v.foot ? 820 : 900) - first;
-      const gap = v.small ? 110 : Math.min(180, Math.floor(room / v.items.length));
+      const gap = Math.min(v.small ? 100 : 180, Math.floor(room / v.items.length));
       const top = v.small ? first : first + Math.max(0, Math.round((room - gap * v.items.length) / 2)) + 20;
       return (
         <>
@@ -214,19 +277,79 @@ function Reference({ v, on }: { v: Extract<View, { kind: 'reference' }>; on: boo
       <div style={{ position: 'absolute', left: 1130, top: 60, opacity: img ? 1 : 0, transform: img ? 'none' : 'translateX(260px) rotate(6deg)', transition: move }}>
         <img src={amarPoster} alt={v.alt} width={640} height={960} style={{ display: 'block', border: '6px solid var(--ink)', boxShadow: '12px 12px 0 var(--ink)' }} />
       </div>
-      <Credit on={on && img} out={false} text={v.credit} />
+      <Credit shared on={on && img} out={false} text={v.credit} />
     </div>
   );
 }
+
+/** The cast list never moves: only who is lit, their portrait and their line change. */
+function Cast({ v, on }: { v: Extract<View, { kind: 'cast' }>; on: boolean }) {
+  const t = 'opacity 350ms, color 350ms, transform 350ms';
+  return (
+    <div style={{ position: 'absolute', left: 0, top: 0, width: 1920, height: 1080, opacity: on ? 1 : 0, transition: 'opacity 300ms' }}>
+      <div className="t-eyebrow" style={{ position: 'absolute', left: X, top: 110 }}>{CAST_TITLE}</div>
+      {CAST.map((name, i) => (
+        <div key={name} className="t-statement" style={{ position: 'absolute', left: X, top: 190 + i * 118, fontSize: 104, opacity: v.lit < 0 || v.lit === i ? 1 : 0.3, color: v.lit === i ? 'var(--accent)' : undefined, transition: t }}>{name}</div>
+      ))}
+      {/* nobody lit: the family photo */}
+      {CAST.map((name, i) => (
+        <div key={name} style={{ position: 'absolute', left: [1010, 1290, 1570, 1150, 1430][i], top: i < 3 ? 130 : 480, opacity: v.lit < 0 ? 1 : 0, transition: t }}>
+          <Portrait who={i} id={`group-${i}`} width={250} />
+        </div>
+      ))}
+      {CAST.map((name, i) => (
+        <div key={name} style={{ position: 'absolute', left: 1180, top: 120, opacity: v.lit === i ? 1 : 0, transform: v.lit === i ? 'none' : 'translateY(30px)', transition: t }}>
+          <Portrait who={i} id={`lead-${i}`} width={560} />
+        </div>
+      ))}
+      <div className="t-editorial" style={{ position: 'absolute', left: X, top: 870, width: W, fontSize: 58 }}>{v.desc}</div>
+    </div>
+  );
+}
+
+/** A trailer card first; then it makes room for what actually happens in the finale. */
+function Finale({ v, on }: { v: Extract<View, { kind: 'finale' }>; on: boolean }) {
+  const card = v.step === 1;
+  const move = 'all 800ms cubic-bezier(0.2, 0.8, 0.2, 1)';
+  const rule = <div style={{ height: 10, background: 'var(--ink)', width: card ? 1300 : 0, margin: '0 auto', transition: move }} />;
+  return (
+    <div style={{ position: 'absolute', left: 0, top: 0, width: 1920, height: 1080, opacity: on ? 1 : 0, transition: 'opacity 300ms' }}>
+      <div style={{ position: 'absolute', left: 0, width: 1920, textAlign: 'center', top: card ? 170 : 90, transform: `scale(${card ? (on ? 1 : 0.6) : 0.34})`, transformOrigin: '50% 0', transition: move }}>
+        <div className="t-eyebrow" style={{ fontSize: 34, marginBottom: 40, opacity: card ? 1 : 0, transition: move }}>★ {v.presents} ★</div>
+        {rule}
+        <div className="t-statement" style={{ fontSize: 270, margin: '30px 0 40px' }}>
+          <div>{v.card[0]}</div>
+          <div style={{ color: 'var(--accent)' }}>{v.card[1]}</div>
+        </div>
+        {rule}
+      </div>
+      <div style={{ position: 'absolute', left: X, top: 410, width: W, textAlign: 'center', opacity: card ? 0 : 1, transform: card ? 'translateY(80px)' : 'none', transition: move }}>
+        {v.say.map((l) => <div key={l} className="t-statement" style={{ fontSize: 112 }}>{l}</div>)}
+        <div className="t-statement" style={{ display: 'inline-block', marginTop: 90, padding: '26px 50px 34px', fontSize: 92, background: 'var(--accent)', color: 'var(--bg)' }}>{v.punch}</div>
+      </div>
+    </div>
+  );
+}
+
+const SHARED_EYEBROW: View['kind'][] = ['wheel', 'previously', 'statement', 'numbers', 'quote', 'list', 'todo', 'qr', 'sources', 'hype', 'stock'];
+const eyebrowOf = (v: View) => (SHARED_EYEBROW.includes(v.kind) && 'eyebrow' in v ? v.eyebrow : undefined);
+const creditOf = (v: View) => (v.kind === 'statement' || v.kind === 'numbers' || v.kind === 'quote' || v.kind === 'list' || v.kind === 'wheel' ? v.credit : undefined);
+const distinct = (all: (string | undefined)[]) => [...new Set(all.filter((x): x is string => !!x))];
 
 function SceneView({ index }: { index: number }) {
   const { here, b } = useScene();
   const beats = CONTENT[index].beats;
   const refs = beats.flatMap((x) => (x.v.kind === 'reference' ? [x.v] : []));
   const now = beats[b]?.v;
+  const finale = beats.flatMap((x) => (x.v.kind === 'finale' ? [x.v] : []))[0];
   return (
     <>
       {beats.map((beat, k) => <BeatView key={beat.name + k} v={beat.v} on={here && b === k} out={here && b > k} />)}
+      {distinct(beats.map((x) => eyebrowOf(x.v))).map((t) => <Eyebrow key={t} shared text={t} on={here && !!now && eyebrowOf(now) === t} out={false} />)}
+      {distinct(beats.map((x) => creditOf(x.v))).map((t) => <Credit key={t} shared text={t} on={here && !!now && creditOf(now) === t} out={false} />)}
+      <Charts beats={beats} />
+      {beats.some((x) => x.v.kind === 'cast') && <Cast v={now?.kind === 'cast' ? now : (beats[0].v as Extract<View, { kind: 'cast' }>)} on={here && now?.kind === 'cast'} />}
+      {finale && <Finale v={now?.kind === 'finale' ? now : finale} on={here && now?.kind === 'finale'} />}
       {refs.length > 0 && <Reference v={now?.kind === 'reference' ? now : refs[0]} on={here && now?.kind === 'reference'} />}
     </>
   );

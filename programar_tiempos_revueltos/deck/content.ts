@@ -24,17 +24,57 @@ export type View =
   | { kind: 'cast'; lit: number; desc?: string }
   | { kind: 'list'; eyebrow: string; say?: string; items: string[]; foot?: string; credit?: string; stamp?: string; small?: boolean }
   | { kind: 'todo'; eyebrow: string; what: string }
+  | { kind: 'finale'; step: 1 | 2; presents: string; card: [string, string]; say: string[]; punch: string }
+  | { kind: 'questions'; title: string; big: string }
+  | { kind: 'sources'; eyebrow: string; items: Source[] }
+  | { kind: 'hype'; mode: 'cycle' | 'chain'; step: number; eyebrow: string; say: string; caveat: string; credit: string }
+  | { kind: 'stock'; data: 'ant' | 'spcx'; eyebrow: string; say: string; caveat: string; credit: string }
+  | { kind: 'wheel'; eyebrow: string; say: string[]; stops: string[]; at: number; here: string; latest: string; credit: string }
   | { kind: 'qr'; eyebrow: string; say: string[]; sub: string };
+
+/** `url` without the scheme (the offline check rejects it); the slide links to https. */
+export interface Source { what: string; url: string; checked: string }
 
 export interface BeatContent { name: string; ref?: string; note?: string; auto?: boolean; v: View }
 export interface SceneContent { id: string; title: string; tone: string; beats: BeatContent[] }
 
 export const CAST = ['The Dev', 'Management', 'The AI Agent', 'The Bill', 'The Team'] as const;
 
+export const CAST_TITLE = 'The cast';
 export const MANFRED = 'Manfred × TheirStack, Tech Career Report 2026 · CC BY-NC 4.0';
 export const MANFRED_SAMPLE = 'Manfred community: 56% have 10+ years of experience. Not the whole market.';
 const METR = 'METR, 2025 study · 16 experienced developers · their own repos';
 const SO = 'Stack Overflow Developer Survey 2025';
+
+/** Words drawn on the hype curves (R7). */
+export const HYPE = {
+  x: 'TIME →',
+  y: 'EXPECTATIONS →',
+  phases: [['Technology', 'trigger'], ['Peak of inflated', 'expectations'], ['Trough of', 'disillusionment'], ['Slope of', 'enlightenment'], ['Plateau of', 'productivity']],
+  marks: ['New model', 'Another one', 'And another'],
+  ghost: 'The fall that should come',
+} as const;
+
+/** Prices against the IPO price (R8). RE-CHECK before the talk: they move every day. */
+export const STOCKS = {
+  ant: {
+    ipo: 83, ipoLabel: 'IPO PRICE $83',
+    points: [
+      { when: 'Open 19 Nov', usd: 111.5 }, { when: '19 Nov', usd: 97.17 }, { when: '20 Nov', usd: 88.91 },
+      { when: '23 Nov', usd: 87.64 }, { when: '24 Nov', usd: 81.91 },
+    ],
+  },
+  spcx: {
+    ipo: 135, ipoLabel: 'IPO PRICE $135',
+    points: [
+      { when: '12 Jun', usd: 160.95 }, { when: '16 Jun', usd: 211.39 }, { when: '5 Aug', usd: 108.27 },
+      { when: '30 Sep', usd: 150.86 }, { when: '13 Nov', usd: 139.11 }, { when: '25 Nov, intraday', usd: 127.06 },
+    ],
+  },
+} as const;
+
+const GARTNER = 'Hype Cycle: Gartner (Jackie Fenn, 1995) · own schematic drawing';
+const CASTANO = 'Idea: Jorge Castaño, Codemotion Madrid 2026 · youtu.be/TbEemCIGPnI';
 
 export const CONTENT: SceneContent[] = [
   {
@@ -64,6 +104,9 @@ export const CONTENT: SceneContent[] = [
     id: '03', title: 'CH 1 · THE ARRIVAL', tone: 'sun',
     beats: [
       { name: 'chapter', ref: 'D6', v: { kind: 'chapter', n: 'Chapter 1', title: 'The Arrival', line: 'Everyone is using it. Is it working?' } },
+      { name: 'hype-peak', ref: 'R7.1', note: "The hype cycle: any technology, not only AI. Something appears and expectations shoot up.", v: { kind: 'hype', mode: 'cycle', step: 1, eyebrow: "Chapter 1 \u00b7 Every technology", say: "First, everything is possible", caveat: "A way of reading hype, not a measurement. Its predictive value is disputed.", credit: GARTNER } },
+      { name: 'hype-trough', ref: 'R7.1', note: "Then reality. The disappointment.", v: { kind: 'hype', mode: 'cycle', step: 2, eyebrow: "Chapter 1 \u00b7 Every technology", say: "Then comes the disappointment", caveat: "A way of reading hype, not a measurement. Its predictive value is disputed.", credit: GARTNER } },
+      { name: 'hype-plateau', ref: 'R7.1', note: "And what survives becomes normal and useful.", v: { kind: 'hype', mode: 'cycle', step: 3, eyebrow: "Chapter 1 \u00b7 Every technology", say: "And then it becomes useful", caveat: "A way of reading hype, not a measurement. Its predictive value is disputed.", credit: GARTNER } },
       { name: 'promise', ref: 'R2.1', note: 'Everyone arrives at once.', v: { kind: 'numbers', eyebrow: 'Chapter 1 · The Arrival', say: 'Everyone arrives at once', rows: [{ big: '84%', label: 'use or plan to use AI tools in their development work' }], credit: SO } },
       { name: 'everyone', ref: 'R6.1', note: 'SAY the caveat: the Manfred community, mostly veterans, not the whole market.', v: { kind: 'numbers', eyebrow: 'Chapter 1 · The Arrival', say: 'Almost everyone. Hardly anyone trained.', rows: [{ big: '98%', label: 'use AI in their daily work' }, { big: '86%', label: 'say it makes them more productive' }, { big: '20%', label: 'were trained by their company', accent: true }], caveat: MANFRED_SAMPLE, credit: MANFRED } },
       { name: 'feeling', ref: 'R1.2', note: 'Before: they expected 24% faster. After: they believed they had been 20% faster.', v: { kind: 'numbers', eyebrow: 'Chapter 1 · The Arrival', say: 'What you feel…', rows: [{ big: '+24%', label: 'expected to be faster, before' }, { big: '+20%', label: 'believed they had been faster, after' }], credit: METR } },
@@ -82,7 +125,12 @@ export const CONTENT: SceneContent[] = [
       { name: 'layoffs-caveat', ref: 'R3.3', note: 'MANDATORY: announced plans and the reasons companies state. In September AI was fifth. Not a count of people let go by an AI.', v: { kind: 'statement', eyebrow: 'Read it carefully', say: ['Announced. Stated.', 'Not “fired by an AI”.'], sub: 'In September, AI was the fifth reason (3,961 cuts). Challenger counts announced plans and the reasons companies give.', credit: 'Challenger, Gray & Christmas, September 2026 report' } },
       { name: 'bill', ref: 'R4.1', note: 'PARAPHRASE, no quote marks: TechCrunch was not re-verifiable on 2026-11-24 (403). Mosseri: a strong engineer\'s AI spend could match their salary; no caps today; expects them. Meta also shut down an internal token leaderboard (R4.2, spoken only).', v: { kind: 'statement', eyebrow: 'Meta · July 2026', say: ['A strong engineer\'s AI bill', 'could match their salary'], sub: 'Adam Mosseri says Meta has no token caps today and expects to need them within a year or two.', credit: 'TechCrunch, 14 July 2026 (paraphrased)' } },
       { name: 'noise-models', ref: 'D10', note: 'NOISE block (provisional position, to confirm). Qualitative, no figures. A new model every few weeks. OWN LINE (block 3.4, post 39): «La primera siempre es gratis, pero una vez estás enganchado, tienes que hipotecar hasta la casa.»', v: { kind: 'statement', eyebrow: 'Meanwhile…', say: ['A new model', 'every few weeks'], sub: 'Keep up. Or don\'t: next week there is another one.' } },
-      { name: 'noise-benchmarks', ref: 'D10', note: 'Benchmarks vs reality. Link back to Chapter 1: what is felt and what is measured do not match. No benchmark figures.', v: { kind: 'statement', eyebrow: 'Meanwhile…', say: ['The benchmarks say one thing.', 'Real life says another.'], sub: 'We saw it in Chapter 1.' } },
+      { name: 'chain-peak', ref: 'R7.3', note: "Remember the curve from Chapter 1? Here the fall should start. Video: youtu.be/TbEemCIGPnI", v: { kind: 'hype', mode: 'chain', step: 1, eyebrow: "Meanwhile…", say: "At the peak, it should fall", caveat: "Schematic. Casta\u00f1o's argument, not part of Gartner's model.", credit: CASTANO } },
+      { name: 'chain-again', ref: 'R7.3', note: "Instead of falling, a new model comes out and the hype climbs again.", v: { kind: 'hype', mode: 'chain', step: 2, eyebrow: "Meanwhile…", say: "But a new model comes out", caveat: "Schematic. Casta\u00f1o's argument, not part of Gartner's model.", credit: CASTANO } },
+      { name: 'chain-more', ref: 'R7.3', note: "One curve on top of another. OWN LINE (post 39): «Esto no es real ni sostenible.»", v: { kind: 'hype', mode: 'chain', step: 3, eyebrow: "Meanwhile…", say: "One curve on top of another", caveat: "Schematic. Casta\u00f1o's argument, not part of Gartner's model.", credit: CASTANO } },
+      { name: 'ipo', ref: 'R8.1', note: "Anthropic's IPO: priced at 83, opened at 111.50, below the IPO price on day four. Do not predict anything. RE-CHECK the quote on Friday and on the day.", v: { kind: 'stock', data: 'ant', eyebrow: 'And on the stock market…', say: 'Anthropic’s first days on Nasdaq', caveat: 'Four trading days. Too soon to call it anything.', credit: 'CNBC, 19 Nov 2026 · BigGo Finance, 24 Nov 2026 · checked 2026-11-25' } },
+      { name: 'ipo-spacex', ref: 'R8.3', note: 'Not just one company. SpaceX listed on 12 June: up, down below the IPO price, up again, below again. Selected prices. RE-CHECK on Friday.', v: { kind: 'stock', data: 'spcx', eyebrow: 'And on the stock market…', say: 'It is not just one company: SpaceX', caveat: 'Selected prices, not the full series. Not advice, not a forecast.', credit: 'Quantral · Motley Fool, 25 Nov 2026 · checked 2026-11-25' } },
+      { name: 'noise-benchmarks', ref: 'D10', note: 'Benchmarks vs reality. The crown goes round: whoever announced last is the best. Today: Gemini 4 Neon. RE-CHECK on the day, it may have moved. Link back to Chapter 1.', v: { kind: 'wheel', eyebrow: 'Meanwhile…', say: ['The benchmarks', 'say one thing.', 'Real life', 'says another.'], stops: ['Claude', 'Gemini', 'ChatGPT', 'Grok'], at: 1, here: 'You are here', latest: 'Gemini 4 Neon · 18 Nov', credit: 'Order is a joke, not a ranking · Gemini 4 Neon date: Wikipedia, checked 2026-11-25' } },
       { name: 'noise-tools', ref: 'R6.10', note: 'Many tools, same promise. Manfred: each person who uses AI juggles 3.1 tools on average (community sample). OWN LINE (block 3.4): cada semana un modelo, un IDE, un CLI nuevo.', v: { kind: 'numbers', eyebrow: 'Meanwhile…', say: 'Many tools. Same promise.', rows: [{ big: '3.1', label: 'AI tools used by each person who uses AI, on average' }], caveat: MANFRED_SAMPLE, credit: MANFRED } },
       { name: 'noise-sharing', ref: 'D10', note: 'Speaker observation, no figure: everyone sharing what they build; "I just launched my…" with 0 users. OWN LINE (block 4.2, post 16): «Tengo más de 10 años de experiencia en empezar proyectos pero tengo muy pocos en terminarlos.»', v: { kind: 'statement', eyebrow: 'Meanwhile…', say: ['Everyone is sharing', 'what they just built'], sub: '“I just launched my…” And the counter says 0 users.' } },
       { name: 'noise-slop', ref: 'D10', note: 'Speaker observation, no figure.', v: { kind: 'statement', eyebrow: 'Meanwhile…', say: ['AI slop'], sub: 'Fast to make. Nobody asked for it. Nobody reads it.' } },
@@ -109,7 +157,8 @@ export const CONTENT: SceneContent[] = [
   {
     id: '06', title: 'SEASON FINALE', tone: 'paper',
     beats: [
-      { name: 'reconciliation', ref: 'D12', note: 'The Dev and the AI Agent reconcile. With conditions: people first. OWN LINE (post 42): «Las herramientas cambian, pero las personas siguen.»', v: { kind: 'statement', eyebrow: 'Season finale', say: ['The Dev and the AI Agent', 'reconcile.'], sub: 'Tools change. People stay.' } },
+      { name: 'finale-card', ref: 'D12', note: 'The announcement. Voice of a TV trailer, then pause.', v: { kind: 'finale', step: 1, presents: '(progr)Amar en tiempos revueltos presents', card: ['Season', 'finale'], say: ['The Dev and the AI Agent', 'reconcile.'], punch: 'Tools change. People stay.' } },
+      { name: 'reconciliation', ref: 'D12', note: 'The Dev and the AI Agent reconcile. With conditions: people first. OWN LINE (post 42): «Las herramientas cambian, pero las personas siguen.»', v: { kind: 'finale', step: 2, presents: '(progr)Amar en tiempos revueltos presents', card: ['Season', 'finale'], say: ['The Dev and the AI Agent', 'reconcile.'], punch: 'Tools change. People stay.' } },
       { name: 'line', ref: 'D12', note: 'Spanish original: "(progr)Amar es cuidar a quien programa". Test it out loud.', v: { kind: 'statement', say: ['To (progr)Amar', 'is to care for', 'the people who program.'], accent: 2 } },
     ],
   },
@@ -124,13 +173,13 @@ export const CONTENT: SceneContent[] = [
   {
     id: '08', title: 'TO BE CONTINUED…', tone: 'coral',
     beats: [
-      { name: 'continuara', ref: 'D6', note: 'Q&A, 10 min. The question back echoes the cold open (D11, D19): ask for hands again.', v: { kind: 'statement', say: ['To be continued…'], sub: 'Questions. And one back to you: who still feels they are falling behind?' } },
+      { name: 'continuara', ref: 'D6', note: 'Q&A, 10 min.', v: { kind: 'questions', title: 'To be continued…', big: 'Questions' } },
     ],
   },
   {
     id: '09', title: 'BACKUP', tone: 'stone',
     beats: [
-      { name: 'sources', ref: 'R1-R6', note: 'Backup: where each figure comes from. Not part of the 30 minutes.', v: { kind: 'list', eyebrow: 'Backup · sources (all checked 2026-11-24)', small: true, items: ['METR · early-2025 developer study and Feb 2026 follow-up', 'Stack Overflow Developer Survey 2025', 'Challenger, Gray & Christmas · September 2026 job-cuts report', 'TechCrunch · 14 July 2026 · Mosseri on token budgets (paraphrased)', 'Manfred × TheirStack · Tech Career Report 2026 · CC BY-NC 4.0 · getmanfred.com/tech-career-report'] } },
+      { name: 'sources', ref: 'R1-R8', note: 'Backup: where each figure comes from. Not part of the 30 minutes. Links open on click.', v: { kind: 'sources', eyebrow: 'Backup · sources', items: [{ what: 'METR · early-2025 developer study', url: 'metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/', checked: 'checked 2026-11-24' }, { what: 'METR · Feb 2026 follow-up', url: 'metr.org/blog/2026-02-24-uplift-update/', checked: 'checked 2026-11-24' }, { what: 'Stack Overflow Developer Survey 2025', url: 'survey.stackoverflow.co/2025/ai', checked: 'checked 2026-11-24' }, { what: 'Challenger, Gray & Christmas · September 2026', url: 'www.challengergray.com/blog/job-cuts-fall-in-september-hiring-plans-up-3-over-2025-on-weak-early-seasonal-hiring/', checked: 'checked 2026-11-24' }, { what: 'TechCrunch · Mosseri on token budgets (paraphrased)', url: 'techcrunch.com/2026/07/14/metas-adam-mosseri-says-ai-token-budgets-could-soon-be-capped-per-engineer/', checked: 'not re-verifiable 2026-11-24' }, { what: 'Manfred × TheirStack · Career Report 2026 · CC BY-NC 4.0', url: 'www.getmanfred.com/tech-career-report', checked: 'checked 2026-11-24' }, { what: 'Gartner · Hype Cycle', url: 'www.gartner.com/en/research/methodologies/gartner-hype-cycle', checked: 'checked 2026-11-24' }, { what: 'Jorge Castaño · Que no quiero más IA, señora, suélteme el brazo', url: 'youtu.be/TbEemCIGPnI', checked: 'checked 2026-11-25' }, { what: 'CNBC · Anthropic’s Nasdaq debut', url: 'www.cnbc.com/2026/11/19/anthropic-ipo-ant-live-updates.html', checked: 'checked 2026-11-25' }, { what: 'BigGo Finance · Anthropic below its IPO price', url: 'finance.biggo.com/news/fae0e954-2c46-4b55-a40d-2c4e31345abd', checked: 'checked 2026-11-25' }, { what: 'Quantral · SpaceX IPO and prices', url: 'quantral.com/blog/spacex-ipo', checked: 'checked 2026-11-25' }, { what: 'Motley Fool · SpaceX, 25 Nov 2026', url: 'www.fool.com/investing/2026/11/25/why-spacex-stock-keeps-going-down/', checked: 'checked 2026-11-25' }, { what: 'Wikipedia · Gemini model versions', url: 'en.wikipedia.org/wiki/Gemini_(language_model)', checked: 'checked 2026-11-25' }] } },
     ],
   },
 ];

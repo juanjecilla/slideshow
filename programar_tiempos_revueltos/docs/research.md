@@ -123,3 +123,27 @@ No se pintan como cifra. Se cuentan como pregunta abierta y compartida: nadie ti
 - R4.5: changelog de GitHub.
 - R5.1-R5.6: informe de DigitalES (no localizado el 2026-11-24) y nota de BBVA Research/Fedea (localizada, sin leer). Si no se leen antes del congelado de contenido, R5.1/R5.3/R5.6 salen de pantalla y quedan como nota hablada.
 - Anécdotas del ponente ("presión por usar IA", "cómo lo gestioné"): `TODO`, las cuenta el ponente.
+
+## R7 · Curva del hype (checked 2026-11-25)
+
+| id | Dato | Estado | Fuente |
+|---|---|---|---|
+| R7.1 | Gartner Hype Cycle, cinco fases: Technology trigger, Peak of inflated expectations, Trough of disillusionment, Slope of enlightenment, Plateau of productivity. Creado por Jackie Fenn (Gartner) en 1995 | ✅ (fuente secundaria) | https://en.wikipedia.org/wiki/Gartner_hype_cycle · https://www.gartner.com/en/research/methodologies/gartner-hype-cycle |
+| R7.2 | **Matiz obligatorio.** Es un modelo cualitativo; su validez como predictor está discutida. El dibujo del deck es propio y esquemático | ⚠️ | misma |
+| R7.3 | «Una curva encima de otra»: argumento de la charla de Jorge Castaño en Codemotion Madrid 2026, según la cuenta el ponente (post 39). Título del vídeo verificado; **el contenido del vídeo no se ha revisado**; su artículo del blog no menciona la curva | ⚠️ atribución del ponente | https://www.youtube.com/watch?v=TbEemCIGPnI · https://codingpit.substack.com/p/39-ttl |
+
+## R8 · Salida a bolsa de Anthropic (checked 2026-11-25)
+
+| id | Dato | Estado | Fuente |
+|---|---|---|---|
+| R8.1 | Precio de salida 83 USD; 19 nov: apertura 111,50, cierre 97,17 | ✅ (CNBC y BigGo coinciden) | https://www.cnbc.com/2026/11/19/anthropic-ipo-ant-live-updates.html |
+| R8.2 | Cierres: 20 nov 88,91; 23 nov 87,64; 24 nov 81,91 (primer cierre bajo el precio de salida) | ⚠️ fuente secundaria única | https://finance.biggo.com/news/fae0e954-2c46-4b55-a40d-2c4e31345abd |
+
+**Cómo usarlo:** son cuatro sesiones. No predecir nada. **Volver a comprobar el viernes y el día de la charla.**
+| R8.3 | SpaceX (SPCX): salida 135 USD (12 jun 2026); cierres 160,95 (12 jun), 211,39 (16 jun), 108,27 (5 ago), 150,86 (30 sep), 139,11 (13 nov); 127,06 intradía 25 nov | ⚠️ fuentes secundarias; puntos seleccionados | https://quantral.com/blog/spacex-ipo · https://www.fool.com/investing/2026/11/25/why-spacex-stock-keeps-going-down/ (checked 2026-11-25) |
+
+## R9 · Último modelo anunciado (checked 2026-11-25)
+
+| id | Dato | Estado | Fuente |
+|---|---|---|---|
+| R9.1 | Gemini 4 Neon, 18 nov 2026. **Caduca en días: comprobar el viernes y el día de la charla.** El orden de la rueda es un chiste, no un ranking | ⚠️ fuente secundaria | https://en.wikipedia.org/wiki/Gemini_(language_model) |
