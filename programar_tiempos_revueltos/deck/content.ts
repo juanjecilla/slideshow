@@ -1,5 +1,5 @@
 /**
- * All the copy of the talk, in one place. English is the Base deck (D2); the Spanish edition (barcelona26) is made from
+ * All the copy of the talk, in one place. English is the Base deck (D2); the Spanish edition (bcn26) is made from
  * this file once it is frozen: translate the strings, keep every `name` (they are identifiers, never translated).
  *
  * Rules (docs/DECISIONS.md, docs/research.md):
@@ -112,7 +112,7 @@ export const CONTENT: SceneContent[] = [
     beats: [
       { name: 'season-2', ref: 'D12', v: { kind: 'statement', eyebrow: 'After the credits', say: ['Season 2', 'is written by you.'] } },
       { name: 'monday', ref: 'D12', note: 'PROPOSAL: one action per level, 15 minutes each, no tool to buy.', v: { kind: 'list', eyebrow: 'Three actions for Monday', say: 'Monday', items: ['Me — pick one thing to learn on purpose this month', 'Team — agree one rule for reviewing AI-written code', 'Up — ask “what do we measure AI usage for?”'], stamp: 'PROPOSAL' } },
-      { name: 'slides', ref: 'D11', note: 'QR to the deck\'s own Pages URL.', v: { kind: 'qr', eyebrow: 'Take the slides', say: ['The slides,', 'in your pocket'], sub: 'juanjecilla.github.io/slideshow/amar_tiempos_revueltos' } },
+      { name: 'slides', ref: 'D11', note: 'QR to the deck\'s own Pages URL.', v: { kind: 'qr', eyebrow: 'Take the slides', say: ['The slides,', 'in your pocket'], sub: 'juanjecilla.github.io/slideshow/programar_tiempos_revueltos' } },
     ],
   },
   {
