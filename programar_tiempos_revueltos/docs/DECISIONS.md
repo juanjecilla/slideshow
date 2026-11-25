@@ -35,6 +35,7 @@ Nueva charla para **DevFest Barcelona 2026** (28 nov 2026, 30 min + 10 de pregun
 | D27 | **(2026-11-25)** Reparto con retratos de época en sepia (dibujos propios, sin parecido buscado con la serie ni sus actores); en la escena solo se anima lo que cambia. Un titulillo o crédito repetido entre beats no se vuelve a animar |
 | D28 | **(2026-11-25)** Final de temporada en dos beats: cartel de «Season finale» como anuncio de serie, y después la reconciliación con «Tools change. People stay.» destacado |
 | D29 | **(2026-11-25)** Tras Anthropic, beat con SpaceX (no es solo una empresa). En el beat de benchmarks, rueda «You are here» (Claude, Gemini, ChatGPT, Grok) que para en Gemini |
+| D30 | **(2026-11-25)** Marcas en la rueda de modelos y en los dos gráficos de bolsa (Claude en el de Anthropic, SpaceX en el suyo). Solo para nombrarlas; trazados de lobe-icons (MIT) y simple-icons (CC0), embebidos |
 
 ### Notas sobre las decisiones
 - **"Póster suizo".** El usuario habló de "el póster suizo que hemos desarrollado en otra rama". En el repo no hay nada con ese nombre: lo desarrollado es el tema Poster, con serif Fraunces y no el sans con rejilla clásico suizo. Se ha asumido que es ese. Si lo que se quería era un estilo suizo real (Helvetica, rejilla estricta, reglas), es un tema nuevo: ver "Abierto".

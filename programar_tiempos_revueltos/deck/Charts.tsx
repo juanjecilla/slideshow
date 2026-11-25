@@ -1,4 +1,5 @@
 import { useScene } from 'beatdeck';
+import { Logo } from './logos';
 import { HYPE, STOCKS, type BeatContent, type View } from './content';
 
 /*
@@ -120,6 +121,8 @@ export function Charts({ beats }: { beats: BeatContent[] }) {
               <div className="t-statement" style={{ fontSize: 76, marginTop: 56 }}>{v.say}</div>
             </div>
             <svg viewBox="0 0 1920 1080" width={1920} height={1080} style={{ position: 'absolute', left: 0, top: 0 }}>
+              {k === 'ant' && <Logo name="claude" x={1610} y={110} size={150} />}
+              {k === 'spcx' && <Logo name="spacex" x={1530} y={40} size={240} />}
               {/* lifted so the caveat and credit clear the progress bar */}
               <g transform="translate(0 -40)">{k === 'ant' || k === 'spcx' ? <Stock on={on} data={k} /> : <><Axes />{k === 'cycle' ? <Cycle step={step} /> : <Chain step={step} />}</>}</g>
             </svg>

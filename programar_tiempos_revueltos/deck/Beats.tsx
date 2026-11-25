@@ -5,6 +5,7 @@ import { Portrait } from './Portraits';
 import { Stamp } from './poster';
 import { Standby } from './standby/Standby';
 import { Charts } from './Charts';
+import { Logo, type LogoName } from './logos';
 import amarPoster from './assets/amar-poster.jpg';
 
 /** Generic renderer: every beat of content.ts is drawn from its `View`. Stage 1920×1080, safe margin 120/100. */
@@ -28,6 +29,8 @@ const Credit = ({ on, out, text, shared }: { on: boolean; out: boolean; text?: s
 const Tag = ({ on, out, text }: { on: boolean; out: boolean; text?: string }) =>
   text ? <Stamp on={on} out={out} text={text} x={1440} y={92} /> : null;
 
+const STOP_LOGOS: LogoName[] = ['claude', 'gemini', 'openai', 'grok'];
+
 /** The "best model" crown going round: one lap and it stops at whoever announced last. */
 function Wheel({ v, on, out }: { v: Extract<View, { kind: 'wheel' }>; on: boolean; out: boolean }) {
   const R = 270, cx = 1400, cy = 530;
@@ -45,13 +48,15 @@ function Wheel({ v, on, out }: { v: Extract<View, { kind: 'wheel' }>; on: boolea
             const x = cx + Math.cos(a) * R, y = cy + Math.sin(a) * R;
             return (
               <g key={name}>
-                <rect x={x - 115} y={y - 42} width={230} height={84} rx={42} fill={i === v.at ? 'var(--accent)' : 'var(--bg)'} stroke="var(--ink)" strokeWidth={5} style={{ transition: 'fill 300ms 2300ms' }} />
-                <text x={x} y={y + 13} textAnchor="middle" fontSize={38} fontWeight={800} fontFamily="var(--font-sans)" fill={i === v.at ? 'var(--bg)' : 'var(--ink)'}>{name}</text>
+                <rect x={x - 135} y={y - 42} width={270} height={84} rx={42} fill={i === v.at ? 'var(--accent)' : 'var(--bg)'} stroke="var(--ink)" strokeWidth={5} style={{ transition: 'fill 300ms 2300ms' }} />
+                {/* the lit stop is filled with the accent: every mark takes the text colour there so it stays visible */}
+                <Logo name={STOP_LOGOS[i]} x={x - 112} y={y - 24} size={48} color={i === v.at ? 'var(--bg)' : undefined} />
+                <text x={x + 28} y={y + 13} textAnchor="middle" fontSize={36} fontWeight={800} fontFamily="var(--font-sans)" fill={i === v.at ? 'var(--bg)' : 'var(--ink)'}>{name}</text>
               </g>
             );
           })}
           <g style={{ transform: `rotate(${angle}deg)`, transformOrigin: `${cx}px ${cy}px`, transition: spin }}>
-            <path d={`M${cx} ${cy - R + 58} L${cx - 34} ${cy - R + 130} H${cx - 12} V${cy - 40} H${cx + 12} V${cy - R + 130} H${cx + 34} Z`} fill="var(--accent)" />
+            <path d={`M${cx} ${cy - 128} L${cx - 30} ${cy - 66} H${cx - 11} V${cy - 20} H${cx + 11} V${cy - 66} H${cx + 30} Z`} fill="var(--accent)" />
           </g>
           <circle cx={cx} cy={cy} r={26} fill="var(--ink)" />
           <text x={cx} y={cy + 90} textAnchor="middle" fontSize={34} fontWeight={800} letterSpacing="0.1em" fontFamily="var(--font-sans)" fill="var(--ink)">{v.here.toUpperCase()}</text>
