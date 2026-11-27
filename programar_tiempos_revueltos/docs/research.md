@@ -132,18 +132,18 @@ No se pintan como cifra. Se cuentan como pregunta abierta y compartida: nadie ti
 | R7.2 | **Matiz obligatorio.** Es un modelo cualitativo; su validez como predictor está discutida. El dibujo del deck es propio y esquemático | ⚠️ | misma |
 | R7.3 | «Una curva encima de otra»: argumento de la charla de Jorge Castaño en Codemotion Madrid 2026, según la cuenta el ponente (post 39). Título del vídeo verificado; **el contenido del vídeo no se ha revisado**; su artículo del blog no menciona la curva | ⚠️ atribución del ponente | https://www.youtube.com/watch?v=TbEemCIGPnI · https://codingpit.substack.com/p/39-ttl |
 
-## R8 · Salida a bolsa de Anthropic (checked 2026-11-25)
+## R8 · Salida a bolsa de Anthropic y SpaceX (checked 2026-11-28)
 
 | id | Dato | Estado | Fuente |
 |---|---|---|---|
-| R8.1 | Precio de salida 83 USD; 19 nov: apertura 111,50, cierre 97,17 | ✅ (CNBC y BigGo coinciden) | https://www.cnbc.com/2026/11/19/anthropic-ipo-ant-live-updates.html |
-| R8.2 | Cierres: 20 nov 88,91; 23 nov 87,64; 24 nov 81,91 (primer cierre bajo el precio de salida) | ⚠️ fuente secundaria única | https://finance.biggo.com/news/fae0e954-2c46-4b55-a40d-2c4e31345abd |
+| R8.1 | Precio de salida 83 USD; 19 nov: apertura 111,50, cierre 97,17 | ✅ | https://www.cnbc.com/2026/11/19/anthropic-ipo-ant-live-updates.html · https://www.nasdaq.com/market-activity/stocks/ant/historical (checked 2026-11-28) |
+| R8.2 | Cierres: 20 nov 88,91; 23 nov 87,64; 24 nov 81,91 (primer cierre bajo el precio de salida); 25 nov 82,79; 27 nov (media sesión) 91,88 | ✅ cierres de Nasdaq | https://www.nasdaq.com/market-activity/stocks/ant/historical (checked 2026-11-28) |
+| R8.3 | SpaceX (SPCX): salida 135 USD (12 jun 2026); cierres 160,95 (12 jun), 201,80 (16 jun), 108,27 (5 ago), 150,86 (30 sep), 139,11 (13 nov), 127,44 (25 nov), 133,59 (27 nov, media sesión) | ✅ cierres de Nasdaq, puntos seleccionados · ⚠️ precio de salida con fuente secundaria | https://www.nasdaq.com/market-activity/stocks/spcx/historical (checked 2026-11-28) · precio de salida: https://quantral.com/blog/spacex-ipo (checked 2026-11-25) |
 
-**Cómo usarlo:** son cuatro sesiones. No predecir nada. **Volver a comprobar el viernes y el día de la charla.**
-| R8.3 | SpaceX (SPCX): salida 135 USD (12 jun 2026); cierres 160,95 (12 jun), 211,39 (16 jun), 108,27 (5 ago), 150,86 (30 sep), 139,11 (13 nov); 127,06 intradía 25 nov | ⚠️ fuentes secundarias; puntos seleccionados | https://quantral.com/blog/spacex-ipo · https://www.fool.com/investing/2026/11/25/why-spacex-stock-keeps-going-down/ (checked 2026-11-25) |
+**Cómo usarlo:** ANT son seis sesiones (el 26 fue festivo). No predecir nada. **Volver a comprobar el día de la charla.** Corrección 2026-11-28: el 16 jun figuraba 211,39, que no era el cierre.
 
-## R9 · Último modelo anunciado (checked 2026-11-25)
+## R9 · Último modelo anunciado (checked 2026-11-28)
 
 | id | Dato | Estado | Fuente |
 |---|---|---|---|
-| R9.1 | Gemini 4 Neon, 18 nov 2026. **Caduca en días: comprobar el viernes y el día de la charla.** El orden de la rueda es un chiste, no un ranking | ⚠️ fuente secundaria | https://en.wikipedia.org/wiki/Gemini_(language_model) |
+| R9.1 | Gemini 4 Neon, 18 nov 2026. **Caduca en días: comprobar el viernes y el día de la charla.** El orden de la rueda es un chiste, no un ranking | ✅ anuncio de Google | https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/ (checked 2026-11-28) |
