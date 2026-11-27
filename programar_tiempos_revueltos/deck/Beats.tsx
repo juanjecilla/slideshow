@@ -1,4 +1,4 @@
-import { QR, Reveal, Scene, useScene } from 'beatdeck';
+import { QR, Reveal, Scene, reducedMotion, useScene } from 'beatdeck';
 import { config } from './deck.config';
 import { CAST, CAST_TITLE, CONTENT, type View } from './content';
 import { Portrait } from './Portraits';
@@ -86,18 +86,7 @@ function BeatView({ v, on, out }: { v: View; on: boolean; out: boolean }) {
       );
     }
     case 'about':
-      return (
-        <>
-          <Eyebrow on={on} out={out} text={v.eyebrow} y={170} />
-          <Reveal on={on} out={out} x={X} y={250}><div className="t-statement" style={{ fontSize: 170 }}>{v.name}</div></Reveal>
-          <Reveal on={on} out={out} x={X} y={470} delay={150}><div className="t-editorial" style={{ fontSize: 58, color: 'var(--accent)' }}>{v.role}</div></Reveal>
-          {v.items.map((it, i) => (
-            <Reveal key={it} on={on} out={out} x={X} y={620 + i * 100} delay={300 + i * 150}>
-              <div className="t-editorial" style={{ fontSize: 50, display: 'flex', gap: 28 }}><span style={{ color: 'var(--accent)' }}>■</span><span>{it}</span></div>
-            </Reveal>
-          ))}
-        </>
-      );
+      return null; // drawn by <About>, which stays mounted across its two beats
     case 'reference':
       return null; // drawn by <Reference>, which stays mounted across its two beats
     case 'hype':
@@ -269,6 +258,35 @@ function BeatView({ v, on, out }: { v: View; on: boolean; out: boolean }) {
   }
 }
 
+/** Who I am. One beat later the job title is struck out and the new one is stamped under it. */
+function About({ v, on, out }: { v: Extract<View, { kind: 'about' }>; on: boolean; out: boolean }) {
+  const joke = !!v.retitle;
+  const still = reducedMotion.get();
+  return (
+    <>
+      <Eyebrow on={on} out={out} text={v.eyebrow} y={170} />
+      <Reveal on={on} out={out} x={X} y={250}><div className="t-statement" style={{ fontSize: 170 }}>{v.name}</div></Reveal>
+      <Reveal on={on} out={out} x={X} y={470} delay={150}>
+        <div className="t-editorial" style={{ fontSize: 58, color: 'var(--accent)', whiteSpace: 'nowrap' }}>
+          <span style={{ position: 'relative', display: 'inline-block' }}>
+            {v.role}
+            <span aria-hidden style={{ position: 'absolute', left: -8, top: '52%', height: 9, width: joke ? 'calc(100% + 16px)' : 0, background: 'var(--ink)', transition: still ? 'none' : 'width 450ms ease-in-out' }} />
+          </span>
+          {' · '}{v.tail}
+        </div>
+      </Reveal>
+      <Reveal on={on && joke} out={out} x={X + 40} y={548} delay={still ? 0 : 450}>
+        <div className="t-statement" style={{ fontSize: 84, transform: 'rotate(-3deg)' }}>{v.retitle}</div>
+      </Reveal>
+      {v.items.map((it, i) => (
+        <Reveal key={it} on={on} out={out} x={X} y={670 + i * 90} delay={300 + i * 150}>
+          <div className="t-editorial" style={{ fontSize: 50, display: 'flex', gap: 28 }}><span style={{ color: 'var(--accent)' }}>■</span><span>{it}</span></div>
+        </Reveal>
+      ))}
+    </>
+  );
+}
+
 /** The question alone, centred; on the next beat it makes room and the poster slides in. */
 function Reference({ v, on }: { v: Extract<View, { kind: 'reference' }>; on: boolean }) {
   const img = v.image;
@@ -346,6 +364,8 @@ function SceneView({ index }: { index: number }) {
   const beats = CONTENT[index].beats;
   const refs = beats.flatMap((x) => (x.v.kind === 'reference' ? [x.v] : []));
   const now = beats[b]?.v;
+  const abouts = beats.flatMap((x) => (x.v.kind === 'about' ? [x.v] : []));
+  const lastAbout = beats.map((x) => x.v.kind).lastIndexOf('about');
   const finale = beats.flatMap((x) => (x.v.kind === 'finale' ? [x.v] : []))[0];
   return (
     <>
@@ -353,6 +373,7 @@ function SceneView({ index }: { index: number }) {
       {distinct(beats.map((x) => eyebrowOf(x.v))).map((t) => <Eyebrow key={t} shared text={t} on={here && !!now && eyebrowOf(now) === t} out={false} />)}
       {distinct(beats.map((x) => creditOf(x.v))).map((t) => <Credit key={t} shared text={t} on={here && !!now && creditOf(now) === t} out={false} />)}
       <Charts beats={beats} />
+      {abouts.length > 0 && <About v={now?.kind === 'about' ? now : abouts[0]} on={here && now?.kind === 'about'} out={here && b > lastAbout} />}
       {beats.some((x) => x.v.kind === 'cast') && <Cast v={now?.kind === 'cast' ? now : (beats[0].v as Extract<View, { kind: 'cast' }>)} on={here && now?.kind === 'cast'} />}
       {finale && <Finale v={now?.kind === 'finale' ? now : finale} on={here && now?.kind === 'finale'} />}
       {refs.length > 0 && <Reference v={now?.kind === 'reference' ? now : refs[0]} on={here && now?.kind === 'reference'} />}

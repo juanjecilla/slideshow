@@ -87,3 +87,12 @@ Suma de charla: 30 min.
 - Qué recortar de Cap3 si los cuatro niveles no caben en 8 min.
 - Tarjeta en la landing (aún no existe).
 - Derechos del cartel de la serie (D23): decidir si va en la versión publicada (Pages/PDF) o solo en la que se proyecta.
+
+## 2026-11-28 (día de la charla)
+- **Precios** (R8): cierres oficiales de Nasdaq hasta el 27 nov (media sesión). ANT son seis sesiones (el 26 fue festivo). El punto de SpaceX del 16 jun pasa de 211,39 (no era cierre ni máximo oficial) al cierre 201,80. Comprobado 2026-11-28.
+- **Rueda de modelos:** sigue Gemini 4 Neon (18 nov, anuncio de Google); no se encontró nada oficial posterior de las cuatro marcas. Comprobado 2026-11-28.
+- **Cartel de la serie:** se publica con crédito (Diagonal TV para TVE).
+- **Presentación:** un clic extra tacha «Senior Software Engineer» y estampa «Agent Whisperer».
+- **Cap3** «Yo» y «Equipo»: texto aceptado; CODEOWNERS se cuenta en voz.
+- **Licencias:** Manfred CC BY-NC (uso no comercial) y marcas, confirmadas.
+- Un solo PR con base y edición.

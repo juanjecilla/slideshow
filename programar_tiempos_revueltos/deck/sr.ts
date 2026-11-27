@@ -7,7 +7,7 @@ function text(v: View): string {
   switch (v.kind) {
     case 'standby': return 'Talk starting.';
     case 'title': return join(v.title.join(' '), v.sub, v.author, v.eyebrow);
-    case 'about': return join(v.eyebrow, `${v.name}.`, `${v.role}.`, v.items.join('. ') + '.');
+    case 'about': return join(v.eyebrow, `${v.name}.`, v.retitle ? `${v.role}, struck out: ${v.retitle}. ${v.tail}.` : `${v.role}. ${v.tail}.`, v.items.join('. ') + '.');
     case 'reference': return join(v.eyebrow, v.say.join(' '), v.image ? v.alt : undefined);
     case 'hype': return join(v.eyebrow, v.say + '.', v.mode === 'cycle'
       ? `Curve of expectations over time: ${HYPE.phases.slice(0, [2, 3, 5][v.step - 1]).map((p) => p.join(' ')).join(', ')}.`

@@ -90,7 +90,8 @@ function Stock({ on, data }: { on: boolean; data: keyof typeof STOCKS }) {
             const prev = points[i - 1]?.usd, next = points[i + 1]?.usd;
             const under = prev !== undefined && prev > p.usd && (next === undefined || next > p.usd);
             const left = prev === undefined && next !== undefined && next > p.usd;
-            return <text x={X(i) + (left ? -8 : 0)} y={Y(p.usd) + (under ? 56 : -34)} textAnchor={left ? 'end' : 'middle'} style={{ ...label, fontSize: 34 }}>${p.usd.toFixed(2)}</text>;
+            const falling = prev !== undefined && next !== undefined && prev > p.usd && p.usd > next;
+            return <text x={X(i) + (left ? -8 : falling ? 12 : 0)} y={Y(p.usd) + (under ? 56 : -34)} textAnchor={left ? 'end' : falling ? 'start' : 'middle'} style={{ ...label, fontSize: 34 }}>${p.usd.toFixed(2)}</text>;
           })()}
           <text x={X(i)} y={925} textAnchor="middle" style={label}>{p.when}</text>
         </g>
