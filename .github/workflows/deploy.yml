@@ -42,6 +42,7 @@ jobs:
             adaptive_layouts/package-lock.json
             adaptive_layouts/jaen2026/package-lock.json
             programar_tiempos_revueltos/package-lock.json
+            programar_tiempos_revueltos/bcn26/package-lock.json
 
       - name: Install bc2026 dependencies
         run: npm ci
@@ -124,7 +125,7 @@ jobs:
         run: npm run build -- --base /slideshow/programar_tiempos_revueltos/
         working-directory: programar_tiempos_revueltos
 
-      # Spanish edition (bcn26): only built once it exists. Until then its URL serves the placeholder.
+      # Spanish edition (programar_tiempos_revueltos/bcn26): only built once it exists.
       - name: Build programar_tiempos_revueltos slides (ES, /bcn26/)
         if: ${{ hashFiles('programar_tiempos_revueltos/bcn26/package.json') != '' }}
         run: |
@@ -163,8 +164,6 @@ jobs:
           cp -r programar_tiempos_revueltos/dist/. dist/programar_tiempos_revueltos/
           if [ -d programar_tiempos_revueltos/bcn26/dist ]; then
             cp -r programar_tiempos_revueltos/bcn26/dist/. dist/programar_tiempos_revueltos/bcn26/
-          else
-            cp landing/placeholders/programar_tiempos_revueltos/index.html dist/programar_tiempos_revueltos/bcn26/
           fi
           cp landing/index.html dist/index.html
           cp -r landing/assets/. dist/assets/

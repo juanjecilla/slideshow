@@ -1,5 +1,13 @@
 # Runbook — (progr)Amar en tiempos revueltos
 
+## Which deck
+
+The talk is given with the Spanish edition: `cd bcn26 && npm run present` (live at `/slideshow/programar_tiempos_revueltos/bcn26/`). The English base deck lives one level up. Copy `bcn26/dist/` to a USB stick.
+
+**On the morning of the talk:** check the latest model on the wheel (4.12) and say the date of the prices out loud (4.10, 4.11: closes up to Fri 27 Nov).
+
+Beat 1.4 is a joke: one click strikes out the job title. Pause.
+
 ## Before the talk
 
 1. `npm install` (once, with internet) · `npm run present` → opens `http://127.0.0.1:4173/` from `dist/`.
@@ -33,4 +41,4 @@ Automatic beats: 1.1 (standby) loops until the first click. Title and loading ba
 
 ## Config to check on the day
 
-`deck/deck.config.ts`: title, speaker, `qrUrl` (currently: `https://juanjecilla.github.io/slideshow/programar_tiempos_revueltos/`). Rebuild after editing.
+`deck/deck.config.ts`: title, speaker, `qrUrl` (base: `…/programar_tiempos_revueltos/`, edition: `…/programar_tiempos_revueltos/bcn26/`). Rebuild after editing.
