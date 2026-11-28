@@ -1276,9 +1276,9 @@ image-slot::part(empty) {
     {
       id: "programar_tiempos_revueltos",
       slug: "programar_tiempos_revueltos",
-      // Spanish edition (the talk is given in Spanish). The English base deck lives at "./programar_tiempos_revueltos/".
-      url: "./programar_tiempos_revueltos/bcn26/",
-      thumbnail: "./assets/thumb-programar.png",
+      // ES opens the Spanish edition given at the event; EN opens the English base deck.
+      url: { es: "./programar_tiempos_revueltos/bcn26/", en: "./programar_tiempos_revueltos/" },
+      thumbnail: { es: "./assets/thumb-programar.png", en: "./assets/thumb-programar-en.png" },
       label: "cultura",
       year: 2026,
       tags: ["carrera", "cultura", "ia"],
@@ -1295,9 +1295,9 @@ image-slot::part(empty) {
     {
       id: "a11y_ai",
       slug: "a11y_ai",
-      // Spanish edition (the event is in Spanish). The English base deck lives at "./a11y_ai/".
-      url: "./a11y_ai/jerez26/",
-      thumbnail: "./assets/thumb-a11y-ai.png",
+      // ES opens the Spanish edition given at the event; EN opens the English base deck.
+      url: { es: "./a11y_ai/jerez26/", en: "./a11y_ai/" },
+      thumbnail: { es: "./assets/thumb-a11y-ai.png", en: "./assets/thumb-a11y-ai-en.png" },
       label: "a11y + ai",
       year: 2026,
       tags: ["a11y", "android", "mobile", "ia"],
@@ -1314,9 +1314,9 @@ image-slot::part(empty) {
     {
       id: "app_functions",
       slug: "app_functions",
-      // Spanish copy (the event is in Spanish). The English base deck lives at "./app_functions/".
-      url: "./app_functions/ourense26/",
-      thumbnail: "./assets/thumb-app-functions.png",
+      // ES opens the Spanish edition given at the event; EN opens the English base deck.
+      url: { es: "./app_functions/ourense26/", en: "./app_functions/" },
+      thumbnail: { es: "./assets/thumb-app-functions.png", en: "./assets/thumb-app-functions-en.png" },
       label: "android",
       year: 2026,
       tags: ["android", "ia", "mobile"],
@@ -1333,9 +1333,9 @@ image-slot::part(empty) {
     {
       id: "adaptive_layouts",
       slug: "adaptive_layouts",
-      // Spanish edition (the talk was given in Spanish). The English base deck lives at "./adaptive_layouts/".
-      url: "./adaptive_layouts/jaen2026/",
-      thumbnail: "./assets/thumb-adaptive.png",
+      // ES opens the Spanish edition given at the event; EN opens the English base deck.
+      url: { es: "./adaptive_layouts/jaen2026/", en: "./adaptive_layouts/" },
+      thumbnail: { es: "./assets/thumb-adaptive.png", en: "./assets/thumb-adaptive-en.png" },
       label: "android",
       year: 2026,
       tags: ["android", "mobile"],
@@ -1768,6 +1768,12 @@ function Hero({ t, count }) {
   );
 }
 
+// `url` and `thumbnail` are either one string (a talk with a single, Spanish deck)
+// or { es, en } (a talk with a Spanish edition and an English base deck).
+function byLang(v, lang) {
+  return typeof v === "string" ? v : v[lang];
+}
+
 function TalkCard({ talk, lang, t, index }) {
   const title = talk.title[lang];
   return (
@@ -1778,7 +1784,7 @@ function TalkCard({ talk, lang, t, index }) {
           id={`talk-${talk.id}`}
           shape="rect"
           fit="cover"
-          src={talk.thumbnail}
+          src={byLang(talk.thumbnail, lang)}
           placeholder={lang === "es" ? "Captura de las slides" : "Slides screenshot"}
         ></image-slot>
       </div>
@@ -1802,7 +1808,7 @@ function TalkCard({ talk, lang, t, index }) {
               </a>
             )}
             {/* The whole card is clickable through this link (stretched ::after); the video link sits above it. */}
-            <a className="talk__cta talk__link" href={talk.url} aria-label={`${t.view_slides}: ${title[0]}${title[1]}`}>
+            <a className="talk__cta talk__link" href={byLang(talk.url, lang)} aria-label={`${t.view_slides}: ${title[0]}${title[1]}`}>
               {t.view_slides} {Icon.arrow}
             </a>
           </span>
