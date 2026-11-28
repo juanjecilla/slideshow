@@ -1,0 +1,16 @@
+/**
+ * Everything that may need changing five minutes before going on stage lives here.
+ * After editing, rebuild (`npm run build` / `npm run present`).
+ */
+export const config = {
+  title: '(progr)Amar en tiempos revueltos',
+  /** One line under the title. Empty = none. */
+  subtitle: 'Escribir código, y cuidar a las personas, cuando todo se mueve',
+  author: 'Juanje Cilla',
+  /** Talk start, ISO with offset. Empty = no countdown: the standby just loops (?start=HH:MM rehearses a countdown). */
+  startsAt: '' as string,
+  /** Destination of the QR on the closing screen. "TODO" = no QR (the presenter view warns). Never guess it. */
+  qrUrl: 'https://juanjecilla.github.io/slideshow/programar_tiempos_revueltos/bcn26/',
+  /** Shown under the QR, e.g. "example.com/talk". */
+  qrLabel: '',
+} as const;

@@ -41,6 +41,8 @@ jobs:
             a11y_ai/jerez26/package-lock.json
             adaptive_layouts/package-lock.json
             adaptive_layouts/jaen2026/package-lock.json
+            programar_tiempos_revueltos/package-lock.json
+            programar_tiempos_revueltos/bcn26/package-lock.json
 
       - name: Install bc2026 dependencies
         run: npm ci
@@ -115,6 +117,22 @@ jobs:
           npm run build -- --base /slideshow/adaptive_layouts/jaen2026/
         working-directory: adaptive_layouts/jaen2026
 
+      - name: Install programar_tiempos_revueltos dependencies
+        run: npm ci
+        working-directory: programar_tiempos_revueltos
+
+      - name: Build programar_tiempos_revueltos slides (EN, base deck)
+        run: npm run build -- --base /slideshow/programar_tiempos_revueltos/
+        working-directory: programar_tiempos_revueltos
+
+      # Spanish edition (programar_tiempos_revueltos/bcn26): only built once it exists.
+      - name: Build programar_tiempos_revueltos slides (ES, /bcn26/)
+        if: ${{ hashFiles('programar_tiempos_revueltos/bcn26/package.json') != '' }}
+        run: |
+          npm ci
+          npm run build -- --base /slideshow/programar_tiempos_revueltos/bcn26/
+        working-directory: programar_tiempos_revueltos/bcn26
+
       - name: Assemble dist
         run: |
           mkdir -p dist/bc2026
@@ -142,10 +160,11 @@ jobs:
             mkdir -p dist/adaptive_layouts/jaen2026
             cp -r adaptive_layouts/jaen2026/dist/. dist/adaptive_layouts/jaen2026/
           fi
-          # Placeholder until the DevFest Barcelona deck lands (PR #19 replaces this with the real builds).
           mkdir -p dist/programar_tiempos_revueltos/bcn26
-          cp landing/placeholders/programar_tiempos_revueltos/index.html dist/programar_tiempos_revueltos/
-          cp landing/placeholders/programar_tiempos_revueltos/index.html dist/programar_tiempos_revueltos/bcn26/
+          cp -r programar_tiempos_revueltos/dist/. dist/programar_tiempos_revueltos/
+          if [ -d programar_tiempos_revueltos/bcn26/dist ]; then
+            cp -r programar_tiempos_revueltos/bcn26/dist/. dist/programar_tiempos_revueltos/bcn26/
+          fi
           cp landing/index.html dist/index.html
           cp -r landing/assets/. dist/assets/
 
