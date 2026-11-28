@@ -16,3 +16,7 @@ The deck a Talk is first built as, usually in English. It lives at the Talk's ow
 **Edition**:
 A copy of a Talk's Base deck made for one event, usually in another language, named after the event and year (`ourense26`, `jerez26`, `jaen2026`). It is made from the frozen Base deck, published under the Base deck's path, and never edited on its own.
 _Avoid_: Spanish copy, translated copy, version, i18n
+
+**Thumbnail**:
+The image on a Talk card: the cover slide of the deck the card opens in the visitor's chosen language. A Talk with no deck in that language shows its other-language cover.
+_Avoid_: miniature, preview
